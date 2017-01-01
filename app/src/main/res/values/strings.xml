@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">Ahmed Task</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="no_data">No Data</string>
+    <string name="search_by_title">Search by title</string>
+    <string name="search_error">there is no such title</string>
+    <string name="news_error">there is no news</string>
+    <string name="news_details_preview">this is the news title some text to test the appearance of
+        the view It\'s time for a truly uncompromising smartphone. One that was designed and
+        manufactured by technical enthusiasts - in close coordination with the future users. A
+        smartphone that perfectly combines fascinating technology, groundbreaking design and
+        breakthrough innovation. It is time for the OnePlus 3. But do not rely on our word. Convince
+        yourself.
+    </string>
+    <string name="news_title_preview">this is the news title</string>
+    <string name="news">News</string>
+</resources>
