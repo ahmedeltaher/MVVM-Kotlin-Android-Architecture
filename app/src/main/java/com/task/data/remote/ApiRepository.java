@@ -45,7 +45,7 @@ public class ApiRepository {
                     subscriber.onError(e);
                 } else {
                     NewsService newsService = serviceGenerator.createService(NewsService.class, Constants.BASE_URL);
-                    ServiceResponse serviceResponse = processCall(newsService.fetchNews());
+                    ServiceResponse serviceResponse = processCall(newsService.fetchNews(), false);
                     NewsModel newsModel = (NewsModel) serviceResponse.getData();
                     subscriber.onNext(newsModel);
                     subscriber.onCompleted();
@@ -55,24 +55,17 @@ public class ApiRepository {
         return newsObservable;
     }
 
-    //Process the calls
+
     @NonNull
-    private ServiceResponse processCall(Call call) {
+    private ServiceResponse processCall(Call call, boolean isVoid) {
         if (!isConnected(App.getContext())) {
             return new ServiceResponse(new ServiceError());
         }
-        return processResponse(call, false);
-    }
-
-    @NonNull
-    private ServiceResponse processResponse(Call call, boolean isVoid) {
         try {
             retrofit2.Response response = call.execute();
             Gson gson = new Gson();
             L.json(NewsModel.class.getName(), gson.toJson(response.body()));
             if (isNull(response)) {
-                //Extra check in case internet is disconnected in between or no proper response
-                // received from backend
                 return new ServiceResponse(new ServiceError(NETWORK_ERROR, ERROR_UNDEFINED));
             }
             int responseCode = response.code();

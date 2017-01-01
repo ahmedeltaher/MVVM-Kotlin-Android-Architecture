@@ -41,7 +41,6 @@ public class ServiceGenerator {
         okHttpBuilder.addInterceptor(headerInterceptor);
         okHttpBuilder.connectTimeout(TIMEOUT_CONNECT, TimeUnit.SECONDS);
         okHttpBuilder.readTimeout(TIMEOUT_READ, TimeUnit.SECONDS);
-//        okHttpBuilder.addInterceptor(getLogger());
         this.gson = gson;
     }
 
