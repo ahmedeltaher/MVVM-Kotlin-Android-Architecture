@@ -72,4 +72,35 @@ dependencies {
     compile 'io.reactivex:rxandroid:1.2.1'
     compile 'io.reactivex:rxjava:1.1.6'
     compile 'com.squareup.retrofit2:adapter-rxjava:2.0.2'
+    //testing
+    testCompile 'junit:junit:4.12'
+    compile("com.android.support.test:rules:0.5") {
+        exclude group: "javax.inject", module: "javax.inject"
+        exclude group: 'com.android.support', module: 'support-annotations'
+    }
+    compile("com.android.support.test:runner:0.5") {
+        exclude group: "javax.inject", module: "javax.inject"
+        exclude group: 'com.android.support', module: 'support-annotations'
+    }
+    compile("com.android.support.test.espresso:espresso-core:2.2.2") {
+        exclude group: "javax.inject", module: "javax.inject"
+        exclude group: "com.squareup", module: "javawriter"
+        exclude group: 'com.android.support', module: 'support-annotations'
+    }
+    compile("com.android.support.test.espresso:espresso-contrib:2.2.2") {
+        exclude module: "recyclerview-v7"
+        exclude module: "support-v4"
+        exclude group: "javax.inject", module: "javax.inject"
+        exclude group: 'com.android.support', module: 'support-annotations'
+    }
+    compile("com.android.support.test.espresso:espresso-intents:2.2.1") {
+        exclude group: "javax.inject", module: "javax.inject"
+        exclude group: 'com.android.support', module: 'support-annotations'
+    }
+    compile("com.android.support.test.espresso:espresso-idling-resource:2.2.2") {
+        exclude module: "recyclerview-v7"
+        exclude module: "support-v4"
+        exclude group: "javax.inject", module: "javax.inject"
+        exclude group: 'com.android.support', module: 'support-annotations'
+    }
 }
