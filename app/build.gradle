@@ -32,15 +32,23 @@ android {
     }
     productFlavors {
     }
+    defaultConfig {
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+
 }
 repositories {
     repositories {
         mavenCentral()
     }
 }
+configurations.all {
+    resolutionStrategy {
+        force 'com.android.support:support-annotations:24.2.1'
+    }
+}
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
-    compile 'org.glassfish:javax.annotation:10.0-b28'
     //android support & recyclerview
     compile 'com.android.support:recyclerview-v7:24.2.1'
     compile 'com.android.support:appcompat-v7:24.2.1'
@@ -48,7 +56,6 @@ dependencies {
     //Dagger
     compile 'com.google.dagger:dagger:2.0.2'
     apt 'com.google.dagger:dagger-compiler:2.0.2'
-    compile 'org.glassfish:javax.annotation:10.0-b28'
     //Butter knife
     compile 'com.jakewharton:butterknife:7.0.1'
     //event bus
@@ -72,7 +79,7 @@ dependencies {
     compile 'io.reactivex:rxandroid:1.2.1'
     compile 'io.reactivex:rxjava:1.1.6'
     compile 'com.squareup.retrofit2:adapter-rxjava:2.0.2'
-    //testing
+    // espresso , junit for testing
     testCompile 'junit:junit:4.12'
     compile("com.android.support.test:rules:0.5") {
         exclude group: "javax.inject", module: "javax.inject"

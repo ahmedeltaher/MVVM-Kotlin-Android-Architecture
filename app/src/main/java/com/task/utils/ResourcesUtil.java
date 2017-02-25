@@ -21,4 +21,8 @@ public class ResourcesUtil {
         return SDK_INT >= LOLLIPOP ? context.getResources().getDrawable(resId, theme) :
             context.getResources().getDrawable(resId);
     }
+    public static String getString(int resId) {
+        return SDK_INT >= LOLLIPOP ? context.getResources().getString(resId) :
+                context.getResources().getString(resId);
+    }
 }

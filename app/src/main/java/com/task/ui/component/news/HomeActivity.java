@@ -1,8 +1,10 @@
-package com.task.ui.component.home;
+package com.task.ui.component.news;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.VisibleForTesting;
 import android.support.design.widget.Snackbar;
+import android.support.test.espresso.IdlingResource;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -29,6 +31,9 @@ import static android.support.design.widget.Snackbar.LENGTH_SHORT;
 import static android.view.View.GONE;
 import static android.view.View.VISIBLE;
 import static com.task.utils.Constants.NEWS_ITEM_KEY;
+import static com.task.utils.EspressoIdlingResource.decrement;
+import static com.task.utils.EspressoIdlingResource.getIdlingResource;
+import static com.task.utils.EspressoIdlingResource.increment;
 
 /**
  * Created by AhmedEltaher on 5/12/2016
@@ -106,8 +111,18 @@ public class HomeActivity extends BaseActivity implements HomeView {
     }
 
     @Override
-    public void showMenuMapError() {
+    public void showNoNewsError() {
         Snackbar.make(rlNewsList, getString(R.string.news_error), LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void incrementCountingIdlingResource() {
+        increment();
+    }
+
+    @Override
+    public void decrementCountingIdlingResource() {
+        decrement();
     }
 
     @OnClick({R.id.ic_toolbar_setting, R.id.ic_toolbar_refresh, R.id.btn_search})
@@ -125,5 +140,10 @@ public class HomeActivity extends BaseActivity implements HomeView {
     protected void onDestroy() {
         super.onDestroy();
         presenter.unSubscribe();
+    }
+
+    @VisibleForTesting
+    public IdlingResource getCountingIdlingResource() {
+        return getIdlingResource();
     }
 }

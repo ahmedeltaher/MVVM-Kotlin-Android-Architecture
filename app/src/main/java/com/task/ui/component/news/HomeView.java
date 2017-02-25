@@ -1,4 +1,4 @@
-package com.task.ui.component.home;
+package com.task.ui.component.news;
 
 import com.task.data.remote.dto.NewsItem;
 import com.task.ui.base.Presenter;
@@ -22,5 +22,9 @@ public interface HomeView extends Presenter.View {
 
     void showSearchError();
 
-    void showMenuMapError();
+    void showNoNewsError();
+
+    void incrementCountingIdlingResource();
+
+    void decrementCountingIdlingResource();
 }

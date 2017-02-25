@@ -1,4 +1,4 @@
-package com.task.ui.component.home;
+package com.task.ui.component.news;
 
 import android.os.Bundle;
 
@@ -40,6 +40,7 @@ public class HomePresenter extends Presenter<HomeView> {
         getView().setLoaderVisibility(true);
         getView().setNoDataVisibility(false);
         getView().setListVisibility(false);
+        getView().incrementCountingIdlingResource();
         newsUseCase.getNews(callback);
     }
 
@@ -77,6 +78,7 @@ public class HomePresenter extends Presenter<HomeView> {
     private final Callback callback = new Callback() {
         @Override
         public void onSuccess(NewsModel newsModel) {
+            getView().decrementCountingIdlingResource();
             HomePresenter.this.newsModel = newsModel;
             List<NewsItem> newsItems = newsModel.getNewsItems();
             if (!isNull(newsItems) && !newsItems.isEmpty()) {
@@ -90,6 +92,7 @@ public class HomePresenter extends Presenter<HomeView> {
 
         @Override
         public void onFail() {
+            getView().decrementCountingIdlingResource();
             showList(false);
             getView().setLoaderVisibility(false);
         }

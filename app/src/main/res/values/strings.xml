@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">Ahmed Task</string>
-    <string name="title_activity_maps">Map</string>
     <string name="no_data">No Data</string>
     <string name="search_by_title">Search by title</string>
     <string name="search_error">there is no such title</string>

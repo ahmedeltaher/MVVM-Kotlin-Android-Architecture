@@ -6,7 +6,7 @@ import android.os.Handler;
 import com.task.App;
 import com.task.R;
 import com.task.ui.base.BaseActivity;
-import com.task.ui.component.home.HomeActivity;
+import com.task.ui.component.news.HomeActivity;
 
 import javax.inject.Inject;
 

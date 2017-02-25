@@ -19,7 +19,7 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".ui.component.home.HomeActivity"/>
+        <activity android:name=".ui.component.news.HomeActivity"/>
         <activity android:name=".ui.component.details.DetailsActivity"/>
     </application>
 
