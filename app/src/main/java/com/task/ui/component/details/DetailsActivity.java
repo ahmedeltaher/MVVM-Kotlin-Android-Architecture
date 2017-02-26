@@ -1,5 +1,7 @@
 package com.task.ui.component.details;
 
+import static android.text.TextUtils.isEmpty;
+
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -12,9 +14,7 @@ import com.task.ui.base.BaseActivity;
 
 import javax.inject.Inject;
 
-import butterknife.Bind;
-
-import static android.text.TextUtils.isEmpty;
+import butterknife.BindView;
 
 /**
  * Created by AhmedEltaher on 11/12/16.
@@ -25,11 +25,11 @@ public class DetailsActivity extends BaseActivity implements DetailsView {
     @Inject
     DetailsPresenter presenter;
 
-    @Bind(R.id.tv_title)
+    @BindView(R.id.tv_title)
     TextView tvTitle;
-    @Bind(R.id.iv_news_main_Image)
+    @BindView(R.id.iv_news_main_Image)
     ImageView ivMainImage;
-    @Bind(R.id.tv_description)
+    @BindView(R.id.tv_description)
     TextView tvDescription;
 
     @Override

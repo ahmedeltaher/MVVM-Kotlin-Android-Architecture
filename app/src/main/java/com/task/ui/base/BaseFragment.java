@@ -15,6 +15,7 @@ import android.widget.TextView;
 import com.task.R;
 
 import butterknife.ButterKnife;
+import butterknife.Unbinder;
 
 /**
  * Created by AhmedEltaher on 5/12/2016
@@ -35,6 +36,7 @@ public abstract class BaseFragment extends Fragment implements Presenter.View {
 
     private View view;
 
+    private Unbinder unbinder;
 
     private String toolbarTitleKey;
 
@@ -48,9 +50,10 @@ public abstract class BaseFragment extends Fragment implements Presenter.View {
 
     @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
+            @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(getLayoutId(), container, false);
-        ButterKnife.bind(this, view);
+        unbinder = ButterKnife.bind(this, view);
         if (presenter != null) {
             presenter.initialize(getArguments());
         }
@@ -76,7 +79,7 @@ public abstract class BaseFragment extends Fragment implements Presenter.View {
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        ButterKnife.unbind(this);
+        unbinder.unbind();
     }
 
     public void setTitle(String title) {

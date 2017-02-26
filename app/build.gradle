@@ -1,18 +1,22 @@
 apply plugin: 'com.android.application'
-//Daggar
+//Dagger
 apply plugin: 'com.neenbedankt.android-apt'
+//ButterKnife
+apply plugin: 'com.jakewharton.butterknife'
 //lamda
 apply plugin: 'com.jakewharton.hugo'
 apply plugin: 'me.tatarka.retrolambda'
+apply from: 'configuration.gradle'
+
 android {
-    compileSdkVersion 24
-    buildToolsVersion "24.0.1"
+    compileSdkVersion project.compileSdkVersion
+    buildToolsVersion project.buildToolsVersion
     defaultConfig {
         applicationId 'com.eltaher.task'
-        minSdkVersion 16
-        targetSdkVersion 24
-        versionCode 1
-        versionName "1.0"
+        minSdkVersion project.minSdkVersion
+        targetSdkVersion project.targetSdkVersion
+        versionCode project.versionCode
+        versionName project.versionName
         multiDexEnabled true
     }
     buildTypes {
@@ -44,67 +48,68 @@ repositories {
 }
 configurations.all {
     resolutionStrategy {
-        force 'com.android.support:support-annotations:24.2.1'
+        force "com.android.support:support-annotations:${supportLibraryVersion}"
     }
 }
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     //android support & recyclerview
-    compile 'com.android.support:recyclerview-v7:24.2.1'
-    compile 'com.android.support:appcompat-v7:24.2.1'
-    compile 'com.android.support:design:24.2.1'
+    compile "com.android.support:recyclerview-v7:${supportLibraryVersion}"
+    compile "com.android.support:appcompat-v7:${supportLibraryVersion}"
+    compile "com.android.support:design:${supportLibraryVersion}"
     //Dagger
-    compile 'com.google.dagger:dagger:2.0.2'
-    apt 'com.google.dagger:dagger-compiler:2.0.2'
+    compile "com.google.dagger:dagger:${daggerVersion}"
+    apt "com.google.dagger:dagger-compiler:${daggerVersion}"
     //Butter knife
-    compile 'com.jakewharton:butterknife:7.0.1'
+    compile "com.jakewharton:butterknife:${butterKnifeVersion}"
+    apt "com.jakewharton:butterknife-compiler:${butterKnifeVersion}"
     //event bus
     compile 'com.squareup:otto:1.3.8'
     //Logging
-    compile 'com.squareup.okhttp3:logging-interceptor:3.3.0'
+    compile "com.squareup.okhttp3:logging-interceptor:${okhttpVersion}"
     compile 'com.orhanobut:logger:1.15'
     // retrofit
-    compile 'com.squareup.retrofit2:retrofit:2.1.0'
-    compile 'com.squareup.retrofit2:converter-gson:2.1.0'
-    compile 'com.squareup.okhttp3:okhttp:3.3.0'
+    compile "com.squareup.retrofit2:retrofit:${retrofitVersion}"
+    compile "com.squareup.retrofit2:converter-gson:${retrofitVersion}"
+    compile "com.squareup.okhttp3:okhttp:${okhttpVersion}"
     //picasso
     compile 'com.squareup.picasso:picasso:2.5.2'
     //MultiDex
     compile 'com.android.support:multidex:+'
     //ParcelablePlease
-    compile 'com.hannesdorfmann.parcelableplease:parent:1.0.2'
-    compile 'com.hannesdorfmann.parcelableplease:annotation:1.0.2'
-    compile 'com.hannesdorfmann.parcelableplease:processor:1.0.2'
+    compile "com.hannesdorfmann.parcelableplease:parent:${parcelablepleaseVersion}"
+    compile "com.hannesdorfmann.parcelableplease:annotation:${parcelablepleaseVersion}"
+    compile "com.hannesdorfmann.parcelableplease:processor:${parcelablepleaseVersion}"
     //Android RX
     compile 'io.reactivex:rxandroid:1.2.1'
     compile 'io.reactivex:rxjava:1.1.6'
-    compile 'com.squareup.retrofit2:adapter-rxjava:2.0.2'
+    compile "com.squareup.retrofit2:adapter-rxjava:${retrofitVersion}"
     // espresso , junit for testing
     testCompile 'junit:junit:4.12'
-    compile("com.android.support.test:rules:0.5") {
+    compile('com.android.support.test:rules:0.5') {
         exclude group: "javax.inject", module: "javax.inject"
         exclude group: 'com.android.support', module: 'support-annotations'
     }
-    compile("com.android.support.test:runner:0.5") {
+    compile('com.android.support.test:runner:0.5') {
         exclude group: "javax.inject", module: "javax.inject"
         exclude group: 'com.android.support', module: 'support-annotations'
     }
-    compile("com.android.support.test.espresso:espresso-core:2.2.2") {
+    compile("com.android.support.test.espresso:espresso-core:${espressoVersion}") {
         exclude group: "javax.inject", module: "javax.inject"
         exclude group: "com.squareup", module: "javawriter"
         exclude group: 'com.android.support', module: 'support-annotations'
     }
-    compile("com.android.support.test.espresso:espresso-contrib:2.2.2") {
+    compile("com.android.support.test.espresso:espresso-contrib:${espressoVersion}") {
         exclude module: "recyclerview-v7"
         exclude module: "support-v4"
         exclude group: "javax.inject", module: "javax.inject"
         exclude group: 'com.android.support', module: 'support-annotations'
     }
-    compile("com.android.support.test.espresso:espresso-intents:2.2.1") {
+    compile('com.android.support.test.espresso:espresso-intents:2.2.1') {
         exclude group: "javax.inject", module: "javax.inject"
         exclude group: 'com.android.support', module: 'support-annotations'
     }
-    compile("com.android.support.test.espresso:espresso-idling-resource:2.2.2") {
+    compile("com.android.support.test.espresso:espresso-idling-resource:${espressoVersion}") {
         exclude module: "recyclerview-v7"
         exclude module: "support-v4"
         exclude group: "javax.inject", module: "javax.inject"

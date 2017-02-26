@@ -1,5 +1,14 @@
 package com.task.ui.component.news;
 
+import static android.support.design.widget.Snackbar.LENGTH_SHORT;
+import static android.view.View.GONE;
+import static android.view.View.VISIBLE;
+
+import static com.task.utils.Constants.NEWS_ITEM_KEY;
+import static com.task.utils.EspressoIdlingResource.decrement;
+import static com.task.utils.EspressoIdlingResource.getIdlingResource;
+import static com.task.utils.EspressoIdlingResource.increment;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.VisibleForTesting;
@@ -24,16 +33,8 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.OnClick;
-
-import static android.support.design.widget.Snackbar.LENGTH_SHORT;
-import static android.view.View.GONE;
-import static android.view.View.VISIBLE;
-import static com.task.utils.Constants.NEWS_ITEM_KEY;
-import static com.task.utils.EspressoIdlingResource.decrement;
-import static com.task.utils.EspressoIdlingResource.getIdlingResource;
-import static com.task.utils.EspressoIdlingResource.increment;
 
 /**
  * Created by AhmedEltaher on 5/12/2016
@@ -42,17 +43,17 @@ import static com.task.utils.EspressoIdlingResource.increment;
 public class HomeActivity extends BaseActivity implements HomeView {
     @Inject
     HomePresenter presenter;
-    @Bind(R.id.rv_news_list)
+    @BindView(R.id.rv_news_list)
     RecyclerView rvNews;
-    @Bind(R.id.pb_loading)
+    @BindView(R.id.pb_loading)
     ProgressBar pbLoading;
-    @Bind(R.id.tv_no_data)
+    @BindView(R.id.tv_no_data)
     TextView tvNoData;
-    @Bind(R.id.rl_news_list)
+    @BindView(R.id.rl_news_list)
     RelativeLayout rlNewsList;
-    @Bind(R.id.btn_search)
+    @BindView(R.id.btn_search)
     ImageButton btnSearch;
-    @Bind(R.id.et_search)
+    @BindView(R.id.et_search)
     EditText editTextSearch;
 
     @Override

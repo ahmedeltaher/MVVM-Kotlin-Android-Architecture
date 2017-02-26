@@ -11,8 +11,9 @@ import android.widget.TextView;
 
 import com.task.R;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.Unbinder;
 
 import static android.view.View.GONE;
 import static android.view.View.VISIBLE;
@@ -21,24 +22,27 @@ import static android.view.View.VISIBLE;
  * Created by AhmedEltaher on 5/12/2016
  */
 
-@SuppressWarnings("ConstantConditions")
-public abstract class BaseActivity extends AppCompatActivity implements Presenter.View, ActionBarView {
+
+public abstract class BaseActivity extends AppCompatActivity implements Presenter.View,
+        ActionBarView {
 
     protected Presenter presenter;
 
     @Nullable
-    @Bind(R.id.toolbar)
+    @BindView(R.id.toolbar)
     Toolbar toolbar;
 
     @Nullable
-    @Bind(R.id.ic_toolbar_setting)
+    @BindView(R.id.ic_toolbar_setting)
     ImageView icSettings;
 
     @Nullable
-    @Bind(R.id.ic_toolbar_refresh)
+    @BindView(R.id.ic_toolbar_refresh)
 
     protected
     ImageView icHome;
+
+    private Unbinder unbinder;
 
     protected abstract void initializeDagger();
 
@@ -50,7 +54,7 @@ public abstract class BaseActivity extends AppCompatActivity implements Presente
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(getLayoutId());
-        initializeButterKnife();
+        unbinder = ButterKnife.bind(this);
         initializeDagger();
         initializePresenter();
         initializeToolbar();
@@ -79,10 +83,6 @@ public abstract class BaseActivity extends AppCompatActivity implements Presente
         if (presenter != null) {
             presenter.finalizeView();
         }
-    }
-
-    private void initializeButterKnife() {
-        ButterKnife.bind(this);
     }
 
     protected void initializeToolbar() {
@@ -140,5 +140,11 @@ public abstract class BaseActivity extends AppCompatActivity implements Presente
                 finish();
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        unbinder.unbind();
     }
 }
