@@ -1,6 +1,7 @@
 package com.task.ui.component.news;
 
 import android.os.Bundle;
+import android.support.annotation.VisibleForTesting;
 
 import com.task.data.remote.dto.NewsItem;
 import com.task.data.remote.dto.NewsModel;
@@ -13,7 +14,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-import static android.text.TextUtils.isEmpty;
+import static com.task.utils.ObjectUtil.isEmpty;
 import static com.task.utils.ObjectUtil.isNull;
 
 /**
@@ -74,6 +75,11 @@ public class HomePresenter extends Presenter<HomeView> {
     private final RecyclerItemListener recyclerItemListener = position -> {
         getView().navigateToDetailsScreen(newsModel.getNewsItems().get(position));
     };
+
+    @VisibleForTesting(otherwise = VisibleForTesting.PRIVATE)
+    public NewsModel getNewsModel() {
+        return newsModel;
+    }
 
     private final Callback callback = new Callback() {
         @Override

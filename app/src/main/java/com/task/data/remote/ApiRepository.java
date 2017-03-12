@@ -10,13 +10,18 @@ import com.task.data.remote.service.NewsService;
 import com.task.utils.Constants;
 import com.task.utils.L;
 
+import org.reactivestreams.Publisher;
+import org.reactivestreams.Subscriber;
+
 import java.io.IOException;
 
 import javax.inject.Inject;
 
+import io.reactivex.Observable;
+import io.reactivex.ObservableEmitter;
+import io.reactivex.ObservableOnSubscribe;
+import io.reactivex.Observer;
 import retrofit2.Call;
-import rx.Observable;
-import rx.Subscriber;
 
 import static com.task.data.remote.ServiceError.NETWORK_ERROR;
 import static com.task.utils.Constants.ERROR_UNDEFINED;
@@ -37,19 +42,31 @@ public class ApiRepository {
 
     public Observable getNews() {
 
-        Observable<NewsModel> newsObservable = Observable.create(new Observable.OnSubscribe<NewsModel>() {
-            @Override
-            public void call(Subscriber<? super NewsModel> subscriber) {
-                if (!isConnected(App.getContext())) {
-                    Exception e = new NetworkErrorException();
-                    subscriber.onError(e);
-                } else {
-                    NewsService newsService = serviceGenerator.createService(NewsService.class, Constants.BASE_URL);
-                    ServiceResponse serviceResponse = processCall(newsService.fetchNews(), false);
-                    NewsModel newsModel = (NewsModel) serviceResponse.getData();
-                    subscriber.onNext(newsModel);
-                    subscriber.onCompleted();
-                }
+//        Observable<NewsModel> newsObservable = Observable.create(new Observable.OnSubscribe<NewsModel>() {
+//            @Override
+//            public void call(Subscriber<? super NewsModel> subscriber) {
+//                if (!isConnected(App.getContext())) {
+//                    Exception e = new NetworkErrorException();
+//                    subscriber.onError(e);
+//                } else {
+//                    NewsService newsService = serviceGenerator.createService(NewsService.class, Constants.BASE_URL);
+//                    ServiceResponse serviceResponse = processCall(newsService.fetchNews(), false);
+//                    NewsModel newsModel = (NewsModel) serviceResponse.getData();
+//                    subscriber.onNext(newsModel);
+//                    subscriber.onCompleted();
+//                }
+//            }
+//        });
+        Observable<NewsModel> newsObservable = Observable.create(newsModelObservableEmitter -> {
+            if (!isConnected(App.getContext())) {
+                Exception e = new NetworkErrorException();
+                newsModelObservableEmitter.onError(e);
+            } else {
+                NewsService newsService = serviceGenerator.createService(NewsService.class, Constants.BASE_URL);
+                ServiceResponse serviceResponse = processCall(newsService.fetchNews(), false);
+                NewsModel newsModel = (NewsModel) serviceResponse.getData();
+                newsModelObservableEmitter.onNext(newsModel);
+                newsModelObservableEmitter.onComplete();
             }
         });
         return newsObservable;

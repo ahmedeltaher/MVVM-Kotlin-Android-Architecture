@@ -6,8 +6,9 @@ import com.task.data.remote.dto.NewsModel;
 
 import javax.inject.Inject;
 
-import rx.Observable;
-import rx.schedulers.Schedulers;
+import io.reactivex.Observable;
+import io.reactivex.schedulers.Schedulers;
+
 
 /**
  * Created by AhmedEltaher on 5/12/2016

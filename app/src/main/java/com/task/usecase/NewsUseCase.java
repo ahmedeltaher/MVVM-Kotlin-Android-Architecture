@@ -1,7 +1,5 @@
 package com.task.usecase;
 
-import android.support.annotation.NonNull;
-
 import com.task.data.DataRepository;
 import com.task.data.remote.dto.NewsItem;
 import com.task.data.remote.dto.NewsModel;
@@ -10,32 +8,28 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-import rx.android.schedulers.AndroidSchedulers;
-import rx.schedulers.Schedulers;
-import rx.subscriptions.CompositeSubscription;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.CompositeDisposable;
+
 
 /**
  * Created by AhmedEltaher on 5/12/2016
  */
 
 public class NewsUseCase {
-    DataRepository dataRepository;
-    @NonNull
-    private CompositeSubscription mSubscriptions;
+    private DataRepository dataRepository;
+    private CompositeDisposable mSubscriptions;
 
     @Inject
-    public NewsUseCase(DataRepository dataRepository) {
+    public NewsUseCase(DataRepository dataRepository,CompositeDisposable mSubscriptions) {
         this.dataRepository = dataRepository;
-        this.mSubscriptions = new CompositeSubscription();
+        this.mSubscriptions = mSubscriptions;
     }
 
     public void getNews(final Callback callback) {
-        mSubscriptions.add(dataRepository.requestNews().subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
+        mSubscriptions.add(dataRepository.requestNews().observeOn(AndroidSchedulers.mainThread())
             .subscribe(newsModel -> callback.onSuccess(newsModel),
-                exception -> {
-                    callback.onFail();
-                }));
+                exception -> callback.onFail()));
     }
 
     public NewsItem searchByTitle(List<NewsItem> news, String keyWord) {
@@ -48,7 +42,7 @@ public class NewsUseCase {
     }
 
     public void unSubscribe() {
-        mSubscriptions.unsubscribe();
+        mSubscriptions.clear();
     }
 
     public interface Callback {
