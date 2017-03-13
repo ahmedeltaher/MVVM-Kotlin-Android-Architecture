@@ -86,7 +86,10 @@ public class HomePresenter extends Presenter<HomeView> {
         public void onSuccess(NewsModel newsModel) {
             getView().decrementCountingIdlingResource();
             HomePresenter.this.newsModel = newsModel;
-            List<NewsItem> newsItems = newsModel.getNewsItems();
+            List<NewsItem> newsItems = null;
+            if (!isNull(newsModel)) {
+                newsItems = newsModel.getNewsItems();
+            }
             if (!isNull(newsItems) && !newsItems.isEmpty()) {
                 getView().initializeNewsList(newsModel.getNewsItems());
                 showList(true);
