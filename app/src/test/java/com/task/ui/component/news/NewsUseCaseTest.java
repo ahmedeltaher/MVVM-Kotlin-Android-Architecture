@@ -3,8 +3,8 @@ package com.task.ui.component.news;
 import com.task.data.DataRepository;
 import com.task.data.remote.dto.NewsItem;
 import com.task.data.remote.dto.NewsModel;
+import com.task.ui.base.listeners.BaseCallback;
 import com.task.usecase.NewsUseCase;
-import com.task.usecase.NewsUseCase.Callback;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -36,7 +36,7 @@ public class NewsUseCaseTest {
     @Mock
     DataRepository dataRepository;
     @Mock
-    Callback callback;
+    BaseCallback callback;
 
 
     NewsUseCase newsUseCase;

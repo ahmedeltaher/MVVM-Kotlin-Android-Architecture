@@ -20,7 +20,7 @@ import butterknife.BindView;
  * Created by AhmedEltaher on 11/12/16.
  */
 
-public class DetailsActivity extends BaseActivity implements DetailsView {
+public class DetailsActivity extends BaseActivity implements DetailsContract.View {
 
     @Inject
     DetailsPresenter presenter;

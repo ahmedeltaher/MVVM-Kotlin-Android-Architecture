@@ -1,14 +1,5 @@
 package com.task.ui.component.news;
 
-import static android.support.design.widget.Snackbar.LENGTH_SHORT;
-import static android.view.View.GONE;
-import static android.view.View.VISIBLE;
-
-import static com.task.utils.Constants.NEWS_ITEM_KEY;
-import static com.task.utils.EspressoIdlingResource.decrement;
-import static com.task.utils.EspressoIdlingResource.getIdlingResource;
-import static com.task.utils.EspressoIdlingResource.increment;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.VisibleForTesting;
@@ -36,11 +27,19 @@ import javax.inject.Inject;
 import butterknife.BindView;
 import butterknife.OnClick;
 
+import static android.support.design.widget.Snackbar.LENGTH_SHORT;
+import static android.view.View.GONE;
+import static android.view.View.VISIBLE;
+import static com.task.utils.Constants.NEWS_ITEM_KEY;
+import static com.task.utils.EspressoIdlingResource.decrement;
+import static com.task.utils.EspressoIdlingResource.getIdlingResource;
+import static com.task.utils.EspressoIdlingResource.increment;
+
 /**
  * Created by AhmedEltaher on 5/12/2016
  */
 
-public class HomeActivity extends BaseActivity implements HomeView {
+public class HomeActivity extends BaseActivity implements HomeContract.View {
     @Inject
     HomePresenter presenter;
     @BindView(R.id.rv_news_list)

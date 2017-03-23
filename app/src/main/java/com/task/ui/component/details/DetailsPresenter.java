@@ -14,7 +14,7 @@ import static com.task.utils.ObjectUtil.isNull;
  * Created by AhmedEltaher on 11/12/16.
  */
 
-public class DetailsPresenter extends Presenter<DetailsView> {
+public class DetailsPresenter extends Presenter<DetailsContract.View> implements DetailsContract.Presenter {
 
     NewsItem newsItem;
 
@@ -29,6 +29,7 @@ public class DetailsPresenter extends Presenter<DetailsView> {
         getView().initializeView(newsItem);
     }
 
+    @Override
     public String getMainImageURL() {
 
         String url = null;

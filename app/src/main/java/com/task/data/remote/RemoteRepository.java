@@ -32,31 +32,16 @@ import static com.task.utils.ObjectUtil.isNull;
  * Created by AhmedEltaher on 5/12/2016
  */
 
-public class ApiRepository {
+public class RemoteRepository implements RemoteSource {
     private ServiceGenerator serviceGenerator;
 
     @Inject
-    public ApiRepository(ServiceGenerator serviceGenerator) {
+    public RemoteRepository(ServiceGenerator serviceGenerator) {
         this.serviceGenerator = serviceGenerator;
     }
 
+    @Override
     public Observable getNews() {
-
-//        Observable<NewsModel> newsObservable = Observable.create(new Observable.OnSubscribe<NewsModel>() {
-//            @Override
-//            public void call(Subscriber<? super NewsModel> subscriber) {
-//                if (!isConnected(App.getContext())) {
-//                    Exception e = new NetworkErrorException();
-//                    subscriber.onError(e);
-//                } else {
-//                    NewsService newsService = serviceGenerator.createService(NewsService.class, Constants.BASE_URL);
-//                    ServiceResponse serviceResponse = processCall(newsService.fetchNews(), false);
-//                    NewsModel newsModel = (NewsModel) serviceResponse.getData();
-//                    subscriber.onNext(newsModel);
-//                    subscriber.onCompleted();
-//                }
-//            }
-//        });
         Observable<NewsModel> newsObservable = Observable.create(newsModelObservableEmitter -> {
             if (!isConnected(App.getContext())) {
                 Exception e = new NetworkErrorException();

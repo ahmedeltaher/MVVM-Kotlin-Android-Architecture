@@ -1,4 +1,4 @@
-package com.task.ui.base.interfaces;
+package com.task.ui.base.listeners;
 
 /**
  * Created by AhmedEltaher on 5/12/2016
