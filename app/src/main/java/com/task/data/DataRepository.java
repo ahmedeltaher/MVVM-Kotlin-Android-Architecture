@@ -6,8 +6,7 @@ import com.task.data.remote.dto.NewsModel;
 
 import javax.inject.Inject;
 
-import io.reactivex.Observable;
-import io.reactivex.schedulers.Schedulers;
+import io.reactivex.Single;
 
 
 /**
@@ -25,9 +24,7 @@ public class DataRepository implements DataSource {
     }
 
     @Override
-    public Observable<NewsModel> requestNews() {
-        Observable<NewsModel> observableNewsModel =
-            remoteRepository.getNews().subscribeOn(Schedulers.io());
-        return observableNewsModel;
+    public Single<NewsModel> requestNews() {
+        return remoteRepository.getNews();
     }
 }

@@ -2,6 +2,7 @@ package com.task.data.remote;
 
 import android.accounts.NetworkErrorException;
 import android.support.annotation.NonNull;
+import android.util.Log;
 
 import com.google.gson.Gson;
 import com.task.App;
@@ -10,20 +11,16 @@ import com.task.data.remote.service.NewsService;
 import com.task.utils.Constants;
 import com.task.utils.L;
 
-import org.reactivestreams.Publisher;
-import org.reactivestreams.Subscriber;
-
 import java.io.IOException;
 
 import javax.inject.Inject;
 
-import io.reactivex.Observable;
-import io.reactivex.ObservableEmitter;
-import io.reactivex.ObservableOnSubscribe;
-import io.reactivex.Observer;
+import io.reactivex.Single;
+import io.reactivex.plugins.RxJavaPlugins;
 import retrofit2.Call;
 
 import static com.task.data.remote.ServiceError.NETWORK_ERROR;
+import static com.task.data.remote.ServiceError.SUCCESS_CODE;
 import static com.task.utils.Constants.ERROR_UNDEFINED;
 import static com.task.utils.NetworkUtils.isConnected;
 import static com.task.utils.ObjectUtil.isNull;
@@ -34,6 +31,7 @@ import static com.task.utils.ObjectUtil.isNull;
 
 public class RemoteRepository implements RemoteSource {
     private ServiceGenerator serviceGenerator;
+    private final String UNDELIVERABLE_EXCEPTION_TAG = "Undeliverable exception received, not sure what to do";
 
     @Inject
     public RemoteRepository(ServiceGenerator serviceGenerator) {
@@ -41,22 +39,34 @@ public class RemoteRepository implements RemoteSource {
     }
 
     @Override
-    public Observable getNews() {
-        Observable<NewsModel> newsObservable = Observable.create(newsModelObservableEmitter -> {
-            if (!isConnected(App.getContext())) {
-                Exception e = new NetworkErrorException();
-                newsModelObservableEmitter.onError(e);
-            } else {
-                NewsService newsService = serviceGenerator.createService(NewsService.class, Constants.BASE_URL);
-                ServiceResponse serviceResponse = processCall(newsService.fetchNews(), false);
-                NewsModel newsModel = (NewsModel) serviceResponse.getData();
-                newsModelObservableEmitter.onNext(newsModel);
-                newsModelObservableEmitter.onComplete();
-            }
+    public Single getNews() {
+        RxJavaPlugins.setErrorHandler(throwable -> {
+            Log.i(UNDELIVERABLE_EXCEPTION_TAG, throwable.getMessage());
+            return;
         });
-        return newsObservable;
+        Single<NewsModel> newsModelSingle = Single.create(singleOnSubscribe -> {
+                    if (!isConnected(App.getContext())) {
+                        Exception exception = new NetworkErrorException();
+                        singleOnSubscribe.onError(exception);
+                    } else {
+                        try {
+                            NewsService newsService = serviceGenerator.createService(NewsService.class, Constants.BASE_URL);
+                            ServiceResponse serviceResponse = processCall(newsService.fetchNews(), false);
+                            if (serviceResponse.getCode() == SUCCESS_CODE) {
+                                NewsModel newsModel = (NewsModel) serviceResponse.getData();
+                                singleOnSubscribe.onSuccess(newsModel);
+                            } else {
+                                Throwable throwable = new NetworkErrorException();
+                                singleOnSubscribe.onError(throwable);
+                            }
+                        } catch (Exception e) {
+                            singleOnSubscribe.onError(e);
+                        }
+                    }
+                }
+        );
+        return newsModelSingle;
     }
-
 
     @NonNull
     private ServiceResponse processCall(Call call, boolean isVoid) {

@@ -23,6 +23,7 @@ import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.Espresso.pressBack;
 import static android.support.test.espresso.action.ViewActions.click;
 import static android.support.test.espresso.action.ViewActions.pressImeActionButton;
+import static android.support.test.espresso.action.ViewActions.scrollTo;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
 import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
@@ -54,6 +55,7 @@ public class HomeActivityTest {
         searchEditText.perform(ViewActions.typeText(testSearchString), pressImeActionButton());
         onView(withId(R.id.btn_search)).perform(click());
         onView(withId(R.id.tv_title)).check(matches(isDisplayed()));
+        onView(withId(R.id.tv_description)).perform(scrollTo());
         onView(withId(R.id.tv_description)).check(matches(isDisplayed()));
         pressBack();
         searchEditText.check(matches(withText(testSearchString)));

@@ -1,22 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:tools="http://schemas.android.com/tools"
-              android:layout_width="match_parent" android:layout_height="match_parent"
-              android:orientation="vertical">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
+
             <TextView
                 android:id="@+id/tv_title"
                 style="@style/Title_Style"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/default_margin"
-                tools:text="@string/news_title_preview"/>
+                tools:text="@string/news_title_preview" />
+
             <ImageView
                 android:id="@+id/iv_news_main_Image"
                 android:layout_width="wrap_content"
@@ -24,13 +29,14 @@
                 android:layout_gravity="center"
                 android:layout_marginBottom="@dimen/default_margin"
                 android:layout_marginTop="@dimen/default_margin"
-                android:src="@drawable/news"/>
+                android:src="@drawable/news" />
+
             <TextView
                 android:id="@+id/tv_description"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/default_margin"
-                tools:text="@string/news_details_preview"/>
+                tools:text="@string/news_details_preview" />
         </LinearLayout>
 
     </ScrollView>

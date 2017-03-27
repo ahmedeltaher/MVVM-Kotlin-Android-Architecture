@@ -1,7 +1,5 @@
 package com.task.ui.component.details;
 
-import static android.text.TextUtils.isEmpty;
-
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -15,6 +13,9 @@ import com.task.ui.base.BaseActivity;
 import javax.inject.Inject;
 
 import butterknife.BindView;
+
+import static com.task.utils.ObjectUtil.isEmpty;
+
 
 /**
  * Created by AhmedEltaher on 11/12/16.
