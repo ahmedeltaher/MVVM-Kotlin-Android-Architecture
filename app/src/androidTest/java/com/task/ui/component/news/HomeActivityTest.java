@@ -1,20 +1,6 @@
 package com.task.ui.component.news;
 
 
-import static android.support.test.espresso.Espresso.onView;
-import static android.support.test.espresso.Espresso.pressBack;
-import static android.support.test.espresso.action.ViewActions.click;
-import static android.support.test.espresso.action.ViewActions.pressImeActionButton;
-import static android.support.test.espresso.assertion.ViewAssertions.matches;
-import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
-import static android.support.test.espresso.matcher.ViewMatchers.withId;
-import static android.support.test.espresso.matcher.ViewMatchers.withText;
-
-import static com.task.utils.ResourcesUtil.getString;
-
-import static org.hamcrest.Matchers.allOf;
-import static org.hamcrest.Matchers.not;
-
 import android.support.test.espresso.Espresso;
 import android.support.test.espresso.IdlingResource;
 import android.support.test.espresso.ViewInteraction;
@@ -33,14 +19,26 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import static android.support.test.espresso.Espresso.onView;
+import static android.support.test.espresso.Espresso.pressBack;
+import static android.support.test.espresso.action.ViewActions.click;
+import static android.support.test.espresso.action.ViewActions.pressImeActionButton;
+import static android.support.test.espresso.action.ViewActions.scrollTo;
+import static android.support.test.espresso.assertion.ViewAssertions.matches;
+import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
+import static android.support.test.espresso.matcher.ViewMatchers.withId;
+import static android.support.test.espresso.matcher.ViewMatchers.withText;
+import static com.task.utils.ResourcesUtil.getString;
+import static org.hamcrest.Matchers.allOf;
+import static org.hamcrest.Matchers.not;
+
 @LargeTest
 @RunWith(AndroidJUnit4.class)
 public class HomeActivityTest {
     private final String testSearchString = "the";
 
     @Rule
-    public ActivityTestRule<HomeActivity> mActivityTestRule = new ActivityTestRule<>(
-            HomeActivity.class);
+    public ActivityTestRule<HomeActivity> mActivityTestRule = new ActivityTestRule<>(HomeActivity.class);
 
     private IdlingResource mIdlingResource;
 
@@ -51,24 +49,25 @@ public class HomeActivityTest {
     }
 
     @Test
-    public void testScroll() {
-        onView(ViewMatchers.withId(R.id.rv_news_list))
-                .perform(RecyclerViewActions.actionOnItemAtPosition(0, click()));
-        onView(withId(R.id.tv_title)).check(matches(isDisplayed()));
-        onView(withId(R.id.tv_description)).check(matches(isDisplayed()));
-    }
-
-    @Test
     public void testSearch() {
         ViewInteraction searchEditText = onView(withId(R.id.et_search));
         searchEditText.perform(click());
         searchEditText.perform(ViewActions.typeText(testSearchString), pressImeActionButton());
         onView(withId(R.id.btn_search)).perform(click());
         onView(withId(R.id.tv_title)).check(matches(isDisplayed()));
+        onView(withId(R.id.tv_description)).perform(scrollTo());
         onView(withId(R.id.tv_description)).check(matches(isDisplayed()));
         pressBack();
         searchEditText.check(matches(withText(testSearchString)));
         onView(withId(R.id.rv_news_list)).check(matches(isDisplayed()));
+    }
+
+    @Test
+    public void testScroll() {
+        onView(ViewMatchers.withId(R.id.rv_news_list))
+                .perform(RecyclerViewActions.actionOnItemAtPosition(0, click()));
+        onView(withId(R.id.tv_title)).check(matches(isDisplayed()));
+        onView(withId(R.id.tv_description)).check(matches(isDisplayed()));
     }
 
     @Test
@@ -113,4 +112,5 @@ public class HomeActivityTest {
                 withText(getString(R.string.search_error))))
                 .check(matches(isDisplayed()));
     }
+
 }

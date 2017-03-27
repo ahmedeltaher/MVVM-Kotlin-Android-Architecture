@@ -3,8 +3,8 @@ package com.task.ui.component.news;
 
 import com.task.data.remote.dto.NewsItem;
 import com.task.data.remote.dto.NewsModel;
+import com.task.ui.base.listeners.BaseCallback;
 import com.task.usecase.NewsUseCase;
-import com.task.usecase.NewsUseCase.Callback;
 
 import org.junit.After;
 import org.junit.Before;
@@ -34,9 +34,9 @@ public class HomePresenterTest {
     @Mock
     private NewsModel newsModelMock;
     @Mock
-    private HomeView homeView;
+    private HomeContract.View homeContract;
     @Mock
-    private Callback callback;
+    private BaseCallback callback;
     @Mock
     private List<NewsItem> newsItems;
     @Mock
@@ -53,26 +53,26 @@ public class HomePresenterTest {
         testModelsGenerator = new TestModelsGenerator();
         newsModel = testModelsGenerator.generateNewsModel(newsTitle);
         doAnswer(invocation -> {
-            ((Callback) invocation.getArguments()[0]).onSuccess(newsModel);
+            ((BaseCallback) invocation.getArguments()[0]).onSuccess(newsModel);
             return null;
-        }).when(newsUseCase).getNews(any(Callback.class));
+        }).when(newsUseCase).getNews(any(BaseCallback.class));
         homePresenter = new HomePresenter(newsUseCase);
-        homePresenter.setView(homeView);
+        homePresenter.setView(homeContract);
     }
 
     @Test
     public void getNewsList() {
         // Let's do a synchronous answer for the callback
         doAnswer(invocation -> {
-            ((Callback) invocation.getArguments()[0]).onSuccess(newsModel);
+            ((BaseCallback) invocation.getArguments()[0]).onSuccess(newsModel);
             return null;
-        }).when(newsUseCase).getNews(any(Callback.class));
+        }).when(newsUseCase).getNews(any(BaseCallback.class));
 
         homePresenter.getNews();
-        verify(homeView, times(1)).setLoaderVisibility(true);
-        verify(homeView, times(2)).setNoDataVisibility(false);
-        verify(homeView, times(1)).setListVisibility(false);
-        verify(newsUseCase, times(1)).getNews(any(Callback.class));
+        verify(homeContract, times(1)).setLoaderVisibility(true);
+        verify(homeContract, times(2)).setNoDataVisibility(false);
+        verify(homeContract, times(1)).setListVisibility(false);
+        verify(newsUseCase, times(1)).getNews(any(BaseCallback.class));
         assertThat(homePresenter.getNewsModel(), is(equalTo(newsModel)));
     }
 
@@ -81,7 +81,7 @@ public class HomePresenterTest {
         when(newsUseCase.searchByTitle(newsModel.getNewsItems(), newsTitle)).thenReturn(newsItem);
         homePresenter.getNews();
         homePresenter.onSearchClick(newsTitle);
-        verify(homeView, times(1)).navigateToDetailsScreen(any(NewsItem.class));
+        verify(homeContract, times(1)).navigateToDetailsScreen(any(NewsItem.class));
     }
 
     @Test
@@ -89,7 +89,7 @@ public class HomePresenterTest {
         homePresenter.getNews();
         homePresenter.onSearchClick(newsTitle);
         assertThat(newsModelMock.getNewsItems().size(), equalTo(0));
-        verify(homeView, times(1)).showSearchError();
+        verify(homeContract, times(1)).showSearchError();
     }
 
     @Test
@@ -97,7 +97,7 @@ public class HomePresenterTest {
         when(newsUseCase.searchByTitle(any(), any())).thenReturn(null);
         homePresenter.getNews();
         homePresenter.onSearchClick(newsTitle);
-        verify(homeView, times(1)).showSearchError();
+        verify(homeContract, times(1)).showSearchError();
     }
 
     @After

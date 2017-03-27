@@ -1,7 +1,5 @@
 package com.task.ui.component.details;
 
-import static android.text.TextUtils.isEmpty;
-
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -16,11 +14,14 @@ import javax.inject.Inject;
 
 import butterknife.BindView;
 
+import static com.task.utils.ObjectUtil.isEmpty;
+
+
 /**
  * Created by AhmedEltaher on 11/12/16.
  */
 
-public class DetailsActivity extends BaseActivity implements DetailsView {
+public class DetailsActivity extends BaseActivity implements DetailsContract.View {
 
     @Inject
     DetailsPresenter presenter;

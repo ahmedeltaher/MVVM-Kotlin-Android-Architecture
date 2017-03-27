@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.task.R;
+import com.task.ui.base.listeners.BaseView;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
@@ -22,7 +23,7 @@ import butterknife.Unbinder;
  */
 
 
-public abstract class BaseFragment extends Fragment implements Presenter.View {
+public abstract class BaseFragment extends Fragment implements BaseView {
 
     protected FragmentManager fragmentManager;
 

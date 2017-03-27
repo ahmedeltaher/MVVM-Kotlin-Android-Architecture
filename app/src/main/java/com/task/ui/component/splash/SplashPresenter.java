@@ -10,7 +10,7 @@ import javax.inject.Inject;
  * Created by AhmedEltaher on 5/12/2016
  */
 
-public class SplashPresenter extends Presenter<SplashView> {
+public class SplashPresenter extends Presenter<SplashContract.View> implements SplashContract.Presenter {
 
     @Inject
     public SplashPresenter() {

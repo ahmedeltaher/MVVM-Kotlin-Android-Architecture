@@ -1,32 +1,30 @@
 package com.task.data;
 
 import com.task.data.local.LocalRepository;
-import com.task.data.remote.ApiRepository;
+import com.task.data.remote.RemoteRepository;
 import com.task.data.remote.dto.NewsModel;
 
 import javax.inject.Inject;
 
-import io.reactivex.Observable;
-import io.reactivex.schedulers.Schedulers;
+import io.reactivex.Single;
 
 
 /**
  * Created by AhmedEltaher on 5/12/2016
  */
 
-public class DataRepository {
-    private ApiRepository apiRepository;
+public class DataRepository implements DataSource {
+    private RemoteRepository remoteRepository;
     private LocalRepository localRepository;
 
     @Inject
-    public DataRepository(ApiRepository apiRepository, LocalRepository localRepository) {
-        this.apiRepository = apiRepository;
+    public DataRepository(RemoteRepository remoteRepository, LocalRepository localRepository) {
+        this.remoteRepository = remoteRepository;
         this.localRepository = localRepository;
     }
 
-    public Observable<NewsModel> requestNews() {
-        Observable<NewsModel> observableNewsModel =
-            apiRepository.getNews().subscribeOn(Schedulers.io());
-        return observableNewsModel;
+    @Override
+    public Single<NewsModel> requestNews() {
+        return remoteRepository.getNews();
     }
 }

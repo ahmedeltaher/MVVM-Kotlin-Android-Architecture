@@ -9,7 +9,10 @@ import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
+import io.reactivex.Scheduler;
+import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
+import io.reactivex.schedulers.Schedulers;
 
 /**
  * Created by AhmedEltaher on 5/12/2016
@@ -31,7 +34,6 @@ public class MainModule {
     }
 
     @Provides
-    @Singleton
     public CompositeDisposable provideCompositeSubscription() {
         CompositeDisposable compositeDisposable = new CompositeDisposable();
         return compositeDisposable;

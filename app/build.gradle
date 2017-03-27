@@ -101,6 +101,7 @@ dependencies {
     compile("com.android.support.test.espresso:espresso-contrib:${espressoVersion}") {
         exclude module: "recyclerview-v7"
         exclude module: "support-v4"
+        exclude group: 'com.android.support', module: 'appcompat'
         exclude group: "javax.inject", module: "javax.inject"
         exclude group: 'com.android.support', module: 'support-annotations'
     }

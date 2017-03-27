@@ -10,6 +10,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.task.R;
+import com.task.ui.base.listeners.ActionBarView;
+import com.task.ui.base.listeners.BaseView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -23,7 +25,7 @@ import static android.view.View.VISIBLE;
  */
 
 
-public abstract class BaseActivity extends AppCompatActivity implements Presenter.View,
+public abstract class BaseActivity extends AppCompatActivity implements BaseView,
         ActionBarView {
 
     protected Presenter presenter;

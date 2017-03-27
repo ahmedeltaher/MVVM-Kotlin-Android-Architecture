@@ -16,7 +16,7 @@ import static com.task.utils.Constants.SPLASH_DELAY;
  * Created by AhmedEltaher on 5/12/2016
  */
 
-public class SplashActivity extends BaseActivity implements SplashView {
+public class SplashActivity extends BaseActivity implements SplashContract.View {
 
     @Inject
     SplashPresenter splashPresenter;
