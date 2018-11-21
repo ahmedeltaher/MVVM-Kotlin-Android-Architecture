@@ -58,7 +58,7 @@ public class DetailsActivity extends BaseActivity implements DetailsContract.Vie
         if (!isEmpty(newsItem.getTitle())) {
             tvTitle.setText(newsItem.getTitle());
         }
-        Picasso picasso = Picasso.with(this);
+        Picasso picasso = Picasso.get();
         RequestCreator requestCreator;
         if (!isEmpty(presenter.getMainImageURL())) {
             requestCreator = picasso.load(presenter.getMainImageURL());

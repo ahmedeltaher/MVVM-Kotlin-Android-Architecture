@@ -15,11 +15,11 @@ package com.task.utils;/*
  */
 
 
-import android.support.test.espresso.IdlingResource;
+import androidx.test.espresso.IdlingResource;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
-import static android.support.test.espresso.intent.Checks.checkNotNull;
+import static androidx.test.espresso.intent.Checks.checkNotNull;
 
 
 /**

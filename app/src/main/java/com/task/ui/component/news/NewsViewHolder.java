@@ -1,6 +1,5 @@
 package com.task.ui.component.news;
 
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -11,6 +10,7 @@ import com.task.R;
 import com.task.data.remote.dto.NewsItem;
 import com.task.ui.base.listeners.RecyclerItemListener;
 
+import androidx.recyclerview.widget.RecyclerView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -54,7 +54,7 @@ public class NewsViewHolder extends RecyclerView.ViewHolder {
         if (!isNull(newsItem.getMultimedia()) && newsItem.getMultimedia().size() > 3) {
             URL = newsItem.getMultimedia().get(3).getUrl();
         }
-        Picasso.with(newsImage.getContext()).load(URL).placeholder(getDrawableById(R.drawable.news)).into(newsImage);
+        Picasso.get().load(URL).placeholder(getDrawableById(R.drawable.news)).into(newsImage);
         newsItemLayout.setOnClickListener(v -> recyclerItemListener.onItemSelected(position));
     }
 }
