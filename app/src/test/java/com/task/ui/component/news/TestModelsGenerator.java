@@ -42,10 +42,10 @@ public class TestModelsGenerator {
     public ServiceResponse getNewsSuccessfulModel() {
         String stupString = "this is temp string";
         NewsModel newsModel = generateNewsModel(stupString);
-        return new ServiceResponse(SUCCESS_CODE, newsModel);
+        return new ServiceResponse(Companion.getSUCCESS_CODE(), newsModel);
     }
 
     public ServiceResponse getNewsErrorModel() {
-        return new ServiceResponse(ERROR_CODE, null);
+        return new ServiceResponse(Companion.getERROR_CODE(), null);
     }
 }
