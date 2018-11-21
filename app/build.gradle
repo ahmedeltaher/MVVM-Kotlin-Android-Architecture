@@ -124,6 +124,10 @@ dependencies {
     implementation 'io.reactivex.rxjava2:rxjava:2.2.3'
     implementation 'io.reactivex.rxjava2:rxandroid:2.1.0'
     implementation 'com.squareup.retrofit2:adapter-rxjava2:2.4.0'
+
+    androidExtensions {
+        experimental = true
+    }
     // espresso , junit for testing
 //    implementation('androidx.test:rules:1.1.0') {
 //        exclude group: "javax.inject", module: "javax.inject"
