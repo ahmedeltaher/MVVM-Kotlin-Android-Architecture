@@ -16,7 +16,7 @@ package com.task.utils;
  * limitations under the License.
  */
 
-import android.support.test.espresso.IdlingResource;
+import androidx.test.espresso.IdlingResource;
 
 
 /**

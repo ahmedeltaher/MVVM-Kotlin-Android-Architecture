@@ -1,10 +1,6 @@
 package com.task.ui.base;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -13,6 +9,10 @@ import com.task.R;
 import com.task.ui.base.listeners.ActionBarView;
 import com.task.ui.base.listeners.BaseView;
 
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
@@ -106,7 +106,7 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseView
     public void setTitle(String titleKey) {
         final ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
-            TextView title = ButterKnife.findById(this, R.id.txt_toolbar_title);
+            TextView title = findViewById( R.id.txt_toolbar_title);
             if (title != null) {
                 title.setText(titleKey);
             }
@@ -117,7 +117,7 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseView
     public void setSettingsIconVisibility(boolean visible) {
         final ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
-            ImageView icon = ButterKnife.findById(this, R.id.ic_toolbar_setting);
+            ImageView icon = findViewById(R.id.ic_toolbar_setting);
             if (icon != null) {
                 icon.setVisibility(visible ? VISIBLE : GONE);
             }
@@ -128,7 +128,7 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseView
     public void setRefreshVisibility(boolean visible) {
         final ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
-            ImageView icon = ButterKnife.findById(this, R.id.ic_toolbar_refresh);
+            ImageView icon = findViewById(R.id.ic_toolbar_refresh);
             if (icon != null) {
                 icon.setVisibility(visible ? VISIBLE : GONE);
             }
