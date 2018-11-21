@@ -31,7 +31,7 @@ constructor(private val serviceGenerator: ServiceGenerator) : RemoteSource {
                 Log.i(UNDELIVERABLE_EXCEPTION_TAG, throwable.message)
             }
             return Single.create<NewsModel> { singleOnSubscribe ->
-                if (!isConnected(App.getContext())) {
+                if (!isConnected(App.context)) {
                     val exception = NetworkErrorException()
                     singleOnSubscribe.onError(exception)
                 } else {
@@ -54,7 +54,7 @@ constructor(private val serviceGenerator: ServiceGenerator) : RemoteSource {
         }
 
     private fun processCall(call: Call<*>, isVoid: Boolean): ServiceResponse {
-        if (!isConnected(App.getContext())) {
+        if (!isConnected(App.context)) {
             return ServiceResponse(ServiceError())
         }
         try {
@@ -66,8 +66,9 @@ constructor(private val serviceGenerator: ServiceGenerator) : RemoteSource {
             }
             val responseCode = response.code()
             if (response.isSuccessful) {
-                val response: Any? = if (isVoid) null else response.body()
-                return ServiceResponse(responseCode, response)
+                val apiResponse: Any? = if (isVoid) null else response.body()
+                return ServiceResponse(responseCode, apiResponse
+                )
             } else {
                 val ServiceError: ServiceError
                 ServiceError = ServiceError(response.message(), responseCode)

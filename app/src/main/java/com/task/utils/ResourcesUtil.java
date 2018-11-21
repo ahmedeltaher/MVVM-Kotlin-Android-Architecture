@@ -14,8 +14,8 @@ import static android.os.Build.VERSION_CODES.LOLLIPOP;
  */
 
 public class ResourcesUtil {
-    private static Context context = App.getContext();
-    private static Resources.Theme theme = App.getContext().getTheme();
+    private static Context context = App.Companion.getContext();
+    private static Resources.Theme theme = App.Companion.getContext().getTheme();
 
     public static Drawable getDrawableById(int resId) {
         return SDK_INT >= LOLLIPOP ? context.getResources().getDrawable(resId, theme) :
