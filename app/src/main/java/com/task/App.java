@@ -1,8 +1,8 @@
 package com.task;
 
 import android.content.Context;
-import android.support.annotation.VisibleForTesting;
-import android.support.multidex.MultiDexApplication;
+import androidx.annotation.VisibleForTesting;
+import androidx.multidex.MultiDexApplication;
 
 import com.task.di.DaggerMainComponent;
 import com.task.di.MainComponent;
