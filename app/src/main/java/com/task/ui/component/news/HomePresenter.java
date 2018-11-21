@@ -1,7 +1,7 @@
 package com.task.ui.component.news;
 
 import android.os.Bundle;
-import android.support.annotation.VisibleForTesting;
+import androidx.annotation.VisibleForTesting;
 
 import com.task.data.remote.dto.NewsItem;
 import com.task.data.remote.dto.NewsModel;
