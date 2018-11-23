@@ -1,7 +1,6 @@
 package com.task.ui.component.news;
 
 import android.os.Bundle;
-import androidx.annotation.VisibleForTesting;
 
 import com.task.data.remote.dto.NewsItem;
 import com.task.data.remote.dto.NewsModel;
@@ -9,13 +8,13 @@ import com.task.ui.base.Presenter;
 import com.task.ui.base.listeners.BaseCallback;
 import com.task.ui.base.listeners.RecyclerItemListener;
 import com.task.usecase.NewsUseCase;
+import com.task.utils.ObjectUtil;
 
 import java.util.List;
 
 import javax.inject.Inject;
 
-import static com.task.utils.ObjectUtil.isEmpty;
-import static com.task.utils.ObjectUtil.isNull;
+import androidx.annotation.VisibleForTesting;
 
 /**
  * Created by AhmedEltaher on 5/12/2016
@@ -27,18 +26,18 @@ public class HomePresenter extends Presenter<HomeContract.View> implements HomeC
     private NewsModel newsModel;
 
     @Inject
-    public HomePresenter(NewsUseCase newsUseCase) {
+    public HomePresenter (NewsUseCase newsUseCase) {
         this.newsUseCase = newsUseCase;
     }
 
     @Override
-    public void initialize(Bundle extras) {
+    public void initialize (Bundle extras) {
         super.initialize(extras);
         getNews();
     }
 
     @Override
-    public void getNews() {
+    public void getNews () {
         getView().setLoaderVisibility(true);
         getView().setNoDataVisibility(false);
         getView().setListVisibility(false);
@@ -47,21 +46,21 @@ public class HomePresenter extends Presenter<HomeContract.View> implements HomeC
     }
 
     @Override
-    public void unSubscribe() {
+    public void unSubscribe () {
         newsUseCase.unSubscribe();
     }
 
     @Override
-    public RecyclerItemListener getRecyclerItemListener() {
+    public RecyclerItemListener getRecyclerItemListener () {
         return recyclerItemListener;
     }
 
     @Override
-    public void onSearchClick(String newsTitle) {
+    public void onSearchClick (String newsTitle) {
         List<NewsItem> news = newsModel.getNewsItems();
-        if (!isEmpty(newsTitle) && !isNull(news) && !news.isEmpty()) {
+        if (!ObjectUtil.INSTANCE.isEmpty(newsTitle) && !ObjectUtil.INSTANCE.isNull(news) && !news.isEmpty()) {
             NewsItem newsItem = newsUseCase.searchByTitle(news, newsTitle);
-            if (!isNull(newsItem)) {
+            if (!ObjectUtil.INSTANCE.isNull(newsItem)) {
                 getView().navigateToDetailsScreen(newsItem);
             } else {
                 getView().showSearchError();
@@ -71,7 +70,7 @@ public class HomePresenter extends Presenter<HomeContract.View> implements HomeC
         }
     }
 
-    private void showList(boolean isVisible) {
+    private void showList (boolean isVisible) {
         getView().setNoDataVisibility(!isVisible);
         getView().setListVisibility(isVisible);
     }
@@ -81,20 +80,20 @@ public class HomePresenter extends Presenter<HomeContract.View> implements HomeC
     };
 
     @VisibleForTesting(otherwise = VisibleForTesting.PRIVATE)
-    public NewsModel getNewsModel() {
+    public NewsModel getNewsModel () {
         return newsModel;
     }
 
     private final BaseCallback callback = new BaseCallback() {
         @Override
-        public void onSuccess(NewsModel newsModel) {
+        public void onSuccess (NewsModel newsModel) {
             getView().decrementCountingIdlingResource();
             HomePresenter.this.newsModel = newsModel;
             List<NewsItem> newsItems = null;
-            if (!isNull(newsModel)) {
+            if (!ObjectUtil.INSTANCE.isNull(newsModel)) {
                 newsItems = newsModel.getNewsItems();
             }
-            if (!isNull(newsItems) && !newsItems.isEmpty()) {
+            if (!ObjectUtil.INSTANCE.isNull(newsItems) && !newsItems.isEmpty()) {
                 getView().initializeNewsList(newsModel.getNewsItems());
                 showList(true);
             } else {
@@ -104,7 +103,7 @@ public class HomePresenter extends Presenter<HomeContract.View> implements HomeC
         }
 
         @Override
-        public void onFail() {
+        public void onFail () {
             getView().decrementCountingIdlingResource();
             showList(false);
             getView().setLoaderVisibility(false);

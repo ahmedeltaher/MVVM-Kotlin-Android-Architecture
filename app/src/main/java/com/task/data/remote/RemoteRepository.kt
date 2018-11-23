@@ -7,10 +7,10 @@ import com.task.App
 import com.task.data.remote.dto.NewsModel
 import com.task.data.remote.service.NewsService
 import com.task.utils.Constants
-import com.task.utils.Constants.ERROR_UNDEFINED
+import com.task.utils.Constants.INSTANCE.ERROR_UNDEFINED
 import com.task.utils.L
-import com.task.utils.NetworkUtils.isConnected
-import com.task.utils.ObjectUtil.isNull
+import com.task.utils.Network.Utils.isConnected
+import com.task.utils.ObjectUtil.INSTANCE.isNull
 import io.reactivex.Single
 import io.reactivex.plugins.RxJavaPlugins
 import retrofit2.Call
@@ -65,14 +65,16 @@ constructor(private val serviceGenerator: ServiceGenerator) : RemoteSource {
                 return ServiceResponse(ServiceError(ServiceError.NETWORK_ERROR, ERROR_UNDEFINED))
             }
             val responseCode = response.code()
+            /**
+             * isVoid is for APIs which reply only with code without any body, such as some Apis
+             * reply with 200 or 401....
+             */
             if (response.isSuccessful) {
-                val apiResponse: Any? = if (isVoid) null else response.body()
-                return ServiceResponse(responseCode, apiResponse
-                )
+                val apiResponse: Any? = if (isVoid) null else response?.body()
+                return ServiceResponse(responseCode, apiResponse)
             } else {
-                val ServiceError: ServiceError
-                ServiceError = ServiceError(response.message(), responseCode)
-                return ServiceResponse(ServiceError)
+                val serviceError = ServiceError(response.message(), responseCode)
+                return ServiceResponse(serviceError)
             }
         } catch (e: IOException) {
             return ServiceResponse(ServiceError(ServiceError.NETWORK_ERROR, ERROR_UNDEFINED))

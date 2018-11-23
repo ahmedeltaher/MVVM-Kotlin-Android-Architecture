@@ -7,10 +7,9 @@ import com.task.App;
 import com.task.R;
 import com.task.ui.base.BaseActivity;
 import com.task.ui.component.news.HomeActivity;
+import com.task.utils.Constants;
 
 import javax.inject.Inject;
-
-import static com.task.utils.Constants.SPLASH_DELAY;
 
 /**
  * Created by AhmedEltaher on 5/12/2016
@@ -45,6 +44,6 @@ public class SplashActivity extends BaseActivity implements SplashContract.View 
             Intent intent = new Intent(SplashActivity.this, HomeActivity.class);
             startActivity(intent);
             finish();
-        }, SPLASH_DELAY);
+        }, Constants.SPLASH_DELAY);
     }
 }

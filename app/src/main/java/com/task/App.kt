@@ -27,7 +27,6 @@ class App : MultiDexApplication() {
     }
 
     companion object {
-        var context: Context? = null
-            private set
+        lateinit var context: Context
     }
 }

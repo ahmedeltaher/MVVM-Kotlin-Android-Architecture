@@ -107,7 +107,6 @@ dependencies {
     implementation 'com.squareup:otto:1.3.8'
     //Logging
     implementation 'com.squareup.okhttp3:logging-interceptor:3.11.0'
-    implementation 'com.orhanobut:logger:2.2.0'
     // retrofit
     implementation 'com.squareup.retrofit2:retrofit:2.4.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.4.0'
@@ -124,39 +123,10 @@ dependencies {
     implementation 'io.reactivex.rxjava2:rxjava:2.2.3'
     implementation 'io.reactivex.rxjava2:rxandroid:2.1.0'
     implementation 'com.squareup.retrofit2:adapter-rxjava2:2.4.0'
-
+    // Appcompat-v7 (only Anko Commons)
+//    implementation "org.jetbrains.anko:anko-sdk27:$anko_version"
+    implementation "org.jetbrains.anko:anko-commons:$anko_version"
     androidExtensions {
         experimental = true
     }
-    // espresso , junit for testing
-//    implementation('androidx.test:rules:1.1.0') {
-//        exclude group: "javax.inject", module: "javax.inject"
-//        exclude group: 'com.android.support', module: 'support-annotations'
-//    }
-//    implementation('androidx.test:runner:1.1.0') {
-//        exclude group: "javax.inject", module: "javax.inject"
-//        exclude group: 'com.android.support', module: 'support-annotations'
-//    }
-//    implementation('androidx.test.espresso:espresso-core:3.1.0') {
-//        exclude group: "javax.inject", module: "javax.inject"
-//        exclude group: "com.squareup", module: "javawriter"
-//        exclude group: 'com.android.support', module: 'support-annotations'
-//    }
-//    implementation('androidx.test.espresso:espresso-contrib:3.1.0') {
-//        exclude module: "recyclerview-v7"
-//        exclude module: "support-v4"
-//        exclude group: 'com.android.support', module: 'appcompat'
-//        exclude group: "javax.inject", module: "javax.inject"
-//        exclude group: 'com.android.support', module: 'support-annotations'
-//    }
-//    implementation('androidx.test.espresso:espresso-intents:3.1.0') {
-//        exclude group: "javax.inject", module: "javax.inject"
-//        exclude group: 'com.android.support', module: 'support-annotations'
-//    }
-//    implementation('androidx.test.espresso:espresso-idling-resource:3.1.0') {
-//        exclude module: "recyclerview-v7"
-//        exclude module: "support-v4"
-//        exclude group: "javax.inject", module: "javax.inject"
-//        exclude group: 'com.android.support', module: 'support-annotations'
-//    }
 }

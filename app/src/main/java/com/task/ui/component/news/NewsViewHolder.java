@@ -9,14 +9,14 @@ import com.squareup.picasso.Picasso;
 import com.task.R;
 import com.task.data.remote.dto.NewsItem;
 import com.task.ui.base.listeners.RecyclerItemListener;
+import com.task.utils.ResourcesUtil;
 
 import androidx.recyclerview.widget.RecyclerView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 import static android.text.TextUtils.isEmpty;
-import static com.task.utils.ObjectUtil.isNull;
-import static com.task.utils.ResourcesUtil.getDrawableById;
+import static java.util.Objects.isNull;
 
 /**
  * Created by AhmedEltaher on 5/12/2016.
@@ -54,7 +54,8 @@ public class NewsViewHolder extends RecyclerView.ViewHolder {
         if (!isNull(newsItem.getMultimedia()) && newsItem.getMultimedia().size() > 3) {
             URL = newsItem.getMultimedia().get(3).getUrl();
         }
-        Picasso.get().load(URL).placeholder(getDrawableById(R.drawable.news)).into(newsImage);
+        Picasso.get().load(URL).placeholder(ResourcesUtil.INSTANCE.getDrawableById(R.drawable.news)).into
+            (newsImage);
         newsItemLayout.setOnClickListener(v -> recyclerItemListener.onItemSelected(position));
     }
 }
