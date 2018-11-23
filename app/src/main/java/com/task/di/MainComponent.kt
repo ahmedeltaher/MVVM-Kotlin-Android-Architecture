@@ -11,7 +11,7 @@ import javax.inject.Singleton
  * Created by AhmedEltaher on 5/12/2016
  */
 @Singleton
-@Component(modules = arrayOf(MainModule::class))
+@Component(modules = [MainModule::class])
 interface MainComponent {
     fun inject(activity: SplashActivity)
 

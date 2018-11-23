@@ -9,13 +9,11 @@ import com.task.App;
 import com.task.R;
 import com.task.data.remote.dto.NewsItem;
 import com.task.ui.base.BaseActivity;
+import com.task.utils.ObjectUtil;
 
 import javax.inject.Inject;
 
 import butterknife.BindView;
-
-import static com.task.utils.ObjectUtil.isEmpty;
-
 
 /**
  * Created by AhmedEltaher on 11/12/16.
@@ -52,15 +50,15 @@ public class DetailsActivity extends BaseActivity implements DetailsContract.Vie
 
     @Override
     public void initializeView(NewsItem newsItem) {
-        if (!isEmpty(newsItem.getAbstract())) {
+        if (!ObjectUtil.INSTANCE.isEmpty(newsItem.getAbstract())) {
             tvDescription.setText(newsItem.getAbstract());
         }
-        if (!isEmpty(newsItem.getTitle())) {
+        if (!ObjectUtil.INSTANCE.isEmpty(newsItem.getTitle())) {
             tvTitle.setText(newsItem.getTitle());
         }
         Picasso picasso = Picasso.get();
         RequestCreator requestCreator;
-        if (!isEmpty(presenter.getMainImageURL())) {
+        if (!ObjectUtil.INSTANCE.isEmpty(presenter.getMainImageURL())) {
             requestCreator = picasso.load(presenter.getMainImageURL());
         } else {
             requestCreator = picasso.load(R.drawable.news);

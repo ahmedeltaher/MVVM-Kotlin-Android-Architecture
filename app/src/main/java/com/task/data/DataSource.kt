@@ -1,6 +1,5 @@
 package com.task.data
 
-import com.task.data.remote.dto.NewsModel
 import io.reactivex.Single
 
 /**
@@ -8,5 +7,5 @@ import io.reactivex.Single
  */
 
 internal interface DataSource {
-    fun requestNews(): Single<NewsModel>
+    fun requestNews(): Single<*>
 }
