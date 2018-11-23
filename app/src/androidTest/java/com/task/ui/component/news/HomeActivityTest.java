@@ -109,7 +109,7 @@ public class HomeActivityTest {
         searchEditText.perform(ViewActions.typeText(testSearchString), pressImeActionButton());
         onView(withId(R.id.btn_search)).perform(click());
         onView(allOf(withId(android.support.design.R.id.snackbar_text),
-                withText(getString(R.string.search_error))))
+                withText(INSTANCE.getString(R.string.search_error))))
                 .check(matches(isDisplayed()));
     }
 

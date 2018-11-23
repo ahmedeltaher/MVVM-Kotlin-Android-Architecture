@@ -2,11 +2,6 @@ package com.task.ui.component.news;
 
 import android.content.Intent;
 import android.os.Bundle;
-import androidx.annotation.VisibleForTesting;
-import com.google.android.material.snackbar.Snackbar;
-import androidx.test.espresso.IdlingResource;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -14,26 +9,29 @@ import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.google.android.material.snackbar.Snackbar;
 import com.task.App;
 import com.task.R;
 import com.task.data.remote.dto.NewsItem;
 import com.task.ui.base.BaseActivity;
 import com.task.ui.component.details.DetailsActivity;
+import com.task.utils.Constants;
+import com.task.utils.EspressoIdlingResource;
 
 import java.util.List;
 
 import javax.inject.Inject;
 
+import androidx.annotation.VisibleForTesting;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.test.espresso.IdlingResource;
 import butterknife.BindView;
 import butterknife.OnClick;
 
-import static com.google.android.material.snackbar.Snackbar.LENGTH_SHORT;
 import static android.view.View.GONE;
 import static android.view.View.VISIBLE;
-import static com.task.utils.Constants.NEWS_ITEM_KEY;
-import static com.task.utils.EspressoIdlingResource.decrement;
-import static com.task.utils.EspressoIdlingResource.getIdlingResource;
-import static com.task.utils.EspressoIdlingResource.increment;
+import static com.google.android.material.snackbar.Snackbar.LENGTH_SHORT;
 
 /**
  * Created by AhmedEltaher on 5/12/2016
@@ -89,7 +87,7 @@ public class HomeActivity extends BaseActivity implements HomeContract.View {
     @Override
     public void navigateToDetailsScreen(NewsItem news) {
         Bundle bundle = new Bundle();
-        bundle.putParcelable(NEWS_ITEM_KEY, news);
+        bundle.putParcelable(Constants.NEWS_ITEM_KEY, news);
         Intent intent = new Intent(this, DetailsActivity.class);
         intent.putExtras(bundle);
         startActivity(intent);
@@ -117,12 +115,12 @@ public class HomeActivity extends BaseActivity implements HomeContract.View {
 
     @Override
     public void incrementCountingIdlingResource() {
-        increment();
+        EspressoIdlingResource.INSTANCE.increment();
     }
 
     @Override
     public void decrementCountingIdlingResource() {
-        decrement();
+        EspressoIdlingResource.INSTANCE.decrement();
     }
 
     @OnClick({R.id.ic_toolbar_setting, R.id.ic_toolbar_refresh, R.id.btn_search})
@@ -144,6 +142,6 @@ public class HomeActivity extends BaseActivity implements HomeContract.View {
 
     @VisibleForTesting
     public IdlingResource getCountingIdlingResource() {
-        return getIdlingResource();
+        return EspressoIdlingResource.INSTANCE.getIdlingResource();
     }
 }

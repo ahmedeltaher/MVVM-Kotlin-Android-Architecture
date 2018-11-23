@@ -4,6 +4,7 @@ import com.task.data.DataRepository
 import com.task.data.remote.dto.NewsItem
 import com.task.data.remote.dto.NewsModel
 import com.task.ui.base.listeners.BaseCallback
+import com.task.utils.ObjectUtil.INSTANCE.isEmpty
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
@@ -19,9 +20,9 @@ import javax.inject.Inject
 
 class NewsUseCase @Inject
 constructor(private val dataRepository: DataRepository, private val compositeDisposable: CompositeDisposable) : UseCase {
-    private var newsDisposable: Disposable? = null
+    private lateinit var newsDisposable: Disposable
     private lateinit var newsModelSingle: Single<NewsModel>
-    private var disposableSingleObserver: DisposableSingleObserver<NewsModel>? = null
+    private lateinit var disposableSingleObserver: DisposableSingleObserver<NewsModel>
 
     override fun getNews(callback: BaseCallback) {
         disposableSingleObserver = object : DisposableSingleObserver<NewsModel>() {
@@ -34,16 +35,16 @@ constructor(private val dataRepository: DataRepository, private val compositeDis
             }
         }
         if (!compositeDisposable.isDisposed) {
-            newsModelSingle = dataRepository.requestNews()
+            newsModelSingle = dataRepository.requestNews() as Single<NewsModel>
             newsDisposable = newsModelSingle.subscribeOn(Schedulers.io())
-                    .observeOn(AndroidSchedulers.mainThread()).subscribeWith(disposableSingleObserver!!)
-            compositeDisposable.add(newsDisposable!!)
+                    .observeOn(AndroidSchedulers.mainThread()).subscribeWith(disposableSingleObserver)
+            compositeDisposable.add(newsDisposable)
         }
     }
 
     override fun searchByTitle(news: List<NewsItem>, keyWord: String): NewsItem? {
         for (newsItem in news) {
-            if (newsItem.title!!.toLowerCase().contains(keyWord.toLowerCase())) {
+            if (!isEmpty(newsItem.title) && newsItem.title!!.toLowerCase().contains(keyWord.toLowerCase())) {
                 return newsItem
             }
         }
@@ -52,7 +53,7 @@ constructor(private val dataRepository: DataRepository, private val compositeDis
 
     fun unSubscribe() {
         if (!compositeDisposable.isDisposed) {
-            compositeDisposable.remove(newsDisposable!!)
+            compositeDisposable.remove(newsDisposable)
         }
     }
 }
