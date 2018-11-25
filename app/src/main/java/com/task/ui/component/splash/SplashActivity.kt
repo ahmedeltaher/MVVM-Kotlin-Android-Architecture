@@ -1,12 +1,12 @@
 package com.task.ui.component.splash
 
-import android.content.Intent
 import android.os.Handler
 import com.task.App
 import com.task.R
 import com.task.ui.base.BaseActivity
 import com.task.ui.component.news.HomeActivity
 import com.task.utils.Constants
+import org.jetbrains.anko.startActivity
 import javax.inject.Inject
 
 /**
@@ -31,11 +31,9 @@ class SplashActivity : BaseActivity(), SplashContract.View {
         super.presenter = splashPresenter
     }
 
-
     override fun NavigateToMainScreen() {
         Handler().postDelayed({
-            val intent = Intent(this@SplashActivity, HomeActivity::class.java)
-            startActivity(intent)
+            startActivity<HomeActivity>()
             finish()
         }, Constants.SPLASH_DELAY.toLong())
     }
