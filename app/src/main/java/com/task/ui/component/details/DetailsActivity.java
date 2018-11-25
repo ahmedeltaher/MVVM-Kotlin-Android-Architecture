@@ -39,7 +39,7 @@ public class DetailsActivity extends BaseActivity implements DetailsContract.Vie
 
     @Override
     protected void initializePresenter() {
-        super.presenter = presenter;
+        super.setPresenter(presenter);
         presenter.setView(this);
     }
 
