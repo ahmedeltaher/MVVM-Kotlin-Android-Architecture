@@ -61,7 +61,7 @@ public class HomeActivity extends BaseActivity implements HomeContract.View {
 
     @Override
     protected void initializePresenter() {
-        super.presenter = presenter;
+        super.setPresenter(presenter);
         presenter.setView(this);
     }
 
