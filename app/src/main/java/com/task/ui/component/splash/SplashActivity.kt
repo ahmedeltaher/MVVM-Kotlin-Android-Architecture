@@ -27,7 +27,7 @@ class SplashActivity : BaseActivity(), SplashContract.View {
     }
 
     override fun initializePresenter() {
-        splashPresenter?.setView(this)
+        splashPresenter.setView(this)
         super.presenter = splashPresenter
     }
 

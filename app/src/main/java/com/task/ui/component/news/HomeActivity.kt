@@ -40,13 +40,13 @@ class HomeActivity : BaseActivity(), HomeContract.View {
     }
 
     override fun initializePresenter() {
-        homePresenter?.setView(this)
+        homePresenter.setView(this)
         super.presenter = homePresenter
 
     }
 
     override fun initializeNewsList(news: List<NewsItem>) {
-        val newsAdapter = NewsAdapter(homePresenter?.getRecyclerItemListener(), news)
+        val newsAdapter = NewsAdapter(homePresenter.getRecyclerItemListener(), news)
         val layoutManager = LinearLayoutManager(this)
         rv_news_list.layoutManager = layoutManager
         rv_news_list.setHasFixedSize(true)
@@ -88,13 +88,13 @@ class HomeActivity : BaseActivity(), HomeContract.View {
     @OnClick(R.id.ic_toolbar_setting, R.id.ic_toolbar_refresh, R.id.btn_search)
     fun onClick(view: View) {
         when (view.id) {
-            R.id.ic_toolbar_refresh -> homePresenter?.getNews()
-            R.id.btn_search -> homePresenter?.onSearchClick(et_search.text.toString())
+            R.id.ic_toolbar_refresh -> homePresenter.getNews()
+            R.id.btn_search -> homePresenter.onSearchClick(et_search.text.toString())
         }
     }
 
     override fun onDestroy() {
         super.onDestroy()
-        homePresenter?.unSubscribe()
+        homePresenter.unSubscribe()
     }
 }
