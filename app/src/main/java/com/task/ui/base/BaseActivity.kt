@@ -51,17 +51,17 @@ abstract class BaseActivity : AppCompatActivity(), BaseView, ActionBarView {
         initializeDagger()
         initializePresenter()
         initializeToolbar()
-        presenter?.initialize(intent.extras)
+        presenter.initialize(intent.extras)
     }
 
     override fun onStart() {
         super.onStart()
-        presenter?.start()
+        presenter.start()
     }
 
     override fun onStop() {
         super.onStop()
-        presenter?.finalizeView()
+        presenter.finalizeView()
     }
 
     protected fun initializeToolbar() {
