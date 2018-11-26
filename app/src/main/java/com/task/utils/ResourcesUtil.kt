@@ -11,20 +11,20 @@ import com.task.App
 class ResourcesUtil {
     companion object INSTANCE {
         private val context = App.context
-        private val theme = App.context?.theme
+        private val theme = App.context.theme
 
         fun getDrawableById(resId: Int): Drawable {
             return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
-                context!!.resources.getDrawable(resId, theme)
+                context.resources.getDrawable(resId, theme)
             else
-                context!!.resources.getDrawable(resId)
+                context.resources.getDrawable(resId)
         }
 
         fun getString(resId: Int): String {
             return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
-                context!!.resources.getString(resId)
+                context.resources.getString(resId)
             else
-                context!!.resources.getString(resId)
+                context.resources.getString(resId)
         }
     }
 }

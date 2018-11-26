@@ -26,15 +26,15 @@ class DetailsActivity : BaseActivity(), DetailsContract.View {
     }
 
     override fun initializePresenter() {
-        detailsPresenter?.setView(this)
+        detailsPresenter.setView(this)
         super.presenter = detailsPresenter
     }
 
     override fun initializeView(newsItem: NewsItem) {
-        tv_title?.text = newsItem?.title ?: ""
-        tv_description?.text = newsItem?.abstract ?: ""
-        if (!detailsPresenter?.mainImageURL.isBlank()) {
-            Picasso.get().load(detailsPresenter?.mainImageURL).placeholder(R.drawable.news).into(iv_news_main_Image)
+        tv_title?.text = newsItem.title ?: ""
+        tv_description?.text = newsItem.abstract ?: ""
+        if (!detailsPresenter.mainImageURL.isBlank()) {
+            Picasso.get().load(detailsPresenter.mainImageURL).placeholder(R.drawable.news).into(iv_news_main_Image)
         }
     }
 }
