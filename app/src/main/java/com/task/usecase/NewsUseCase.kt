@@ -4,7 +4,6 @@ import com.task.data.DataRepository
 import com.task.data.remote.dto.NewsItem
 import com.task.data.remote.dto.NewsModel
 import com.task.ui.base.listeners.BaseCallback
-import com.task.utils.ObjectUtil.INSTANCE.isEmpty
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
@@ -44,7 +43,7 @@ constructor(private val dataRepository: DataRepository, private val compositeDis
 
     override fun searchByTitle(news: List<NewsItem>, keyWord: String): NewsItem? {
         for (newsItem in news) {
-            if (!isEmpty(newsItem.title) && newsItem.title!!.toLowerCase().contains(keyWord.toLowerCase())) {
+            if (!newsItem.title.isNullOrEmpty() && newsItem.title!!.toLowerCase().contains(keyWord.toLowerCase())) {
                 return newsItem
             }
         }

@@ -25,7 +25,6 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_margin">5dp</item>
     </style>
-    <style name="toolbar_title" parent=""/>
     <style name="Title_Style" parent="Base.TextAppearance.AppCompat.Large">
         <item name="android:textSize">30sp</item>
         <item name="android:textColor">@android:color/black</item>

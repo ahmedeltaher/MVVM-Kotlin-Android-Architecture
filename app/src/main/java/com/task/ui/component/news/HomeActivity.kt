@@ -70,11 +70,11 @@ class HomeActivity : BaseActivity(), HomeContract.View {
     }
 
     override fun showSearchError() {
-        rl_news_list.snackbar(getString(R.string.search_error))
+        rl_news_list.snackbar(R.string.search_error)
     }
 
     override fun showNoNewsError() {
-        rl_news_list.snackbar(getString(R.string.news_error))
+        rl_news_list.snackbar(R.string.news_error)
     }
 
     override fun incrementCountingIdlingResource() {

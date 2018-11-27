@@ -64,7 +64,7 @@ abstract class BaseActivity : AppCompatActivity(), BaseView, ActionBarView {
         presenter.finalizeView()
     }
 
-    protected fun initializeToolbar() {
+    private fun initializeToolbar() {
         if (toolbar != null) {
             setSupportActionBar(toolbar)
             supportActionBar?.title = ""

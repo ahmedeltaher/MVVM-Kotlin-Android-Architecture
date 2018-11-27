@@ -8,7 +8,7 @@ class ServiceResponse(var code: Int = -1, var serviceError: ServiceError? = null
 
     constructor(errorCode: Int, response: Any?) : this(errorCode, data = response)
 
-    constructor(error: ServiceError) : this(serviceError = error)
+    constructor(error: ServiceError) : this()
 
     constructor(response: Any) : this(data = response)
 }

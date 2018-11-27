@@ -75,10 +75,10 @@ constructor(private val newsUseCase: NewsUseCase) : Presenter<HomeContract.View>
 
     override fun onSearchClick(newsTitle: String) {
         val news = newsModel!!.newsItems
-        if (!ObjectUtil.isEmpty(newsTitle) && !ObjectUtil.isNull(news) && !news!!.isEmpty()) {
+        if (!newsTitle.isEmpty() && !news.isNullOrEmpty()) {
             val newsItem = newsUseCase.searchByTitle(news, newsTitle)
-            if (!ObjectUtil.isNull(newsItem)) {
-                getView()?.navigateToDetailsScreen(newsItem!!)
+            if (newsItem != null) {
+                getView()?.navigateToDetailsScreen(newsItem)
             } else {
                 getView()?.showSearchError()
             }

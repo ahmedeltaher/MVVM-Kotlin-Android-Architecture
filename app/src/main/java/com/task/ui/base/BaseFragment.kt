@@ -50,15 +50,11 @@ abstract class BaseFragment : Fragment(), BaseView {
         presenter?.finalizeView()
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-    }
-
     fun setTitle(title: String) {
         val actionBar = (activity as BaseActivity).supportActionBar
         if (actionBar != null) {
             val titleTextView = activity?.findViewById<TextView>(R.id.txt_toolbar_title)
-            if (title.isBlank()) {
+            if (!title.isEmpty()) {
                 titleTextView?.text = title
             }
         }
