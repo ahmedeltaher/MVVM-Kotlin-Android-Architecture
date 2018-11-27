@@ -27,11 +27,13 @@
             android:id="@+id/ic_toolbar_setting"
             style="@style/toolbar_right_style"
             android:visibility="gone"
+            android:contentDescription="@null"
             android:src="@android:drawable/ic_menu_preferences"/>
 
         <ImageView
             android:id="@+id/ic_toolbar_refresh"
             style="@style/toolbar_left_style"
+            android:contentDescription="@null"
             android:src="@android:drawable/stat_notify_sync"/>
 
     </androidx.appcompat.widget.Toolbar>

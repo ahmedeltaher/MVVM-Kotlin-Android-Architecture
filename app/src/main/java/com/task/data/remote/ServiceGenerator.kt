@@ -54,6 +54,7 @@ constructor(private val gson: Gson) {
 
     init {
         okHttpBuilder.addInterceptor(headerInterceptor)
+        okHttpBuilder.addInterceptor (logger)
         okHttpBuilder.connectTimeout(TIMEOUT_CONNECT.toLong(), TimeUnit.SECONDS)
         okHttpBuilder.readTimeout(TIMEOUT_READ.toLong(), TimeUnit.SECONDS)
     }

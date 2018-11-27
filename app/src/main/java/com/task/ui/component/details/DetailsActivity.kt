@@ -33,8 +33,9 @@ class DetailsActivity : BaseActivity(), DetailsContract.View {
     override fun initializeView(newsItem: NewsItem) {
         tv_title?.text = newsItem.title ?: ""
         tv_description?.text = newsItem.abstract ?: ""
-        if (!detailsPresenter.mainImageURL.isBlank()) {
-            Picasso.get().load(detailsPresenter.mainImageURL).placeholder(R.drawable.news).into(iv_news_main_Image)
+        if (!newsItem.multimedia.isNullOrEmpty()) {
+            Picasso.get().load(newsItem.multimedia!!.last().url).placeholder(R.drawable.news)
+                    .into(iv_news_main_Image)
         }
     }
 }

@@ -1,8 +1,6 @@
 package com.task.data.remote
 
 import android.accounts.NetworkErrorException
-import android.util.Log
-import com.google.gson.Gson
 import com.task.App
 import com.task.data.remote.dto.NewsModel
 import com.task.data.remote.service.NewsService
@@ -10,7 +8,6 @@ import com.task.utils.Constants
 import com.task.utils.Constants.INSTANCE.ERROR_UNDEFINED
 import com.task.utils.L
 import com.task.utils.Network.Utils.isConnected
-import com.task.utils.ObjectUtil.INSTANCE.isNull
 import io.reactivex.Single
 import io.reactivex.plugins.RxJavaPlugins
 import retrofit2.Call
@@ -23,12 +20,11 @@ import javax.inject.Inject
 
 class RemoteRepository @Inject
 constructor(private val serviceGenerator: ServiceGenerator) : RemoteSource {
-    private val UNDELIVERABLE_EXCEPTION_TAG = "RemoteRepository"
 
     override val news: Single<*>
         get() {
             RxJavaPlugins.setErrorHandler { throwable ->
-                Log.i(UNDELIVERABLE_EXCEPTION_TAG, throwable.message)
+                L.i(RemoteRepository::class.java.simpleName, "${throwable.message}")
             }
             return Single.create<NewsModel> { singleOnSubscribe ->
                 if (!isConnected(App.context)) {
@@ -58,23 +54,18 @@ constructor(private val serviceGenerator: ServiceGenerator) : RemoteSource {
             return ServiceResponse(ServiceError())
         }
         try {
-            val response = call.execute()
-            val gson = Gson()
-            L.json(NewsModel::class.java.name, gson.toJson(response.body()))
-            if (isNull(response)) {
-                return ServiceResponse(ServiceError(ServiceError.NETWORK_ERROR, ERROR_UNDEFINED))
-            }
+            val response = call.execute() ?: return ServiceResponse(ServiceError(ServiceError.NETWORK_ERROR, ERROR_UNDEFINED))
             val responseCode = response.code()
             /**
              * isVoid is for APIs which reply only with code without any body, such as some Apis
              * reply with 200 or 401....
              */
-            if (response.isSuccessful) {
-                val apiResponse: Any? = if (isVoid) null else response?.body()
-                return ServiceResponse(responseCode, apiResponse)
+            return if (response.isSuccessful) {
+                val apiResponse: Any? = if (isVoid) null else response.body()
+                ServiceResponse(responseCode, apiResponse)
             } else {
                 val serviceError = ServiceError(response.message(), responseCode)
-                return ServiceResponse(serviceError)
+                ServiceResponse(serviceError)
             }
         } catch (e: IOException) {
             return ServiceResponse(ServiceError(ServiceError.NETWORK_ERROR, ERROR_UNDEFINED))

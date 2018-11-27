@@ -15,14 +15,6 @@ constructor() : Presenter<DetailsContract.View>(), DetailsContract.Presenter {
 
     private var newsItem: NewsItem? = null
 
-    override val mainImageURL: String
-        get() {
-            if(newsItem?.multimedia?.isEmpty() == true){
-                return ""
-            }
-            return newsItem?.multimedia?.last()?.url ?: ""
-        }
-
     override fun initialize(extras: Bundle?) {
         super.initialize(extras)
         newsItem = extras?.getParcelable(Constants.NEWS_ITEM_KEY)
