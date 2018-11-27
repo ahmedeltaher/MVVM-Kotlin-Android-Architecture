@@ -12,7 +12,5 @@ interface DetailsContract : BaseView {
         fun initializeView(newsItem: NewsItem)
     }
 
-    interface Presenter {
-        val mainImageURL: String
-    }
+    interface Presenter
 }

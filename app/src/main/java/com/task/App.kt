@@ -1,9 +1,11 @@
 package com.task
 
+import android.annotation.SuppressLint
 import android.content.Context
+import android.graphics.drawable.Drawable
+import android.os.Build
 import androidx.annotation.VisibleForTesting
 import androidx.multidex.MultiDexApplication
-
 import com.task.di.DaggerMainComponent
 import com.task.di.MainComponent
 
@@ -27,6 +29,14 @@ class App : MultiDexApplication() {
     }
 
     companion object {
+        @SuppressLint("StaticFieldLeak")
         lateinit var context: Context
+        fun getDrawableById(resId: Int): Drawable {
+            return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
+                context.resources.getDrawable(resId,context.theme)
+            else
+                context.resources.getDrawable(resId)
+        }
     }
+
 }

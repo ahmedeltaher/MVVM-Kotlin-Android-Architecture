@@ -11,7 +11,7 @@ import static com.task.data.remote.ServiceError.ERROR_CODE;
 import static com.task.data.remote.ServiceError.SUCCESS_CODE;
 
 /**
- * Created by ahmedeltaher on 3/8/17.
+ * Created by ahmedEltaher on 3/8/17.
  */
 
 public class TestModelsGenerator {
