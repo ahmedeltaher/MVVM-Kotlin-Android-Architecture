@@ -1,14 +1,12 @@
 package com.task.ui.component.news;
 
+import com.task.data.remote.ServiceError;
 import com.task.data.remote.ServiceResponse;
 import com.task.data.remote.dto.NewsItem;
 import com.task.data.remote.dto.NewsModel;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import static com.task.data.remote.ServiceError.ERROR_CODE;
-import static com.task.data.remote.ServiceError.SUCCESS_CODE;
 
 /**
  * Created by ahmedEltaher on 3/8/17.
@@ -30,6 +28,17 @@ public class TestModelsGenerator {
         newsModel.setNewsItems(newsItems);
         return newsModel;
     }
+    public NewsModel generateNewsModelWithEmptyList(String stup) {
+        NewsModel newsModel = new NewsModel();
+        newsModel.setCopyright(stup);
+        newsModel.setLastUpdated(stup);
+        newsModel.setSection(stup);
+        newsModel.setStatus(stup);
+        newsModel.setNumResults(25L);
+        List<NewsItem> newsItems = new ArrayList<>();
+        newsModel.setNewsItems(newsItems);
+        return newsModel;
+    }
 
     public NewsItem generateNewsItemModel(String stup) {
         NewsItem newsItem = new NewsItem();
@@ -42,10 +51,10 @@ public class TestModelsGenerator {
     public ServiceResponse getNewsSuccessfulModel() {
         String stupString = "this is temp string";
         NewsModel newsModel = generateNewsModel(stupString);
-        return new ServiceResponse(Companion.getSUCCESS_CODE(), newsModel);
+        return new ServiceResponse(ServiceError.SUCCESS_CODE, newsModel);
     }
 
     public ServiceResponse getNewsErrorModel() {
-        return new ServiceResponse(Companion.getERROR_CODE(), null);
+        return new ServiceResponse(ServiceError.ERROR_CODE, null);
     }
 }

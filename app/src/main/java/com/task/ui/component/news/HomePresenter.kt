@@ -1,7 +1,6 @@
 package com.task.ui.component.news
 
 import android.os.Bundle
-import androidx.annotation.VisibleForTesting
 import com.task.data.remote.dto.NewsItem
 import com.task.data.remote.dto.NewsModel
 import com.task.ui.base.Presenter
@@ -18,6 +17,7 @@ import javax.inject.Inject
 class HomePresenter @Inject
 constructor(private val newsUseCase: NewsUseCase) : Presenter<HomeContract.View>(), HomeContract
 .Presenter, RecyclerItemListener {
+    var newsModel: NewsModel? = null
 
     override fun getRecyclerItemListener(): RecyclerItemListener {
         return this
@@ -26,11 +26,6 @@ constructor(private val newsUseCase: NewsUseCase) : Presenter<HomeContract.View>
     override fun onItemSelected(position: Int) {
         getView()?.navigateToDetailsScreen(newsModel?.newsItems!![position])
     }
-
-    @get:VisibleForTesting(otherwise = VisibleForTesting.PRIVATE)
-    var newsModel: NewsModel? = null
-        private set
-
 
     private val callback = object : BaseCallback {
         override fun onSuccess(newsModel: NewsModel) {
