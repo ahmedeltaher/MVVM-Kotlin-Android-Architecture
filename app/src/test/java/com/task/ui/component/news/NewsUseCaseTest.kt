@@ -5,7 +5,9 @@ import com.task.data.remote.dto.NewsModel
 import com.task.ui.base.listeners.BaseCallback
 import com.task.usecase.NewsUseCase
 import io.mockk.every
+import io.mockk.junit5.MockKExtension
 import io.mockk.mockk
+import io.mockk.spyk
 import io.mockk.verify
 import io.reactivex.Single
 import io.reactivex.android.plugins.RxAndroidPlugins
@@ -16,21 +18,20 @@ import io.reactivex.subscribers.TestSubscriber
 import org.junit.jupiter.api.AfterEach
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertNotNull
-import org.junit.jupiter.api.BeforeAll
+import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
-import org.junit.jupiter.api.TestInstance
+import org.junit.jupiter.api.extension.ExtendWith
 import java.io.IOException
 
 /**
  * Created by ahmedeltaher on 3/8/17.
  */
 
-@TestInstance(TestInstance.Lifecycle.PER_CLASS)
+@ExtendWith(MockKExtension::class)
 class NewsUseCaseTest {
 
     private var dataRepository: DataRepository? = null
-    private var callback:BaseCallback?=null
-
+    private var callback:BaseCallback?=spyk<BaseCallback>()
 
     private lateinit var newsUseCase: NewsUseCase
     private lateinit var compositeDisposable: CompositeDisposable
@@ -38,7 +39,7 @@ class NewsUseCaseTest {
     private val testModelsGenerator: TestModelsGenerator = TestModelsGenerator()
     private lateinit var newsModel: NewsModel
 
-    @BeforeAll
+    @BeforeEach
     fun setUp() {
         val callable = Schedulers.trampoline()
         RxJavaPlugins.setIoSchedulerHandler { callable }
@@ -47,18 +48,17 @@ class NewsUseCaseTest {
         RxAndroidPlugins.setInitMainThreadSchedulerHandler { callable }
         RxAndroidPlugins.setMainThreadSchedulerHandler { callable }
 
-        callback = mockk()
-        dataRepository = mockk()
         newsModelTestSubscriber = TestSubscriber()
         compositeDisposable = CompositeDisposable()
+        dataRepository= DataRepository(mockk(), mockk())
         newsUseCase = NewsUseCase(dataRepository!!,compositeDisposable)
     }
 
     @Test
     fun testGetNewsSuccessful() {
-        newsModel = testModelsGenerator.newsSuccessfulModel.data as NewsModel
+        newsModel = testModelsGenerator.generateNewsModel("Stup")
         val newsModelSingle: Single<NewsModel>  = Single.create { emitter ->emitter.onSuccess(newsModel) }
-        every { dataRepository!!.requestNews()} answers {newsModelSingle}
+        every { dataRepository!!.requestNews()} returns newsModelSingle
         newsUseCase.getNews(callback!!)
         verify(exactly = 1,verifyBlock = { callback!!.onSuccess(any())})
         verify(exactly = 0,verifyBlock = { callback!!.onFail()})
@@ -67,7 +67,8 @@ class NewsUseCaseTest {
     @Test
     fun testGetNewsFail() {
         val ioEx = IOException()
-        every { dataRepository!!.requestNews() }returns ioEx as Single<*>
+        val newsModelSingle: Single<NewsModel>  = Single.create { emitter ->emitter.onError(ioEx) }
+        every { dataRepository!!.requestNews() }returns newsModelSingle
         newsUseCase.getNews(callback!!)
         verify(exactly = 0,verifyBlock = { callback!!.onSuccess(any())})
         verify(exactly = 1,verifyBlock = { callback!!.onFail()})
