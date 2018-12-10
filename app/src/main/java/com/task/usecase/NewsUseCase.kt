@@ -1,16 +1,16 @@
 package com.task.usecase
 
 import com.task.data.DataRepository
+import com.task.data.remote.ServiceError
 import com.task.data.remote.dto.NewsItem
 import com.task.data.remote.dto.NewsModel
 import com.task.ui.base.listeners.BaseCallback
-import io.reactivex.Single
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.disposables.CompositeDisposable
-import io.reactivex.disposables.Disposable
-import io.reactivex.observers.DisposableSingleObserver
-import io.reactivex.schedulers.Schedulers
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.async
+import kotlinx.coroutines.launch
 import javax.inject.Inject
+import kotlin.coroutines.CoroutineContext
 
 
 /**
@@ -18,26 +18,21 @@ import javax.inject.Inject
  */
 
 class NewsUseCase @Inject
-constructor(private val dataRepository: DataRepository, private val compositeDisposable: CompositeDisposable) : UseCase {
-    private lateinit var newsDisposable: Disposable
-    private lateinit var newsModelSingle: Single<NewsModel>
-    private lateinit var disposableSingleObserver: DisposableSingleObserver<NewsModel>
+constructor(private val dataRepository: DataRepository, override val coroutineContext: CoroutineContext) : UseCase,CoroutineScope {
 
     override fun getNews(callback: BaseCallback) {
-        disposableSingleObserver = object : DisposableSingleObserver<NewsModel>() {
-            override fun onSuccess(newsModel: NewsModel) {
-                callback.onSuccess(newsModel)
-            }
-
-            override fun onError(e: Throwable) {
+        launch{
+            try {
+                val serviceResponse = async(Dispatchers.IO) { dataRepository.requestNews() }.await()
+                if (serviceResponse?.code == ServiceError.SUCCESS_CODE) {
+                    val newsModel = serviceResponse.data as NewsModel
+                    callback.onSuccess(newsModel)
+                } else {
+                    callback.onFail()
+                }
+            } catch (e: Exception) {
                 callback.onFail()
             }
-        }
-        if (!compositeDisposable.isDisposed) {
-            newsModelSingle = dataRepository.requestNews() as Single<NewsModel>
-            newsDisposable = newsModelSingle.subscribeOn(Schedulers.io())
-                    .observeOn(AndroidSchedulers.mainThread()).subscribeWith(disposableSingleObserver)
-            compositeDisposable.add(newsDisposable)
         }
     }
 
@@ -48,11 +43,5 @@ constructor(private val dataRepository: DataRepository, private val compositeDis
             }
         }
         return null
-    }
-
-    fun unSubscribe() {
-        if (!compositeDisposable.isDisposed) {
-            compositeDisposable.remove(newsDisposable)
-        }
     }
 }

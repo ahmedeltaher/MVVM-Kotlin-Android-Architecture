@@ -65,7 +65,6 @@ constructor(private val newsUseCase: NewsUseCase) : Presenter<HomeContract.View>
     }
 
     override fun unSubscribe() {
-        newsUseCase.unSubscribe()
     }
 
     override fun onSearchClick(newsTitle: String) {

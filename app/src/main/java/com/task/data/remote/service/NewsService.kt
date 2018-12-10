@@ -1,7 +1,6 @@
 package com.task.data.remote.service
 
 import com.task.data.remote.dto.NewsModel
-
 import retrofit2.Call
 import retrofit2.http.GET
 
@@ -11,5 +10,5 @@ import retrofit2.http.GET
 
 interface NewsService {
     @GET("topstories/v2/home.json")
-    fun fetchNews(): Call<NewsModel>
+    fun  fetchNews(): Call<NewsModel>
 }
