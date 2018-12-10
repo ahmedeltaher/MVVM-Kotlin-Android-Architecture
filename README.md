@@ -1,6 +1,6 @@
 
 
-**What is ReactiveX ?**
+**What is Coroutines ?**
 -------------------
 
 ![enter image description here](https://lh3.googleusercontent.com/-i2XiOiLr-u4/WGDnM23c8cI/AAAAAAAAHho/MnkItYDyelofBkilkIM8x99tH__EtHP5gCLcB/s0/Reactive+logo.png "Reactive logo.png")
@@ -9,24 +9,15 @@
 [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-android--best--practices-brightgreen.svg?style=flat)](https://android-arsenal.com/details/3/4975)
 
 ======
- **Reactive :**
-Reactive programming is a programming paradigm oriented around data flows and the propagation of change. 
- Reactive programming is programming with asynchronous data streams.
- 
- **ReactiveX :** 
-	 - Is a library for composing asynchronous and event-based programs by using observable sequences.
- It extends the observer pattern to support sequences of data and/or events and adds operators that allow you to compose sequences together declaratively while abstracting away concerns about things like low-level threading, synchronization, thread-safety, concurrent data structures, and non-blocking I/O.
-	 - Rx* library family is widely available for many languages and platforms (**.NET**, **Java** , **Scala**, **Clojure**, **JavaScript**, **Ruby**, **Python**, **C++**, **Objective-C/Cocoa**, **Groovy**, etc).
+ **Coroutines :**
+Is light wight threads for asynchronous programming, Coroutines not only open the doors to 
+asynchronous programming, but also provide a wealth of other possibilities such as concurrency, actors, etc. 
 
 ----------
 
-**What is RXAndroid ?**
+**Coroutines VS RXAndroid**
 -------------------
- - Extended version from RX-Java to Android .
- - RXAndroid provides many classes which facilities working with android , like 
-			- **AndroidSchedulers**  for facilitating managing multi-threading.
-			- **AndroidObservable** for facilitating dealing within the Android lifecycle.
-			- **ViewObservable** & **WidgetObservable** for facilitating binding views , user clicks ... ect.
+
 			
 **How RX concept works ?**
 ------------
