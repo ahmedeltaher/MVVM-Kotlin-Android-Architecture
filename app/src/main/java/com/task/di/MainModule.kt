@@ -6,8 +6,9 @@ import com.google.gson.GsonBuilder
 import com.task.data.local.LocalRepository
 import dagger.Module
 import dagger.Provides
-import io.reactivex.disposables.CompositeDisposable
+import kotlinx.coroutines.Dispatchers
 import javax.inject.Singleton
+import kotlin.coroutines.CoroutineContext
 
 /**
  * Created by AhmedEltaher on 5/12/2016
@@ -28,7 +29,8 @@ class MainModule {
     }
 
     @Provides
-    fun provideCompositeSubscription(): CompositeDisposable {
-        return CompositeDisposable()
+    @Singleton
+    fun provideCoroutineContext(): CoroutineContext {
+        return Dispatchers.Main
     }
 }

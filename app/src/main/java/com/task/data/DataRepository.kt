@@ -2,7 +2,7 @@ package com.task.data
 
 import com.task.data.local.LocalRepository
 import com.task.data.remote.RemoteRepository
-import io.reactivex.Single
+import com.task.data.remote.ServiceResponse
 import javax.inject.Inject
 
 
@@ -13,7 +13,8 @@ import javax.inject.Inject
 class DataRepository @Inject
 constructor(private val remoteRepository: RemoteRepository, private val localRepository: LocalRepository) : DataSource {
 
-    override fun requestNews(): Single<*> {
-        return remoteRepository.news
+    override suspend fun requestNews(): ServiceResponse? {
+        return remoteRepository.requestNews()
     }
+
 }
