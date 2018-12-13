@@ -3,104 +3,87 @@
 **What is Coroutines ?**
 -------------------
 
-![enter image description here](https://lh3.googleusercontent.com/-i2XiOiLr-u4/WGDnM23c8cI/AAAAAAAAHho/MnkItYDyelofBkilkIM8x99tH__EtHP5gCLcB/s0/Reactive+logo.png "Reactive logo.png")
+![enter image description here](https://github.com/ahmedeltaher/Kotlin-MVP/blob/migrate-rxjava-to-coroutines/readme-images/androkotlin.png?raw=true "Kotlin logo.png")
 
 
 [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-android--best--practices-brightgreen.svg?style=flat)](https://android-arsenal.com/details/3/4975)
 
-======
  **Coroutines :**
 Is light wight threads for asynchronous programming, Coroutines not only open the doors to 
 asynchronous programming, but also provide a wealth of other possibilities such as concurrency, actors, etc. 
 
 ----------
 
-**Coroutines VS RXAndroid**
+**Coroutines VS RXJava**
 -------------------
-
+They're different tools with different strengths. Like a tank and a cannon, they have a lot of overlap but are more or less desirable under different circumstances.
+        - Coroutines Is light wight threads for asynchronous programming.
+        - RX-Kotlin/RX-Java is functional reactive programming, its core pattern relay on 
+        observer design pattern, so you can use it to handle user interaction with UI while you 
+        still using coroutines as main core for background work.
 			
-**How RX concept works ?**
+**How does Coroutines concept work ?**
 ------------
- - An Observable performs some action, and publishes the result.
- - An Observer waits and watches the Observable, and reacts whenever the
-   Observable publishes results.
- - There are three different changes that can occur on an Observable
-   that the Observer reacts to.
-   These are:
-	 - Publishing a value
-	 - Throwing an error 
-	 - Completed publishing all values
+ - Kotlin coroutine is a way of doing things asynchronously in a sequential manner. Creating a coroutine is a lot cheaper vs creating a thread.
 
-![enter image description here](https://lh3.googleusercontent.com/-x2b7sqpd2Sc/WGDq4bCkp5I/AAAAAAAAHiI/lhgC2hiEbdgSPlYsA2-VdVxAeJxqzf-egCLcB/s0/legend.png "legend.png")
 
-![enter image description here](https://lh3.googleusercontent.com/-vaRTC6UYzuw/WGBj79pJEhI/AAAAAAAAHg0/LeEE3msb9JE_RFtfw34y8yy9EqPOo5KuACLcB/s0/gif-react22.gif "gif-react22.gif")
-
-**When I can choose RXAndroid to do some behaviour ?**
+**When I can choose Coroutines or RX-Kotlin to do some behaviour ?**
 --------------------------
- - *When we have concurrent tasks , like you would fetch data from Remote connections , database , any background processes .*
- - *When you would to handle stream of UI actions like : user scrolling , clicks , update UI upon some events .....ect .*
+ - Coroutines : *When we have concurrent tasks , like you would fetch data from Remote connections 
+ , database , any background processes , sure you can use RX in such cases too, but it looks like
+  you use a tank to kill ant.* 
+ - RX-Kotlin : *When you would to handle stream of UI actions like : user scrolling , clicks , 
+ update UI upon some events .....ect .*
  
 
-**What is the RXAndroid benefits?**
------------------------------
-RXAndroid will provide you to deal with below problems in one fell swoop:
-
- - No standard mechanism to recover from errors.
- - Lack of control over thread scheduling (unless you like to dig deep).
- - No obvious way to compose asynchronous operations.
- - No obvious and hassle-free way of attaching to Context.
-
-
-**Handle Retrofit with RXAndroid**
+**What is the Coroutines benefits?**
 -----------------------------
 
-![enter image description here](https://lh3.googleusercontent.com/d2slx7bI7Ivykea1Umfo2mMvZVTnO19ifeuJidyZJB6L3u7rlhwlBtp7tsZgrshWiToqz4pW=s0 "retrofit-reactivex-300x150.png")
+ - Writing an asynchronous code is sequential manner.
+ - Costing of create coroutines are much cheaper to crate threads.
+ - Don't be over engineered to use observable pattern, when no need to use it.
+ - parent coroutine can automatically manage the life cycle of its child coroutines for you.  
 
- - Add RX to your gradle file 
 
-        compile 'io.reactivex:rxandroid:1.2.1'
-        compile 'io.reactivex:rxjava:1.1.6'
-        compile 'com.squareup.retrofit2:adapter-rxjava:2.0.2'
+**Handle Retrofit with Coroutines**
+-----------------------------
 
- - Replace Retrofit Call with Observable .
-		 **From**
-		 ```@GET("topstories/v2/home.json")
-		 Call<NewsModel> fetchNews();```
-         **to**	     	
-	     ```@GET("topstories/v2/home.json")
-     Observable<Response<NewsModel>> fetchNews();```
+![enter image description here](https://github.com/ahmedeltaher/Kotlin-MVP/blob/migrate-rxjava-to-coroutines/readme-images/8399.png "retrofit-reactivex-300x150.png")
 
- - Create  `Observable` 
-	 10. Inform your Observable to emit data in background thread with `subscribeOn(Schedulers.io())` .
-	 11.  Inform your Observable to propagate its stream of data to Main Thread with`observeOn(AndroidSchedulers.mainThread())` .
-	 12. Register your subscriber to current Observable with ` subscribe(mSubscriber)`
-	 ```
-Observable
-        .subscribeOn(Schedulers.io())
-        .observeOn(AndroidSchedulers.mainThread())
-        .subscribe(mSubscriber);
+ - Add Coroutines to your gradle file 
+            ```           
+           implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.0.1'
+           implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.0.1'
+           implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core-common:1.0.1'
+            ```
+
+ - Make Retrofit Calls.
+		 	     	
+	     ```
+	     @GET("topstories/v2/home.json")
+         fun  fetchNews(): Call<NewsModel>
+	     ```
+	     
+ - With ```async``` we create new coroutine and returns its future result as an implementation of [Deferred].
+ - The coroutine builder called ```launch``` allow us to start a coroutine in background and keep working in the meantime.
+ - so async will run in background then return its promised result to parent coroutine which 
+ created by launch. 
+ - when we get a result, it is up to us to do handle the result.
 ```
-
-
-	 13. create subscriber
-	 
-	 
-	 ```
-	 Subscriber mSubscriber=new Subscriber<Response<NewsModel>>() {
-            @Override
-            public void onCompleted() { //handle what should you do after Observable complete its emission , like dismiss dialog , build UI .
-                 }
-            @Override
-            public void onError(Throwable e) {
-                //Handle your error
-                 }
-            @Override
-            public void onNext(Response<NewsModel> newsModelResponse) {
-                // handle what should you do after receive each emission from observer , like update progress .... ect .
+        launch{
+             try {
+                val serviceResponse = async(Dispatchers.IO) { dataRepository.requestNews() }.await()
+                if (serviceResponse?.code == ServiceError.SUCCESS_CODE) {
+                    val newsModel = serviceResponse.data as NewsModel
+                    callback.onSuccess(newsModel)
+                } else {
+                    callback.onFail()
                 }
-        };
+            } catch (e: Exception) {
+                callback.onFail()
+            }
+        }
 ```
-
 
 **Keep your code clean according to MVP**
 -----------------------------
