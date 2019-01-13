@@ -11,13 +11,13 @@ import org.junit.jupiter.api.TestInstance
 
 
 @TestInstance(TestInstance.Lifecycle.PER_METHOD)
-class HomePresenterTest {
+class HomeViewModelTest {
     private val newsUseCase: NewsUseCase = mockk()
     private val newsModelMock: NewsModel = mockk()
     private val homeContract: HomeContract.View = spyk()
     private val callback: BaseCallback = spyk()
 
-    private var homePresenter: HomePresenter? = null
+    private var homePresenter: HomeViewModel? = null
     private val newsTitle = "this is test"
     private val testModelsGenerator: TestModelsGenerator = TestModelsGenerator()
 
@@ -25,7 +25,7 @@ class HomePresenterTest {
     fun setUp() {
         clearMocks(newsModelMock)
         clearMocks(callback)
-        homePresenter = HomePresenter(newsUseCase)
+        homePresenter = HomeViewModel(newsUseCase)
         homePresenter!!.setView(homeContract)
     }
 

@@ -1,9 +1,10 @@
 package com.task.ui.component.news
 
 import android.os.Bundle
+import com.task.data.DataRepository
 import com.task.data.remote.dto.NewsItem
 import com.task.data.remote.dto.NewsModel
-import com.task.ui.base.Presenter
+import com.task.ui.base.BaseViewModel
 import com.task.ui.base.listeners.BaseCallback
 import com.task.ui.base.listeners.RecyclerItemListener
 import com.task.usecase.NewsUseCase
@@ -14,23 +15,18 @@ import javax.inject.Inject
  * Created by AhmedEltaher on 5/12/2016
  */
 
-class HomePresenter @Inject
-constructor(private val newsUseCase: NewsUseCase) : Presenter<HomeContract.View>(), HomeContract
-.Presenter, RecyclerItemListener {
+class HomeViewModel @Inject
+constructor(private val dataRepository: DataRepository) : BaseViewModel(), HomeContract.IViewModel {
     var newsModel: NewsModel? = null
 
     override fun getRecyclerItemListener(): RecyclerItemListener {
         return this
     }
 
-    override fun onItemSelected(position: Int) {
-        getView()?.navigateToDetailsScreen(newsModel?.newsItems!![position])
-    }
-
     private val callback = object : BaseCallback {
         override fun onSuccess(newsModel: NewsModel) {
             getView()?.decrementCountingIdlingResource()
-            this@HomePresenter.newsModel = newsModel
+            this@HomeViewModel.newsModel = newsModel
             var newsItems: List<NewsItem>? = null
             if (!ObjectUtil.isNull(newsModel)) {
                 newsItems = newsModel.newsItems

@@ -31,7 +31,7 @@ interface HomeContract {
     }
 
 
-    interface Presenter {
+    interface IViewModel {
 
         fun getRecyclerItemListener():RecyclerItemListener
 

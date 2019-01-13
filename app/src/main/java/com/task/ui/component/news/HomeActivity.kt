@@ -4,13 +4,15 @@ import android.view.View
 import android.view.View.GONE
 import android.view.View.VISIBLE
 import androidx.annotation.VisibleForTesting
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.test.espresso.IdlingResource
 import butterknife.OnClick
-import com.task.App
 import com.task.R
 import com.task.data.remote.dto.NewsItem
 import com.task.ui.base.BaseActivity
+import com.task.ui.base.listeners.RecyclerItemListener
 import com.task.ui.component.details.DetailsActivity
 import com.task.utils.Constants
 import com.task.utils.EspressoIdlingResource
@@ -23,9 +25,11 @@ import javax.inject.Inject
  * Created by AhmedEltaher on 5/12/2016
  */
 
-class HomeActivity : BaseActivity(), HomeContract.View {
+class HomeActivity : BaseActivity(), HomeContract.View, RecyclerItemListener {
     @Inject
-    lateinit var homePresenter: HomePresenter
+    lateinit var homeViewModel: HomeViewModel
+    @Inject
+    lateinit var viewModelFactory: ViewModelProvider.Factory
 
     override val layoutId: Int
         get() = R.layout.home_activity
@@ -34,19 +38,14 @@ class HomeActivity : BaseActivity(), HomeContract.View {
         @VisibleForTesting
         get() = EspressoIdlingResource.idlingResource
 
-    override fun initializeDagger() {
-        val app = applicationContext as App
-        app.mainComponent?.inject(this@HomeActivity)
-    }
-
-    override fun initializePresenter() {
-        homePresenter.setView(this)
-        super.presenter = homePresenter
+    override fun initializeViewModel() {
+        homeViewModel = ViewModelProviders.of(this, viewModelFactory)
+                .get(HomeViewModel::class.java)
 
     }
 
     override fun initializeNewsList(news: List<NewsItem>) {
-        val newsAdapter = NewsAdapter(homePresenter.getRecyclerItemListener(), news)
+        val newsAdapter = NewsAdapter(homeViewModel.getRecyclerItemListener(), news)
         val layoutManager = LinearLayoutManager(this)
         rv_news_list.layoutManager = layoutManager
         rv_news_list.setHasFixedSize(true)
@@ -88,13 +87,15 @@ class HomeActivity : BaseActivity(), HomeContract.View {
     @OnClick(R.id.ic_toolbar_setting, R.id.ic_toolbar_refresh, R.id.btn_search)
     fun onClick(view: View) {
         when (view.id) {
-            R.id.ic_toolbar_refresh -> homePresenter.getNews()
-            R.id.btn_search -> homePresenter.onSearchClick(et_search.text.toString())
+            R.id.ic_toolbar_refresh -> homeViewModel.getNews()
+            R.id.btn_search -> homeViewModel.onSearchClick(et_search.text.toString())
         }
     }
-
+    override fun onItemSelected(position: Int) {
+        //navigateToDetailsScreen(newsItems!![position])
+    }
     override fun onDestroy() {
         super.onDestroy()
-        homePresenter.unSubscribe()
+        homeViewModel.unSubscribe()
     }
 }

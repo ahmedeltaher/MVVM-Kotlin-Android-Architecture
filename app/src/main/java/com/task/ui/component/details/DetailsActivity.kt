@@ -15,19 +15,14 @@ import javax.inject.Inject
 class DetailsActivity : BaseActivity(), DetailsContract.View {
 
     @Inject
-    lateinit var detailsPresenter: DetailsPresenter
+    lateinit var detailsPresenter: DetailsBaseViewModel
 
     override val layoutId: Int
         get() = R.layout.details_layout
 
-    override fun initializeDagger() {
-        val app = applicationContext as App
-        app.mainComponent?.inject(this@DetailsActivity)
-    }
-
-    override fun initializePresenter() {
+    override fun initializeViewModel() {
         detailsPresenter.setView(this)
-        super.presenter = detailsPresenter
+        super.baseViewModel = detailsPresenter
     }
 
     override fun initializeView(newsItem: NewsItem) {

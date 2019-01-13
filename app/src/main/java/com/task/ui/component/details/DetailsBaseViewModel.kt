@@ -2,7 +2,7 @@ package com.task.ui.component.details
 
 import android.os.Bundle
 import com.task.data.remote.dto.NewsItem
-import com.task.ui.base.Presenter
+import com.task.ui.base.BaseViewModel
 import com.task.utils.Constants
 import javax.inject.Inject
 
@@ -10,8 +10,8 @@ import javax.inject.Inject
  * Created by AhmedEltaher on 11/12/16.
  */
 
-class DetailsPresenter @Inject
-constructor() : Presenter<DetailsContract.View>(), DetailsContract.Presenter {
+class DetailsBaseViewModel @Inject
+constructor() : BaseViewModel<DetailsContract.View>(), DetailsContract.Presenter {
 
     private var newsItem: NewsItem? = null
 

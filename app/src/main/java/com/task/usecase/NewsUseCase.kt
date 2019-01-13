@@ -18,14 +18,14 @@ import kotlin.coroutines.CoroutineContext
  */
 
 class NewsUseCase @Inject
-constructor(private val dataRepository: DataRepository, override val coroutineContext: CoroutineContext) : UseCase,CoroutineScope {
+constructor(private val dataRepository: DataRepository, override val coroutineContext: CoroutineContext) : UseCase, CoroutineScope {
 
     override fun getNews(callback: BaseCallback) {
-        launch{
+        launch {
             try {
                 val serviceResponse = async(Dispatchers.IO) { dataRepository.requestNews() }.await()
-                if (serviceResponse?.code == ServiceError.SUCCESS_CODE) {
-                    val newsModel = serviceResponse.data as NewsModel
+                if (serviceResponse?.value?.code == ServiceError.SUCCESS_CODE) {
+                    val newsModel = serviceResponse.value?.data as NewsModel
                     callback.onSuccess(newsModel)
                 } else {
                     callback.onFail()

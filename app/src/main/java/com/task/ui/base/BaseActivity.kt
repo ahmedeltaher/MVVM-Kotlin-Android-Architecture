@@ -14,6 +14,7 @@ import butterknife.Unbinder
 import com.task.R
 import com.task.ui.base.listeners.ActionBarView
 import com.task.ui.base.listeners.BaseView
+import dagger.android.AndroidInjection
 
 /**
  * Created by AhmedEltaher on 5/12/2016
@@ -22,7 +23,7 @@ import com.task.ui.base.listeners.BaseView
 
 abstract class BaseActivity : AppCompatActivity(), BaseView, ActionBarView {
 
-    protected lateinit var presenter: Presenter<*>
+    protected lateinit var baseViewModel: BaseViewModel
 
     @JvmField
     @BindView(R.id.toolbar)
@@ -40,28 +41,15 @@ abstract class BaseActivity : AppCompatActivity(), BaseView, ActionBarView {
 
     abstract val layoutId: Int
 
-    protected abstract fun initializeDagger()
-
-    protected abstract fun initializePresenter()
+    protected abstract fun initializeViewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        AndroidInjection.inject(this)
         super.onCreate(savedInstanceState)
         setContentView(layoutId)
         unbinder = ButterKnife.bind(this)
-        initializeDagger()
-        initializePresenter()
+        initializeViewModel()
         initializeToolbar()
-        presenter.initialize(intent.extras)
-    }
-
-    override fun onStart() {
-        super.onStart()
-        presenter.start()
-    }
-
-    override fun onStop() {
-        super.onStop()
-        presenter.finalizeView()
     }
 
     private fun initializeToolbar() {
