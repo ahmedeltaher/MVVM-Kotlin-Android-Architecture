@@ -13,25 +13,22 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
-package com.android.example.github.di
-
-import com.task.ui.component.news.HomeActivity
-import com.task.ui.component.news.HomeActivityModules
+package com.task.di
+import com.task.ui.component.details.DetailsActivity
+import com.task.ui.component.news.NewsListActivity
 import com.task.ui.component.splash.SplashActivity
-import com.task.ui.component.splash.SplashActivityModules
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 
 @Suppress("unused")
 @Module
 abstract class ActivityModuleBuilder {
-    @ContributesAndroidInjector(modules = [SplashActivityModules::class])
+    @ContributesAndroidInjector
     abstract fun contributeSplashActivity(): SplashActivity
 
-    @ContributesAndroidInjector(modules = [HomeActivityModules::class])
-    abstract fun contributeHomeActivity(): HomeActivity
+    @ContributesAndroidInjector
+    abstract fun contributeHomeActivity(): NewsListActivity
 
-//    @ContributesAndroidInjector(modules = [FragmentBuildersModule::class])
-//    abstract fun contributeDetailsActivity(): DetailsActivity
+    @ContributesAndroidInjector
+    abstract fun contributeDetailsActivity(): DetailsActivity
 }

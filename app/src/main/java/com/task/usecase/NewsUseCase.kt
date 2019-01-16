@@ -1,14 +1,16 @@
 package com.task.usecase
 
+import androidx.lifecycle.MutableLiveData
 import com.task.data.DataRepository
-import com.task.data.remote.ServiceError
+import com.task.data.remote.Data
+import com.task.data.remote.Error
 import com.task.data.remote.dto.NewsItem
 import com.task.data.remote.dto.NewsModel
 import com.task.ui.base.listeners.BaseCallback
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import javax.inject.Inject
 import kotlin.coroutines.CoroutineContext
 
@@ -23,15 +25,15 @@ constructor(private val dataRepository: DataRepository, override val coroutineCo
     override fun getNews(callback: BaseCallback) {
         launch {
             try {
-                val serviceResponse = async(Dispatchers.IO) { dataRepository.requestNews() }.await()
-                if (serviceResponse?.value?.code == ServiceError.SUCCESS_CODE) {
-                    val newsModel = serviceResponse.value?.data as NewsModel
-                    callback.onSuccess(newsModel)
+                val serviceResponse: Data? = withContext(Dispatchers.IO) { dataRepository.requestNews() }
+                if (serviceResponse?.code == Error.SUCCESS_CODE) {
+                    val data = serviceResponse.data
+                    callback.onSuccess(data as NewsModel)
                 } else {
-                    callback.onFail()
+                    callback.onFail(serviceResponse?.error)
                 }
             } catch (e: Exception) {
-                callback.onFail()
+                callback.onFail(Error(e))
             }
         }
     }

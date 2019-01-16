@@ -1,9 +1,8 @@
-package com.task.ui.component.news
+package com.task.ui.component.news.newsAdapter
 
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
-import com.task.App
 import com.task.R
 import com.task.data.remote.dto.NewsItem
 import com.task.ui.base.listeners.RecyclerItemListener
@@ -22,7 +21,7 @@ class NewsViewHolder(override val containerView: View) : RecyclerView.ViewHolder
 
         if (!newsItem.multimedia.isNullOrEmpty() && newsItem.multimedia!!.size > 3) {
             val url: String? = newsItem.multimedia!![3].url
-            Picasso.get().load(url).placeholder(App.getDrawableById(R.drawable.news)).into(iv_news_item_image)
+            Picasso.get().load(url).placeholder(R.drawable.news).error(R.drawable.news).into(iv_news_item_image)
         }
         rl_news_item.setOnClickListener { recyclerItemListener.onItemSelected(position) }
     }

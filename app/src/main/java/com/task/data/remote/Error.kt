@@ -1,10 +1,12 @@
 package com.task.data.remote
 
+import java.lang.Exception
+
 /**
  * Created by AhmedEltaher on 5/12/2016
  */
 
-class ServiceError {
+class Error {
     var description: String? = ""
     var code: Int = -1
 
@@ -14,9 +16,13 @@ class ServiceError {
         this.description = description
         this.code = code
     }
+    constructor(exception: Exception) {
+        this.description = exception.message
+        this.code = 500
+    }
 
     companion object {
-        const val NETWORK_ERROR = "Unknown ServiceError"
+        const val NETWORK_ERROR = "Unknown Error"
         private const val GROUP_200 = 2
         private const val GROUP_400 = 4
         private const val GROUP_500 = 5
@@ -28,5 +34,8 @@ class ServiceError {
             return errorCode / VALUE_100 == GROUP_400
         }
 
+        val ErrorsMap = mapOf(
+                Pair(-1, "Please check your internet connection")
+        )
     }
 }

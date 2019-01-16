@@ -1,6 +1,7 @@
 package com.task.data.remote
 
 import com.task.App
+import com.task.data.remote.Error.Companion.NETWORK_ERROR
 import com.task.data.remote.service.NewsService
 import com.task.utils.Constants
 import com.task.utils.Constants.INSTANCE.ERROR_UNDEFINED
@@ -17,22 +18,22 @@ import javax.inject.Inject
 class RemoteRepository @Inject
 constructor(private val serviceGenerator: ServiceGenerator) : RemoteSource {
 
-    override suspend fun requestNews(): ServiceResponse? {
+    override  fun requestNews(): Data? {
         return if (!isConnected(App.context)) {
-            ServiceResponse(ServiceError(code = -1, description = ServiceError.NETWORK_ERROR))
+            Data(Error(code = -1, description = NETWORK_ERROR))
         } else {
             val newsService = serviceGenerator.createService(NewsService::class.java, Constants.BASE_URL)
             processCall(newsService.fetchNews(), false)
         }
     }
 
-    private fun processCall(call: Call<*>, isVoid: Boolean): ServiceResponse {
+    private fun processCall(call: Call<*>, isVoid: Boolean): Data {
         if (!isConnected(App.context)) {
-            return ServiceResponse(ServiceError())
+            return Data(Error())
         }
         try {
             val response = call.execute()
-                    ?: return ServiceResponse(ServiceError(ServiceError.NETWORK_ERROR, ERROR_UNDEFINED))
+                    ?: return Data(Error(NETWORK_ERROR, ERROR_UNDEFINED))
             val responseCode = response.code()
             /**
              * isVoid is for APIs which reply only with code without any body, such as some Apis
@@ -40,13 +41,13 @@ constructor(private val serviceGenerator: ServiceGenerator) : RemoteSource {
              */
             return if (response.isSuccessful) {
                 val apiResponse: Any? = if (isVoid) null else response.body()
-                ServiceResponse(responseCode, apiResponse)
+                Data(responseCode, apiResponse)
             } else {
-                val serviceError = ServiceError(response.message(), responseCode)
-                ServiceResponse(serviceError)
+                val serviceError = Error(response.message(), responseCode)
+                Data(serviceError)
             }
         } catch (e: IOException) {
-            return ServiceResponse(ServiceError(ServiceError.NETWORK_ERROR, ERROR_UNDEFINED))
+            return Data(Error(NETWORK_ERROR, ERROR_UNDEFINED))
         }
 
     }

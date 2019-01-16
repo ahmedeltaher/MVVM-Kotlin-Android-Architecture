@@ -32,16 +32,16 @@ import static androidx.test.espresso.matcher.ViewMatchers.withText;
 import static org.hamcrest.Matchers.not;
 
 @RunWith(AndroidJUnit4.class)
-public class HomeActivityTest {
+public class NewsListActivityTest {
     private final String testSearchString = "the";
 
     @Rule
-    public ActivityTestRule<HomeActivity> mActivityTestRule = new ActivityTestRule<>(HomeActivity.class);
+    public ActivityTestRule<NewsListActivity> mActivityTestRule = new ActivityTestRule<>(NewsListActivity.class);
 
     private IdlingResource mIdlingResource;
 
     @Before
-    public void setup () {
+        public void setup () {
         mIdlingResource = mActivityTestRule.getActivity().getCountingIdlingResource();
         Espresso.registerIdlingResources(mIdlingResource);
     }

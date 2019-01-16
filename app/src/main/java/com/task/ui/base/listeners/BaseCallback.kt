@@ -1,5 +1,6 @@
 package com.task.ui.base.listeners
 
+import com.task.data.remote.Error
 import com.task.data.remote.dto.NewsModel
 
 /**
@@ -9,5 +10,5 @@ import com.task.data.remote.dto.NewsModel
 interface BaseCallback {
     fun onSuccess(newsModel: NewsModel)
 
-    fun onFail()
+    fun onFail(error : Error?)
 }

@@ -6,7 +6,7 @@ import android.content.Context
 import android.graphics.drawable.Drawable
 import android.os.Build
 import androidx.multidex.MultiDexApplication
-import com.task.di.AppInjector
+import com.task.di.DaggerAppComponent
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.HasActivityInjector
 import javax.inject.Inject
@@ -22,8 +22,8 @@ class App : MultiDexApplication(), HasActivityInjector {
 
     override fun onCreate() {
         super.onCreate()
-        AppInjector.init(this)
         context = applicationContext
+        DaggerAppComponent.builder().application(this).build().inject(this)
     }
 
     override fun activityInjector() = dispatchingAndroidInjector
@@ -32,11 +32,5 @@ class App : MultiDexApplication(), HasActivityInjector {
         @SuppressLint("StaticFieldLeak")
         lateinit var context: Context
 
-        fun getDrawableById(resId: Int): Drawable {
-            return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
-                context.resources.getDrawable(resId, context.theme)
-            else
-                context.resources.getDrawable(resId)
-        }
     }
 }

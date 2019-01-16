@@ -43,7 +43,7 @@ constructor(private val gson: Gson) {
         get() {
             val loggingInterceptor = HttpLoggingInterceptor()
             if (BuildConfig.DEBUG) {
-                loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.HEADERS).level = HttpLoggingInterceptor.Level.BODY
+                loggingInterceptor.apply { loggingInterceptor.level = HttpLoggingInterceptor.Level.HEADERS }.level = HttpLoggingInterceptor.Level.BODY
             }
             return loggingInterceptor
         }
