@@ -7,13 +7,11 @@ import android.view.View.VISIBLE
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.Toolbar
-import butterknife.BindView
-import butterknife.ButterKnife
-import butterknife.Unbinder
 import com.task.R
 import com.task.ui.base.listeners.ActionBarView
 import com.task.ui.base.listeners.BaseView
+import dagger.android.AndroidInjection
+import kotlinx.android.synthetic.main.toolbar.*
 
 /**
  * Created by AhmedEltaher on 5/12/2016
@@ -22,46 +20,18 @@ import com.task.ui.base.listeners.BaseView
 
 abstract class BaseActivity : AppCompatActivity(), BaseView, ActionBarView {
 
-    protected lateinit var presenter: Presenter<*>
-
-    @JvmField
-    @BindView(R.id.toolbar)
-    internal var toolbar: Toolbar? = null
-
-    @JvmField
-    @BindView(R.id.ic_toolbar_setting)
-    internal var icSettings: ImageView? = null
-
-    @JvmField
-    @BindView(R.id.ic_toolbar_refresh)
-    var icHome: ImageView? = null
-
-    private var unbinder: Unbinder? = null
+    protected lateinit var baseViewModel: BaseViewModel
 
     abstract val layoutId: Int
 
-    protected abstract fun initializeDagger()
-
-    protected abstract fun initializePresenter()
+    protected abstract fun initializeViewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        AndroidInjection.inject(this)
         super.onCreate(savedInstanceState)
         setContentView(layoutId)
-        unbinder = ButterKnife.bind(this)
-        initializeDagger()
-        initializePresenter()
         initializeToolbar()
-        presenter.initialize(intent.extras)
-    }
-
-    override fun onStart() {
-        super.onStart()
-        presenter.start()
-    }
-
-    override fun onStop() {
-        super.onStop()
-        presenter.finalizeView()
+        initializeViewModel()
     }
 
     private fun initializeToolbar() {
@@ -105,10 +75,5 @@ abstract class BaseActivity : AppCompatActivity(), BaseView, ActionBarView {
             android.R.id.home -> finish()
         }
         return super.onOptionsItemSelected(item)
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        unbinder?.unbind()
     }
 }

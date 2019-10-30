@@ -23,9 +23,7 @@ constructor(private val gson: Gson) {
     private val TIMEOUT_CONNECT = 30   //In seconds
     private val TIMEOUT_READ = 30   //In seconds
     private val CONTENT_TYPE = "Content-Type"
-    private val API_KEY = "apikey"
     private val CONTENT_TYPE_VALUE = "application/json"
-    private val API_KEY_VALUE = "0bac85d8945140b3bc8dde8aff16e329"
 
     private val okHttpBuilder: OkHttpClient.Builder = OkHttpClient.Builder()
     private var retrofit: Retrofit? = null
@@ -35,8 +33,7 @@ constructor(private val gson: Gson) {
 
         val request = original.newBuilder()
                 .header(CONTENT_TYPE, CONTENT_TYPE_VALUE)
-                .header(API_KEY, API_KEY_VALUE)
-                .method(original.method(), original.body())
+                .method(original.method, original.body)
                 .build()
 
         chain.proceed(request)
@@ -46,7 +43,7 @@ constructor(private val gson: Gson) {
         get() {
             val loggingInterceptor = HttpLoggingInterceptor()
             if (BuildConfig.DEBUG) {
-                loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.HEADERS).level = HttpLoggingInterceptor.Level.BODY
+                loggingInterceptor.apply { loggingInterceptor.level = HttpLoggingInterceptor.Level.HEADERS }.level = HttpLoggingInterceptor.Level.BODY
             }
             return loggingInterceptor
         }

@@ -1,7 +1,7 @@
 package com.task.ui.component.news
 
-import com.task.data.remote.ServiceError
-import com.task.data.remote.ServiceResponse
+import com.task.data.remote.Error
+import com.task.data.remote.Data
 import com.task.data.remote.dto.NewsItem
 import com.task.data.remote.dto.NewsModel
 import java.util.*
@@ -11,16 +11,6 @@ import java.util.*
  */
 
 class TestModelsGenerator {
-
-    val newsSuccessfulModel: ServiceResponse
-        get() {
-            val stupString = "this is temp string"
-            val newsModel = generateNewsModel(stupString)
-            return ServiceResponse(ServiceError.SUCCESS_CODE, newsModel)
-        }
-
-    val newsErrorModel: ServiceResponse
-        get() = ServiceResponse(ServiceError.ERROR_CODE, null)
 
     fun generateNewsModel(stup: String): NewsModel {
         val newsModel = NewsModel()

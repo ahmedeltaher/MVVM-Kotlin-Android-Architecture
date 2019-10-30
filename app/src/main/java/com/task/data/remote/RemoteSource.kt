@@ -5,5 +5,5 @@ package com.task.data.remote
  */
 
 internal interface RemoteSource {
-    suspend fun requestNews(): ServiceResponse?
+    fun requestNews(): Data?
 }

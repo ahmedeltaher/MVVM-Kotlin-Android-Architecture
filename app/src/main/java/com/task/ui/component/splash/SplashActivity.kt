@@ -1,10 +1,11 @@
 package com.task.ui.component.splash
 
+import android.os.Bundle
 import android.os.Handler
-import com.task.App
 import com.task.R
+import com.task.ui.ViewModelFactory
 import com.task.ui.base.BaseActivity
-import com.task.ui.component.news.HomeActivity
+import com.task.ui.component.news.NewsListActivity
 import com.task.utils.Constants
 import org.jetbrains.anko.startActivity
 import javax.inject.Inject
@@ -13,27 +14,28 @@ import javax.inject.Inject
  * Created by AhmedEltaher on 5/12/2016
  */
 
-class SplashActivity : BaseActivity(), SplashContract.View {
+class SplashActivity : BaseActivity(){
+    @Inject
+    lateinit var viewModelFactory: ViewModelFactory
 
     @Inject
-    lateinit var splashPresenter: SplashPresenter
+    lateinit var splashViewModel: SplashViewModel
 
     override val layoutId: Int
         get() = R.layout.splash_layout
 
-    override fun initializeDagger() {
-        val app = applicationContext as App
-        app.mainComponent?.inject(this@SplashActivity)
+    override fun initializeViewModel() {
+        splashViewModel = viewModelFactory.create(splashViewModel::class.java)
     }
 
-    override fun initializePresenter() {
-        splashPresenter.setView(this)
-        super.presenter = splashPresenter
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        navigateToMainScreen()
     }
 
-    override fun NavigateToMainScreen() {
+    private fun navigateToMainScreen() {
         Handler().postDelayed({
-            startActivity<HomeActivity>()
+            startActivity<NewsListActivity>()
             finish()
         }, Constants.SPLASH_DELAY.toLong())
     }

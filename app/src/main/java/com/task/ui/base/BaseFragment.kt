@@ -17,7 +17,7 @@ import com.task.ui.base.listeners.BaseView
 
 abstract class BaseFragment : Fragment(), BaseView {
 
-    protected var presenter: Presenter<*>? = null
+    protected var baseViewModel: BaseViewModel? = null
 
     abstract val layoutId: Int
 
@@ -36,25 +36,14 @@ abstract class BaseFragment : Fragment(), BaseView {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(layoutId, container, false)
-        presenter?.initialize(arguments)
         return view
-    }
-
-    override fun onStart() {
-        super.onStart()
-        presenter?.start()
-    }
-
-    override fun onStop() {
-        super.onStop()
-        presenter?.finalizeView()
     }
 
     fun setTitle(title: String) {
         val actionBar = (activity as BaseActivity).supportActionBar
         if (actionBar != null) {
             val titleTextView = activity?.findViewById<TextView>(R.id.txt_toolbar_title)
-            if (!title.isEmpty()) {
+            if (title.isNotEmpty()) {
                 titleTextView?.text = title
             }
         }
