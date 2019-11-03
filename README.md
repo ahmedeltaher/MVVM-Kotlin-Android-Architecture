@@ -1,12 +1,11 @@
-
+# **Model-View-ViewModel (ie MVVM)**
 [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-android--best--practices-brightgreen.svg?style=flat)](https://android-arsenal.com/details/3/4975)
  [![kotlin](https://img.shields.io/badge/Kotlin-1.3.xxx-brightgreen.svg)](https://kotlinlang.org/)
  [![coroutines](https://img.shields.io/badge/coroutines-asynchronous-red.svg)](https://kotlinlang.org/docs/reference/coroutines-overview.html) [![ANKO](https://img.shields.io/badge/Anko-commons-blue.svg)](https://github.com/Kotlin/anko) [![Mockk](https://img.shields.io/badge/Mockk-testing-yellow.svg)](https://mockk.io/)      [![Junit5](https://img.shields.io/badge/Junit5-testing-yellowgreen.svg)](https://junit.org/junit5/)   [![Espresso](https://img.shields.io/badge/Espresso-testing-lightgrey.svg)](https://developer.android.com/training/testing/espresso/)  [![Dagger 2](https://img.shields.io/badge/Dagger-2.xx-orange.svg)](https://google.github.io/dagger/)  [![Kotlin-Android-Extensions ](https://img.shields.io/badge/Kotlin--Android--Extensions-plugin-red.svg)](https://kotlinlang.org/docs/tutorials/android-plugin.html) [![MVVM ](https://img.shields.io/badge/Clean--Code-MVVM-brightgreen.svg)](https://github.com/googlesamples/android-architecture)
 ![MVP ](https://img.shields.io/badge/Clean--Code-MVP-brightgreen.svg)
 
-**What is MVVM?**
+[![android-kotlin](https://github.com/ahmedeltaher/Kotlin-MVVM-MVP/blob/kotlin-mvvm-dagger/readme-images/androkotlin.png "android-kotlin")](https://github.com/ahmedeltaher/Kotlin-MVVM-MVP/blob/kotlin-mvvm-dagger/readme-images/androkotlin.png "android-kotlin")[![mvvm](https://github.com/ahmedeltaher/Kotlin-MVVM-MVP/blob/kotlin-mvvm-dagger/readme-images/model-view-viewmodel-pattern.png "mvvm")](https://github.com/ahmedeltaher/Kotlin-MVVM-MVP/blob/kotlin-mvvm-dagger/readme-images/model-view-viewmodel-pattern.png "mvvm")
 Model-View-ViewModel (ie MVVM) is a template of a client application architecture, proposed by John Gossman as an alternative to MVC and MVP patterns when using Data Binding technology. Its concept is to separate data presentation logic from business logic by moving it into particular class for a clear distinction.
-![Android-Kotlin](https://github.com/ahmedeltaher/Kotlin-MVP/blob/master/readme-images/androkotlin.png) ![MVVM](https://github.com/ahmedeltaher/Kotlin-MVP/blob/kotlin-mvvm-dagger/readme-images/model-view-viewmodel-pattern.png)
 
 
 
