@@ -9,7 +9,7 @@ buildscript {
         maven { url "https://maven.google.com" }
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.5.1'
+        classpath 'com.android.tools.build:gradle:3.5.2'
         //ButterKnife
         classpath 'com.jakewharton:butterknife-gradle-plugin:10.2.0'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.3.50"
