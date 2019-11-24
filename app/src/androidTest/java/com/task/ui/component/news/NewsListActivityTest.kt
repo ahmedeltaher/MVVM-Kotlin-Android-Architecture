@@ -26,7 +26,7 @@ class NewsListActivityTest {
     private val testSearchString = "the"
     @get:Rule
     var mActivityTestRule = ActivityTestRule(NewsListActivity::class.java)
-    var mIdlingResource: IdlingResource? = null
+    private var mIdlingResource: IdlingResource? = null
     @Before
     fun setup() {
         mIdlingResource = mActivityTestRule.activity.countingIdlingResource
@@ -82,7 +82,7 @@ class NewsListActivityTest {
     @After
     fun unregisterIdlingResource() {
         if (mIdlingResource != null) {
-            IdlingRegistry.getInstance().unregister()
+            IdlingRegistry.getInstance().unregister(mIdlingResource)
         }
     }
 
