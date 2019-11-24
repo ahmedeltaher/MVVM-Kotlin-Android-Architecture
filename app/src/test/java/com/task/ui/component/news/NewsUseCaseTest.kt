@@ -8,20 +8,26 @@ import com.task.ui.base.listeners.BaseCallback
 import com.task.usecase.NewsUseCase
 import io.mockk.coEvery
 import io.mockk.coVerify
+import io.mockk.junit5.MockKExtension
 import io.mockk.mockk
 import io.mockk.spyk
-import kotlinx.coroutines.ExperimentalCoroutinesApi
-import org.junit.Rule
+import io.reactivex.Single
+import io.reactivex.SingleEmitter
+import io.reactivex.android.plugins.RxAndroidPlugins
+import io.reactivex.plugins.RxJavaPlugins
+import io.reactivex.schedulers.Schedulers
 import org.junit.jupiter.api.AfterEach
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertNotNull
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.extension.ExtendWith
 
 /**
  * Created by ahmedeltaher on 3/8/17.
  */
-@ExperimentalCoroutinesApi
+
+@ExtendWith(MockKExtension::class)
 class NewsUseCaseTest {
 
     private var dataRepository: DataRepository? = null
@@ -31,22 +37,19 @@ class NewsUseCaseTest {
     private val testModelsGenerator: TestModelsGenerator = TestModelsGenerator()
     private lateinit var newsModel: NewsModel
 
-    // Set the main coroutines dispatcher for unit testing.
-    @ExperimentalCoroutinesApi
-    @get:Rule
-    var mainCoroutineRule = MainCoroutineRule()
-
     @BeforeEach
     fun setUp() {
+        RxAndroidPlugins.setInitMainThreadSchedulerHandler { Schedulers.trampoline() }
+        RxJavaPlugins.setIoSchedulerHandler { Schedulers.trampoline() }
         dataRepository = DataRepository(mockk(), mockk())
-        newsUseCase = NewsUseCase(dataRepository!!, mainCoroutineRule.coroutineContext)
+        newsUseCase = NewsUseCase(dataRepository!!)
     }
 
     @Test
     fun testGetNewsSuccessful() {
         newsModel = testModelsGenerator.generateNewsModel("Stup")
         val serviceResponse = Data(code = Error.SUCCESS_CODE, data = newsModel)
-        coEvery { dataRepository?.requestNews() } returns serviceResponse
+        coEvery { dataRepository?.requestNews() } returns Single.create { e: SingleEmitter<Data> -> e.onSuccess(serviceResponse) }
         newsUseCase.getNews(callback!!)
         coVerify(exactly = 1, verifyBlock = { callback?.onSuccess(any()) })
         coVerify(exactly = 0, verifyBlock = { callback?.onFail(any()) })
@@ -54,11 +57,11 @@ class NewsUseCaseTest {
 
     @Test
     fun testGetNewsFail() {
-        val serviceResponse = Data(code = Error.ERROR_CODE, data = null)
-        coEvery { dataRepository?.requestNews() } returns serviceResponse
+        val error = Error()
+        coEvery { dataRepository?.requestNews() } returns Single.create { e: SingleEmitter<Data> -> e.onError(error) }
         newsUseCase.getNews(callback!!)
         coVerify(exactly = 0, verifyBlock = { callback?.onSuccess(any()) })
-        coVerify(exactly = 1, verifyBlock = { callback?.onFail(any()) })
+        coVerify(exactly = 1, verifyBlock = { callback?.onFail(any())})
     }
 
     @Test

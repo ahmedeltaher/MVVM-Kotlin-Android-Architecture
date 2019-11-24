@@ -10,7 +10,8 @@ class Error : Throwable {
 
     constructor()
 
-    constructor(description: String = ErrorsMap.getValue(NO_INTERNET_CONNECTION), code: Int = NO_INTERNET_CONNECTION) {
+    constructor(description: String = ErrorsMap[NO_INTERNET_CONNECTION]
+            ?: error(""), code: Int = NO_INTERNET_CONNECTION) {
         this.description = description
         this.code = code
     }
