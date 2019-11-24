@@ -6,12 +6,11 @@ import com.task.data.remote.Error
 import com.task.data.remote.dto.NewsItem
 import com.task.data.remote.dto.NewsModel
 import com.task.ui.base.listeners.BaseCallback
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
-import kotlin.coroutines.CoroutineContext
+import io.reactivex.observers.DisposableSingleObserver as DisposableSingleObserver1
 
 
 /**
@@ -19,21 +18,25 @@ import kotlin.coroutines.CoroutineContext
  */
 
 class NewsUseCase @Inject
-constructor(private val dataRepository: DataRepository, override val coroutineContext: CoroutineContext) : UseCase, CoroutineScope {
-
+constructor(private val dataRepository: DataRepository) : UseCase {
+    private var compositeDisposable: CompositeDisposable = CompositeDisposable()
     override fun getNews(callback: BaseCallback) {
-        launch {
-            try {
-                val serviceResponse: Data? = withContext(Dispatchers.IO) { dataRepository.requestNews() }
-                if (serviceResponse?.code == Error.SUCCESS_CODE) {
-                    val data = serviceResponse.data
-                    callback.onSuccess(data as NewsModel)
-                } else {
-                    callback.onFail(serviceResponse?.error)
-                }
-            } catch (e: Exception) {
-                callback.onFail(Error(e))
+        val disposableSingleObserver = object : DisposableSingleObserver1<Data>() {
+
+            override fun onSuccess(data: Data) {
+                callback.onSuccess(data.data as NewsModel)
             }
+
+            override fun onError(throwable: Throwable) {
+                callback.onFail(throwable as Error)
+            }
+        }
+        if (!compositeDisposable?.isDisposed) {
+            val newsModelSingle = dataRepository.requestNews()
+            val newsDisposable = newsModelSingle.subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribeWith<DisposableSingleObserver1<Data>>(disposableSingleObserver)
+            compositeDisposable.add(newsDisposable)
         }
     }
 
@@ -44,5 +47,11 @@ constructor(private val dataRepository: DataRepository, override val coroutineCo
             }
         }
         return null
+    }
+
+    fun unSubscribe() {
+        if (!compositeDisposable.isDisposed) {
+            compositeDisposable.dispose()
+        }
     }
 }

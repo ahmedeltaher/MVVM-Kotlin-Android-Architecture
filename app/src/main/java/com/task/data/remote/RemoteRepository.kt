@@ -6,6 +6,7 @@ import com.task.data.remote.service.NewsService
 import com.task.utils.Constants
 import com.task.utils.Constants.INSTANCE.ERROR_UNDEFINED
 import com.task.utils.Network.Utils.isConnected
+import io.reactivex.Single
 import retrofit2.Call
 import java.io.IOException
 import javax.inject.Inject
@@ -18,12 +19,15 @@ import javax.inject.Inject
 class RemoteRepository @Inject
 constructor(private val serviceGenerator: ServiceGenerator) : RemoteSource {
 
-    override  fun requestNews(): Data? {
-        return if (!isConnected(App.context)) {
-            Data(Error(code = -1, description = NETWORK_ERROR))
-        } else {
-            val newsService = serviceGenerator.createService(NewsService::class.java, Constants.BASE_URL)
-            processCall(newsService.fetchNews(), false)
+    override fun requestNews(): Single<Data> {
+        return Single.create {
+            if (!isConnected(App.context)) {
+                it.onError(Error(code = -1, description = NETWORK_ERROR))
+            } else {
+                val newsService = serviceGenerator.createService(NewsService::class.java, Constants.BASE_URL)
+                val data = processCall(newsService.fetchNews(), false)
+                it.onSuccess(data)
+            }
         }
     }
 

@@ -4,7 +4,7 @@ package com.task.data.remote
  * Created by AhmedEltaher on 5/12/2016
  */
 
-class Error {
+class Error : Throwable {
     var description: String? = ""
     var code: Int = NO_INTERNET_CONNECTION
 
