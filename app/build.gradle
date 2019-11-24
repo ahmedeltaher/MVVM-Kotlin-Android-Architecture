@@ -70,8 +70,8 @@ dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
 
     //kotlin
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.3.50"
-    implementation "org.jetbrains.kotlin:kotlin-reflect:1.3.50"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.3.60"
+    implementation "org.jetbrains.kotlin:kotlin-reflect:1.3.60"
 
     /**-------------------testing libs------------------------------------------**/
 
@@ -107,20 +107,21 @@ dependencies {
 
     //android support & recyclerview
     implementation 'com.android.support.constraint:constraint-layout:1.1.3'
-    implementation 'androidx.recyclerview:recyclerview:1.0.0'
+    implementation 'androidx.recyclerview:recyclerview:1.1.0'
     implementation 'androidx.appcompat:appcompat:1.1.0'
-    implementation 'com.google.android.material:material:1.2.0-alpha01'
+    implementation 'com.google.android.material:material:1.2.0-alpha02'
 
     //Dagger
     implementation 'com.google.dagger:dagger:2.25.2'
     kapt 'com.google.dagger:dagger-compiler:2.25.2'
+    implementation "com.google.dagger:dagger-android:2.22.1"
+    implementation "com.google.dagger:dagger-android-support:2.22.1"
+    kapt 'com.google.dagger:dagger-android-processor:2.22.1'
 
     //butterknife
     implementation 'com.jakewharton:butterknife:10.2.0'
     kapt 'com.jakewharton:butterknife-compiler:10.2.0'
-    implementation "com.google.dagger:dagger-android:2.22.1"
-    implementation "com.google.dagger:dagger-android-support:2.22.1"
-    kapt 'com.google.dagger:dagger-android-processor:2.22.1'
+
 
 
     //Logging
