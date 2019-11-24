@@ -1,6 +1,5 @@
 package com.task.usecase
 
-import androidx.lifecycle.MutableLiveData
 import com.task.data.DataRepository
 import com.task.data.remote.Data
 import com.task.data.remote.Error
