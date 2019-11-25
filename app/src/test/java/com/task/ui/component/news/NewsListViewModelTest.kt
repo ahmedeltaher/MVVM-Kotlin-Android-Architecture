@@ -4,16 +4,17 @@ import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.task.data.remote.dto.NewsModel
 import com.task.ui.base.listeners.BaseCallback
 import com.task.usecase.NewsUseCase
-import io.mockk.CapturingSlot
-import io.mockk.every
-import io.mockk.mockk
-import io.mockk.slot
+import io.mockk.*
+import io.mockk.junit5.MockKExtension
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.test.setMain
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
+import org.junit.jupiter.api.extension.ExtendWith
 
-@ExperimentalCoroutinesApi
+@ExtendWith(MockKExtension::class)
 class NewsListViewModelTest {
     // Subject under test
     private lateinit var newsListViewModel: NewsListViewModel

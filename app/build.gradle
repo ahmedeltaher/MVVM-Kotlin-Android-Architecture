@@ -40,6 +40,7 @@ android {
     }
     defaultConfig {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunnerArguments clearPackageData: 'true'
     }
     kotlinOptions {
         jvmTarget = JavaVersion.VERSION_1_8
@@ -72,30 +73,20 @@ dependencies {
 
     /**-------------------testing libs------------------------------------------**/
     //UI Testing , AndroidJUnitRunner and JUnit Rules &Espresso dependencies
-
     //junit 5
     testImplementation 'org.junit.jupiter:junit-jupiter-engine:5.5.2'
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.5.2'
     testImplementation 'org.junit.platform:junit-platform-runner:1.5.2'
-
-    //noinspection GradleCompatible
+    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+    androidTestImplementation "org.assertj:assertj-core:3.12.2"
+    androidTestImplementation "androidx.arch.core:core-testing:2.1.0"
+    androidTestImplementation ('androidx.test.espresso:espresso-core:3.2.0',{
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
     implementation 'androidx.test:rules:1.2.0'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
-    androidTestImplementation 'androidx.test.espresso:espresso-contrib:3.2.0'
-    androidTestImplementation 'androidx.test.espresso:espresso-intents:3.2.0'
-    androidTestImplementation 'androidx.test.espresso:espresso-accessibility:3.2.0'
-    androidTestImplementation 'androidx.test.espresso:espresso-web:3.2.0'
-    androidTestImplementation 'androidx.test.espresso.idling:idling-concurrent:3.2.0'
-    androidTestImplementation 'androidx.test.espresso:espresso-idling-resource:3.2.0'
-    implementation 'androidx.test.espresso:espresso-core:3.2.0'
-    implementation 'androidx.test.espresso:espresso-contrib:3.2.0'
-    implementation 'androidx.test.espresso:espresso-intents:3.2.0'
-    implementation 'androidx.test.espresso:espresso-accessibility:3.2.0'
-    implementation 'androidx.test.espresso:espresso-web:3.2.0'
-    implementation 'androidx.test.espresso.idling:idling-concurrent:3.2.0'
     implementation 'androidx.test.espresso:espresso-idling-resource:3.2.0'
+    implementation 'androidx.test.espresso:espresso-contrib:3.2.0'
     implementation 'androidx.arch.core:core-testing:2.1.0'
-    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.2'
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-test:1.2.1'
 
     /**-------------------------------------------------------------**/

@@ -39,7 +39,7 @@ class Error {
         }
 
         val ErrorsMap = mapOf(
-                Pair(NO_INTERNET_CONNECTION, context.getString(R.string.no_internet))
+                Pair(NO_INTERNET_CONNECTION, "Please check your internet connection")
         )
     }
 }
