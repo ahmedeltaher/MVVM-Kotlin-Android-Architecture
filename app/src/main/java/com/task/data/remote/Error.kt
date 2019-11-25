@@ -1,6 +1,7 @@
 package com.task.data.remote
 
-import java.lang.Exception
+import com.task.App.Companion.context
+import com.task.R
 
 /**
  * Created by AhmedEltaher on 5/12/2016
@@ -8,17 +9,18 @@ import java.lang.Exception
 
 class Error {
     var description: String? = ""
-    var code: Int = -1
+    var code: Int = NO_INTERNET_CONNECTION
 
     constructor()
 
-    constructor(description: String, code: Int) {
+    constructor(description: String = ErrorsMap.getValue(NO_INTERNET_CONNECTION), code: Int = NO_INTERNET_CONNECTION) {
         this.description = description
         this.code = code
     }
+
     constructor(exception: Exception) {
         this.description = exception.message
-        this.code = 500
+        this.code = INTERNAL_SERVER_ERROR
     }
 
     companion object {
@@ -26,6 +28,8 @@ class Error {
         private const val GROUP_200 = 2
         private const val GROUP_400 = 4
         private const val GROUP_500 = 5
+        private const val INTERNAL_SERVER_ERROR = 500
+        private const val NO_INTERNET_CONNECTION = -1
         private const val VALUE_100 = 100
         const val SUCCESS_CODE = 200
         const val ERROR_CODE = 400
@@ -35,7 +39,7 @@ class Error {
         }
 
         val ErrorsMap = mapOf(
-                Pair(-1, "Please check your internet connection")
+                Pair(NO_INTERNET_CONNECTION, context.getString(R.string.no_internet))
         )
     }
 }

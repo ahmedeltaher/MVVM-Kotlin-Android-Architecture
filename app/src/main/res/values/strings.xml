@@ -13,4 +13,5 @@
     </string>
     <string name="news_title_preview">this is the news title</string>
     <string name="news">News</string>
+    <string name="no_internet">Please check your internet connection</string>
 </resources>

@@ -1,10 +1,7 @@
 package com.task
 
-import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Context
-import android.graphics.drawable.Drawable
-import android.os.Build
 import androidx.multidex.MultiDexApplication
 import com.task.di.DaggerAppComponent
 import dagger.android.DispatchingAndroidInjector
@@ -29,7 +26,6 @@ class App : MultiDexApplication(), HasActivityInjector {
     override fun activityInjector() = dispatchingAndroidInjector
 
     companion object {
-        @SuppressLint("StaticFieldLeak")
         lateinit var context: Context
 
     }
