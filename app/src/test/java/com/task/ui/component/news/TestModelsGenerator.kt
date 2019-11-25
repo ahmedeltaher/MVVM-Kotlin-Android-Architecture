@@ -1,7 +1,5 @@
 package com.task.ui.component.news
 
-import com.task.data.remote.Error
-import com.task.data.remote.Data
 import com.task.data.remote.dto.NewsItem
 import com.task.data.remote.dto.NewsModel
 import java.util.*
