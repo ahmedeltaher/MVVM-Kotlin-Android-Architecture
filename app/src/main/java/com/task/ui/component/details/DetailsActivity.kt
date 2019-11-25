@@ -41,7 +41,7 @@ class DetailsActivity : BaseActivity(){
         viewModel = viewModelFactory.create(viewModel::class.java)
     }
 
-    fun initializeView(newsItem: NewsItem) {
+    private fun initializeView(newsItem: NewsItem) {
         tv_title?.text = newsItem.title ?: ""
         tv_description?.text = newsItem.abstract ?: ""
         if (!newsItem.multimedia.isNullOrEmpty()) {

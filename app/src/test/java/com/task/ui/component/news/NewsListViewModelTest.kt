@@ -4,11 +4,12 @@ import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.task.data.remote.dto.NewsModel
 import com.task.ui.base.listeners.BaseCallback
 import com.task.usecase.NewsUseCase
-import io.mockk.*
+import io.mockk.CapturingSlot
+import io.mockk.every
 import io.mockk.junit5.MockKExtension
-import kotlinx.coroutines.Dispatchers
+import io.mockk.mockk
+import io.mockk.slot
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.test.setMain
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test

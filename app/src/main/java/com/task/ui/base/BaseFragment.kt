@@ -21,8 +21,6 @@ abstract class BaseFragment : Fragment(), BaseView {
 
     abstract val layoutId: Int
 
-    private val toolbarTitleKey: String? = null
-
     protected abstract fun initializeDagger()
 
     protected abstract fun initializePresenter()
@@ -35,8 +33,7 @@ abstract class BaseFragment : Fragment(), BaseView {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-        val view = inflater.inflate(layoutId, container, false)
-        return view
+        return inflater.inflate(layoutId, container, false)
     }
 
     fun setTitle(title: String) {

@@ -1,8 +1,5 @@
 package com.task.data.remote
 
-import com.task.App.Companion.context
-import com.task.R
-
 /**
  * Created by AhmedEltaher on 5/12/2016
  */
