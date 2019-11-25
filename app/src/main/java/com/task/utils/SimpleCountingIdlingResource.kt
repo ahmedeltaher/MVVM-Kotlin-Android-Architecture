@@ -18,7 +18,6 @@ package com.task.utils
 
 
 import androidx.test.espresso.IdlingResource
-import androidx.test.espresso.intent.Checks.checkNotNull
 import java.util.concurrent.atomic.AtomicInteger
 
 
@@ -40,7 +39,7 @@ class SimpleCountingIdlingResource
  */
 (resourceName: String) : IdlingResource {
 
-    private val mResourceName: String = checkNotNull(resourceName)
+    private val mResourceName: String = resourceName
 
     private val counter = AtomicInteger(0)
 

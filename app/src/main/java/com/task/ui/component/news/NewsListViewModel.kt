@@ -16,7 +16,7 @@ import javax.inject.Inject
 class NewsListViewModel @Inject
 constructor(newsDataUseCase: NewsUseCase) : BaseViewModel() {
 
-    var newsUseCase: NewsUseCase = newsDataUseCase
+    private var newsUseCase: NewsUseCase = newsDataUseCase
     var newsModel: MutableLiveData<NewsModel> = MutableLiveData()
     var newsSearchFound: MutableLiveData<NewsItem> = MutableLiveData()
     var noSearchFound: MutableLiveData<Boolean> = MutableLiveData()
@@ -27,10 +27,10 @@ constructor(newsDataUseCase: NewsUseCase) : BaseViewModel() {
         newsUseCase.getNews(callback)
     }
 
-    val callback = object : BaseCallback {
+    private val callback = object : BaseCallback {
 
-        override fun onSuccess(newsModelData: NewsModel) {
-            newsModel.postValue(newsModelData)
+        override fun onSuccess(data: NewsModel) {
+            newsModel.postValue(data)
         }
 
         override fun onFail(error: Error?) {

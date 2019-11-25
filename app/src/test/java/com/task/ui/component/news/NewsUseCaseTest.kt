@@ -10,7 +10,6 @@ import io.mockk.coEvery
 import io.mockk.coVerify
 import io.mockk.mockk
 import io.mockk.spyk
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import org.junit.Rule
 import org.junit.jupiter.api.AfterEach
@@ -22,7 +21,6 @@ import org.junit.jupiter.api.Test
 /**
  * Created by ahmedeltaher on 3/8/17.
  */
-
 @ExperimentalCoroutinesApi
 class NewsUseCaseTest {
 
@@ -41,26 +39,26 @@ class NewsUseCaseTest {
     @BeforeEach
     fun setUp() {
         dataRepository = DataRepository(mockk(), mockk())
-        newsUseCase = NewsUseCase(dataRepository!!,mainCoroutineRule.coroutineContext)
+        newsUseCase = NewsUseCase(dataRepository!!, mainCoroutineRule.coroutineContext)
     }
 
     @Test
     fun testGetNewsSuccessful() {
-            newsModel = testModelsGenerator.generateNewsModel("Stup")
-            val serviceResponse = Data(code = Error.SUCCESS_CODE, data = newsModel)
-            coEvery { dataRepository?.requestNews() } returns serviceResponse
-            newsUseCase.getNews(callback!!)
-            coVerify(exactly = 1, verifyBlock = { callback?.onSuccess(any()) })
-            coVerify(exactly = 0, verifyBlock = { callback?.onFail(any()) })
+        newsModel = testModelsGenerator.generateNewsModel("Stup")
+        val serviceResponse = Data(code = Error.SUCCESS_CODE, data = newsModel)
+        coEvery { dataRepository?.requestNews() } returns serviceResponse
+        newsUseCase.getNews(callback!!)
+        coVerify(exactly = 1, verifyBlock = { callback?.onSuccess(any()) })
+        coVerify(exactly = 0, verifyBlock = { callback?.onFail(any()) })
     }
 
     @Test
     fun testGetNewsFail() {
-            val serviceResponse = Data(code = Error.ERROR_CODE, data = null)
-            coEvery { dataRepository?.requestNews() } returns serviceResponse
-            newsUseCase.getNews(callback!!)
-            coVerify(exactly = 0, verifyBlock = { callback?.onSuccess(any()) })
-            coVerify(exactly = 1, verifyBlock = { callback?.onFail(any())})
+        val serviceResponse = Data(code = Error.ERROR_CODE, data = null)
+        coEvery { dataRepository?.requestNews() } returns serviceResponse
+        newsUseCase.getNews(callback!!)
+        coVerify(exactly = 0, verifyBlock = { callback?.onSuccess(any()) })
+        coVerify(exactly = 1, verifyBlock = { callback?.onFail(any()) })
     }
 
     @Test
