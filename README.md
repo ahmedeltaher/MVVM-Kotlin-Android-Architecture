@@ -7,7 +7,21 @@
 ![MVVM3](https://user-images.githubusercontent.com/1812129/68319232-446cf900-00be-11ea-92cf-cad817b2af2c.png)
 
 Model-View-ViewModel (ie MVVM) is a template of a client application architecture, proposed by John Gossman as an alternative to MVC and MVP patterns when using Data Binding technology. Its concept is to separate data presentation logic from business logic by moving it into particular class for a clear distinction.  
-You can also check [**MVP**](https://github.com/ahmedeltaher/Android-MVP-Architecture) 
+You can also check [**MVP**](https://github.com/ahmedeltaher/Android-MVP-Architecture)
+
+**Why Promoting MVVM VS MVP:**
+- ViewModel has Built in LifeCycleOwerness, on the other hand Presenter not, and you have to take this responsiblty in your side.
+- ViewModle doesn't have a refrence for View, on the other hade Presenter still hold a refrnce for view, even if you made it as weakrefrence.
+- ViewModel survive configuration changes, while it is your own responsiblities to servive the configuration changes in case of Presenter. (Saving and restoring the UI state)
+
+**MVVM Best Pratice:**
+- Avoid references to Views in ViewModels.
+- Instead of pushing data to the UI, let the UI observe changes to it.
+- Distribute responsibilities, add a domain layer if needed.
+- Add a data repository as the single-point entry to your data.
+- Expose information about the state of your data using a wrapper or another LiveData.
+- Consider edge cases, leaks and how long-running operations can affect the instances in your architecture.
+- Don’t put logic in the ViewModel that is critical to saving clean state or related to data. Any call you make from a ViewModel can be the last one.
   
   
 **What is Coroutines ?**  
@@ -69,8 +83,11 @@ They're different tools with different strengths. Like a tank and a cannon, they
   
  - Make Retrofit Calls.  
   
->     @GET("topstories/v2/home.json")  
->     fun fetchNews(): Call<NewsModel>  
+
+```kotlin
+     @GET("topstories/v2/home.json")  
+     fun fetchNews(): Call<NewsModel>
+``` 
   
   
  - With ```async``` we create new coroutine and returns its future result as an implementation of [Deferred].  
@@ -83,21 +100,22 @@ They're different tools with different strengths. Like a tank and a cannon, they
   
   
   
->     launch {  
->       try {  
->             val serviceResponse: Data? = withContext(Dispatchers.IO) { dataRepository.requestNews()  
->            }  
->       if (serviceResponse?.code == Error.SUCCESS_CODE) {  
->                 val data = serviceResponse.data  
->                 callback.onSuccess(data as NewsModel)  
->             } else {  
->                 callback.onFail(serviceResponse?.error)  
->             }  
->         } catch (e: Exception) {  
->                 callback.onFail(Error(e))  
->         }  
->     }  
-  
+```kotlin
+     launch {  
+       try {  
+             val serviceResponse: Data? = withContext(Dispatchers.IO) { dataRepository.requestNews()  
+            }  
+       if (serviceResponse?.code == Error.SUCCESS_CODE) {  
+                 val data = serviceResponse.data  
+                 callback.onSuccess(data as NewsModel)  
+             } else {  
+                 callback.onFail(serviceResponse?.error)  
+             }  
+         } catch (e: Exception) {  
+                 callback.onFail(Error(e))  
+         }  
+     }  
+  ```
   
   
   
