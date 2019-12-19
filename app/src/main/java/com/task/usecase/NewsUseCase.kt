@@ -1,8 +1,9 @@
 package com.task.usecase
 
-import com.task.data.DataRepository
+import com.task.data.DataSource
 import com.task.data.remote.Data
 import com.task.data.remote.Error
+import com.task.data.remote.Error.Companion.INTERNAL_SERVER_ERROR
 import com.task.data.remote.dto.NewsItem
 import com.task.data.remote.dto.NewsModel
 import com.task.ui.base.listeners.BaseCallback
@@ -19,7 +20,7 @@ import kotlin.coroutines.CoroutineContext
  */
 
 class NewsUseCase @Inject
-constructor(private val dataRepository: DataRepository, override val coroutineContext: CoroutineContext) : UseCase, CoroutineScope {
+constructor(private val dataRepository: DataSource, override val coroutineContext: CoroutineContext) : UseCase, CoroutineScope {
 
     override fun getNews(callback: BaseCallback) {
         launch {
@@ -29,7 +30,7 @@ constructor(private val dataRepository: DataRepository, override val coroutineCo
                     val data = serviceResponse.data
                     callback.onSuccess(data as NewsModel)
                 } else {
-                    callback.onFail(serviceResponse?.error)
+                    callback.onFail(serviceResponse?.error ?: Error(code = INTERNAL_SERVER_ERROR))
                 }
             } catch (e: Exception) {
                 callback.onFail(Error(e))
@@ -39,7 +40,7 @@ constructor(private val dataRepository: DataRepository, override val coroutineCo
 
     override fun searchByTitle(news: List<NewsItem>, keyWord: String): NewsItem? {
         for (newsItem in news) {
-            if (!newsItem.title.isNullOrEmpty() && newsItem.title!!.toLowerCase().contains(keyWord.toLowerCase())) {
+            if (newsItem.title.isNotEmpty() && newsItem.title.toLowerCase().contains(keyWord.toLowerCase())) {
                 return newsItem
             }
         }

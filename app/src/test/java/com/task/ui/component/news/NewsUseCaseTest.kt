@@ -44,7 +44,7 @@ class NewsUseCaseTest {
 
     @Test
     fun testGetNewsSuccessful() {
-        newsModel = testModelsGenerator.generateNewsModel("Stup")
+        newsModel = testModelsGenerator.generateNewsModel()
         val serviceResponse = Data(code = Error.SUCCESS_CODE, data = newsModel)
         coEvery { dataRepository?.requestNews() } returns serviceResponse
         newsUseCase.getNews(callback!!)
@@ -63,17 +63,15 @@ class NewsUseCaseTest {
 
     @Test
     fun searchByTitleSuccess() {
-        val stup = "this is news Title"
-        val newsItem = newsUseCase.searchByTitle(testModelsGenerator.generateNewsModel(stup).newsItems!!, stup)
+        val newsItem = newsUseCase.searchByTitle(testModelsGenerator.generateNewsModel().newsItems, testModelsGenerator.getStupSearchTitle())
         assertNotNull(newsItem)
-        assertEquals(newsItem?.title, stup)
+        assertEquals(newsItem?.title, testModelsGenerator.getStupSearchTitle())
     }
 
     @Test
     fun searchByTitleFail() {
-        val stupTitle = "this is news Title"
-        val stupSearch = "search title"
-        val newsItem = newsUseCase.searchByTitle(testModelsGenerator.generateNewsModel(stupTitle).newsItems!!, stupSearch)
+        val stup = "&%$##"
+        val newsItem = newsUseCase.searchByTitle(testModelsGenerator.generateNewsModel().newsItems, stup)
         assertEquals(newsItem, null)
     }
 

@@ -1,7 +1,9 @@
 package com.task.ui.component.news
 
+import com.google.gson.Gson
 import com.task.data.remote.dto.NewsItem
 import com.task.data.remote.dto.NewsModel
+import java.io.File
 import java.util.*
 
 /**
@@ -9,39 +11,44 @@ import java.util.*
  */
 
 class TestModelsGenerator {
+    private var newsModel: NewsModel
 
-    fun generateNewsModel(stup: String): NewsModel {
-        val newsModel = NewsModel()
-        newsModel.copyright = stup
-        newsModel.lastUpdated = stup
-        newsModel.section = stup
-        newsModel.status = stup
-        newsModel.numResults = 25L
-        val newsItems = ArrayList<NewsItem>()
-        for (i in 0..24) {
-            newsItems.add(generateNewsItemModel(stup))
-        }
-        newsModel.newsItems = newsItems
+    init {
+        val gson = Gson()
+        val jsonString = getJson("NewsApiResponse.json")
+        newsModel = gson.fromJson(jsonString, NewsModel::class.java)
+    }
+
+    fun generateNewsModel(): NewsModel {
         return newsModel
     }
 
-    fun generateNewsModelWithEmptyList(stup: String): NewsModel {
-        val newsModel = NewsModel()
-        newsModel.copyright = stup
-        newsModel.lastUpdated = stup
-        newsModel.section = stup
-        newsModel.status = stup
-        newsModel.numResults = 25L
-        val newsItems = ArrayList<NewsItem>()
-        newsModel.newsItems = newsItems
+    fun generateNewsModelWithEmptyList(): NewsModel {
+        newsModel.newsItems = ArrayList()
         return newsModel
     }
 
-    fun generateNewsItemModel(stup: String): NewsItem {
-        val newsItem = NewsItem()
-        newsItem.title = stup
-        newsItem.abstract = stup
-        newsItem.url = stup
-        return newsItem
+    fun generateNewsItemModel(): NewsItem {
+        return newsModel.newsItems[0]
+    }
+
+    fun getStupSearchTitle(): String {
+        return newsModel.newsItems[0].title
+    }
+
+
+    /**
+     * Helper function which will load JSON from
+     * the path specified
+     *
+     * @param path : Path of JSON file
+     * @return json : JSON from file at given path
+     */
+
+    private fun getJson(path: String): String {
+        // Load the JSON response
+        val uri = this.javaClass.classLoader?.getResource(path)
+        val file = File(uri?.path)
+        return String(file.readBytes())
     }
 }

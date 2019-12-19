@@ -17,7 +17,7 @@
 package com.task.di
 
 import android.app.Application
-import com.task.App
+import com.task.AppTest
 import dagger.BindsInstance
 import dagger.Component
 import dagger.android.AndroidInjectionModule
@@ -25,22 +25,19 @@ import javax.inject.Singleton
 
 @Singleton
 @Component(
-        modules = [
+        modules = [TestDataModule::class,
             AndroidInjectionModule::class,
             AppModule::class,
-            DataModule::class,
             ActivityModuleBuilder::class
-            , ViewModelModule::class
-        ]
-)
-interface AppComponent {
+            , ViewModelModule::class])
+interface TestAppComponent : AppComponent {
     @Component.Builder
     interface Builder {
         @BindsInstance
         fun application(application: Application): Builder
 
-        fun build(): AppComponent
+        fun build(): TestAppComponent
     }
 
-    fun inject(app: App)
+    fun inject(app: AppTest)
 }

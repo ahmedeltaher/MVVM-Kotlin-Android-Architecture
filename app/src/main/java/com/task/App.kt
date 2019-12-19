@@ -12,7 +12,7 @@ import javax.inject.Inject
  * Created by AhmedEltaher on 5/12/2016
  */
 
-class App : MultiDexApplication(), HasActivityInjector {
+open class App : MultiDexApplication(), HasActivityInjector {
 
     @Inject
     lateinit var dispatchingAndroidInjector: DispatchingAndroidInjector<Activity>
@@ -20,6 +20,10 @@ class App : MultiDexApplication(), HasActivityInjector {
     override fun onCreate() {
         super.onCreate()
         context = applicationContext
+        initDagger()
+    }
+
+    open fun initDagger() {
         DaggerAppComponent.builder().application(this).build().inject(this)
     }
 
