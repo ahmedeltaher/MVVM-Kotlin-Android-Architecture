@@ -25,8 +25,8 @@ class Error {
         private const val GROUP_200 = 2
         private const val GROUP_400 = 4
         private const val GROUP_500 = 5
-        private const val INTERNAL_SERVER_ERROR = 500
-        private const val NO_INTERNET_CONNECTION = -1
+        const val INTERNAL_SERVER_ERROR = 500
+        const val NO_INTERNET_CONNECTION = -1
         private const val VALUE_100 = 100
         const val SUCCESS_CODE = 200
         const val ERROR_CODE = 400

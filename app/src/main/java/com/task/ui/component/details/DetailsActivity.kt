@@ -42,10 +42,10 @@ class DetailsActivity : BaseActivity(){
     }
 
     private fun initializeView(newsItem: NewsItem) {
-        tv_title?.text = newsItem.title ?: ""
-        tv_description?.text = newsItem.abstract ?: ""
+        tv_title?.text = newsItem.title
+        tv_description?.text = newsItem.abstractInfo
         if (!newsItem.multimedia.isNullOrEmpty()) {
-            Picasso.get().load(newsItem.multimedia!!.last().url).placeholder(R.drawable.news)
+            Picasso.get().load(newsItem.multimedia.last().url).placeholder(R.drawable.news)
                     .into(iv_news_main_Image)
         }
     }

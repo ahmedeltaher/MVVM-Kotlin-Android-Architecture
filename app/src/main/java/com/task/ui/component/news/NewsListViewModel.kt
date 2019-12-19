@@ -29,12 +29,12 @@ constructor(newsDataUseCase: NewsUseCase) : BaseViewModel() {
 
     private val callback = object : BaseCallback {
 
-        override fun onSuccess(data: NewsModel) {
-            newsModel.postValue(data)
+        override fun onSuccess(data: Any) {
+            newsModel.postValue(data as NewsModel)
         }
 
-        override fun onFail(error: Error?) {
-            if (error?.code == -1) {
+        override fun onFail(error: Error) {
+            if (error.code == Error.NO_INTERNET_CONNECTION) {
                 noInterNetConnection.postValue(true)
             } else {
                 showError.postValue(error)
@@ -43,7 +43,7 @@ constructor(newsDataUseCase: NewsUseCase) : BaseViewModel() {
         }
     }
 
-     fun onSearchClick(newsTitle: String) {
+    fun onSearchClick(newsTitle: String) {
         val news = newsModel.value?.newsItems
         if (newsTitle.isNotEmpty() && !news.isNullOrEmpty()) {
             newsSearchFound.value = newsUseCase.searchByTitle(news, newsTitle)
@@ -51,5 +51,10 @@ constructor(newsDataUseCase: NewsUseCase) : BaseViewModel() {
         } else {
             noSearchFound.value = true
         }
+    }
+
+    override fun onCleared() {
+        super.onCleared()
+
     }
 }

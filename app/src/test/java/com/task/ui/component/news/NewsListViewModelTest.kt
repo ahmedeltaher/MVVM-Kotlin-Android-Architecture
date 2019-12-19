@@ -32,24 +32,25 @@ class NewsListViewModelTest {
     @get:Rule
     var instantExecutorRule = InstantTaskExecutorRule()
 
-    private val newsTitle = "this is test"
+    private lateinit var newsTitle: String
     private val testModelsGenerator: TestModelsGenerator = TestModelsGenerator()
 
     @Before
     fun setUp() {
         // Create class under test
         // We initialise the repository with no tasks
+        newsTitle = testModelsGenerator.getStupSearchTitle()
         newsListViewModel = NewsListViewModel(newsUseCase)
     }
 
     @Test
     fun getNewsList() {
         // Let's do a synchronous answer for the callback
-        val newsModeltest = testModelsGenerator.generateNewsModel(newsTitle)
+        val newsModeltest = testModelsGenerator.generateNewsModel()
         //1- Mock - double test
         (newsListViewModel).apply {
             newsModel.value = newsModeltest
-            newsSearchFound.value = testModelsGenerator.generateNewsItemModel(newsTitle)
+            newsSearchFound.value = testModelsGenerator.generateNewsItemModel()
             noSearchFound.value = false
         }
         val callbackCapture: CapturingSlot<BaseCallback> = slot()
@@ -63,13 +64,13 @@ class NewsListViewModelTest {
 
     @Test
     fun testSearchSuccess() {
-        val newsItem = testModelsGenerator.generateNewsItemModel(newsTitle)
-        val newsModel = testModelsGenerator.generateNewsModel(newsTitle)
+        val newsItem = testModelsGenerator.generateNewsItemModel()
+        val newsModel = testModelsGenerator.generateNewsModel()
         //1- Mock
         val callbackCapture: CapturingSlot<BaseCallback> = slot()
         every { newsUseCase.getNews(callback = capture(callbackCapture)) } answers
                 { callbackCapture.captured.onSuccess(newsModel) }
-        every { newsUseCase.searchByTitle(newsModel.newsItems!!, newsTitle) } returns newsItem
+        every { newsUseCase.searchByTitle(newsModel.newsItems, newsTitle) } returns newsItem
         //2- Call
         newsListViewModel.getNews()
         newsListViewModel.onSearchClick(newsTitle)
@@ -80,12 +81,12 @@ class NewsListViewModelTest {
 
     @Test
     fun testSearchFailedWhileEmptyList() {
-        val newsModelWithEmptyList: NewsModel = testModelsGenerator.generateNewsModelWithEmptyList("stup")
+        val newsModelWithEmptyList: NewsModel = testModelsGenerator.generateNewsModelWithEmptyList()
         //1- Mock
         val callbackCapture: CapturingSlot<BaseCallback> = slot()
         every { newsUseCase.getNews(callback = capture(callbackCapture)) } answers
                 { callbackCapture.captured.onSuccess(newsModelWithEmptyList) }
-        every { newsUseCase.searchByTitle(newsModelWithEmptyList.newsItems!!, newsTitle) } returns null
+        every { newsUseCase.searchByTitle(newsModelWithEmptyList.newsItems, newsTitle) } returns null
         //2- Call
         newsListViewModel.getNews()
         newsListViewModel.onSearchClick(newsTitle)
@@ -96,12 +97,12 @@ class NewsListViewModelTest {
 
     @Test
     fun testSearchFailedWhenNothingMatches() {
-        val newsModel = testModelsGenerator.generateNewsModel(newsTitle)
+        val newsModel = testModelsGenerator.generateNewsModel()
         //1- Mock
         val callbackCapture: CapturingSlot<BaseCallback> = slot()
         every { newsUseCase.getNews(callback = capture(callbackCapture)) } answers
                 { callbackCapture.captured.onSuccess(newsModel) }
-        every { newsUseCase.searchByTitle(newsModel.newsItems!!, "*") } returns null
+        every { newsUseCase.searchByTitle(newsModel.newsItems, "*") } returns null
         //2- Call
         newsListViewModel.getNews()
         newsListViewModel.onSearchClick("*")
