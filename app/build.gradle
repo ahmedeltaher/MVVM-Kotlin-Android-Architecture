@@ -36,7 +36,15 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
         sourceCompatibility JavaVersion.VERSION_1_8
     }
+    flavorDimensions "default"
     productFlavors {
+        mock {
+            dimension = 'default'
+            applicationIdSuffix = ".mock"
+        }
+        prod {
+            dimension = 'default'
+        }
     }
     defaultConfig {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
