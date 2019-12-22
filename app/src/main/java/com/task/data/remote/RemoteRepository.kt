@@ -1,6 +1,7 @@
 package com.task.data.remote
 
 import com.task.App
+import com.task.data.DataStatus
 import com.task.data.remote.Error.Companion.NETWORK_ERROR
 import com.task.data.remote.service.NewsService
 import com.task.utils.Constants
@@ -18,22 +19,22 @@ import javax.inject.Inject
 class RemoteRepository @Inject
 constructor(private val serviceGenerator: ServiceGenerator) : RemoteSource {
 
-    override  fun requestNews(): Data? {
+    override fun requestNews(): DataStatus {
         return if (!isConnected(App.context)) {
-            Data(Error(code = -1, description = NETWORK_ERROR))
+            DataStatus.FailureState(Error(code = -1, description = NETWORK_ERROR))
         } else {
             val newsService = serviceGenerator.createService(NewsService::class.java, Constants.BASE_URL)
             processCall(newsService.fetchNews(), false)
         }
     }
 
-    private fun processCall(call: Call<*>, isVoid: Boolean): Data {
+    private fun processCall(call: Call<*>, isVoid: Boolean): DataStatus {
         if (!isConnected(App.context)) {
-            return Data(Error())
+            return DataStatus.FailureState(Error())
         }
         try {
             val response = call.execute()
-                    ?: return Data(Error(NETWORK_ERROR, ERROR_UNDEFINED))
+                    ?: return DataStatus.FailureState(Error(NETWORK_ERROR, ERROR_UNDEFINED))
             val responseCode = response.code()
             /**
              * isVoid is for APIs which reply only with code without any body, such as some Apis
@@ -41,13 +42,13 @@ constructor(private val serviceGenerator: ServiceGenerator) : RemoteSource {
              */
             return if (response.isSuccessful) {
                 val apiResponse: Any? = if (isVoid) null else response.body()
-                Data(responseCode, apiResponse)
+                DataStatus.SuccessState(Data(responseCode, apiResponse))
             } else {
                 val serviceError = Error(response.message(), responseCode)
-                Data(serviceError)
+                DataStatus.FailureState(serviceError)
             }
         } catch (e: IOException) {
-            return Data(Error(NETWORK_ERROR, ERROR_UNDEFINED))
+            return DataStatus.FailureState(Error(NETWORK_ERROR, ERROR_UNDEFINED))
         }
 
     }

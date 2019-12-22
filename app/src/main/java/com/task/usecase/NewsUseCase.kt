@@ -1,9 +1,10 @@
 package com.task.usecase
 
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import com.task.data.DataSource
-import com.task.data.remote.Data
+import com.task.data.DataStatus
 import com.task.data.remote.Error
-import com.task.data.remote.Error.Companion.INTERNAL_SERVER_ERROR
 import com.task.data.remote.dto.NewsItem
 import com.task.data.remote.dto.NewsModel
 import com.task.ui.base.listeners.BaseCallback
@@ -21,17 +22,33 @@ import kotlin.coroutines.CoroutineContext
 
 class NewsUseCase @Inject
 constructor(private val dataRepository: DataSource, override val coroutineContext: CoroutineContext) : UseCase, CoroutineScope {
+    var error: LiveData<Error> = MutableLiveData<Error>()
+
+    private val newsMutableLiveData = MutableLiveData<NewsModel>()
+    override val newsLiveData: LiveData<NewsModel> = newsMutableLiveData
 
     override fun getNews(callback: BaseCallback) {
         launch {
             try {
-                val serviceResponse: Data? = withContext(Dispatchers.IO) { dataRepository.requestNews() }
-                if (serviceResponse?.code == Error.SUCCESS_CODE) {
-                    val data = serviceResponse.data
-                    callback.onSuccess(data as NewsModel)
-                } else {
-                    callback.onFail(serviceResponse?.error ?: Error(code = INTERNAL_SERVER_ERROR))
+                val serviceResponse: DataStatus = withContext(Dispatchers.IO) { dataRepository.requestNews() }
+                when (serviceResponse) {
+                    is DataStatus.LoadingState -> {
+                    }
+                    is DataStatus.SuccessState -> {
+                        callback.onSuccess(serviceResponse.data.data as NewsModel)
+//                        newsMutableLiveData.postValue(serviceResponse.data.data as NewsModel)
+                    }
+                    is DataStatus.FailureState -> {
+                        callback.onFail(serviceResponse.error)
+                    }
                 }
+
+//                if (serviceResponse?.code == Error.SUCCESS_CODE) {
+//                    val data = serviceResponse.data
+//                    callback.onSuccess(data as NewsModel)
+//                } else {
+//                    callback.onFail(serviceResponse?.error ?: Error(code = INTERNAL_SERVER_ERROR))
+//                }
             } catch (e: Exception) {
                 callback.onFail(Error(e))
             }

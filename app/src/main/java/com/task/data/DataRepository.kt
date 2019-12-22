@@ -2,7 +2,6 @@ package com.task.data
 
 import com.task.data.local.LocalRepository
 import com.task.data.remote.RemoteRepository
-import com.task.data.remote.Data
 import javax.inject.Inject
 
 
@@ -13,7 +12,7 @@ import javax.inject.Inject
 class DataRepository @Inject
 constructor(private val remoteRepository: RemoteRepository, private val localRepository: LocalRepository) : DataSource {
 
-    override  fun requestNews(): Data? {
+    override  fun requestNews(): DataStatus {
         return remoteRepository.requestNews()
     }
 }
