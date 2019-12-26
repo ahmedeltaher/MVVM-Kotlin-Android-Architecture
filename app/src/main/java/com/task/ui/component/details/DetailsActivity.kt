@@ -8,6 +8,7 @@ import com.task.data.remote.dto.NewsItem
 import com.task.ui.ViewModelFactory
 import com.task.ui.base.BaseActivity
 import com.task.utils.Constants
+import com.task.utils.observe
 import kotlinx.android.synthetic.main.details_layout.*
 import javax.inject.Inject
 
@@ -15,7 +16,7 @@ import javax.inject.Inject
  * Created by AhmedEltaher on 11/12/16.
  */
 
-class DetailsActivity : BaseActivity(){
+class DetailsActivity : BaseActivity() {
 
     @Inject
     lateinit var viewModel: DetailsViewModel
@@ -29,12 +30,11 @@ class DetailsActivity : BaseActivity(){
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        viewModel.newsItem?.value = intent.getParcelableExtra(Constants.NEWS_ITEM_KEY)
-        viewModel.newsItem?.observe(this, Observer
-        { newsModel ->
-            initializeView(newsItem = newsModel)
-        })
+        viewModel.newsItem.value = intent.getParcelableExtra(Constants.NEWS_ITEM_KEY)
+    }
 
+    override fun observeViewModel() {
+        observe(viewModel.newsItem, ::initializeView)
     }
 
     override fun initializeViewModel() {

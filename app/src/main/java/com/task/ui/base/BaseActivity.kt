@@ -32,6 +32,7 @@ abstract class BaseActivity : AppCompatActivity(), BaseView, ActionBarView {
         setContentView(layoutId)
         initializeToolbar()
         initializeViewModel()
+        observeViewModel()
     }
 
     private fun initializeToolbar() {
@@ -76,4 +77,6 @@ abstract class BaseActivity : AppCompatActivity(), BaseView, ActionBarView {
         }
         return super.onOptionsItemSelected(item)
     }
+
+    abstract fun observeViewModel()
 }

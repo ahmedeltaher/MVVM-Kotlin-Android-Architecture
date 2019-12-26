@@ -49,9 +49,9 @@ class NewsListViewModelTest {
         val newsModeltest = testModelsGenerator.generateNewsModel()
         //1- Mock - double test
         (newsListViewModel).apply {
-            newsModel.value = newsModeltest
-            newsSearchFound.value = testModelsGenerator.generateNewsItemModel()
-            noSearchFound.value = false
+            newsLiveData.value = newsModeltest
+            newsSearchFoundPrivate.value = testModelsGenerator.generateNewsItemModel()
+            noSearchFoundPrivate.value = false
         }
         val callbackCapture: CapturingSlot<BaseCallback> = slot()
         every { newsUseCase.getNews(callback = capture(callbackCapture)) } answers
@@ -59,7 +59,7 @@ class NewsListViewModelTest {
         //2-Call
         newsListViewModel.getNews()
         //3-verify
-        assert(newsModeltest == newsListViewModel.newsModel.value)
+        assert(newsModeltest == newsListViewModel.newsLiveData.value)
     }
 
     @Test
@@ -75,8 +75,8 @@ class NewsListViewModelTest {
         newsListViewModel.getNews()
         newsListViewModel.onSearchClick(newsTitle)
         //3- Verify
-        assert(newsListViewModel.noSearchFound.value == false)
-        assert(newsListViewModel.newsSearchFound.value == newsItem)
+        assert(newsListViewModel.noSearchFoundPrivate.value == false)
+        assert(newsListViewModel.newsSearchFoundPrivate.value == newsItem)
     }
 
     @Test
@@ -91,8 +91,8 @@ class NewsListViewModelTest {
         newsListViewModel.getNews()
         newsListViewModel.onSearchClick(newsTitle)
         //3- Verify
-        assert(newsListViewModel.noSearchFound.value == true)
-        assert(newsListViewModel.newsSearchFound.value == null)
+        assert(newsListViewModel.noSearchFoundPrivate.value == true)
+        assert(newsListViewModel.newsSearchFoundPrivate.value == null)
     }
 
     @Test
@@ -107,8 +107,8 @@ class NewsListViewModelTest {
         newsListViewModel.getNews()
         newsListViewModel.onSearchClick("*")
         //3- Verify
-        assert(newsListViewModel.noSearchFound.value == true)
-        assert(newsListViewModel.newsSearchFound.value == null)
+        assert(newsListViewModel.noSearchFoundPrivate.value == true)
+        assert(newsListViewModel.newsSearchFoundPrivate.value == null)
     }
 
 }

@@ -1,8 +1,11 @@
 package com.task.data.remote
 
 import com.task.App
-import com.task.data.DataStatus
+import com.task.data.Resource
+import com.task.data.remote.Error.Companion.ErrorsMap
 import com.task.data.remote.Error.Companion.NETWORK_ERROR
+import com.task.data.remote.Error.Companion.NO_INTERNET_CONNECTION
+import com.task.data.remote.dto.NewsModel
 import com.task.data.remote.service.NewsService
 import com.task.utils.Constants
 import com.task.utils.Constants.INSTANCE.ERROR_UNDEFINED
@@ -19,22 +22,25 @@ import javax.inject.Inject
 class RemoteRepository @Inject
 constructor(private val serviceGenerator: ServiceGenerator) : RemoteSource {
 
-    override fun requestNews(): DataStatus {
-        return if (!isConnected(App.context)) {
-            DataStatus.FailureState(Error(code = -1, description = NETWORK_ERROR))
-        } else {
-            val newsService = serviceGenerator.createService(NewsService::class.java, Constants.BASE_URL)
-            processCall(newsService.fetchNews(), false)
+    override fun requestNews(): Resource<NewsModel> {
+        val newsService = serviceGenerator.createService(NewsService::class.java, Constants.BASE_URL)
+        return when (val response = processCall(newsService.fetchNews(), false)) {
+            is Data -> {
+                Resource.Success(data = response.data as NewsModel)
+            }
+            else -> {
+                Resource.DataError(error = response as Error)
+            }
         }
     }
 
-    private fun processCall(call: Call<*>, isVoid: Boolean): DataStatus {
+    private fun processCall(call: Call<*>, isVoid: Boolean): Any {
         if (!isConnected(App.context)) {
-            return DataStatus.FailureState(Error())
+            return Error(code = NO_INTERNET_CONNECTION, description = ErrorsMap[NO_INTERNET_CONNECTION] ?: "")
         }
         try {
             val response = call.execute()
-                    ?: return DataStatus.FailureState(Error(NETWORK_ERROR, ERROR_UNDEFINED))
+                    ?: return Data(Error(NETWORK_ERROR, ERROR_UNDEFINED))
             val responseCode = response.code()
             /**
              * isVoid is for APIs which reply only with code without any body, such as some Apis
@@ -42,13 +48,12 @@ constructor(private val serviceGenerator: ServiceGenerator) : RemoteSource {
              */
             return if (response.isSuccessful) {
                 val apiResponse: Any? = if (isVoid) null else response.body()
-                DataStatus.SuccessState(Data(responseCode, apiResponse))
+                Data(responseCode, apiResponse)
             } else {
-                val serviceError = Error(response.message(), responseCode)
-                DataStatus.FailureState(serviceError)
+                Error(response.message(), responseCode)
             }
         } catch (e: IOException) {
-            return DataStatus.FailureState(Error(NETWORK_ERROR, ERROR_UNDEFINED))
+            return Error(NETWORK_ERROR, ERROR_UNDEFINED)
         }
 
     }
