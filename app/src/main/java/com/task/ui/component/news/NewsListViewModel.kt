@@ -1,12 +1,14 @@
 package com.task.ui.component.news
 
+import androidx.annotation.StringRes
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.task.data.remote.Error
+import com.task.data.Resource
 import com.task.data.remote.dto.NewsItem
 import com.task.data.remote.dto.NewsModel
 import com.task.ui.base.BaseViewModel
-import com.task.ui.base.listeners.BaseCallback
 import com.task.usecase.NewsUseCase
+import com.task.utils.Event
 import javax.inject.Inject
 
 /**
@@ -14,47 +16,58 @@ import javax.inject.Inject
  */
 
 class NewsListViewModel @Inject
-constructor(newsDataUseCase: NewsUseCase) : BaseViewModel() {
+constructor(private val newsDataUseCase: NewsUseCase) : BaseViewModel() {
 
-    private var newsUseCase: NewsUseCase = newsDataUseCase
-    var newsModel: MutableLiveData<NewsModel> = MutableLiveData()
-    var newsSearchFound: MutableLiveData<NewsItem> = MutableLiveData()
-    var noSearchFound: MutableLiveData<Boolean> = MutableLiveData()
-    var noInterNetConnection: MutableLiveData<Boolean> = MutableLiveData()
-    var showError: MutableLiveData<Error> = MutableLiveData()
+    /**
+     * Data --> LiveData, Exposed as LiveData, Locally in viewModel as MutableLiveData
+     */
+    var newsLiveData: LiveData<Resource<NewsModel>> = newsDataUseCase.newsLiveData
+
+    private val newsSearchFoundPrivate: MutableLiveData<NewsItem> = MutableLiveData()
+    val newsSearchFound: LiveData<NewsItem> get() = newsSearchFoundPrivate
+
+    private val noSearchFoundPrivate: MutableLiveData<Unit> = MutableLiveData()
+    val noSearchFound: LiveData<Unit> get() = noSearchFoundPrivate
+
+    /**
+     * UI actions as event, user action is  single one time event, Shouldn't be multiple time consumption
+     */
+    private val openNewsDetailsPrivate = MutableLiveData<Event<NewsItem>>()
+    val openNewsDetails: LiveData<Event<NewsItem>> get() = openNewsDetailsPrivate
+
+    private val showSnackBarPrivate = MutableLiveData<Event<Int>>()
+    val showSnackBar: LiveData<Event<Int>> get() = showSnackBarPrivate
+
+    private val showToastPrivate = MutableLiveData<Event<Int>>()
+    val showToast: LiveData<Event<Int>> get() = showToastPrivate
+
 
     fun getNews() {
-        newsUseCase.getNews(callback)
+        newsDataUseCase.getNews()
     }
 
-    private val callback = object : BaseCallback {
+    fun openNewsDetails(newsItem: NewsItem) {
+        openNewsDetailsPrivate.value = Event(newsItem)
+    }
 
-        override fun onSuccess(data: Any) {
-            newsModel.postValue(data as NewsModel)
-        }
+    fun showSnackbarMessage(@StringRes message: Int) {
+        showSnackBarPrivate.value = Event(message)
+    }
 
-        override fun onFail(error: Error) {
-            if (error.code == Error.NO_INTERNET_CONNECTION) {
-                noInterNetConnection.postValue(true)
-            } else {
-                showError.postValue(error)
-            }
-
-        }
+    fun showToastMessage(@StringRes message: Int) {
+        showToastPrivate.value = Event(message)
     }
 
     fun onSearchClick(newsTitle: String) {
-        val news = newsModel.value?.newsItems
-        if (newsTitle.isNotEmpty() && !news.isNullOrEmpty()) {
-            newsSearchFound.value = newsUseCase.searchByTitle(news, newsTitle)
-            noSearchFound.value = (newsSearchFound.value == null)
+        if (newsTitle.isNotEmpty()) {
+            val newsItem = newsDataUseCase.searchByTitle(newsTitle)
+            if (newsItem != null) {
+                newsSearchFoundPrivate.value = newsItem
+            } else {
+                noSearchFoundPrivate.postValue(Unit)
+            }
         } else {
-            noSearchFound.value = true
+            noSearchFoundPrivate.postValue(Unit)
         }
-    }
-
-    override fun onCleared() {
-        super.onCleared()
-
     }
 }

@@ -15,7 +15,7 @@ import kotlinx.android.synthetic.main.news_item.*
 
 class NewsViewHolder(override val containerView: View) : RecyclerView.ViewHolder(containerView), LayoutContainer {
 
-    fun bind(position: Int, newsItem: NewsItem, recyclerItemListener: RecyclerItemListener) {
+    fun bind(newsItem: NewsItem, recyclerItemListener: RecyclerItemListener) {
         tv_caption.text = newsItem.abstractInfo
         tv_title.text = newsItem.title
 
@@ -23,7 +23,7 @@ class NewsViewHolder(override val containerView: View) : RecyclerView.ViewHolder
             val url: String? = newsItem.multimedia[3].url
             Picasso.get().load(url).placeholder(R.drawable.news).error(R.drawable.news).into(iv_news_item_image)
         }
-        rl_news_item.setOnClickListener { recyclerItemListener.onItemSelected(position) }
+        rl_news_item.setOnClickListener { recyclerItemListener.onItemSelected(newsItem) }
     }
 }
 
