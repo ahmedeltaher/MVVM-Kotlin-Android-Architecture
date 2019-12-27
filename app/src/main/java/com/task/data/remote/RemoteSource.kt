@@ -8,5 +8,5 @@ import com.task.data.remote.dto.NewsModel
  */
 
 internal interface RemoteSource {
-    fun requestNews(): Resource<NewsModel>
+    suspend fun requestNews(): Resource<NewsModel>
 }

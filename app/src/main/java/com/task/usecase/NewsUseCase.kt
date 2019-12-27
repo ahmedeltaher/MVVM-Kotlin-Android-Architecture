@@ -7,7 +7,6 @@ import com.task.data.Resource
 import com.task.data.remote.Error
 import com.task.data.remote.dto.NewsItem
 import com.task.data.remote.dto.NewsModel
-import com.task.ui.base.listeners.BaseCallback
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
