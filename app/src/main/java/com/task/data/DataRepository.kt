@@ -13,7 +13,7 @@ import javax.inject.Inject
 class DataRepository @Inject
 constructor(private val remoteRepository: RemoteRepository, private val localRepository: LocalRepository) : DataSource {
 
-    override  fun requestNews(): Resource<NewsModel> {
+    override suspend fun requestNews(): Resource<NewsModel> {
         return remoteRepository.requestNews()
     }
 }
