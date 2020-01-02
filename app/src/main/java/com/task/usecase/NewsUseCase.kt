@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.task.data.DataSource
 import com.task.data.Resource
-import com.task.data.remote.Error
+import com.task.data.error.Error
 import com.task.data.remote.dto.NewsItem
 import com.task.data.remote.dto.NewsModel
 import kotlinx.coroutines.CoroutineScope
