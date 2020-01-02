@@ -2,7 +2,7 @@ package com.task.ui.component.news
 
 import com.task.data.DataRepository
 import com.task.data.remote.Data
-import com.task.data.remote.Error
+import com.task.data.error.Error
 import com.task.data.remote.dto.NewsModel
 import com.task.ui.base.listeners.BaseCallback
 import com.task.usecase.NewsUseCase

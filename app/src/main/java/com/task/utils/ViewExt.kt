@@ -14,6 +14,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
 import com.google.android.material.snackbar.Snackbar
 import com.squareup.picasso.Picasso
+import com.task.R
 
 fun View.showKeyboard() {
     (context?.getSystemService(Service.INPUT_METHOD_SERVICE) as? InputMethodManager)
@@ -43,7 +44,7 @@ fun View.toInvisible() {
  */
 fun View.showSnackbar(snackbarText: String, timeLength: Int) {
     Snackbar.make(this, snackbarText, timeLength).run {
-        addCallback(object: Snackbar.Callback() {
+        addCallback(object : Snackbar.Callback() {
             override fun onShown(sb: Snackbar?) {
                 EspressoIdlingResource.increment()
             }
@@ -71,7 +72,9 @@ fun View.setupSnackbar(
         }
     })
 }
+
 fun ImageView.loadImage(@DrawableRes resId: Int) = Picasso.get().load(resId).into(this)
+fun ImageView.loadImage(url: String) = Picasso.get().load(url).placeholder(R.drawable.news).error(R.drawable.news).into(this)
 
 fun AppCompatTextView.setTextFutureExt(text: String) =
         setTextFuture(
