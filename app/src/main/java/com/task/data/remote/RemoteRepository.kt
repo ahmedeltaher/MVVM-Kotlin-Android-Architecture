@@ -5,7 +5,7 @@ import com.task.data.Resource
 import com.task.data.error.Error
 import com.task.data.error.Error.Companion.NETWORK_ERROR
 import com.task.data.error.Error.Companion.NO_INTERNET_CONNECTION
-import com.task.data.error.ErrorFactoryImpl
+import com.task.data.error.factory.ErrorFactoryImpl
 import com.task.data.remote.dto.NewsModel
 import com.task.data.remote.service.NewsService
 import com.task.utils.Constants

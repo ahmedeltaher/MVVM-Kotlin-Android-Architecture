@@ -1,7 +1,8 @@
-package com.task.data.error
+package com.task.data.error.mapper
 
 import com.task.App
 import com.task.R
+import com.task.data.error.Error
 import javax.inject.Inject
 
 class ErrorMapper @Inject constructor() : ErrorMapperInterface {

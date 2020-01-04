@@ -69,6 +69,7 @@ class NewsListActivity : BaseActivity() {
         } else {
             showDataView(false)
         }
+        EspressoIdlingResource.decrement()
     }
 
     private fun navigateToDetailsScreen(navigateEvent: Event<NewsItem>) {

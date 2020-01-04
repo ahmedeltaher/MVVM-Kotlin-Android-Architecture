@@ -21,7 +21,7 @@ constructor(private val newsDataUseCase: NewsUseCase) : BaseViewModel() {
     /**
      * Data --> LiveData, Exposed as LiveData, Locally in viewModel as MutableLiveData
      */
-    var newsLiveData: LiveData<Resource<NewsModel>> = newsDataUseCase.newsLiveData
+    var newsLiveData: MutableLiveData<Resource<NewsModel>> = newsDataUseCase.newsLiveData
 
     private val newsSearchFoundPrivate: MutableLiveData<NewsItem> = MutableLiveData()
     val newsSearchFound: LiveData<NewsItem> get() = newsSearchFoundPrivate

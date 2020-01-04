@@ -1,5 +1,7 @@
-package com.task.data.error
+package com.task.data.error.factory
 
+import com.task.data.error.Error
+import com.task.data.error.mapper.ErrorMapper
 import javax.inject.Inject
 
 /**
