@@ -1,9 +1,9 @@
 package com.task.di
 
-import com.task.data.error.ErrorFactory
-import com.task.data.error.ErrorFactoryImpl
-import com.task.data.error.ErrorMapper
-import com.task.data.error.ErrorMapperInterface
+import com.task.data.error.factory.ErrorFactory
+import com.task.data.error.factory.ErrorFactoryImpl
+import com.task.data.error.mapper.ErrorMapper
+import com.task.data.error.mapper.ErrorMapperInterface
 import dagger.Binds
 import dagger.Module
 import javax.inject.Singleton

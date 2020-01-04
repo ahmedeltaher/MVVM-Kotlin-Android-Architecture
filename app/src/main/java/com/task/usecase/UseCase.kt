@@ -1,10 +1,9 @@
 package com.task.usecase
 
-import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import com.task.data.Resource
 import com.task.data.remote.dto.NewsItem
 import com.task.data.remote.dto.NewsModel
-import com.task.ui.base.listeners.BaseCallback
 
 /**
  * Created by ahmedeltaher on 3/22/17.
@@ -13,5 +12,5 @@ import com.task.ui.base.listeners.BaseCallback
 interface UseCase {
     fun getNews()
     fun searchByTitle(keyWord: String): NewsItem?
-    val newsLiveData: LiveData<Resource<NewsModel>>
+    val newsLiveData: MutableLiveData<Resource<NewsModel>>
 }
