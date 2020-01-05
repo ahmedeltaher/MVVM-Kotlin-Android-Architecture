@@ -1,7 +1,6 @@
 package com.task.ui.component.details
 
 import android.os.Bundle
-import androidx.lifecycle.Observer
 import com.squareup.picasso.Picasso
 import com.task.R
 import com.task.data.remote.dto.NewsItem

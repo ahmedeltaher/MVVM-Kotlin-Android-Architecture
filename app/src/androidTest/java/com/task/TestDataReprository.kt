@@ -26,8 +26,7 @@ class TestDataReprository @Inject constructor() : DataSource {
         fun initData(): NewsModel {
             val gson = Gson()
             val jsonString = getJson("NewsApiResponse.json")
-            var mokedResponse = gson.fromJson(jsonString, NewsModel::class.java)
-            return mokedResponse
+            return gson.fromJson(jsonString, NewsModel::class.java)
         }
 
         private fun getJson(path: String): String {
