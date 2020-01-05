@@ -1,21 +1,23 @@
 package com.task.ui.component.news
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
+import androidx.lifecycle.MutableLiveData
+import com.task.data.Resource
+import com.task.data.error.Error
 import com.task.data.remote.dto.NewsModel
-import com.task.ui.base.listeners.BaseCallback
 import com.task.usecase.NewsUseCase
-import io.mockk.CapturingSlot
+import io.mockk.Runs
 import io.mockk.every
-import io.mockk.junit5.MockKExtension
+import io.mockk.just
 import io.mockk.mockk
-import io.mockk.slot
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.jupiter.api.extension.ExtendWith
 
-@ExtendWith(MockKExtension::class)
+@ExperimentalCoroutinesApi
+@ExtendWith(InstantExecutorExtension::class)
 class NewsListViewModelTest {
     // Subject under test
     private lateinit var newsListViewModel: NewsListViewModel
@@ -40,75 +42,112 @@ class NewsListViewModelTest {
         // Create class under test
         // We initialise the repository with no tasks
         newsTitle = testModelsGenerator.getStupSearchTitle()
-        newsListViewModel = NewsListViewModel(newsUseCase)
+        val newsModelSuccess = MutableLiveData<Resource<NewsModel>>()
+        every { newsUseCase.newsLiveData } returns newsModelSuccess
     }
 
     @Test
-    fun getNewsList() {
-        // Let's do a synchronous answer for the callback
+    fun `news has filled news`() {
+        // Let's do an answer for the liveData
         val newsModeltest = testModelsGenerator.generateNewsModel()
-        //1- Mock - double test
-        (newsListViewModel).apply {
-            newsModel.value = newsModeltest
-            newsSearchFound.value = testModelsGenerator.generateNewsItemModel()
-            noSearchFound.value = false
-        }
-        val callbackCapture: CapturingSlot<BaseCallback> = slot()
-        every { newsUseCase.getNews(callback = capture(callbackCapture)) } answers
-                { callbackCapture.captured.onSuccess(newsModeltest) }
+        val newsModelSuccess = MutableLiveData<Resource<NewsModel>>()
+        newsModelSuccess.value = Resource.Success(newsModeltest)
+
+        //1- Mock calls
+        every { newsUseCase.getNews() } just Runs
+        every { newsUseCase.newsLiveData } returns newsModelSuccess
+
         //2-Call
+        newsListViewModel = NewsListViewModel(newsUseCase)
         newsListViewModel.getNews()
+        //active observer for livedata
+        newsUseCase.newsLiveData.observeForever { }
+
         //3-verify
-        assert(newsModeltest == newsListViewModel.newsModel.value)
+        val isEmptyList = newsListViewModel.newsLiveData.value?.data?.newsItems.isNullOrEmpty()
+        assert(newsModeltest == newsListViewModel.newsLiveData.value?.data)
+        assert(!isEmptyList)
+    }
+
+    @Test
+    fun `news list is empty`() {
+        // Let's do an answer for the liveData
+        val newsModeltest = testModelsGenerator.generateNewsModelWithEmptyList()
+        val newsModelSuccess = MutableLiveData<Resource<NewsModel>>()
+        newsModelSuccess.value = Resource.Success(newsModeltest)
+
+        //1- Mock calls
+        every { newsUseCase.getNews() } just Runs
+        every { newsUseCase.newsLiveData } returns newsModelSuccess
+
+        //2-Call
+        newsListViewModel = NewsListViewModel(newsUseCase)
+        newsListViewModel.getNews()
+        //active observer for livedata
+        newsUseCase.newsLiveData.observeForever { }
+
+        //3-verify
+        val isEmptyList = newsListViewModel.newsLiveData.value?.data?.newsItems.isNullOrEmpty()
+        assert(newsModeltest == newsListViewModel.newsLiveData.value?.data)
+        assert(isEmptyList)
+    }
+
+    @Test
+    fun `can't get news`() {
+        // Let's do an answer for the liveData
+        val error = Error(0, "")
+        val newsModelFail = MutableLiveData<Resource<NewsModel>>()
+        newsModelFail.value = Resource.DataError(error)
+
+        //1- Mock calls
+        every { newsUseCase.getNews() } just Runs
+        every { newsUseCase.newsLiveData } returns newsModelFail
+
+        //2-Call
+        newsListViewModel = NewsListViewModel(newsUseCase)
+        newsListViewModel.getNews()
+        //active observer for livedata
+        newsUseCase.newsLiveData.observeForever { }
+
+        //3-verify
+        assert(error == newsListViewModel.newsLiveData.value?.error)
     }
 
     @Test
     fun testSearchSuccess() {
+
+        // Let's do an answer for the liveData
         val newsItem = testModelsGenerator.generateNewsItemModel()
-        val newsModel = testModelsGenerator.generateNewsModel()
-        //1- Mock
-        val callbackCapture: CapturingSlot<BaseCallback> = slot()
-        every { newsUseCase.getNews(callback = capture(callbackCapture)) } answers
-                { callbackCapture.captured.onSuccess(newsModel) }
-        every { newsUseCase.searchByTitle(newsModel.newsItems, newsTitle) } returns newsItem
-        //2- Call
-        newsListViewModel.getNews()
-        newsListViewModel.onSearchClick(newsTitle)
-        //3- Verify
-        assert(newsListViewModel.noSearchFound.value == false)
+        val title = newsItem.title
+        //1- Mock calls
+        every { newsUseCase.searchByTitle(title) } returns newsItem
+
+        //2-Call
+        newsListViewModel = NewsListViewModel(newsUseCase)
+        newsListViewModel.onSearchClick(title)
+        //active observer for livedata
+        newsListViewModel.newsSearchFound.observeForever { }
+
+        //3-verify
         assert(newsListViewModel.newsSearchFound.value == newsItem)
     }
 
     @Test
-    fun testSearchFailedWhileEmptyList() {
-        val newsModelWithEmptyList: NewsModel = testModelsGenerator.generateNewsModelWithEmptyList()
-        //1- Mock
-        val callbackCapture: CapturingSlot<BaseCallback> = slot()
-        every { newsUseCase.getNews(callback = capture(callbackCapture)) } answers
-                { callbackCapture.captured.onSuccess(newsModelWithEmptyList) }
-        every { newsUseCase.searchByTitle(newsModelWithEmptyList.newsItems, newsTitle) } returns null
-        //2- Call
-        newsListViewModel.getNews()
-        newsListViewModel.onSearchClick(newsTitle)
-        //3- Verify
-        assert(newsListViewModel.noSearchFound.value == true)
-        assert(newsListViewModel.newsSearchFound.value == null)
-    }
+    fun testSearchFail() {
 
-    @Test
-    fun testSearchFailedWhenNothingMatches() {
-        val newsModel = testModelsGenerator.generateNewsModel()
-        //1- Mock
-        val callbackCapture: CapturingSlot<BaseCallback> = slot()
-        every { newsUseCase.getNews(callback = capture(callbackCapture)) } answers
-                { callbackCapture.captured.onSuccess(newsModel) }
-        every { newsUseCase.searchByTitle(newsModel.newsItems, "*") } returns null
-        //2- Call
-        newsListViewModel.getNews()
-        newsListViewModel.onSearchClick("*")
-        //3- Verify
-        assert(newsListViewModel.noSearchFound.value == true)
-        assert(newsListViewModel.newsSearchFound.value == null)
-    }
+        // Let's do an answer for the liveData
+        val title = "*&*^%"
 
+        //1- Mock calls
+        every { newsUseCase.searchByTitle(title) } returns null
+
+        //2-Call
+        newsListViewModel = NewsListViewModel(newsUseCase)
+        newsListViewModel.onSearchClick(title)
+        //active observer for livedata
+        newsListViewModel.noSearchFound.observeForever { }
+
+        //3-verify
+        assert(newsListViewModel.noSearchFound.value == Unit)
+    }
 }

@@ -1,16 +1,13 @@
 package com.task.usecase
 
+import androidx.lifecycle.MutableLiveData
 import com.task.data.DataSource
-import com.task.data.remote.Data
-import com.task.data.remote.Error
-import com.task.data.remote.Error.Companion.INTERNAL_SERVER_ERROR
+import com.task.data.Resource
+import com.task.data.error.Error
 import com.task.data.remote.dto.NewsItem
 import com.task.data.remote.dto.NewsModel
-import com.task.ui.base.listeners.BaseCallback
 import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 import javax.inject.Inject
 import kotlin.coroutines.CoroutineContext
 
@@ -21,27 +18,36 @@ import kotlin.coroutines.CoroutineContext
 
 class NewsUseCase @Inject
 constructor(private val dataRepository: DataSource, override val coroutineContext: CoroutineContext) : UseCase, CoroutineScope {
+    private val newsMutableLiveData = MutableLiveData<Resource<NewsModel>>()
+    override val newsLiveData: MutableLiveData<Resource<NewsModel>> = newsMutableLiveData
 
-    override fun getNews(callback: BaseCallback) {
+
+    override fun getNews() {
+        var serviceResponse: Resource<NewsModel>?
+        newsMutableLiveData.postValue(Resource.Loading())
+        println("this is the println before lunch")
         launch {
             try {
-                val serviceResponse: Data? = withContext(Dispatchers.IO) { dataRepository.requestNews() }
-                if (serviceResponse?.code == Error.SUCCESS_CODE) {
-                    val data = serviceResponse.data
-                    callback.onSuccess(data as NewsModel)
-                } else {
-                    callback.onFail(serviceResponse?.error ?: Error(code = INTERNAL_SERVER_ERROR))
-                }
+                serviceResponse = dataRepository.requestNews()
+                println("{serviceResponse is here ${serviceResponse?.data}")
+                newsMutableLiveData.postValue(serviceResponse)
+                println("{newsMutableLiveData is here ${newsMutableLiveData.value?.data}")
             } catch (e: Exception) {
-                callback.onFail(Error(e))
+                println("{Exception is here $e")
+                newsMutableLiveData.postValue(Resource.DataError(Error(e)))
             }
+            println("this is the println inside lunch")
         }
+        println("this is the println at end of lunch")
     }
 
-    override fun searchByTitle(news: List<NewsItem>, keyWord: String): NewsItem? {
-        for (newsItem in news) {
-            if (newsItem.title.isNotEmpty() && newsItem.title.toLowerCase().contains(keyWord.toLowerCase())) {
-                return newsItem
+    override fun searchByTitle(keyWord: String): NewsItem? {
+        val news = newsMutableLiveData.value?.data?.newsItems
+        if (!news.isNullOrEmpty()) {
+            for (newsItem in news) {
+                if (newsItem.title.isNotEmpty() && newsItem.title.toLowerCase().contains(keyWord.toLowerCase())) {
+                    return newsItem
+                }
             }
         }
         return null
