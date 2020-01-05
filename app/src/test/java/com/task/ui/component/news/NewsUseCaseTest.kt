@@ -1,31 +1,28 @@
 package com.task.ui.component.news
 
 import com.task.data.DataRepository
-import com.task.data.remote.Data
-import com.task.data.remote.Error
+import com.task.data.Resource
+import com.task.data.error.Error
 import com.task.data.remote.dto.NewsModel
-import com.task.ui.base.listeners.BaseCallback
 import com.task.usecase.NewsUseCase
 import io.mockk.coEvery
-import io.mockk.coVerify
 import io.mockk.mockk
-import io.mockk.spyk
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import org.junit.Rule
 import org.junit.jupiter.api.AfterEach
-import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertNotNull
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.extension.ExtendWith
 
 /**
  * Created by ahmedeltaher on 3/8/17.
  */
 @ExperimentalCoroutinesApi
+@ExtendWith(InstantExecutorExtension::class)
 class NewsUseCaseTest {
 
     private var dataRepository: DataRepository? = null
-    private var callback: BaseCallback? = spyk()
 
     private lateinit var newsUseCase: NewsUseCase
     private val testModelsGenerator: TestModelsGenerator = TestModelsGenerator()
@@ -44,35 +41,52 @@ class NewsUseCaseTest {
 
     @Test
     fun testGetNewsSuccessful() {
+        //mock
         newsModel = testModelsGenerator.generateNewsModel()
-        val serviceResponse = Data(code = Error.SUCCESS_CODE, data = newsModel)
+        val serviceResponse = Resource.Success(newsModel)
         coEvery { dataRepository?.requestNews() } returns serviceResponse
-        newsUseCase.getNews(callback!!)
-        coVerify(exactly = 1, verifyBlock = { callback?.onSuccess(any()) })
-        coVerify(exactly = 0, verifyBlock = { callback?.onFail(any()) })
+        //call
+        newsUseCase.getNews()
+        newsUseCase.newsLiveData.observeForever { }
+        //assert test
+        assert(serviceResponse == newsUseCase.newsLiveData.value)
     }
 
     @Test
     fun testGetNewsFail() {
-        val serviceResponse = Data(code = Error.ERROR_CODE, data = null)
+        //mock
+        val error = Error(Error.DEFAULT_ERROR, "")
+        val serviceResponse = Resource.DataError<NewsModel>(error)
         coEvery { dataRepository?.requestNews() } returns serviceResponse
-        newsUseCase.getNews(callback!!)
-        coVerify(exactly = 0, verifyBlock = { callback?.onSuccess(any()) })
-        coVerify(exactly = 1, verifyBlock = { callback?.onFail(any()) })
+        //call
+        newsUseCase.getNews()
+        newsUseCase.newsLiveData.observeForever {  }
+        //assert test
+        assert(error == newsUseCase.newsLiveData.value?.error)
     }
 
     @Test
     fun searchByTitleSuccess() {
-        val newsItem = newsUseCase.searchByTitle(testModelsGenerator.generateNewsModel().newsItems, testModelsGenerator.getStupSearchTitle())
+        newsModel = testModelsGenerator.generateNewsModel()
+        val title = newsModel.newsItems.last().title
+        val serviceResponse = Resource.Success(newsModel)
+        coEvery { dataRepository?.requestNews() } returns serviceResponse
+        //call
+        newsUseCase.getNews()
+        val newsItem = newsUseCase.searchByTitle(title)
         assertNotNull(newsItem)
-        assertEquals(newsItem?.title, testModelsGenerator.getStupSearchTitle())
+        assert(newsItem?.title == newsItem?.title)
     }
 
     @Test
     fun searchByTitleFail() {
         val stup = "&%$##"
-        val newsItem = newsUseCase.searchByTitle(testModelsGenerator.generateNewsModel().newsItems, stup)
-        assertEquals(newsItem, null)
+        newsModel = testModelsGenerator.generateNewsModel()
+        val serviceResponse = Resource.Success(newsModel)
+        coEvery { dataRepository?.requestNews() } returns serviceResponse
+        //call
+        val newsItem = newsUseCase.searchByTitle(stup)
+        assert(newsItem == null)
     }
 
     @AfterEach

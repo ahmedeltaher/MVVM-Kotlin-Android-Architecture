@@ -24,7 +24,7 @@ open class App : MultiDexApplication(), HasActivityInjector {
     }
 
     open fun initDagger() {
-        DaggerAppComponent.builder().application(this).build().inject(this)
+        DaggerAppComponent.builder().build().inject(this)
     }
 
     override fun activityInjector() = dispatchingAndroidInjector
