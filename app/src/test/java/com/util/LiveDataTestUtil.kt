@@ -1,4 +1,4 @@
-package com.task.ui.component.news
+package com.task.ui.component.news.util
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
