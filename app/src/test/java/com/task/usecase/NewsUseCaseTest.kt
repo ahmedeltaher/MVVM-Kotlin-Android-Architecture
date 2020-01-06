@@ -1,10 +1,13 @@
-package com.task.ui.component.news
+package com.task.usecase
+
 
 import com.task.data.DataRepository
 import com.task.data.Resource
 import com.task.data.error.Error
 import com.task.data.remote.dto.NewsModel
-import com.task.usecase.NewsUseCase
+import com.task.ui.component.news.util.InstantExecutorExtension
+import com.task.ui.component.news.util.MainCoroutineRule
+import com.task.ui.component.news.util.TestModelsGenerator
 import io.mockk.coEvery
 import io.mockk.mockk
 import kotlinx.coroutines.ExperimentalCoroutinesApi

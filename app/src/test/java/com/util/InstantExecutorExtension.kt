@@ -1,4 +1,4 @@
-package com.task.ui.component.news
+package com.task.ui.component.news.util
 
 import androidx.arch.core.executor.ArchTaskExecutor
 import androidx.arch.core.executor.TaskExecutor

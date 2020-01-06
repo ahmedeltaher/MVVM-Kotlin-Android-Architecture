@@ -5,6 +5,9 @@ import androidx.lifecycle.MutableLiveData
 import com.task.data.Resource
 import com.task.data.error.Error
 import com.task.data.remote.dto.NewsModel
+import com.task.ui.component.news.util.InstantExecutorExtension
+import com.task.ui.component.news.util.MainCoroutineRule
+import com.task.ui.component.news.util.TestModelsGenerator
 import com.task.usecase.NewsUseCase
 import io.mockk.Runs
 import io.mockk.every
@@ -47,7 +50,7 @@ class NewsListViewModelTest {
     }
 
     @Test
-    fun `news has filled news`() {
+    fun handleNewsList() {
         // Let's do an answer for the liveData
         val newsModeltest = testModelsGenerator.generateNewsModel()
         val newsModelSuccess = MutableLiveData<Resource<NewsModel>>()
@@ -70,7 +73,7 @@ class NewsListViewModelTest {
     }
 
     @Test
-    fun `news list is empty`() {
+    fun handleEmptyList() {
         // Let's do an answer for the liveData
         val newsModeltest = testModelsGenerator.generateNewsModelWithEmptyList()
         val newsModelSuccess = MutableLiveData<Resource<NewsModel>>()
@@ -93,7 +96,7 @@ class NewsListViewModelTest {
     }
 
     @Test
-    fun `can't get news`() {
+    fun handleNewsError() {
         // Let's do an answer for the liveData
         val error = Error(0, "")
         val newsModelFail = MutableLiveData<Resource<NewsModel>>()

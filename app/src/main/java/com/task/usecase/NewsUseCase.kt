@@ -25,20 +25,14 @@ constructor(private val dataRepository: DataSource, override val coroutineContex
     override fun getNews() {
         var serviceResponse: Resource<NewsModel>?
         newsMutableLiveData.postValue(Resource.Loading())
-        println("this is the println before lunch")
         launch {
             try {
                 serviceResponse = dataRepository.requestNews()
-                println("{serviceResponse is here ${serviceResponse?.data}")
                 newsMutableLiveData.postValue(serviceResponse)
-                println("{newsMutableLiveData is here ${newsMutableLiveData.value?.data}")
             } catch (e: Exception) {
-                println("{Exception is here $e")
                 newsMutableLiveData.postValue(Resource.DataError(Error(e)))
             }
-            println("this is the println inside lunch")
         }
-        println("this is the println at end of lunch")
     }
 
     override fun searchByTitle(keyWord: String): NewsItem? {
