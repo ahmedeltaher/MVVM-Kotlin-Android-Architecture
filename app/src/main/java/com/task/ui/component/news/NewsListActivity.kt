@@ -20,7 +20,6 @@ import com.task.utils.*
 import kotlinx.android.synthetic.main.home_activity.*
 import kotlinx.android.synthetic.main.toolbar.*
 import org.jetbrains.anko.intentFor
-import org.jetbrains.anko.toast
 import javax.inject.Inject
 
 /**
@@ -82,6 +81,10 @@ class NewsListActivity : BaseActivity() {
         rl_news_list.setupSnackbar(this, event, Snackbar.LENGTH_LONG)
     }
 
+    private fun observeToast(event: LiveData<Event<Any>>) {
+        rl_news_list.showToast(this, event, Snackbar.LENGTH_LONG)
+    }
+
     private fun showSearchError() {
         newsListViewModel.showSnackbarMessage(R.string.search_error)
     }
@@ -116,7 +119,7 @@ class NewsListActivity : BaseActivity() {
             is Resource.Success -> newsModel.data?.let { bindListData(newsModel = it) }
             is Resource.DataError -> {
                 showDataView(false)
-                toast("${newsModel.error?.description}")
+                newsModel.errorCode?.let { newsListViewModel.showToastMessage(it) }
             }
         }
 
@@ -128,5 +131,7 @@ class NewsListActivity : BaseActivity() {
         observe(newsListViewModel.noSearchFound, ::noSearchResult)
         observeEvent(newsListViewModel.openNewsDetails, ::navigateToDetailsScreen)
         observeSnackBarMessages(newsListViewModel.showSnackBar)
+        observeToast(newsListViewModel.showToast)
+
     }
 }

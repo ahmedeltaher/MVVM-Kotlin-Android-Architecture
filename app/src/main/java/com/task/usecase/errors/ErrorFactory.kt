@@ -1,4 +1,4 @@
-package com.task.data.error.factory
+package com.task.usecase.errors
 
 import com.task.data.error.Error
 

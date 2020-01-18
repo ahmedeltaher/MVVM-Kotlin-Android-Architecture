@@ -2,10 +2,8 @@ package com.task.data.remote
 
 import com.task.App
 import com.task.data.Resource
-import com.task.data.error.Error
 import com.task.data.error.Error.Companion.NETWORK_ERROR
 import com.task.data.error.Error.Companion.NO_INTERNET_CONNECTION
-import com.task.data.error.factory.ErrorFactoryImpl
 import com.task.data.remote.dto.NewsModel
 import com.task.data.remote.service.NewsService
 import com.task.utils.Constants
@@ -20,7 +18,7 @@ import javax.inject.Inject
  */
 
 class RemoteRepository @Inject
-constructor(private val serviceGenerator: ServiceGenerator, private val errors: ErrorFactoryImpl) : RemoteSource {
+constructor(private val serviceGenerator: ServiceGenerator) : RemoteSource {
 
     override suspend fun requestNews(): Resource<NewsModel> {
         val newsService = serviceGenerator.createService(NewsService::class.java, Constants.BASE_URL)
@@ -29,14 +27,14 @@ constructor(private val serviceGenerator: ServiceGenerator, private val errors: 
                 Resource.Success(data = response)
             }
             else -> {
-                Resource.DataError(error = response as Error)
+                Resource.DataError(errorCode = response as Int)
             }
         }
     }
 
     private suspend fun processCall(responseCall: suspend () -> Response<*>): Any? {
         if (!isConnected(App.context)) {
-            return errors.getError(NO_INTERNET_CONNECTION)
+            return NO_INTERNET_CONNECTION
         }
         return try {
             val response = responseCall.invoke()
@@ -44,10 +42,10 @@ constructor(private val serviceGenerator: ServiceGenerator, private val errors: 
             if (response.isSuccessful) {
                 response.body()
             } else {
-                errors.getError(responseCode)
+                responseCode
             }
         } catch (e: IOException) {
-            errors.getError(NETWORK_ERROR)
+            NETWORK_ERROR
         }
     }
 }

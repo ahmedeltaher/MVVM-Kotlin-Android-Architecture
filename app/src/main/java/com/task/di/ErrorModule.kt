@@ -1,19 +1,19 @@
 package com.task.di
 
-import com.task.data.error.factory.ErrorFactory
-import com.task.data.error.factory.ErrorFactoryImpl
 import com.task.data.error.mapper.ErrorMapper
 import com.task.data.error.mapper.ErrorMapperInterface
+import com.task.usecase.errors.ErrorFactory
+import com.task.usecase.errors.ErrorManager
 import dagger.Binds
 import dagger.Module
 import javax.inject.Singleton
 
-// Tells Dagger this is a Dagger module
+// with @Module we Telling Dagger that, this is a Dagger module
 @Module
 abstract class ErrorModule {
     @Binds
     @Singleton
-    abstract fun provideErrorFactoryImpl(errorFactoryImpl: ErrorFactoryImpl): ErrorFactory
+    abstract fun provideErrorFactoryImpl(errorManager: ErrorManager): ErrorFactory
 
     @Binds
     @Singleton
