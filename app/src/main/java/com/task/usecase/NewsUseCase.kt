@@ -4,8 +4,10 @@ import androidx.lifecycle.MutableLiveData
 import com.task.data.DataSource
 import com.task.data.Resource
 import com.task.data.error.Error
+import com.task.data.error.Error.Companion.NETWORK_ERROR
 import com.task.data.remote.dto.NewsItem
 import com.task.data.remote.dto.NewsModel
+import com.task.usecase.errors.ErrorManager
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -30,7 +32,7 @@ constructor(private val dataRepository: DataSource, override val coroutineContex
                 serviceResponse = dataRepository.requestNews()
                 newsMutableLiveData.postValue(serviceResponse)
             } catch (e: Exception) {
-                newsMutableLiveData.postValue(Resource.DataError(Error(e)))
+                newsMutableLiveData.postValue(Resource.DataError(NETWORK_ERROR))
             }
         }
     }

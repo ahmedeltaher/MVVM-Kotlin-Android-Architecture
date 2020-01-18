@@ -1,13 +1,11 @@
 package com.task.data
 
-import com.task.data.error.Error
-
 // A generic class that contains data and status about loading this data.
 sealed class Resource<T>(
         val data: T? = null,
-        val error: Error? = null
+        val errorCode: Int? = null
 ) {
     class Success<T>(data: T) : Resource<T>(data)
     class Loading<T>(data: T? = null) : Resource<T>(data)
-    class DataError<T>(error: Error) : Resource<T>(null, error)
+    class DataError<T>(errorCode: Int) : Resource<T>(null, errorCode)
 }

@@ -1,6 +1,7 @@
 package com.task.ui.base
 
 import androidx.lifecycle.ViewModel
+import com.task.usecase.errors.ErrorManager
 
 
 /**
@@ -8,4 +9,10 @@ import androidx.lifecycle.ViewModel
  */
 
 
-abstract class BaseViewModel: ViewModel()
+abstract class BaseViewModel : ViewModel() {
+    /**Inject Singlton ErrorManager
+     * Use this errorManager to get the Errors
+     */
+    abstract val errorManager: ErrorManager
+
+}

@@ -4,6 +4,7 @@ import android.app.Service
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.ImageView
+import android.widget.Toast
 import androidx.annotation.DrawableRes
 import androidx.appcompat.widget.AppCompatEditText
 import androidx.appcompat.widget.AppCompatTextView
@@ -69,6 +70,24 @@ fun View.setupSnackbar(
     snackbarEvent.observe(lifecycleOwner, Observer { event ->
         event.getContentIfNotHandled()?.let {
             showSnackbar(context.getString(it), timeLength)
+        }
+    })
+}
+
+fun View.showToast(
+        lifecycleOwner: LifecycleOwner,
+        snackbarEvent: LiveData<Event<Any>>,
+        timeLength: Int
+) {
+
+    snackbarEvent.observe(lifecycleOwner, Observer { event ->
+        event.getContentIfNotHandled()?.let {
+            when (it) {
+                is String -> Toast.makeText(context, it, timeLength).show()
+                is Int -> Toast.makeText(context, context.getString(it), timeLength).show()
+                else -> {
+                }
+            }
         }
     })
 }
