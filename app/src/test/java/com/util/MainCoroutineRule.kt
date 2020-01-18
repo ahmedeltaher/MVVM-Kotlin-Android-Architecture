@@ -1,4 +1,4 @@
-package com.task.ui.component.news.util
+package com.util
 
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
