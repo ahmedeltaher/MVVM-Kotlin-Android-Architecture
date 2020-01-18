@@ -1,4 +1,4 @@
-package com.task.ui.component.news.util
+package com.util
 
 import com.google.gson.Gson
 import com.task.data.remote.dto.NewsItem

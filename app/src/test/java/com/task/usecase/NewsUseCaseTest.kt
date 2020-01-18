@@ -5,9 +5,9 @@ import com.task.data.DataRepository
 import com.task.data.Resource
 import com.task.data.error.Error
 import com.task.data.remote.dto.NewsModel
-import com.task.ui.component.news.util.InstantExecutorExtension
-import com.task.ui.component.news.util.MainCoroutineRule
-import com.task.ui.component.news.util.TestModelsGenerator
+import com.util.InstantExecutorExtension
+import com.util.MainCoroutineRule
+import com.util.TestModelsGenerator
 import io.mockk.coEvery
 import io.mockk.mockk
 import kotlinx.coroutines.ExperimentalCoroutinesApi

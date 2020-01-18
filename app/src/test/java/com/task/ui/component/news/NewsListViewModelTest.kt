@@ -5,10 +5,10 @@ import androidx.lifecycle.MutableLiveData
 import com.task.data.Resource
 import com.task.data.error.Error
 import com.task.data.remote.dto.NewsModel
-import com.task.ui.component.news.util.InstantExecutorExtension
-import com.task.ui.component.news.util.MainCoroutineRule
-import com.task.ui.component.news.util.TestModelsGenerator
 import com.task.usecase.NewsUseCase
+import com.util.InstantExecutorExtension
+import com.util.MainCoroutineRule
+import com.util.TestModelsGenerator
 import io.mockk.Runs
 import io.mockk.every
 import io.mockk.just
