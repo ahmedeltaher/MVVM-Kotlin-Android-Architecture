@@ -58,14 +58,13 @@ class NewsUseCaseTest {
     @Test
     fun testGetNewsFail() {
         //mock
-        val error = Error(Error.DEFAULT_ERROR, "")
-        val serviceResponse = Resource.DataError<NewsModel>(error)
+        val serviceResponse = Resource.DataError<NewsModel>(Error.DEFAULT_ERROR)
         coEvery { dataRepository?.requestNews() } returns serviceResponse
         //call
         newsUseCase.getNews()
         newsUseCase.newsLiveData.observeForever {  }
         //assert test
-        assert(error == newsUseCase.newsLiveData.value?.error)
+        assert(Error.DEFAULT_ERROR == newsUseCase.newsLiveData.value?.errorCode)
     }
 
     @Test

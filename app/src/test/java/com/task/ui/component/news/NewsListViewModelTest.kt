@@ -98,9 +98,8 @@ class NewsListViewModelTest {
     @Test
     fun handleNewsError() {
         // Let's do an answer for the liveData
-        val error = Error(0, "")
         val newsModelFail = MutableLiveData<Resource<NewsModel>>()
-        newsModelFail.value = Resource.DataError(error)
+        newsModelFail.value = Resource.DataError(Error.NETWORK_ERROR)
 
         //1- Mock calls
         every { newsUseCase.getNews() } just Runs
@@ -113,7 +112,7 @@ class NewsListViewModelTest {
         newsUseCase.newsLiveData.observeForever { }
 
         //3-verify
-        assert(error == newsListViewModel.newsLiveData.value?.error)
+        assert(Error.NETWORK_ERROR == newsListViewModel.newsLiveData.value?.errorCode)
     }
 
     @Test
