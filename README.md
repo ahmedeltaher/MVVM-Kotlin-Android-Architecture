@@ -11,8 +11,8 @@ You can also check [**MVP**](https://github.com/ahmedeltaher/Android-MVP-Archite
 
 **Why Promoting MVVM VS MVP:**
 - ViewModel has Built in LifeCycleOwerness, on the other hand Presenter not, and you have to take this responsiblty in your side.
-- ViewModle doesn't have a refrence for View, on the other hade Presenter still hold a refrnce for view, even if you made it as weakrefrence.
-- ViewModel survive configuration changes, while it is your own responsiblities to servive the configuration changes in case of Presenter. (Saving and restoring the UI state)
+- ViewModel doesn't have a reference for View, on the other hand Presenter still hold a reference for view, even if you made it as weakreference.
+- ViewModel survive configuration changes, while it is your own responsiblities to survive the configuration changes in case of Presenter. (Saving and restoring the UI state)
 
 **MVVM Best Pratice:**
 - Avoid references to Views in ViewModels.
