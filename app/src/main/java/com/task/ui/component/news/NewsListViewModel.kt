@@ -14,7 +14,7 @@ import com.task.utils.Event
 import javax.inject.Inject
 
 /**
- * Created by AhmedEltaher on 5/12/2016
+ * Created by AhmedEltaher
  */
 
 class NewsListViewModel @Inject

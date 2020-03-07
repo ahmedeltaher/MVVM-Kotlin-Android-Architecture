@@ -12,7 +12,7 @@ import kotlinx.android.synthetic.main.details_layout.*
 import javax.inject.Inject
 
 /**
- * Created by AhmedEltaher on 11/12/16.
+ * Created by AhmedEltaher
  */
 
 class DetailsActivity : BaseActivity() {

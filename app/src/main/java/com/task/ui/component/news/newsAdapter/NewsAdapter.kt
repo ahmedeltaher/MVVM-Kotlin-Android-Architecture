@@ -9,7 +9,7 @@ import com.task.ui.base.listeners.RecyclerItemListener
 import com.task.ui.component.news.NewsListViewModel
 
 /**
- * Created by AhmedEltaher on 5/12/2016.
+ * Created by AhmedEltaher
  */
 
 class NewsAdapter(private val newsListViewModel: NewsListViewModel, private val news: List<NewsItem>) : RecyclerView.Adapter<NewsViewHolder>() {

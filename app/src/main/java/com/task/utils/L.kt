@@ -4,7 +4,7 @@ import com.task.BuildConfig
 import org.jetbrains.anko.*
 
 /**
- * Created by AhmedEltaher on 01/01/17.
+ * Created by AhmedEltaher
  */
 
 class L {

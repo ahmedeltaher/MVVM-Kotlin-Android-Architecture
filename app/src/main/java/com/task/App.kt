@@ -9,7 +9,7 @@ import dagger.android.HasActivityInjector
 import javax.inject.Inject
 
 /**
- * Created by AhmedEltaher on 5/12/2016
+ * Created by AhmedEltaher
  */
 
 open class App : MultiDexApplication(), HasActivityInjector {

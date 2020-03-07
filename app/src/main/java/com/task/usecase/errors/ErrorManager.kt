@@ -5,7 +5,7 @@ import com.task.data.error.mapper.ErrorMapper
 import javax.inject.Inject
 
 /**
- * Created by AhmedEltaher on 5/12/2016
+ * Created by AhmedEltaher
  */
 
 class ErrorManager @Inject constructor(private val errorMapper: ErrorMapper) : ErrorFactory {

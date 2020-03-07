@@ -10,7 +10,7 @@ import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.news_item.*
 
 /**
- * Created by AhmedEltaher on 5/12/2016.
+ * Created by AhmedEltaher
  */
 
 class NewsViewHolder(override val containerView: View) : RecyclerView.ViewHolder(containerView), LayoutContainer {

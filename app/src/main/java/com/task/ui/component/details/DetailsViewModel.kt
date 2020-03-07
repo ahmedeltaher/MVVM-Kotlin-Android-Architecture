@@ -8,7 +8,7 @@ import com.task.usecase.errors.ErrorManager
 import javax.inject.Inject
 
 /**
- * Created by AhmedEltaher on 11/12/16.
+ * Created by AhmedEltaher
  */
 
 class DetailsViewModel @Inject

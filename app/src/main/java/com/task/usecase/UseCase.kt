@@ -6,7 +6,7 @@ import com.task.data.remote.dto.NewsItem
 import com.task.data.remote.dto.NewsModel
 
 /**
- * Created by ahmedeltaher on 3/22/17.
+ * Created by AhmedEltaher
  */
 
 interface UseCase {

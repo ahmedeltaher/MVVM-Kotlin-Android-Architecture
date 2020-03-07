@@ -5,7 +5,7 @@ import retrofit2.Response
 import retrofit2.http.GET
 
 /**
- * Created by AhmedEltaher on 5/12/2016
+ * Created by AhmedEltaher
  */
 
 interface NewsService {
