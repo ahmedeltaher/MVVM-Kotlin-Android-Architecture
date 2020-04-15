@@ -2,38 +2,49 @@ package com.task.data.remote.dto
 
 
 import android.os.Parcelable
-import com.google.gson.annotations.SerializedName
+import com.squareup.moshi.Json
+import com.squareup.moshi.JsonClass
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
+@JsonClass(generateAdapter = true)
 data class NewsItem(
-        @SerializedName("abstract")
-        var abstractInfo: String = "",
-        var byline: String = "",
-        @SerializedName("created_date")
-        var createdDate: String = "",
-        @SerializedName("des_facet")
-        var desFacet: List<String> = listOf(),
-        @SerializedName("geo_facet")
-        var geoFacet: List<String> = listOf(),
-        @SerializedName("item_type")
-        var itemType: String = "",
-        var kicker: String = "",
-        @SerializedName("material_type_facet")
-        var materialTypeFacet: String = "",
-        var multimedia: List<Multimedia> = listOf(),
-        @SerializedName("org_facet")
-        var orgFacet: List<String> = listOf(),
-        @SerializedName("per_facet")
-        var perFacet: List<String> = listOf(),
-        @SerializedName("published_date")
-        var publishedDate: String = "",
-        var section: String = "",
-        @SerializedName("short_url")
-        var shortUrl: String = "",
-        var subsection: String = "",
-        var title: String = "",
-        @SerializedName("updated_date")
-        var updatedDate: String = "",
-        var url: String = ""
+        @Json(name = "abstract")
+    val abstractInfo : String = "",
+        @Json(name = "byline")
+    val byline: String = "",
+        @Json(name = "created_date")
+    val createdDate: String = "",
+        @Json(name = "des_facet")
+    val desFacet: List<String> = listOf(),
+        @Json(name = "geo_facet")
+    val geoFacet: List<String> = listOf(),
+        @Json(name = "item_type")
+    val itemType: String = "",
+        @Json(name = "kicker")
+    val kicker: String = "",
+        @Json(name = "material_type_facet")
+    val materialTypeFacet: String = "",
+        @Json(name = "multimedia")
+    val multimedia: List<Multimedia> = listOf(),
+        @Json(name = "org_facet")
+    val orgFacet: List<String> = listOf(),
+        @Json(name = "per_facet")
+    val perFacet: List<String> = listOf(),
+        @Json(name = "published_date")
+    val publishedDate: String = "",
+        @Json(name = "section")
+    val section: String = "",
+        @Json(name = "short_url")
+    val shortUrl: String = "",
+        @Json(name = "subsection")
+    val subsection: String = "",
+        @Json(name = "title")
+    val title: String = "",
+        @Json(name = "updated_date")
+    val updatedDate: String = "",
+        @Json(name = "uri")
+    val uri: String = "",
+        @Json(name = "url")
+    val url: String = ""
 ) : Parcelable

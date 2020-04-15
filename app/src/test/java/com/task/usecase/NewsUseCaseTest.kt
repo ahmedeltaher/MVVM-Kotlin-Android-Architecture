@@ -1,6 +1,5 @@
 package com.task.usecase
 
-
 import com.task.data.DataRepository
 import com.task.data.Resource
 import com.task.data.error.Error

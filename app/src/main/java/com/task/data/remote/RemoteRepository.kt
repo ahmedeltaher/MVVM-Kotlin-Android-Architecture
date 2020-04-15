@@ -21,7 +21,7 @@ class RemoteRepository @Inject
 constructor(private val serviceGenerator: ServiceGenerator) : RemoteSource {
 
     override suspend fun requestNews(): Resource<NewsModel> {
-        val newsService = serviceGenerator.createService(NewsService::class.java, Constants.BASE_URL)
+        val newsService = serviceGenerator.createService(NewsService::class.java)
         return when (val response = processCall(newsService::fetchNews)) {
             is NewsModel -> {
                 Resource.Success(data = response)

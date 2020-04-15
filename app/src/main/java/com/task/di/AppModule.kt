@@ -15,8 +15,6 @@
  */
 
 package com.task.di
-import com.google.gson.Gson
-import com.google.gson.GsonBuilder
 import com.task.data.local.LocalRepository
 import dagger.Module
 import dagger.Provides
@@ -30,12 +28,6 @@ class AppModule {
     @Singleton
     fun provideLocalRepository(): LocalRepository {
         return LocalRepository()
-    }
-
-    @Provides
-    @Singleton
-    fun provideGson(): Gson {
-        return GsonBuilder().create()
     }
 
     @Provides

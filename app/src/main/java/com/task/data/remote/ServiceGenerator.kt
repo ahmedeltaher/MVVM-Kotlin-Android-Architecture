@@ -1,12 +1,12 @@
 package com.task.data.remote
 
-import com.google.gson.Gson
 import com.task.BuildConfig
+import com.task.utils.Constants.INSTANCE.BASE_URL
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
+import retrofit2.converter.moshi.MoshiConverterFactory
 import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -17,7 +17,7 @@ import javax.inject.Singleton
 
 @Singleton
 class ServiceGenerator @Inject
-constructor(private val gson: Gson) {
+constructor() {
 
     //Network constants
     private val TIMEOUT_CONNECT = 30   //In seconds
@@ -26,7 +26,7 @@ constructor(private val gson: Gson) {
     private val CONTENT_TYPE_VALUE = "application/json"
 
     private val okHttpBuilder: OkHttpClient.Builder = OkHttpClient.Builder()
-    private var retrofit: Retrofit? = null
+    private val retrofit: Retrofit
 
     private var headerInterceptor = Interceptor { chain ->
         val original = chain.request()
@@ -50,17 +50,17 @@ constructor(private val gson: Gson) {
 
     init {
         okHttpBuilder.addInterceptor(headerInterceptor)
-        okHttpBuilder.addInterceptor (logger)
+        okHttpBuilder.addInterceptor(logger)
         okHttpBuilder.connectTimeout(TIMEOUT_CONNECT.toLong(), TimeUnit.SECONDS)
         okHttpBuilder.readTimeout(TIMEOUT_READ.toLong(), TimeUnit.SECONDS)
-    }
-
-    fun <S> createService(serviceClass: Class<S>, baseUrl: String): S {
         val client = okHttpBuilder.build()
         retrofit = Retrofit.Builder()
-                .baseUrl(baseUrl).client(client)
-                .addConverterFactory(GsonConverterFactory.create(gson))
+                .baseUrl(BASE_URL).client(client)
+                .addConverterFactory(MoshiConverterFactory.create())
                 .build()
-        return retrofit!!.create(serviceClass)
+    }
+
+    fun <S> createService(serviceClass: Class<S>): S {
+        return retrofit.create(serviceClass)
     }
 }

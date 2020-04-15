@@ -4,7 +4,6 @@ import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.MutableLiveData
 import com.task.data.Resource
 import com.task.data.error.Error
-import com.task.data.remote.dto.NewsModel
 import com.task.usecase.NewsUseCase
 import com.util.InstantExecutorExtension
 import com.util.MainCoroutineRule

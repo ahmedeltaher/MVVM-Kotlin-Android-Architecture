@@ -6,7 +6,6 @@ import com.google.gson.Gson
 import com.task.TestDataReprository.Instance.initData
 import com.task.data.DataSource
 import com.task.data.Resource
-import com.task.data.remote.dto.NewsModel
 import java.io.InputStream
 import javax.inject.Inject
 

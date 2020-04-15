@@ -1,8 +1,6 @@
 package com.util
 
 import com.google.gson.Gson
-import com.task.data.remote.dto.NewsItem
-import com.task.data.remote.dto.NewsModel
 import java.io.File
 import java.util.*
 
