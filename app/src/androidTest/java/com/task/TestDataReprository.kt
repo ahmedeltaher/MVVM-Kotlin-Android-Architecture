@@ -2,10 +2,12 @@ package com.task
 
 import android.content.Context
 import androidx.test.platform.app.InstrumentationRegistry
-import com.google.gson.Gson
+import com.squareup.moshi.JsonAdapter
+import com.squareup.moshi.Moshi
 import com.task.TestDataReprository.Instance.initData
 import com.task.data.DataSource
 import com.task.data.Resource
+import com.task.data.remote.dto.NewsModel
 import java.io.InputStream
 import javax.inject.Inject
 
@@ -23,9 +25,13 @@ class TestDataReprository @Inject constructor() : DataSource {
     object Instance {
         var STATUS = DATA_STATUS.FULL_LIST
         fun initData(): NewsModel {
-            val gson = Gson()
+            val moshi: Moshi = Moshi.Builder().build()
+            val adapter: JsonAdapter<NewsModel> = moshi.adapter(NewsModel::class.java)
             val jsonString = getJson("NewsApiResponse.json")
-            return gson.fromJson(jsonString, NewsModel::class.java)
+            adapter.fromJson(jsonString)?.let {
+                return it
+            }
+            return NewsModel()
         }
 
         private fun getJson(path: String): String {
