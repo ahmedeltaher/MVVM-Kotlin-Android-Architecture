@@ -3,8 +3,8 @@ package com.task.ui.component.news.newsAdapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.task.R
 import com.task.data.remote.dto.NewsItem
+import com.task.databinding.NewsItemBinding
 import com.task.ui.base.listeners.RecyclerItemListener
 import com.task.ui.component.news.NewsListViewModel
 
@@ -22,8 +22,8 @@ class NewsAdapter(private val newsListViewModel: NewsListViewModel, private val 
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NewsViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.news_item, parent, false)
-        return NewsViewHolder(view)
+        val itemBinding = NewsItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return NewsViewHolder(itemBinding)
     }
 
     override fun onBindViewHolder(holder: NewsViewHolder, position: Int) {

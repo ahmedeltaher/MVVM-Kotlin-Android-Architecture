@@ -4,11 +4,11 @@ import android.os.Bundle
 import com.squareup.picasso.Picasso
 import com.task.R
 import com.task.data.remote.dto.NewsItem
+import com.task.databinding.DetailsLayoutBinding
 import com.task.ui.ViewModelFactory
 import com.task.ui.base.BaseActivity
 import com.task.utils.Constants
 import com.task.utils.observe
-import kotlinx.android.synthetic.main.details_layout.*
 import javax.inject.Inject
 
 /**
@@ -23,9 +23,14 @@ class DetailsActivity : BaseActivity() {
     @Inject
     lateinit var viewModelFactory: ViewModelFactory
 
-    override val layoutId: Int
-        get() = R.layout.details_layout
+    private lateinit var binding: DetailsLayoutBinding
 
+
+    override fun initViewBinding() {
+        binding = DetailsLayoutBinding.inflate(layoutInflater)
+        val view = binding.root
+        setContentView(view)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,11 +46,11 @@ class DetailsActivity : BaseActivity() {
     }
 
     private fun initializeView(newsItem: NewsItem) {
-        tv_title?.text = newsItem.title
-        tv_description?.text = newsItem.abstractInfo
+        binding.tvTitle.text = newsItem.title
+        binding.tvDescription.text = newsItem.abstractInfo
         if (!newsItem.multimedia.isNullOrEmpty()) {
             Picasso.get().load(newsItem.multimedia.last().url).placeholder(R.drawable.news)
-                    .into(iv_news_main_Image)
+                    .into(binding.ivNewsMainImage)
         }
     }
 }

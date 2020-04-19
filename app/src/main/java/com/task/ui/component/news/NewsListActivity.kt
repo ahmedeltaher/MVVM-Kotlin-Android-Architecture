@@ -1,5 +1,6 @@
 package com.task.ui.component.news
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View.GONE
 import android.view.View.VISIBLE
@@ -12,14 +13,13 @@ import com.task.R
 import com.task.data.Resource
 import com.task.data.remote.dto.NewsItem
 import com.task.data.remote.dto.NewsModel
+import com.task.databinding.HomeActivityBinding
 import com.task.ui.ViewModelFactory
 import com.task.ui.base.BaseActivity
 import com.task.ui.component.details.DetailsActivity
 import com.task.ui.component.news.newsAdapter.NewsAdapter
 import com.task.utils.*
-import kotlinx.android.synthetic.main.home_activity.*
-import kotlinx.android.synthetic.main.toolbar.*
-import org.jetbrains.anko.intentFor
+import com.task.utils.Constants.INSTANCE.NEWS_ITEM_KEY
 import javax.inject.Inject
 
 /**
@@ -27,17 +27,23 @@ import javax.inject.Inject
  */
 
 class NewsListActivity : BaseActivity() {
+    private lateinit var binding: HomeActivityBinding
+
     @Inject
     lateinit var newsListViewModel: NewsListViewModel
+
     @Inject
     lateinit var viewModelFactory: ViewModelFactory
-
-    override val layoutId: Int
-        get() = R.layout.home_activity
 
     val countingIdlingResource: IdlingResource
         @VisibleForTesting
         get() = EspressoIdlingResource.idlingResource
+
+    override fun initViewBinding() {
+        binding = HomeActivityBinding.inflate(layoutInflater)
+        val view = binding.root
+        setContentView(view)
+    }
 
     override fun initializeViewModel() {
         newsListViewModel = viewModelFactory.create(NewsListViewModel::class.java)
@@ -45,25 +51,23 @@ class NewsListActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        ic_toolbar_refresh.setOnClickListener {
-            newsListViewModel.getNews()
-        }
-        btn_search.setOnClickListener {
-            if (!(et_search.text?.toString().isNullOrEmpty())) {
-                pb_loading.visibility = VISIBLE
-                newsListViewModel.onSearchClick(et_search.text?.toString()!!)
+        binding.toolbarLayout.icToolbarRefresh.setOnClickListener { newsListViewModel.getNews() }
+        binding.toolbarLayout.icToolbarSetting.setOnClickListener {
+            if (!(binding.etSearch.text?.toString().isNullOrEmpty())) {
+                binding.pbLoading.visibility = VISIBLE
+                newsListViewModel.onSearchClick(binding.etSearch.text?.toString()!!)
             }
         }
         val layoutManager = LinearLayoutManager(this)
-        rv_news_list.layoutManager = layoutManager
-        rv_news_list.setHasFixedSize(true)
+        binding.rvNewsList.layoutManager = layoutManager
+        binding.rvNewsList.setHasFixedSize(true)
         newsListViewModel.getNews()
     }
 
     private fun bindListData(newsModel: NewsModel) {
         if (!(newsModel.newsItems.isNullOrEmpty())) {
             val newsAdapter = NewsAdapter(newsListViewModel, newsModel.newsItems)
-            rv_news_list.adapter = newsAdapter
+            binding.rvNewsList.adapter = newsAdapter
             showDataView(true)
         } else {
             showDataView(false)
@@ -73,16 +77,19 @@ class NewsListActivity : BaseActivity() {
 
     private fun navigateToDetailsScreen(navigateEvent: Event<NewsItem>) {
         navigateEvent.getContentIfNotHandled()?.let {
-            startActivity(intentFor<DetailsActivity>(Constants.NEWS_ITEM_KEY to it))
+            val nextScreenIntent = Intent(this, DetailsActivity::class.java).apply {
+                putExtra(NEWS_ITEM_KEY, it)
+            }
+            startActivity(nextScreenIntent)
         }
     }
 
     private fun observeSnackBarMessages(event: LiveData<Event<Int>>) {
-        rl_news_list.setupSnackbar(this, event, Snackbar.LENGTH_LONG)
+        binding.rlNewsList.setupSnackbar(this, event, Snackbar.LENGTH_LONG)
     }
 
     private fun observeToast(event: LiveData<Event<Any>>) {
-        rl_news_list.showToast(this, event, Snackbar.LENGTH_LONG)
+        binding.rlNewsList.showToast(this, event, Snackbar.LENGTH_LONG)
     }
 
     private fun showSearchError() {
@@ -90,27 +97,27 @@ class NewsListActivity : BaseActivity() {
     }
 
     private fun showDataView(show: Boolean) {
-        tv_no_data.visibility = if (show) GONE else VISIBLE
-        rl_news_list.visibility = if (show) VISIBLE else GONE
-        pb_loading.toGone()
+        binding.tvNoData.visibility = if (show) GONE else VISIBLE
+        binding.rlNewsList.visibility = if (show) VISIBLE else GONE
+        binding.pbLoading.toGone()
     }
 
     private fun showLoadingView() {
-        pb_loading.toVisible()
-        tv_no_data.toGone()
-        rl_news_list.toGone()
+        binding.pbLoading.toVisible()
+        binding.tvNoData.toGone()
+        binding.rlNewsList.toGone()
         EspressoIdlingResource.increment()
     }
 
 
     private fun showSearchResult(newsItem: NewsItem) {
         newsListViewModel.openNewsDetails(newsItem)
-        pb_loading.toGone()
+        binding.pbLoading.toGone()
     }
 
     private fun noSearchResult(unit: Unit) {
         showSearchError()
-        pb_loading.toGone()
+        binding.pbLoading.toGone()
     }
 
     private fun handleNewsList(newsModel: Resource<NewsModel>) {

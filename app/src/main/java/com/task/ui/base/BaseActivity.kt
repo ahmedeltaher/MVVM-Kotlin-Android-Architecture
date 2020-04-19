@@ -4,14 +4,11 @@ import android.os.Bundle
 import android.view.MenuItem
 import android.view.View.GONE
 import android.view.View.VISIBLE
-import android.widget.ImageView
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import com.task.R
+import com.task.databinding.ToolbarBinding
 import com.task.ui.base.listeners.ActionBarView
 import com.task.ui.base.listeners.BaseView
 import dagger.android.AndroidInjection
-import kotlinx.android.synthetic.main.toolbar.*
 
 /**
  * Created by AhmedEltaher
@@ -22,53 +19,40 @@ abstract class BaseActivity : AppCompatActivity(), BaseView, ActionBarView {
 
     protected lateinit var baseViewModel: BaseViewModel
 
-    abstract val layoutId: Int
+    protected lateinit var toolbarBinding: ToolbarBinding
 
     protected abstract fun initializeViewModel()
+    abstract fun observeViewModel()
+    protected abstract fun initViewBinding()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         AndroidInjection.inject(this)
         super.onCreate(savedInstanceState)
-        setContentView(layoutId)
+        initViewBinding()
         initializeToolbar()
         initializeViewModel()
         observeViewModel()
     }
 
     private fun initializeToolbar() {
-        if (toolbar != null) {
-            setSupportActionBar(toolbar)
-            supportActionBar?.title = ""
-        }
+        toolbarBinding = ToolbarBinding.inflate(layoutInflater)
+        toolbarBinding.txtToolbarTitle.text = ""
     }
-
     override fun setUpIconVisibility(visible: Boolean) {
         val actionBar = supportActionBar
         actionBar?.setDisplayHomeAsUpEnabled(visible)
     }
 
     override fun setTitle(titleKey: String) {
-        val actionBar = supportActionBar
-        if (actionBar != null) {
-            val title = findViewById<TextView>(R.id.txt_toolbar_title)
-            title?.text = titleKey
-        }
+        toolbarBinding.txtToolbarTitle.text = titleKey
     }
 
     override fun setSettingsIconVisibility(visibility: Boolean) {
-        val actionBar = supportActionBar
-        if (actionBar != null) {
-            val icon = findViewById<ImageView>(R.id.ic_toolbar_setting)
-            icon?.visibility = if (visibility) VISIBLE else GONE
-        }
+        toolbarBinding.icToolbarSetting.visibility = if (visibility) VISIBLE else GONE
     }
 
     override fun setRefreshVisibility(visibility: Boolean) {
-        val actionBar = supportActionBar
-        if (actionBar != null) {
-            val icon = findViewById<ImageView>(R.id.ic_toolbar_refresh)
-            icon?.visibility = if (visibility) VISIBLE else GONE
-        }
+        toolbarBinding.icToolbarRefresh.visibility = if (visibility) VISIBLE else GONE
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -77,6 +61,4 @@ abstract class BaseActivity : AppCompatActivity(), BaseView, ActionBarView {
         }
         return super.onOptionsItemSelected(item)
     }
-
-    abstract fun observeViewModel()
 }

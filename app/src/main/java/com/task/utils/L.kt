@@ -1,42 +1,42 @@
 package com.task.utils
 
+import android.util.Log
 import com.task.BuildConfig
-import org.jetbrains.anko.*
 
 /**
  * Created by AhmedEltaher
  */
 
 class L {
-    companion object INSTANCE : AnkoLogger {
+    companion object INSTANCE {
 
         fun d(tag: String, massage: String) {
             if (BuildConfig.DEBUG) {
-                AnkoLogger(tag).debug { massage }
+                Log.d(tag, massage)
             }
         }
 
         fun i(tag: String, massage: String) {
             if (BuildConfig.DEBUG) {
-                AnkoLogger(tag).info { massage }
+                Log.i(tag, massage)
             }
         }
 
         fun v(tag: String, massage: String) {
             if (BuildConfig.DEBUG) {
-                AnkoLogger(tag).verbose { massage }
+                Log.v(tag, massage)
             }
         }
 
         fun e(tag: String, massage: String) {
             if (BuildConfig.DEBUG) {
-                AnkoLogger(tag).error { massage }
+                Log.e(tag, massage)
             }
         }
 
         fun json(tag: String, massage: String) {
             if (BuildConfig.DEBUG) {
-                AnkoLogger(tag).info { massage }
+                Log.i(tag, massage)
             }
         }
     }

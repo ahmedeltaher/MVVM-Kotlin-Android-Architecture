@@ -1,21 +1,23 @@
 package com.task
 
-import android.app.Activity
 import android.content.Context
 import androidx.multidex.MultiDexApplication
 import com.task.di.DaggerAppComponent
+import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
-import dagger.android.HasActivityInjector
+import dagger.android.HasAndroidInjector
 import javax.inject.Inject
 
 /**
  * Created by AhmedEltaher
  */
 
-open class App : MultiDexApplication(), HasActivityInjector {
+open class App : MultiDexApplication(), HasAndroidInjector {
 
     @Inject
-    lateinit var dispatchingAndroidInjector: DispatchingAndroidInjector<Activity>
+    lateinit var androidInjector: DispatchingAndroidInjector<Any>
+
+    override fun androidInjector(): AndroidInjector<Any> = androidInjector
 
     override fun onCreate() {
         super.onCreate()
@@ -26,8 +28,6 @@ open class App : MultiDexApplication(), HasActivityInjector {
     open fun initDagger() {
         DaggerAppComponent.builder().build().inject(this)
     }
-
-    override fun activityInjector() = dispatchingAndroidInjector
 
     companion object {
         lateinit var context: Context

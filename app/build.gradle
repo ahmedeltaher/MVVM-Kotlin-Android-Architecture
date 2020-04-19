@@ -20,6 +20,9 @@ android {
         multiDexEnabled true
         testInstrumentationRunner "com.task.CustomTestRunner"
     }
+    viewBinding {
+        enabled = true
+    }
     buildTypes {
         debug {
             debuggable true
@@ -76,20 +79,20 @@ configurations.all {
     }
 }
 dependencies {
-    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
 
     //kotlin
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.3.71"
-    implementation "org.jetbrains.kotlin:kotlin-reflect:1.3.71"
+    implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.3.72'
+    implementation 'org.jetbrains.kotlin:kotlin-reflect:1.3.72'
 
     /**-------------------testing libs------------------------------------------**/
     //UI Testing , AndroidJUnitRunner and JUnit Rules &Espresso dependencies
     //junit 5
-    testImplementation 'org.junit.jupiter:junit-jupiter-engine:5.5.2'
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.5.2'
-    testImplementation 'org.junit.platform:junit-platform-runner:1.5.2'
+    testImplementation 'org.junit.jupiter:junit-jupiter-engine:5.6.2'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.6.2'
+    testImplementation 'org.junit.platform:junit-platform-runner:1.6.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
-    androidTestImplementation "org.assertj:assertj-core:3.14.0"
+    androidTestImplementation 'org.assertj:assertj-core:3.15.0'
     androidTestImplementation "androidx.arch.core:core-testing:2.1.0"
     androidTestImplementation ('androidx.test.espresso:espresso-core:3.2.0',{
         exclude group: 'com.android.support', module: 'support-annotations'
@@ -107,37 +110,32 @@ dependencies {
     implementation 'androidx.recyclerview:recyclerview:1.1.0'
     implementation 'androidx.appcompat:appcompat:1.1.0'
     implementation 'com.google.android.material:material:1.2.0-alpha06'
+    implementation 'androidx.core:core-ktx:1.2.0'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
 
     //Dagger
-    implementation 'com.google.dagger:dagger:2.26'
-    kapt 'com.google.dagger:dagger-compiler:2.26'
-    implementation "com.google.dagger:dagger-android:2.22.1"
-    implementation "com.google.dagger:dagger-android-support:2.22.1"
-    kapt 'com.google.dagger:dagger-android-processor:2.22.1'
-    kaptAndroidTest "com.google.dagger:dagger-compiler:2.26"
+    implementation 'com.google.dagger:dagger:2.27'
+    kapt 'com.google.dagger:dagger-compiler:2.27'
+    implementation 'com.google.dagger:dagger-android:2.27'
+    implementation 'com.google.dagger:dagger-android-support:2.27'
+    kapt 'com.google.dagger:dagger-android-processor:2.27'
+    kaptAndroidTest 'com.google.dagger:dagger-compiler:2.27'
 
     //Logging
-    implementation 'com.squareup.okhttp3:logging-interceptor:4.4.0'
+    implementation 'com.squareup.okhttp3:logging-interceptor:4.5.0'
 
     // retrofit
-    implementation 'com.squareup.retrofit2:retrofit:2.7.2'
-    implementation "com.squareup.retrofit2:converter-moshi:2.4.0"
-    implementation 'com.squareup.moshi:moshi:1.8.0'
-    kapt 'com.squareup.moshi:moshi-kotlin-codegen:1.8.0'
-    implementation 'com.squareup.okhttp3:okhttp:4.4.0'
+    implementation 'com.squareup.retrofit2:retrofit:2.8.1'
+    implementation 'com.squareup.retrofit2:converter-moshi:2.8.1'
+    implementation 'com.squareup.moshi:moshi:1.9.2'
+    kapt 'com.squareup.moshi:moshi-kotlin-codegen:1.9.2'
+    implementation 'com.squareup.okhttp3:okhttp:4.5.0'
 
     //picasso
     implementation 'com.squareup.picasso:picasso:2.71828'
 
     //MultiDex
     implementation 'androidx.multidex:multidex:2.0.1'
-
-    //ANKO
-    implementation "org.jetbrains.anko:anko-commons:0.10.8"
-    implementation "org.jetbrains.anko:anko-design:0.10.8"
-    androidExtensions {
-        experimental = true
-    }
 
     //Mockk
     implementation 'io.mockk:mockk:1.9.3'
@@ -146,8 +144,13 @@ dependencies {
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.2'
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.2'
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core-common:1.3.2'
-    implementation 'android.arch.lifecycle:viewmodel:1.1.1'
-    implementation 'android.arch.lifecycle:extensions:1.1.1'
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.0-alpha01'
     implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.3.0-alpha01'
+
+    //navigation component
+    implementation 'androidx.navigation:navigation-fragment:2.2.1'
+    implementation 'androidx.navigation:navigation-ui:2.2.1'
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.2.1'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.2.1'
 }
