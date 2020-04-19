@@ -1,20 +1,25 @@
 package com.util
 
-import com.google.gson.Gson
+import com.squareup.moshi.JsonAdapter
+import com.squareup.moshi.Moshi
+import com.task.data.remote.dto.NewsItem
+import com.task.data.remote.dto.NewsModel
 import java.io.File
-import java.util.*
 
 /**
  * Created by AhmedEltaher
  */
 
 class TestModelsGenerator {
-    private var newsModel: NewsModel
+    private var newsModel: NewsModel = NewsModel()
 
     init {
-        val gson = Gson()
+        val moshi: Moshi = Moshi.Builder().build()
+        val adapter: JsonAdapter<NewsModel> = moshi.adapter(NewsModel::class.java)
         val jsonString = getJson("NewsApiResponse.json")
-        newsModel = gson.fromJson(jsonString, NewsModel::class.java)
+        adapter.fromJson(jsonString)?.let {
+            newsModel = it
+        }
     }
 
     fun generateNewsModel(): NewsModel {
@@ -22,8 +27,7 @@ class TestModelsGenerator {
     }
 
     fun generateNewsModelWithEmptyList(): NewsModel {
-        newsModel.newsItems = ArrayList()
-        return newsModel
+        return NewsModel()
     }
 
     fun generateNewsItemModel(): NewsItem {

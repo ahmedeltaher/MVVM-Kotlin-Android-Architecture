@@ -1,0 +1,2790 @@
+{
+    "status": "OK",
+    "copyright": "Copyright (c) 2019 The New York Times Company. All Rights Reserved.",
+    "section": "home",
+    "last_updated": "2019-12-19T12:47:13-05:00",
+    "num_results": 35,
+    "results": [
+        {
+            "section": "U.S.",
+            "subsection": "Politics",
+            "title": "Trump Impeached for Abuse of Power and Obstruction of Congress",
+            "abstract": "Voting nearly along party lines, the House approved two articles of impeachment against President Trump, making him the third president in history to face removal by the Senate.",
+            "url": "https://www.nytimes.com/2019/12/18/us/politics/trump-impeached.html",
+            "byline": "By NICHOLAS FANDOS and MICHAEL D. SHEAR",
+            "item_type": "Article",
+            "updated_date": "2019-12-19T10:45:06-05:00",
+            "created_date": "2019-12-18T13:50:38-05:00",
+            "published_date": "2019-12-18T13:50:38-05:00",
+            "material_type_facet": "",
+            "kicker": "",
+            "des_facet": [
+                "Impeachment",
+                "United States Politics and Government",
+                "Trump-Ukraine Whistle-Blower Complaint and Impeachment Inquiry",
+                "Presidential Election of 2020",
+                "Russian Interference in 2016 US Elections and Ties to Trump Associates"
+            ],
+            "org_facet": [
+                "House of Representatives",
+                "Democratic Party",
+                "Republican Party"
+            ],
+            "per_facet": [
+                "Trump, Donald J",
+                "Pelosi, Nancy"
+            ],
+            "geo_facet": [],
+            "multimedia": [],
+            "short_url": "https://nyti.ms/34vl8TX"
+        },
+        {
+            "section": "U.S.",
+            "subsection": "Politics",
+            "title": "Trump Impeachment Trial in Doubt as a House Leader Suggests Withholding Articles",
+            "abstract": "The comments by Representative James E. Clyburn, the No. 3 Democratic leader, cast further uncertainty on the path forward for a Senate trial of President Trump.",
+            "url": "https://www.nytimes.com/2019/12/19/us/politics/impeachment-trump-senate-trial.html",
+            "byline": "By NICHOLAS FANDOS and SHERYL GAY STOLBERG",
+            "item_type": "Article",
+            "updated_date": "2019-12-19T11:11:59-05:00",
+            "created_date": "2019-12-19T09:56:06-05:00",
+            "published_date": "2019-12-19T09:56:06-05:00",
+            "material_type_facet": "",
+            "kicker": "",
+            "des_facet": [
+                "Trump-Ukraine Whistle-Blower Complaint and Impeachment Inquiry"
+            ],
+            "org_facet": [
+                "Senate",
+                "House of Representatives"
+            ],
+            "per_facet": [
+                "Clyburn, James E",
+                "McConnell, Mitch",
+                "Trump, Donald J",
+                "Pelosi, Nancy"
+            ],
+            "geo_facet": [],
+            "multimedia": [
+                {
+                    "url": "https://static01.nyt.com/images/2019/12/19/us/politics/19dc-impeach/19dc-impeach-thumbStandard.jpg",
+                    "format": "Standard Thumbnail",
+                    "height": 75,
+                    "width": 75,
+                    "type": "image",
+                    "subtype": "photo",
+                    "caption": "Representative James Clyburn, Democrat of South Carolina, giving a television interview on Wednesday ahead of the House votes on articles of impeachment on Capitol Hill.",
+                    "copyright": "Jason Andrew for The New York Times"
+                },
+                {
+                    "url": "https://static01.nyt.com/images/2019/12/19/us/politics/19dc-impeach/19dc-impeach-thumbLarge.jpg",
+                    "format": "thumbLarge",
+                    "height": 150,
+                    "width": 150,
+                    "type": "image",
+                    "subtype": "photo",
+                    "caption": "Representative James Clyburn, Democrat of South Carolina, giving a television interview on Wednesday ahead of the House votes on articles of impeachment on Capitol Hill.",
+                    "copyright": "Jason Andrew for The New York Times"
+                },
+                {
+                    "url": "https://static01.nyt.com/images/2019/12/19/us/politics/19dc-impeach/merlin_166138962_66a5ba8d-aaf7-4d25-bd01-8edd845ef6e4-articleInline.jpg",
+                    "format": "Normal",
+                    "height": 127,
+                    "width": 190,
+                    "type": "image",
+                    "subtype": "photo",
+                    "caption": "Representative James Clyburn, Democrat of South Carolina, giving a television interview on Wednesday ahead of the House votes on articles of impeachment on Capitol Hill.",
+                    "copyright": "Jason Andrew for The New York Times"
+                },
+                {
+                    "url": "https://static01.nyt.com/images/2019/12/19/us/politics/19dc-impeach/merlin_166138962_66a5ba8d-aaf7-4d25-bd01-8edd845ef6e4-mediumThreeByTwo210.jpg",
+                    "format": "mediumThreeByTwo210",
+                    "height": 140,
+                    "width": 210,
+                    "type": "image",
+                    "subtype": "photo",
+                    "caption": "Representative James Clyburn, Democrat of South Carolina, giving a television interview on Wednesday ahead of the House votes on articles of impeachment on Capitol Hill.",
+                    "copyright": "Jason Andrew for The New York Times"
+                },
+                {
+                    "url": "https://static01.nyt.com/images/2019/12/19/us/politics/19dc-impeach/merlin_166138962_66a5ba8d-aaf7-4d25-bd01-8edd845ef6e4-superJumbo.jpg",
+                    "format": "superJumbo",
+                    "height": 1365,
+                    "width": 2048,
+                    "type": "image",
+                    "subtype": "photo",
+                    "caption": "Representative James Clyburn, Democrat of South Carolina, giving a television interview on Wednesday ahead of the House votes on articles of impeachment on Capitol Hill.",
+                    "copyright": "Jason Andrew for The New York Times"
+                }
+            ],
+            "short_url": "https://nyti.ms/34CU1GL"
+        },
+        {
+            "section": "U.S.",
+            "subsection": "Politics",
+            "title": "A President Impeached, and a Nation Convulsed",
+            "abstract": "The impeachment battles over Andrew Johnson, Richard M. Nixon and Bill Clinton came at turning points in the American story. The time that produced President Trump has proved to be another one.",
+            "url": "https://www.nytimes.com/2019/12/18/us/politics/president-impeachment-history.html",
+            "byline": "By PETER BAKER",
+            "item_type": "Article",
+            "updated_date": "2019-12-19T10:48:24-05:00",
+            "created_date": "2019-12-18T22:14:47-05:00",
+            "published_date": "2019-12-18T22:14:47-05:00",
+            "material_type_facet": "",
+            "kicker": "",
+            "des_facet": [
+                "Impeachment",
+                "Trump-Ukraine Whistle-Blower Complaint and Impeachment Inquiry",
+                "United States Politics and Government"
+            ],
+            "org_facet": [
+                "House of Representatives",
+                "Democratic Party",
+                "Republican Party"
+            ],
+            "per_facet": [
+                "Trump, Donald J",
+                "Johnson, Andrew",
+                "Nixon, Richard Milhous",
+                "Clinton, Bill"
+            ],
+            "geo_facet": [],
+            "multimedia": [
+                {
+                    "url": "https://static01.nyt.com/images/2019/12/18/us/politics/18dc-history1/merlin_166132113_48356d46-51a5-4d2a-af9e-bce836ba7940-thumbStandard.jpg",
+                    "format": "Standard Thumbnail",
+                    "height": 75,
+                    "width": 75,
+                    "type": "image",
+                    "subtype": "photo",
+                    "caption": "Linda Emerick with a copy of the Constitution during a demonstration in support of impeaching President Trump on Wednesday outside the Capitol.",
+                    "copyright": "Alyssa Schukar for The New York Times"
+                },
+                {
+                    "url": "https://static01.nyt.com/images/2019/12/18/us/politics/18dc-history1/merlin_166132113_48356d46-51a5-4d2a-af9e-bce836ba7940-thumbLarge.jpg",
+                    "format": "thumbLarge",
+                    "height": 150,
+                    "width": 150,
+                    "type": "image",
+                    "subtype": "photo",
+                    "caption": "Linda Emerick with a copy of the Constitution during a demonstration in support of impeaching President Trump on Wednesday outside the Capitol.",
+                    "copyright": "Alyssa Schukar for The New York Times"
+                },
+                {
+                    "url": "https://static01.nyt.com/images/2019/12/18/us/politics/18dc-history1/merlin_166132113_48356d46-51a5-4d2a-af9e-bce836ba7940-articleInline.jpg",
+                    "format": "Normal",
+                    "height": 127,
+                    "width": 190,
+                    "type": "image",
+                    "subtype": "photo",
+                    "caption": "Linda Emerick with a copy of the Constitution during a demonstration in support of impeaching President Trump on Wednesday outside the Capitol.",
+                    "copyright": "Alyssa Schukar for The New York Times"
+                },
+                {
+                    "url": "https://static01.nyt.com/images/2019/12/18/us/politics/18dc-history1/merlin_166132113_48356d46-51a5-4d2a-af9e-bce836ba7940-mediumThreeByTwo210.jpg",
+                    "format": "mediumThreeByTwo210",
+                    "height": 140,
+                    "width": 210,
+                    "type": "image",
+                    "subtype": "photo",
+                    "caption": "Linda Emerick with a copy of the Constitution during a demonstration in support of impeaching President Trump on Wednesday outside the Capitol.",
+                    "copyright": "Alyssa Schukar for The New York Times"
+                },
+                {
+                    "url": "https://static01.nyt.com/images/2019/12/18/us/politics/18dc-history1/merlin_166132113_48356d46-51a5-4d2a-af9e-bce836ba7940-superJumbo.jpg",
+                    "format": "superJumbo",
+                    "height": 1365,
+                    "width": 2048,
+                    "type": "image",
+                    "subtype": "photo",
+                    "caption": "Linda Emerick with a copy of the Constitution during a demonstration in support of impeaching President Trump on Wednesday outside the Capitol.",
+                    "copyright": "Alyssa Schukar for The New York Times"
+                }
+            ],
+            "short_url": "https://nyti.ms/36ZTTCX"
+        },
+        {
+            "section": "U.S.",
+            "subsection": "Politics",
+            "title": "Trump, Unbowed, Uses Rally to Strike Back Against Impeachment Vote",
+            "abstract": "The president traveled to Michigan, a vital electoral state, to deliver his response after he became the third president to be impeached by the House.",
+            "url": "https://www.nytimes.com/2019/12/18/us/politics/Debbie-Dingell-husband.html",
+            "byline": "By MICHAEL CROWLEY, ANNIE KARNI and MAGGIE HABERMAN",
+            "item_type": "Article",
+            "updated_date": "2019-12-19T11:32:05-05:00",
+            "created_date": "2019-12-18T20:23:25-05:00",
+            "published_date": "2019-12-18T20:23:25-05:00",
+            "material_type_facet": "",
+            "kicker": "",
+            "des_facet": [
+                "Trump-Ukraine Whistle-Blower Complaint and Impeachment Inquiry"
+            ],
+            "org_facet": [
+                "House of Representatives",
+                "Republican Party"
+            ],
+            "per_facet": [
+                "Trump, Donald J",
+                "Pence, Mike"
+            ],
+            "geo_facet": [
+                "Michigan"
+            ],
+            "multimedia": [
+                {
+                    "url": "https://static01.nyt.com/images/2019/12/18/us/politics/18dc-trump-2/18dc-trump-2-thumbStandard-v4.jpg",
+                    "format": "Standard Thumbnail",
+                    "height": 75,
+                    "width": 75,
+                    "type": "image",
+                    "subtype": "photo",
+                    "caption": "Supporters of Mr. Trump at the rally in Battle Creek, Mich.",
+                    "copyright": "Pete Marovich for The New York Times"
+                },
+                {
+                    "url": "https://static01.nyt.com/images/2019/12/18/us/politics/18dc-trump-2/18dc-trump-2-thumbLarge-v4.jpg",
+                    "format": "thumbLarge",
+                    "height": 150,
+                    "width": 150,
+                    "type": "image",
+                    "subtype": "photo",
+                    "caption": "Supporters of Mr. Trump at the rally in Battle Creek, Mich.",
+                    "copyright": "Pete Marovich for The New York Times"
+                },
+                {
+                    "url": "https://static01.nyt.com/images/2019/12/18/us/politics/18dc-trump-2/18dc-trump-2-articleInline-v4.jpg",
+                    "format": "Normal",
+                    "height": 127,
+                    "width": 190,
+                    "type": "image",
+                    "subtype": "photo",
+                    "caption": "Supporters of Mr. Trump at the rally in Battle Creek, Mich.",
+                    "copyright": "Pete Marovich for The New York Times"
+                },
+                {
+                    "url": "https://static01.nyt.com/images/2019/12/18/us/politics/18dc-trump-2/18dc-trump-2-mediumThreeByTwo210-v4.jpg",
+                    "format": "mediumThreeByTwo210",
+                    "height": 140,
+                    "width": 210,
+                    "type": "image",
+                    "subtype": "photo",
+                    "caption": "Supporters of Mr. Trump at the rally in Battle Creek, Mich.",
+                    "copyright": "Pete Marovich for The New York Times"
+                },
+                {
+                    "url": "https://static01.nyt.com/images/2019/12/18/us/politics/18dc-trump-2/18dc-trump-2-superJumbo-v4.jpg",
+                    "format": "superJumbo",
+                    "height": 1365,
+                    "width": 2048,
+                    "type": "image",
+                    "subtype": "photo",
+                    "caption": "Supporters of Mr. Trump at the rally in Battle Creek, Mich.",
+                    "copyright": "Pete Marovich for The New York Times"
+                }
+            ],
+            "short_url": "https://nyti.ms/2M9jy3X"
+        },
+        {
+            "section": "Business",
+            "subsection": "Media",
+            "title": "How TV Covered the Moment of Impeachment",
+            "abstract": "Tucker Carlson was grim. Sean Hannity was angry. Two networks seemed reluctant to leave their scheduled prime-time shows.",
+            "url": "https://www.nytimes.com/2019/12/18/business/media/cnn-msnbc-fox-news-trump-impeachment.html",
+            "byline": "By JIM WINDOLF",
+            "item_type": "Article",
+            "updated_date": "2019-12-18T21:49:25-05:00",
+            "created_date": "2019-12-18T21:49:26-05:00",
+            "published_date": "2019-12-18T21:49:26-05:00",
+            "material_type_facet": "",
+            "kicker": "",
+            "des_facet": [
+                "News and News Media",
+                "Television",
+                "Impeachment",
+                "Survivor (TV Program)",
+                "Trump-Ukraine Whistle-Blower Complaint and Impeachment Inquiry"
+            ],
+            "org_facet": [
+                "CBS Corporation",
+                "ABC Inc",
+                "House of Representatives",
+                "National Broadcasting Co",
+                "Fox News Channel"
+            ],
+            "per_facet": [
+                "Carlson, Tucker",
+                "Hannity, Sean",
+                "Trump, Donald J"
+            ],
+            "geo_facet": [],
+            "multimedia": [
+                {
+                    "url": "https://static01.nyt.com/images/2019/12/18/business/18impeachtv/18impeachtv-thumbStandard-v2.jpg",
+                    "format": "Standard Thumbnail",
+                    "height": 75,
+                    "width": 75,
+                    "type": "image",
+                    "subtype": "photo",
+                    "caption": "Daniel Sidzina watching the House impeachment debate on Wednesday at Shaw’s Tavern in Washington.",
+                    "copyright": "Alyssa Schukar for The New York Times"
+                },
+                {
+                    "url": "https://static01.nyt.com/images/2019/12/18/business/18impeachtv/18impeachtv-thumbLarge-v2.jpg",
+                    "format": "thumbLarge",
+                    "height": 150,
+                    "width": 150,
+                    "type": "image",
+                    "subtype": "photo",
+                    "caption": "Daniel Sidzina watching the House impeachment debate on Wednesday at Shaw’s Tavern in Washington.",
+                    "copyright": "Alyssa Schukar for The New York Times"
+                },
+                {
+                    "url": "https://static01.nyt.com/images/2019/12/18/business/18impeachtv/18impeachtv-articleInline-v2.jpg",
+                    "format": "Normal",
+                    "height": 127,
+                    "width": 190,
+                    "type": "image",
+                    "subtype": "photo",
+                    "caption": "Daniel Sidzina watching the House impeachment debate on Wednesday at Shaw’s Tavern in Washington.",
+                    "copyright": "Alyssa Schukar for The New York Times"
+                },
+                {
+                    "url": "https://static01.nyt.com/images/2019/12/18/business/18impeachtv/18impeachtv-mediumThreeByTwo210-v3.jpg",
+                    "format": "mediumThreeByTwo210",
+                    "height": 140,
+                    "width": 210,
+                    "type": "image",
+                    "subtype": "photo",
+                    "caption": "Daniel Sidzina watching the House impeachment debate on Wednesday at Shaw’s Tavern in Washington.",
+                    "copyright": "Alyssa Schukar for The New York Times"
+                },
+                {
+                    "url": "https://static01.nyt.com/images/2019/12/18/business/18impeachtv/18impeachtv-superJumbo-v2.jpg",
+                    "format": "superJumbo",
+                    "height": 1365,
+                    "width": 2048,
+                    "type": "image",
+                    "subtype": "photo",
+                    "caption": "Daniel Sidzina watching the House impeachment debate on Wednesday at Shaw’s Tavern in Washington.",
+                    "copyright": "Alyssa Schukar for The New York Times"
+                }
+            ],
+            "short_url": "https://nyti.ms/34CIAyE"
+        },
+        {
+            "section": "World",
+            "subsection": "Europe",
+            "title": "Putin Hints at Holding Power Past 2024, and Defends Trump on Impeachment",
+            "abstract": "Russia’s president mused about repealing the term limit he faces, and echoed Republican talking points saying that impeachment was a baseless bid to reverse the 2016 election.",
+            "url": "https://www.nytimes.com/2019/12/19/world/europe/putin-trump-impeachment.html",
+            "byline": "By ANDREW HIGGINS",
+            "item_type": "Article",
+            "updated_date": "2019-12-19T12:44:39-05:00",
+            "created_date": "2019-12-19T07:30:27-05:00",
+            "published_date": "2019-12-19T07:30:27-05:00",
+            "material_type_facet": "",
+            "kicker": "",
+            "des_facet": [
+                "United States Politics and Government",
+                "Russian Interference in 2016 US Elections and Ties to Trump Associates"
+            ],
+            "org_facet": [],
+            "per_facet": [
+                "Putin, Vladimir V",
+                "Trump, Donald J"
+            ],
+            "geo_facet": [
+                "Moscow (Russia)"
+            ],
+            "multimedia": [
+                {
+                    "url": "https://static01.nyt.com/images/2019/12/19/world/19putin1/19putin1-thumbStandard.jpg",
+                    "format": "Standard Thumbnail",
+                    "height": 75,
+                    "width": 75,
+                    "type": "image",
+                    "subtype": "photo",
+                    "caption": "President Vladimir V. Putin said at a news conference in Moscow on Thursday that the United States Senate was unlikely to remove President Trump from office.",
+                    "copyright": "Evgenia Novozhenina/Reuters"
+                },
+                {
+                    "url": "https://static01.nyt.com/images/2019/12/19/world/19putin1/19putin1-thumbLarge.jpg",
+                    "format": "thumbLarge",
+                    "height": 150,
+                    "width": 150,
+                    "type": "image",
+                    "subtype": "photo",
+                    "caption": "President Vladimir V. Putin said at a news conference in Moscow on Thursday that the United States Senate was unlikely to remove President Trump from office.",
+                    "copyright": "Evgenia Novozhenina/Reuters"
+                },
+                {
+                    "url": "https://static01.nyt.com/images/2019/12/19/world/19putin1/merlin_166176633_8c6e0c90-21c6-4433-990a-3f01dd710b8c-articleInline.jpg",
+                    "format": "Normal",
+                    "height": 127,
+                    "width": 190,
+                    "type": "image",
+                    "subtype": "photo",
+                    "caption": "President Vladimir V. Putin said at a news conference in Moscow on Thursday that the United States Senate was unlikely to remove President Trump from office.",
+                    "copyright": "Evgenia Novozhenina/Reuters"
+                },
+                {
+                    "url": "https://static01.nyt.com/images/2019/12/19/world/19putin1/19putin1-mediumThreeByTwo210.jpg",
+                    "format": "mediumThreeByTwo210",
+                    "height": 140,
+                    "width": 210,
+                    "type": "image",
+                    "subtype": "photo",
+                    "caption": "President Vladimir V. Putin said at a news conference in Moscow on Thursday that the United States Senate was unlikely to remove President Trump from office.",
+                    "copyright": "Evgenia Novozhenina/Reuters"
+                },
+                {
+                    "url": "https://static01.nyt.com/images/2019/12/19/world/19putin1/merlin_166176633_8c6e0c90-21c6-4433-990a-3f01dd710b8c-superJumbo.jpg",
+                    "format": "superJumbo",
+                    "height": 1368,
+                    "width": 2048,
+                    "type": "image",
+                    "subtype": "photo",
+                    "caption": "President Vladimir V. Putin said at a news conference in Moscow on Thursday that the United States Senate was unlikely to remove President Trump from office.",
+                    "copyright": "Evgenia Novozhenina/Reuters"
+                }
+            ],
+            "short_url": "https://nyti.ms/371bnyP"
+        },
+        {
+            "section": "New York",
+            "subsection": "",
+            "title": "How 2 Soviet Émigrés Fueled the Trump Impeachment Flames",
+            "abstract": "“Lev and Igor” were obscure businessmen who became fixtures of the Republican donor set. Then they played an unlikely role in the proceedings gripping the nation.",
+            "url": "https://www.nytimes.com/2019/12/19/nyregion/lev-parnas-igor-fruman.html",
+            "byline": "By MICHAEL ROTHFELD, BEN PROTESS, WILLIAM K. RASHBAUM, KENNETH P. VOGEL and ANDREW E. KRAMER",
+            "item_type": "Article",
+            "updated_date": "2019-12-19T09:28:38-05:00",
+            "created_date": "2019-12-19T03:00:12-05:00",
+            "published_date": "2019-12-19T03:00:12-05:00",
+            "material_type_facet": "",
+            "kicker": "",
+            "des_facet": [
+                "Impeachment",
+                "Trump-Ukraine Whistle-Blower Complaint and Impeachment Inquiry",
+                "United States Politics and Government",
+                "United States International Relations",
+                "Russian Interference in 2016 US Elections and Ties to Trump Associates"
+            ],
+            "org_facet": [],
+            "per_facet": [
+                "Parnas, Lev",
+                "Fruman, Igor",
+                "Giuliani, Rudolph W",
+                "Trump, Donald J",
+                "Biden, Joseph R Jr",
+                "Yovanovitch, Marie L"
+            ],
+            "geo_facet": [
+                "Ukraine"
+            ],
+            "multimedia": [
+                {
+                    "url": "https://static01.nyt.com/images/2019/12/19/nyregion/19-PARNUS-FRUMAN-01-PRINT/parnas-fruman-thumbStandard.jpg",
+                    "format": "Standard Thumbnail",
+                    "height": 75,
+                    "width": 75,
+                    "type": "image",
+                    "subtype": "photo",
+                    "caption": "",
+                    "copyright": "Photo illustration by Najeebah Al-Ghadban"
+                },
+                {
+                    "url": "https://static01.nyt.com/images/2019/12/19/nyregion/19-PARNUS-FRUMAN-01-PRINT/parnas-fruman-thumbLarge.jpg",
+                    "format": "thumbLarge",
+                    "height": 150,
+                    "width": 150,
+                    "type": "image",
+                    "subtype": "photo",
+                    "caption": "",
+                    "copyright": "Photo illustration by Najeebah Al-Ghadban"
+                },
+                {
+                    "url": "https://static01.nyt.com/images/2019/12/19/nyregion/19-PARNUS-FRUMAN-01-PRINT/parnas-fruman-articleInline.jpg",
+                    "format": "Normal",
+                    "height": 246,
+                    "width": 190,
+                    "type": "image",
+                    "subtype": "photo",
+                    "caption": "",
+                    "copyright": "Photo illustration by Najeebah Al-Ghadban"
+                },
+                {
+                    "url": "https://static01.nyt.com/images/2019/12/19/nyregion/19-PARNUS-FRUMAN-01-PRINT/19-PARNUS-FRUMAN-01-PRINT-mediumThreeByTwo210-v3.jpg",
+                    "format": "mediumThreeByTwo210",
+                    "height": 140,
+                    "width": 210,
+                    "type": "image",
+                    "subtype": "photo",
+                    "caption": "",
+                    "copyright": "Photo illustration by Najeebah Al-Ghadban"
+                },
+                {
+                    "url": "https://static01.nyt.com/images/2019/12/19/nyregion/19-PARNUS-FRUMAN-01-PRINT/parnas-fruman-superJumbo.jpg",
+                    "format": "superJumbo",
+                    "height": 2048,
+                    "width": 1583,
+                    "type": "image",
+                    "subtype": "photo",
+                    "caption": "",
+                    "copyright": "Photo illustration by Najeebah Al-Ghadban"
+                }
+            ],
+            "short_url": "https://nyti.ms/2EyYCiw"
+        },
+        {
+            "section": "U.S.",
+            "subsection": "Politics",
+            "title": "Tonight’s Democratic Debate: When It Is and What to Watch For",
+            "abstract": "Everything you need to know about the 2020 Democratic presidential debate in Los Angeles.",
+            "url": "https://www.nytimes.com/2019/12/19/us/politics/when-december-democratic-debate.html",
+            "byline": "By SHANE GOLDMACHER",
+            "item_type": "Article",
+            "updated_date": "2019-12-19T09:00:08-05:00",
+            "created_date": "2019-12-19T09:00:07-05:00",
+            "published_date": "2019-12-19T09:00:07-05:00",
+            "material_type_facet": "",
+            "kicker": "",
+            "des_facet": [
+                "Presidential Election of 2020",
+                "Debates (Political)"
+            ],
+            "org_facet": [],
+            "per_facet": [
+                "Biden, Joseph R Jr",
+                "Buttigieg, Pete (1982- )",
+                "Warren, Elizabeth",
+                "Sanders, Bernard"
+            ],
+            "geo_facet": [],
+            "multimedia": [
+                {
+                    "url": "https://static01.nyt.com/images/2019/12/19/us/politics/19whattowatch/19whattowatch-thumbStandard.jpg",
+                    "format": "Standard Thumbnail",
+                    "height": 75,
+                    "width": 75,
+                    "type": "image",
+                    "subtype": "photo",
+                    "caption": "The Democratic debate will take place at Loyola Marymount University in Los Angeles.",
+                    "copyright": "Jenna Schoenefeld for The New York Times"
+                },
+                {
+                    "url": "https://static01.nyt.com/images/2019/12/19/us/politics/19whattowatch/19whattowatch-thumbLarge.jpg",
+                    "format": "thumbLarge",
+                    "height": 150,
+                    "width": 150,
+                    "type": "image",
+                    "subtype": "photo",
+                    "caption": "The Democratic debate will take place at Loyola Marymount University in Los Angeles.",
+                    "copyright": "Jenna Schoenefeld for The New York Times"
+                },
+                {
+                    "url": "https://static01.nyt.com/images/2019/12/19/us/politics/19whattowatch/merlin_166056141_4010ba09-7f2d-48e2-b131-0bca452db4ba-articleInline.jpg",
+                    "format": "Normal",
+                    "height": 127,
+                    "width": 190,
+                    "type": "image",
+                    "subtype": "photo",
+                    "caption": "The Democratic debate will take place at Loyola Marymount University in Los Angeles.",
+                    "copyright": "Jenna Schoenefeld for The New York Times"
+                },
+                {
+                    "url": "https://static01.nyt.com/images/2019/12/19/us/politics/19whattowatch/merlin_166056141_4010ba09-7f2d-48e2-b131-0bca452db4ba-mediumThreeByTwo210.jpg",
+                    "format": "mediumThreeByTwo210",
+                    "height": 140,
+                    "width": 210,
+                    "type": "image",
+                    "subtype": "photo",
+                    "caption": "The Democratic debate will take place at Loyola Marymount University in Los Angeles.",
+                    "copyright": "Jenna Schoenefeld for The New York Times"
+                },
+                {
+                    "url": "https://static01.nyt.com/images/2019/12/19/us/politics/19whattowatch/merlin_166056141_4010ba09-7f2d-48e2-b131-0bca452db4ba-superJumbo.jpg",
+                    "format": "superJumbo",
+                    "height": 1365,
+                    "width": 2048,
+                    "type": "image",
+                    "subtype": "photo",
+                    "caption": "The Democratic debate will take place at Loyola Marymount University in Los Angeles.",
+                    "copyright": "Jenna Schoenefeld for The New York Times"
+                }
+            ],
+            "short_url": "https://nyti.ms/2PCro8p"
+        },
+        {
+            "section": "U.S.",
+            "subsection": "Politics",
+            "title": "Andrew Yang Is Onstage, but Offstage, Asian-Americans Wonder Where They Fit In",
+            "abstract": "The Democrats have a historically diverse field, but the Asian-American entrepreneur will be debating with six white candidates.",
+            "url": "https://www.nytimes.com/2019/12/19/us/politics/Andrew-Yang-2020-Democrats-Debate.html",
+            "byline": "By JENNIFER MEDINA and MATT STEVENS",
+            "item_type": "Article",
+            "updated_date": "2019-12-19T09:26:34-05:00",
+            "created_date": "2019-12-19T03:00:14-05:00",
+            "published_date": "2019-12-19T03:00:14-05:00",
+            "material_type_facet": "",
+            "kicker": "",
+            "des_facet": [
+                "Race and Ethnicity",
+                "Debates (Political)",
+                "Asian-Americans",
+                "Presidential Election of 2020"
+            ],
+            "org_facet": [],
+            "per_facet": [
+                "Yang, Andrew (1975- )"
+            ],
+            "geo_facet": [
+                "Los Angeles (Calif)"
+            ],
+            "multimedia": [
+                {
+                    "url": "https://static01.nyt.com/images/2019/12/19/us/politics/19asians-01/19asians-01-thumbStandard.jpg",
+                    "format": "Standard Thumbnail",
+                    "height": 75,
+                    "width": 75,
+                    "type": "image",
+                    "subtype": "photo",
+                    "caption": "Andrew Yang gets a photo with an audience member after his town hall in Dover, New Hampshire in November.",
+                    "copyright": "Sarah Rice for The New York Times"
+                },
+                {
+                    "url": "https://static01.nyt.com/images/2019/12/19/us/politics/19asians-01/19asians-01-thumbLarge.jpg",
+                    "format": "thumbLarge",
+                    "height": 150,
+                    "width": 150,
+                    "type": "image",
+                    "subtype": "photo",
+                    "caption": "Andrew Yang gets a photo with an audience member after his town hall in Dover, New Hampshire in November.",
+                    "copyright": "Sarah Rice for The New York Times"
+                },
+                {
+                    "url": "https://static01.nyt.com/images/2019/12/19/us/politics/19asians-01/merlin_164030079_7b92d94e-54cc-48b5-afbb-ca5144e96082-articleInline.jpg",
+                    "format": "Normal",
+                    "height": 127,
+                    "width": 190,
+                    "type": "image",
+                    "subtype": "photo",
+                    "caption": "Andrew Yang gets a photo with an audience member after his town hall in Dover, New Hampshire in November.",
+                    "copyright": "Sarah Rice for The New York Times"
+                },
+                {
+                    "url": "https://static01.nyt.com/images/2019/12/19/us/politics/19asians-01/merlin_164030079_7b92d94e-54cc-48b5-afbb-ca5144e96082-mediumThreeByTwo210.jpg",
+                    "format": "mediumThreeByTwo210",
+                    "height": 140,
+                    "width": 210,
+                    "type": "image",
+                    "subtype": "photo",
+                    "caption": "Andrew Yang gets a photo with an audience member after his town hall in Dover, New Hampshire in November.",
+                    "copyright": "Sarah Rice for The New York Times"
+                },
+                {
+                    "url": "https://static01.nyt.com/images/2019/12/19/us/politics/19asians-01/merlin_164030079_7b92d94e-54cc-48b5-afbb-ca5144e96082-superJumbo.jpg",
+                    "format": "superJumbo",
+                    "height": 1366,
+                    "width": 2048,
+                    "type": "image",
+                    "subtype": "photo",
+                    "caption": "Andrew Yang gets a photo with an audience member after his town hall in Dover, New Hampshire in November.",
+                    "copyright": "Sarah Rice for The New York Times"
+                }
+            ],
+            "short_url": "https://nyti.ms/2Z0STeU"
+        },
+        {
+            "section": "Health",
+            "subsection": "",
+            "title": "Obamacare Insurance Mandate Is Struck Down by Federal Appeals Court",
+            "abstract": "But the judges sent the case back to determine if other parts of the federal health care law can stand without the mandate.",
+            "url": "https://www.nytimes.com/2019/12/18/health/obamacare-mandate.html",
+            "byline": "By ABBY GOODNOUGH",
+            "item_type": "Article",
+            "updated_date": "2019-12-19T12:17:28-05:00",
+            "created_date": "2019-12-18T17:16:22-05:00",
+            "published_date": "2019-12-18T17:16:22-05:00",
+            "material_type_facet": "",
+            "kicker": "",
+            "des_facet": [
+                "Patient Protection and Affordable Care Act (2010)",
+                "Health Insurance and Managed Care",
+                "Decisions and Verdicts",
+                "Appeals Courts (US)",
+                "United States Politics and Government",
+                "Law and Legislation",
+                "Tax Cuts and Jobs Act (2017)",
+                "Suits and Litigation (Civil)"
+            ],
+            "org_facet": [],
+            "per_facet": [
+                "O'Connor, Reed",
+                "Trump, Donald J"
+            ],
+            "geo_facet": [],
+            "multimedia": [
+                {
+                    "url": "https://static01.nyt.com/images/2019/12/18/science/18OBAMACARE1/18OBAMACARE1-thumbStandard-v2.jpg",
+                    "format": "Standard Thumbnail",
+                    "height": 75,
+                    "width": 75,
+                    "type": "image",
+                    "subtype": "photo",
+                    "caption": "A storefront of Sunshine Health and Life Advisors, a Florida insurance enrollment company, in Miami in November 2016.",
+                    "copyright": "Angel Valentin for The New York Times"
+                },
+                {
+                    "url": "https://static01.nyt.com/images/2019/12/18/science/18OBAMACARE1/18OBAMACARE1-thumbLarge-v2.jpg",
+                    "format": "thumbLarge",
+                    "height": 150,
+                    "width": 150,
+                    "type": "image",
+                    "subtype": "photo",
+                    "caption": "A storefront of Sunshine Health and Life Advisors, a Florida insurance enrollment company, in Miami in November 2016.",
+                    "copyright": "Angel Valentin for The New York Times"
+                },
+                {
+                    "url": "https://static01.nyt.com/images/2019/12/18/science/18OBAMACARE1/18OBAMACARE1-articleInline-v2.jpg",
+                    "format": "Normal",
+                    "height": 126,
+                    "width": 190,
+                    "type": "image",
+                    "subtype": "photo",
+                    "caption": "A storefront of Sunshine Health and Life Advisors, a Florida insurance enrollment company, in Miami in November 2016.",
+                    "copyright": "Angel Valentin for The New York Times"
+                },
+                {
+                    "url": "https://static01.nyt.com/images/2019/12/18/science/18OBAMACARE1/18OBAMACARE1-mediumThreeByTwo210-v2.jpg",
+                    "format": "mediumThreeByTwo210",
+                    "height": 140,
+                    "width": 210,
+                    "type": "image",
+                    "subtype": "photo",
+                    "caption": "A storefront of Sunshine Health and Life Advisors, a Florida insurance enrollment company, in Miami in November 2016.",
+                    "copyright": "Angel Valentin for The New York Times"
+                },
+                {
+                    "url": "https://static01.nyt.com/images/2019/12/18/science/18OBAMACARE1/18OBAMACARE1-superJumbo-v2.jpg",
+                    "format": "superJumbo",
+                    "height": 1363,
+                    "width": 2048,
+                    "type": "image",
+                    "subtype": "photo",
+                    "caption": "A storefront of Sunshine Health and Life Advisors, a Florida insurance enrollment company, in Miami in November 2016.",
+                    "copyright": "Angel Valentin for The New York Times"
+                }
+            ],
+            "short_url": "https://nyti.ms/2Q5Fnmi"
+        },
+        {
+            "section": "The Upshot",
+            "subsection": "",
+            "title": "Obamacare Ruling May Spare Republicans Some Political Pain",
+            "abstract": "The practical effect of the decision is likely to be months of delays, pushing the final outcome of the case beyond the 2020 election.",
+            "url": "https://www.nytimes.com/2019/12/19/upshot/obamacare-ruling.html",
+            "byline": "By MARGOT SANGER-KATZ",
+            "item_type": "Article",
+            "updated_date": "2019-12-19T12:37:28-05:00",
+            "created_date": "2019-12-19T05:02:46-05:00",
+            "published_date": "2019-12-19T05:02:46-05:00",
+            "material_type_facet": "",
+            "kicker": "",
+            "des_facet": [
+                "Patient Protection and Affordable Care Act (2010)",
+                "Presidential Election of 2020",
+                "United States Politics and Government",
+                "Health Insurance and Managed Care",
+                "Law and Legislation"
+            ],
+            "org_facet": [],
+            "per_facet": [],
+            "geo_facet": [],
+            "multimedia": [
+                {
+                    "url": "https://static01.nyt.com/images/2019/12/18/upshot/00up-aca-ruling/merlin_157723173_d9eb07de-7bfe-4211-98da-dfb836219ca7-thumbStandard.jpg",
+                    "format": "Standard Thumbnail",
+                    "height": 75,
+                    "width": 75,
+                    "type": "image",
+                    "subtype": "photo",
+                    "caption": "The public lined up in July to watch oral arguments in Texas v. U.S. at the United States Court of Appeals for the Fifth Circuit in New Orleans. ",
+                    "copyright": "Annie Flanagan for The New York Times"
+                },
+                {
+                    "url": "https://static01.nyt.com/images/2019/12/18/upshot/00up-aca-ruling/merlin_157723173_d9eb07de-7bfe-4211-98da-dfb836219ca7-thumbLarge.jpg",
+                    "format": "thumbLarge",
+                    "height": 150,
+                    "width": 150,
+                    "type": "image",
+                    "subtype": "photo",
+                    "caption": "The public lined up in July to watch oral arguments in Texas v. U.S. at the United States Court of Appeals for the Fifth Circuit in New Orleans. ",
+                    "copyright": "Annie Flanagan for The New York Times"
+                },
+                {
+                    "url": "https://static01.nyt.com/images/2019/12/18/upshot/00up-aca-ruling/merlin_157723173_d9eb07de-7bfe-4211-98da-dfb836219ca7-articleInline.jpg",
+                    "format": "Normal",
+                    "height": 127,
+                    "width": 190,
+                    "type": "image",
+                    "subtype": "photo",
+                    "caption": "The public lined up in July to watch oral arguments in Texas v. U.S. at the United States Court of Appeals for the Fifth Circuit in New Orleans. ",
+                    "copyright": "Annie Flanagan for The New York Times"
+                },
+                {
+                    "url": "https://static01.nyt.com/images/2019/12/18/upshot/00up-aca-ruling/merlin_157723173_d9eb07de-7bfe-4211-98da-dfb836219ca7-mediumThreeByTwo210.jpg",
+                    "format": "mediumThreeByTwo210",
+                    "height": 140,
+                    "width": 210,
+                    "type": "image",
+                    "subtype": "photo",
+                    "caption": "The public lined up in July to watch oral arguments in Texas v. U.S. at the United States Court of Appeals for the Fifth Circuit in New Orleans. ",
+                    "copyright": "Annie Flanagan for The New York Times"
+                },
+                {
+                    "url": "https://static01.nyt.com/images/2019/12/18/upshot/00up-aca-ruling/merlin_157723173_d9eb07de-7bfe-4211-98da-dfb836219ca7-superJumbo.jpg",
+                    "format": "superJumbo",
+                    "height": 1365,
+                    "width": 2048,
+                    "type": "image",
+                    "subtype": "photo",
+                    "caption": "The public lined up in July to watch oral arguments in Texas v. U.S. at the United States Court of Appeals for the Fifth Circuit in New Orleans. ",
+                    "copyright": "Annie Flanagan for The New York Times"
+                }
+            ],
+            "short_url": "https://nyti.ms/2EAsMC6"
+        },
+        {
+            "section": "Opinion",
+            "subsection": "",
+            "title": "Trump Has Been Impeached. Republicans Are Following Him Down.",
+            "abstract": "Ignoring facts and trashing the impeachment process is no way to protect democracy.",
+            "url": "https://www.nytimes.com/2019/12/18/opinion/trump-impeachment-vote.html",
+            "byline": "By THE EDITORIAL BOARD",
+            "item_type": "Article",
+            "updated_date": "2019-12-19T10:10:44-05:00",
+            "created_date": "2019-12-18T20:58:28-05:00",
+            "published_date": "2019-12-18T20:58:28-05:00",
+            "material_type_facet": "",
+            "kicker": "",
+            "des_facet": [
+                "Impeachment",
+                "Constitution (US)",
+                "Trump-Ukraine Whistle-Blower Complaint and Impeachment Inquiry",
+                "United States Politics and Government"
+            ],
+            "org_facet": [
+                "Republican Party",
+                "House of Representatives",
+                "Senate"
+            ],
+            "per_facet": [
+                "Trump, Donald J",
+                "McConnell, Mitch"
+            ],
+            "geo_facet": [],
+            "multimedia": [
+                {
+                    "url": "https://static01.nyt.com/images/2019/12/18/opinion/18impeachNew/18impeachNew-thumbStandard.jpg",
+                    "format": "Standard Thumbnail",
+                    "height": 75,
+                    "width": 75,
+                    "type": "image",
+                    "subtype": "photo",
+                    "caption": "",
+                    "copyright": "Damon Winter/The New York Times"
+                },
+                {
+                    "url": "https://static01.nyt.com/images/2019/12/18/opinion/18impeachNew/18impeachNew-thumbLarge.jpg",
+                    "format": "thumbLarge",
+                    "height": 150,
+                    "width": 150,
+                    "type": "image",
+                    "subtype": "photo",
+                    "caption": "",
+                    "copyright": "Damon Winter/The New York Times"
+                },
+                {
+                    "url": "https://static01.nyt.com/images/2019/12/18/opinion/18impeachNew/18impeachNew-articleInline.jpg",
+                    "format": "Normal",
+                    "height": 131,
+                    "width": 190,
+                    "type": "image",
+                    "subtype": "photo",
+                    "caption": "",
+                    "copyright": "Damon Winter/The New York Times"
+                },
+                {
+                    "url": "https://static01.nyt.com/images/2019/12/18/opinion/18impeachNew/18impeachNew-mediumThreeByTwo210.jpg",
+                    "format": "mediumThreeByTwo210",
+                    "height": 140,
+                    "width": 210,
+                    "type": "image",
+                    "subtype": "photo",
+                    "caption": "",
+                    "copyright": "Damon Winter/The New York Times"
+                },
+                {
+                    "url": "https://static01.nyt.com/images/2019/12/18/opinion/18impeachNew/18impeachNew-superJumbo.jpg",
+                    "format": "superJumbo",
+                    "height": 1415,
+                    "width": 2048,
+                    "type": "image",
+                    "subtype": "photo",
+                    "caption": "",
+                    "copyright": "Damon Winter/The New York Times"
+                }
+            ],
+            "short_url": "https://nyti.ms/2S67wfn"
+        },
+        {
+            "section": "Opinion",
+            "subsection": "",
+            "title": "Cybersecurity Experts Are Leaving the Federal Government. That’s a Problem.",
+            "abstract": "The departures leave our critical infrastructure, elections, data and networks vulnerable.",
+            "url": "https://www.nytimes.com/2019/12/19/opinion/cybersecurity-departures-government.html",
+            "byline": "By JOSEPHINE WOLFF",
+            "item_type": "Article",
+            "updated_date": "2019-12-19T11:30:49-05:00",
+            "created_date": "2019-12-19T11:30:49-05:00",
+            "published_date": "2019-12-19T11:30:49-05:00",
+            "material_type_facet": "",
+            "kicker": "",
+            "des_facet": [
+                "Cyberwarfare and Defense",
+                "Computer Security",
+                "Computers and the Internet",
+                "United States Politics and Government",
+                "Appointments and Executive Changes",
+                "Infrastructure (Public Works)"
+            ],
+            "org_facet": [
+                "Defense Department",
+                "Homeland Security Department",
+                "National Security Council"
+            ],
+            "per_facet": [],
+            "geo_facet": [
+                "United States"
+            ],
+            "multimedia": [
+                {
+                    "url": "https://static01.nyt.com/images/2019/12/19/opinion/19Wolff/19Wolff-thumbStandard.jpg",
+                    "format": "Standard Thumbnail",
+                    "height": 75,
+                    "width": 75,
+                    "type": "image",
+                    "subtype": "photo",
+                    "caption": "",
+                    "copyright": "Bill Hinton/Moment, via Getty Images"
+                },
+                {
+                    "url": "https://static01.nyt.com/images/2019/12/19/opinion/19Wolff/19Wolff-thumbLarge.jpg",
+                    "format": "thumbLarge",
+                    "height": 150,
+                    "width": 150,
+                    "type": "image",
+                    "subtype": "photo",
+                    "caption": "",
+                    "copyright": "Bill Hinton/Moment, via Getty Images"
+                },
+                {
+                    "url": "https://static01.nyt.com/images/2019/12/19/opinion/19Wolff/19Wolff-articleInline.jpg",
+                    "format": "Normal",
+                    "height": 126,
+                    "width": 190,
+                    "type": "image",
+                    "subtype": "photo",
+                    "caption": "",
+                    "copyright": "Bill Hinton/Moment, via Getty Images"
+                },
+                {
+                    "url": "https://static01.nyt.com/images/2019/12/19/opinion/19Wolff/19Wolff-mediumThreeByTwo210.jpg",
+                    "format": "mediumThreeByTwo210",
+                    "height": 140,
+                    "width": 210,
+                    "type": "image",
+                    "subtype": "photo",
+                    "caption": "",
+                    "copyright": "Bill Hinton/Moment, via Getty Images"
+                },
+                {
+                    "url": "https://static01.nyt.com/images/2019/12/19/opinion/19Wolff/19Wolff-superJumbo.jpg",
+                    "format": "superJumbo",
+                    "height": 1363,
+                    "width": 2048,
+                    "type": "image",
+                    "subtype": "photo",
+                    "caption": "",
+                    "copyright": "Bill Hinton/Moment, via Getty Images"
+                }
+            ],
+            "short_url": "https://nyti.ms/2Z5T4W9"
+        },
+        {
+            "section": "Opinion",
+            "subsection": "",
+            "title": "Will Impeachment Drive Trump Batty?",
+            "abstract": "Check the belfry. Maybe things could get worse.",
+            "url": "https://www.nytimes.com/2019/12/18/opinion/trump-house-impeachment.html",
+            "byline": "By GAIL COLLINS",
+            "item_type": "Article",
+            "updated_date": "2019-12-18T21:33:25-05:00",
+            "created_date": "2019-12-18T21:33:25-05:00",
+            "published_date": "2019-12-18T21:33:25-05:00",
+            "material_type_facet": "",
+            "kicker": "",
+            "des_facet": [
+                "Impeachment",
+                "Trump-Ukraine Whistle-Blower Complaint and Impeachment Inquiry",
+                "United States Politics and Government"
+            ],
+            "org_facet": [
+                "House of Representatives",
+                "Democratic Party",
+                "Republican Party"
+            ],
+            "per_facet": [
+                "Trump, Donald J"
+            ],
+            "geo_facet": [],
+            "multimedia": [
+                {
+                    "url": "https://static01.nyt.com/images/2019/12/19/opinion/19impeach_editorial_4/19impeach_editorial_4-thumbStandard.jpg",
+                    "format": "Standard Thumbnail",
+                    "height": 75,
+                    "width": 75,
+                    "type": "image",
+                    "subtype": "photo",
+                    "caption": "President Trump at the White House on Wednesday.",
+                    "copyright": "Damon Winter/The New York Times"
+                },
+                {
+                    "url": "https://static01.nyt.com/images/2019/12/19/opinion/19impeach_editorial_4/19impeach_editorial_4-thumbLarge.jpg",
+                    "format": "thumbLarge",
+                    "height": 150,
+                    "width": 150,
+                    "type": "image",
+                    "subtype": "photo",
+                    "caption": "President Trump at the White House on Wednesday.",
+                    "copyright": "Damon Winter/The New York Times"
+                },
+                {
+                    "url": "https://static01.nyt.com/images/2019/12/19/opinion/19impeach_editorial_4/merlin_166154874_6c4fbbd2-ea29-480c-abc1-1f4678793707-articleInline.jpg",
+                    "format": "Normal",
+                    "height": 129,
+                    "width": 190,
+                    "type": "image",
+                    "subtype": "photo",
+                    "caption": "President Trump at the White House on Wednesday.",
+                    "copyright": "Damon Winter/The New York Times"
+                },
+                {
+                    "url": "https://static01.nyt.com/images/2019/12/19/opinion/19impeach_editorial_4/19impeach_editorial_4-mediumThreeByTwo210.jpg",
+                    "format": "mediumThreeByTwo210",
+                    "height": 140,
+                    "width": 210,
+                    "type": "image",
+                    "subtype": "photo",
+                    "caption": "President Trump at the White House on Wednesday.",
+                    "copyright": "Damon Winter/The New York Times"
+                },
+                {
+                    "url": "https://static01.nyt.com/images/2019/12/19/opinion/19impeach_editorial_4/merlin_166154874_6c4fbbd2-ea29-480c-abc1-1f4678793707-superJumbo.jpg",
+                    "format": "superJumbo",
+                    "height": 1389,
+                    "width": 2048,
+                    "type": "image",
+                    "subtype": "photo",
+                    "caption": "President Trump at the White House on Wednesday.",
+                    "copyright": "Damon Winter/The New York Times"
+                }
+            ],
+            "short_url": "https://nyti.ms/35Fw0A8"
+        },
+        {
+            "section": "Opinion",
+            "subsection": "",
+            "title": "Trump’s Scary Precedent: Scorning Congress",
+            "abstract": "The Ukraine charge gets all the attention, but the article of impeachment about obstruction is just as urgent.",
+            "url": "https://www.nytimes.com/2019/12/19/opinion/impeachment-article-2-trump.html",
+            "byline": "By KEITH E. WHITTINGTON",
+            "item_type": "Article",
+            "updated_date": "2019-12-19T11:00:07-05:00",
+            "created_date": "2019-12-19T11:00:07-05:00",
+            "published_date": "2019-12-19T11:00:07-05:00",
+            "material_type_facet": "",
+            "kicker": "",
+            "des_facet": [
+                "Trump-Ukraine Whistle-Blower Complaint and Impeachment Inquiry",
+                "Constitution (US)",
+                "Impeachment"
+            ],
+            "org_facet": [
+                "House of Representatives",
+                "Senate"
+            ],
+            "per_facet": [
+                "Trump, Donald J"
+            ],
+            "geo_facet": [],
+            "multimedia": [
+                {
+                    "url": "https://static01.nyt.com/images/2019/12/19/opinion/19whittington/19Nasr1-thumbStandard.jpg",
+                    "format": "Standard Thumbnail",
+                    "height": 75,
+                    "width": 75,
+                    "type": "image",
+                    "subtype": "photo",
+                    "caption": "A House Judiciary Committee impeachment hearing on presidential obstruction on Capitol Hill in Washington.",
+                    "copyright": "Michael Reynolds/EPA, via Shutterstock"
+                },
+                {
+                    "url": "https://static01.nyt.com/images/2019/12/19/opinion/19whittington/19Nasr1-thumbLarge.jpg",
+                    "format": "thumbLarge",
+                    "height": 150,
+                    "width": 150,
+                    "type": "image",
+                    "subtype": "photo",
+                    "caption": "A House Judiciary Committee impeachment hearing on presidential obstruction on Capitol Hill in Washington.",
+                    "copyright": "Michael Reynolds/EPA, via Shutterstock"
+                },
+                {
+                    "url": "https://static01.nyt.com/images/2019/12/19/opinion/19whittington/merlin_160965657_84ed8b98-3658-4af7-a6a0-bb47358aaf41-articleInline.jpg",
+                    "format": "Normal",
+                    "height": 127,
+                    "width": 190,
+                    "type": "image",
+                    "subtype": "photo",
+                    "caption": "A House Judiciary Committee impeachment hearing on presidential obstruction on Capitol Hill in Washington.",
+                    "copyright": "Michael Reynolds/EPA, via Shutterstock"
+                },
+                {
+                    "url": "https://static01.nyt.com/images/2019/12/19/opinion/19whittington/merlin_160965657_84ed8b98-3658-4af7-a6a0-bb47358aaf41-mediumThreeByTwo210.jpg",
+                    "format": "mediumThreeByTwo210",
+                    "height": 140,
+                    "width": 210,
+                    "type": "image",
+                    "subtype": "photo",
+                    "caption": "A House Judiciary Committee impeachment hearing on presidential obstruction on Capitol Hill in Washington.",
+                    "copyright": "Michael Reynolds/EPA, via Shutterstock"
+                },
+                {
+                    "url": "https://static01.nyt.com/images/2019/12/19/opinion/19whittington/merlin_160965657_84ed8b98-3658-4af7-a6a0-bb47358aaf41-superJumbo.jpg",
+                    "format": "superJumbo",
+                    "height": 1365,
+                    "width": 2048,
+                    "type": "image",
+                    "subtype": "photo",
+                    "caption": "A House Judiciary Committee impeachment hearing on presidential obstruction on Capitol Hill in Washington.",
+                    "copyright": "Michael Reynolds/EPA, via Shutterstock"
+                }
+            ],
+            "short_url": "https://nyti.ms/2Z3ANsw"
+        },
+        {
+            "section": "Technology",
+            "subsection": "",
+            "title": "Where Are the Tech Zillionaires? San Francisco Faces the I.P.O. Fizzle",
+            "abstract": "All those tech I.P.O.s this year that were supposed to make people megarich only made them rich-ish.",
+            "url": "https://www.nytimes.com/2019/12/19/technology/tech-IPO-san-francisco.html",
+            "byline": "By NELLIE BOWLES and KATE CONGER",
+            "item_type": "Article",
+            "updated_date": "2019-12-19T12:26:13-05:00",
+            "created_date": "2019-12-19T10:03:43-05:00",
+            "published_date": "2019-12-19T10:03:43-05:00",
+            "material_type_facet": "",
+            "kicker": "",
+            "des_facet": [
+                "Real Estate and Housing (Residential)",
+                "Initial Public Offerings",
+                "Stocks and Bonds",
+                "High Net Worth Individuals",
+                "Computers and the Internet",
+                "Start-ups",
+                "Organized Labor",
+                "Venture Capital",
+                "Luxury Goods and Services"
+            ],
+            "org_facet": [],
+            "per_facet": [],
+            "geo_facet": [
+                "San Francisco (Calif)",
+                "Silicon Valley (Calif)"
+            ],
+            "multimedia": [
+                {
+                    "url": "https://static01.nyt.com/images/2019/12/18/business/18FIZZLE/18FIZZLE-thumbStandard.jpg",
+                    "format": "Standard Thumbnail",
+                    "height": 75,
+                    "width": 75,
+                    "type": "image",
+                    "subtype": "photo",
+                    "caption": "",
+                    "copyright": "Filippo Fontana"
+                },
+                {
+                    "url": "https://static01.nyt.com/images/2019/12/18/business/18FIZZLE/18FIZZLE-thumbLarge.jpg",
+                    "format": "thumbLarge",
+                    "height": 150,
+                    "width": 150,
+                    "type": "image",
+                    "subtype": "photo",
+                    "caption": "",
+                    "copyright": "Filippo Fontana"
+                },
+                {
+                    "url": "https://static01.nyt.com/images/2019/12/18/business/18FIZZLE/18FIZZLE-articleInline.jpg",
+                    "format": "Normal",
+                    "height": 211,
+                    "width": 190,
+                    "type": "image",
+                    "subtype": "photo",
+                    "caption": "",
+                    "copyright": "Filippo Fontana"
+                },
+                {
+                    "url": "https://static01.nyt.com/images/2019/12/18/business/18FIZZLE/18FIZZLE-mediumThreeByTwo210.jpg",
+                    "format": "mediumThreeByTwo210",
+                    "height": 140,
+                    "width": 210,
+                    "type": "image",
+                    "subtype": "photo",
+                    "caption": "",
+                    "copyright": "Filippo Fontana"
+                },
+                {
+                    "url": "https://static01.nyt.com/images/2019/12/18/business/18FIZZLE/18FIZZLE-superJumbo.jpg",
+                    "format": "superJumbo",
+                    "height": 2048,
+                    "width": 1844,
+                    "type": "image",
+                    "subtype": "photo",
+                    "caption": "",
+                    "copyright": "Filippo Fontana"
+                }
+            ],
+            "short_url": "https://nyti.ms/35JXRzm"
+        },
+        {
+            "section": "U.S.",
+            "subsection": "",
+            "title": "A Lonely Plea: ‘Anybody Need a Grandma for Christmas?’",
+            "abstract": "A woman from Tulsa, Okla., with no place to go for the holidays became a painful reminder of the isolation felt by many older Americans.",
+            "url": "https://www.nytimes.com/2019/12/19/us/grandma-for-christmas.html",
+            "byline": "By MARIA CRAMER",
+            "item_type": "Article",
+            "updated_date": "2019-12-19T11:00:09-05:00",
+            "created_date": "2019-12-19T11:00:10-05:00",
+            "published_date": "2019-12-19T11:00:10-05:00",
+            "material_type_facet": "",
+            "kicker": "",
+            "des_facet": [
+                "Elderly",
+                "Elder Abuse",
+                "Social Media",
+                "Christmas",
+                "Holidays and Special Occasions"
+            ],
+            "org_facet": [
+                "Craigslist"
+            ],
+            "per_facet": [
+                "Carlock, Carson"
+            ],
+            "geo_facet": [
+                "Tulsa (Okla)"
+            ],
+            "multimedia": [
+                {
+                    "url": "https://static01.nyt.com/images/2019/12/18/multimedia/00xp-grandma/00xp-grandma-thumbStandard.jpg",
+                    "format": "Standard Thumbnail",
+                    "height": 75,
+                    "width": 75,
+                    "type": "image",
+                    "subtype": "photo",
+                    "caption": "A man in Tulsa took a screenshot of this Craigslist ad and posted it on Facebook on Dec. 11 with the hashtag “FINDGRANDMA.”",
+                    "copyright": "Craigslist"
+                },
+                {
+                    "url": "https://static01.nyt.com/images/2019/12/18/multimedia/00xp-grandma/00xp-grandma-thumbLarge.jpg",
+                    "format": "thumbLarge",
+                    "height": 150,
+                    "width": 150,
+                    "type": "image",
+                    "subtype": "photo",
+                    "caption": "A man in Tulsa took a screenshot of this Craigslist ad and posted it on Facebook on Dec. 11 with the hashtag “FINDGRANDMA.”",
+                    "copyright": "Craigslist"
+                },
+                {
+                    "url": "https://static01.nyt.com/images/2019/12/18/multimedia/00xp-grandma/00xp-grandma-articleInline.jpg",
+                    "format": "Normal",
+                    "height": 127,
+                    "width": 190,
+                    "type": "image",
+                    "subtype": "photo",
+                    "caption": "A man in Tulsa took a screenshot of this Craigslist ad and posted it on Facebook on Dec. 11 with the hashtag “FINDGRANDMA.”",
+                    "copyright": "Craigslist"
+                },
+                {
+                    "url": "https://static01.nyt.com/images/2019/12/18/multimedia/00xp-grandma/00xp-grandma-mediumThreeByTwo210.jpg",
+                    "format": "mediumThreeByTwo210",
+                    "height": 140,
+                    "width": 210,
+                    "type": "image",
+                    "subtype": "photo",
+                    "caption": "A man in Tulsa took a screenshot of this Craigslist ad and posted it on Facebook on Dec. 11 with the hashtag “FINDGRANDMA.”",
+                    "copyright": "Craigslist"
+                },
+                {
+                    "url": "https://static01.nyt.com/images/2019/12/18/multimedia/00xp-grandma/00xp-grandma-superJumbo.jpg",
+                    "format": "superJumbo",
+                    "height": 763,
+                    "width": 1146,
+                    "type": "image",
+                    "subtype": "photo",
+                    "caption": "A man in Tulsa took a screenshot of this Craigslist ad and posted it on Facebook on Dec. 11 with the hashtag “FINDGRANDMA.”",
+                    "copyright": "Craigslist"
+                }
+            ],
+            "short_url": "https://nyti.ms/2Z6yxRs"
+        },
+        {
+            "section": "U.S.",
+            "subsection": "",
+            "title": "Sackler Family Members Fight Removal of Name at Tufts, Calling It a ‘Breach’",
+            "abstract": "After Tufts took the Sackler name off one of its buildings over the family’s role in the opioid crisis, some family members are crying foul.",
+            "url": "https://www.nytimes.com/2019/12/19/us/sackler-opioids-tufts.html",
+            "byline": "By KATE TAYLOR",
+            "item_type": "Article",
+            "updated_date": "2019-12-19T11:56:17-05:00",
+            "created_date": "2019-12-19T10:58:24-05:00",
+            "published_date": "2019-12-19T10:58:24-05:00",
+            "material_type_facet": "",
+            "kicker": "",
+            "des_facet": [
+                "Opioids and Opiates"
+            ],
+            "org_facet": [
+                "Tufts University"
+            ],
+            "per_facet": [
+                "Sackler Family"
+            ],
+            "geo_facet": [],
+            "multimedia": [
+                {
+                    "url": "https://static01.nyt.com/images/2019/12/19/us/19SACKLER/19SACKLER-thumbStandard.jpg",
+                    "format": "Standard Thumbnail",
+                    "height": 75,
+                    "width": 75,
+                    "type": "image",
+                    "subtype": "photo",
+                    "caption": "The Sackler name was removed earlier this month from buildings on the Tufts Medical Center campus in Boston.",
+                    "copyright": "Cody O'Loughlin for The New York Times"
+                },
+                {
+                    "url": "https://static01.nyt.com/images/2019/12/19/us/19SACKLER/19SACKLER-thumbLarge.jpg",
+                    "format": "thumbLarge",
+                    "height": 150,
+                    "width": 150,
+                    "type": "image",
+                    "subtype": "photo",
+                    "caption": "The Sackler name was removed earlier this month from buildings on the Tufts Medical Center campus in Boston.",
+                    "copyright": "Cody O'Loughlin for The New York Times"
+                },
+                {
+                    "url": "https://static01.nyt.com/images/2019/12/19/us/19SACKLER/merlin_165484488_ec6318be-ceeb-49f7-90b5-e0b546251197-articleInline.jpg",
+                    "format": "Normal",
+                    "height": 152,
+                    "width": 190,
+                    "type": "image",
+                    "subtype": "photo",
+                    "caption": "The Sackler name was removed earlier this month from buildings on the Tufts Medical Center campus in Boston.",
+                    "copyright": "Cody O'Loughlin for The New York Times"
+                },
+                {
+                    "url": "https://static01.nyt.com/images/2019/12/19/us/19SACKLER/19SACKLER-mediumThreeByTwo210.jpg",
+                    "format": "mediumThreeByTwo210",
+                    "height": 140,
+                    "width": 210,
+                    "type": "image",
+                    "subtype": "photo",
+                    "caption": "The Sackler name was removed earlier this month from buildings on the Tufts Medical Center campus in Boston.",
+                    "copyright": "Cody O'Loughlin for The New York Times"
+                },
+                {
+                    "url": "https://static01.nyt.com/images/2019/12/19/us/19SACKLER/merlin_165484488_ec6318be-ceeb-49f7-90b5-e0b546251197-superJumbo.jpg",
+                    "format": "superJumbo",
+                    "height": 1638,
+                    "width": 2048,
+                    "type": "image",
+                    "subtype": "photo",
+                    "caption": "The Sackler name was removed earlier this month from buildings on the Tufts Medical Center campus in Boston.",
+                    "copyright": "Cody O'Loughlin for The New York Times"
+                }
+            ],
+            "short_url": "https://nyti.ms/2M9tCd2"
+        },
+        {
+            "section": "World",
+            "subsection": "Europe",
+            "title": "Shooting Erupts at Russia Spy Agency’s Moscow Headquarters",
+            "abstract": "Russian news reports said up to three people were killed in a shooting in or near the reception area of the Federal Security Service headquarters in central Moscow.",
+            "url": "https://www.nytimes.com/2019/12/19/world/europe/fsb-headquarters-shooting-russia.html",
+            "byline": "By ANDREW HIGGINS and IVAN NECHEPURENKO",
+            "item_type": "Article",
+            "updated_date": "2019-12-19T12:34:37-05:00",
+            "created_date": "2019-12-19T11:01:01-05:00",
+            "published_date": "2019-12-19T11:01:01-05:00",
+            "material_type_facet": "",
+            "kicker": "",
+            "des_facet": [],
+            "org_facet": [
+                "Federal Security Service"
+            ],
+            "per_facet": [],
+            "geo_facet": [
+                "Moscow (Russia)"
+            ],
+            "multimedia": [
+                {
+                    "url": "https://static01.nyt.com/images/2019/12/19/world/19moscow-sub3/19moscow-sub3-thumbStandard.jpg",
+                    "format": "Standard Thumbnail",
+                    "height": 75,
+                    "width": 75,
+                    "type": "image",
+                    "subtype": "photo",
+                    "caption": "Police outside the Federal Security Service building in Moscow on Thursday.",
+                    "copyright": "Shamil Zhumatov/Reuters"
+                },
+                {
+                    "url": "https://static01.nyt.com/images/2019/12/19/world/19moscow-sub3/19moscow-sub3-thumbLarge.jpg",
+                    "format": "thumbLarge",
+                    "height": 150,
+                    "width": 150,
+                    "type": "image",
+                    "subtype": "photo",
+                    "caption": "Police outside the Federal Security Service building in Moscow on Thursday.",
+                    "copyright": "Shamil Zhumatov/Reuters"
+                },
+                {
+                    "url": "https://static01.nyt.com/images/2019/12/19/world/19moscow-sub3/merlin_166186656_37350ec3-1d9f-4c90-9c92-8dd1271faa1c-articleInline.jpg",
+                    "format": "Normal",
+                    "height": 127,
+                    "width": 190,
+                    "type": "image",
+                    "subtype": "photo",
+                    "caption": "Police outside the Federal Security Service building in Moscow on Thursday.",
+                    "copyright": "Shamil Zhumatov/Reuters"
+                },
+                {
+                    "url": "https://static01.nyt.com/images/2019/12/19/world/19moscow-sub3/merlin_166186656_37350ec3-1d9f-4c90-9c92-8dd1271faa1c-mediumThreeByTwo210.jpg",
+                    "format": "mediumThreeByTwo210",
+                    "height": 140,
+                    "width": 210,
+                    "type": "image",
+                    "subtype": "photo",
+                    "caption": "Police outside the Federal Security Service building in Moscow on Thursday.",
+                    "copyright": "Shamil Zhumatov/Reuters"
+                },
+                {
+                    "url": "https://static01.nyt.com/images/2019/12/19/world/19moscow-sub3/merlin_166186656_37350ec3-1d9f-4c90-9c92-8dd1271faa1c-superJumbo.jpg",
+                    "format": "superJumbo",
+                    "height": 1365,
+                    "width": 2048,
+                    "type": "image",
+                    "subtype": "photo",
+                    "caption": "Police outside the Federal Security Service building in Moscow on Thursday.",
+                    "copyright": "Shamil Zhumatov/Reuters"
+                }
+            ],
+            "short_url": "https://nyti.ms/2McIibp"
+        },
+        {
+            "section": "Business",
+            "subsection": "",
+            "title": "Goldman Sachs Is in Talks to Settle Malaysia Fund Scandal",
+            "abstract": "A settlement with federal prosecutors could be reached as soon as January.",
+            "url": "https://www.nytimes.com/2019/12/19/business/goldman-sachs-1mdb.html",
+            "byline": "By EMILY FLITTER and MATTHEW GOLDSTEIN",
+            "item_type": "Article",
+            "updated_date": "2019-12-19T11:45:51-05:00",
+            "created_date": "2019-12-19T09:45:14-05:00",
+            "published_date": "2019-12-19T09:45:14-05:00",
+            "material_type_facet": "",
+            "kicker": "",
+            "des_facet": [
+                "Suits and Litigation (Civil)",
+                "Sovereign Wealth Funds",
+                "Fines (Penalties)",
+                "Bribery and Kickbacks"
+            ],
+            "org_facet": [
+                "1Malaysia Development Berhad (1MDB)",
+                "Goldman Sachs Group Inc"
+            ],
+            "per_facet": [
+                "Low Jho (1981- )",
+                "Leissner, Tim"
+            ],
+            "geo_facet": [],
+            "multimedia": [
+                {
+                    "url": "https://static01.nyt.com/images/2019/12/19/business/19goldman2/19goldman2-thumbStandard.jpg",
+                    "format": "Standard Thumbnail",
+                    "height": 75,
+                    "width": 75,
+                    "type": "image",
+                    "subtype": "photo",
+                    "caption": "Demonstrators held pictures of Mr. Low and a dummy of his luxury yacht Equanimity during a protest in Kuala Lumpur, Malaysia.",
+                    "copyright": "Sadiq Asyraf/Associated Press"
+                },
+                {
+                    "url": "https://static01.nyt.com/images/2019/12/19/business/19goldman2/19goldman2-thumbLarge.jpg",
+                    "format": "thumbLarge",
+                    "height": 150,
+                    "width": 150,
+                    "type": "image",
+                    "subtype": "photo",
+                    "caption": "Demonstrators held pictures of Mr. Low and a dummy of his luxury yacht Equanimity during a protest in Kuala Lumpur, Malaysia.",
+                    "copyright": "Sadiq Asyraf/Associated Press"
+                },
+                {
+                    "url": "https://static01.nyt.com/images/2019/12/19/business/19goldman2/merlin_136838070_34fbbedf-a5de-4018-b54b-9afa8bb13d55-articleInline.jpg",
+                    "format": "Normal",
+                    "height": 127,
+                    "width": 190,
+                    "type": "image",
+                    "subtype": "photo",
+                    "caption": "Demonstrators held pictures of Mr. Low and a dummy of his luxury yacht Equanimity during a protest in Kuala Lumpur, Malaysia.",
+                    "copyright": "Sadiq Asyraf/Associated Press"
+                },
+                {
+                    "url": "https://static01.nyt.com/images/2019/12/19/business/19goldman2/19goldman2-mediumThreeByTwo210.jpg",
+                    "format": "mediumThreeByTwo210",
+                    "height": 140,
+                    "width": 210,
+                    "type": "image",
+                    "subtype": "photo",
+                    "caption": "Demonstrators held pictures of Mr. Low and a dummy of his luxury yacht Equanimity during a protest in Kuala Lumpur, Malaysia.",
+                    "copyright": "Sadiq Asyraf/Associated Press"
+                },
+                {
+                    "url": "https://static01.nyt.com/images/2019/12/19/business/19goldman2/merlin_136838070_34fbbedf-a5de-4018-b54b-9afa8bb13d55-superJumbo.jpg",
+                    "format": "superJumbo",
+                    "height": 1365,
+                    "width": 2048,
+                    "type": "image",
+                    "subtype": "photo",
+                    "caption": "Demonstrators held pictures of Mr. Low and a dummy of his luxury yacht Equanimity during a protest in Kuala Lumpur, Malaysia.",
+                    "copyright": "Sadiq Asyraf/Associated Press"
+                }
+            ],
+            "short_url": "https://nyti.ms/34wgzJe"
+        },
+        {
+            "section": "Technology",
+            "subsection": "",
+            "title": "Uber Settles Federal Investigation Into Workplace Culture",
+            "abstract": "The ride-hailing company “permitted a culture of sexual harassment and retaliation,” the Equal Employment Opportunity Commission found.",
+            "url": "https://www.nytimes.com/2019/12/18/technology/uber-settles-eeoc-investigation-workplace-culture.html",
+            "byline": "By KATE CONGER",
+            "item_type": "Article",
+            "updated_date": "2019-12-19T12:07:38-05:00",
+            "created_date": "2019-12-18T17:45:36-05:00",
+            "published_date": "2019-12-18T17:45:36-05:00",
+            "material_type_facet": "",
+            "kicker": "",
+            "des_facet": [
+                "Sexual Harassment",
+                "Car Services and Livery Cabs",
+                "Workplace Hazards and Violations",
+                "Computers and the Internet"
+            ],
+            "org_facet": [
+                "Uber Technologies Inc",
+                "Equal Employment Opportunity Commission"
+            ],
+            "per_facet": [
+                "Khosrowshahi, Dara",
+                "Kalanick, Travis",
+                "Fowler, Susan J"
+            ],
+            "geo_facet": [],
+            "multimedia": [
+                {
+                    "url": "https://static01.nyt.com/images/2019/12/18/business/18uber/18uber-thumbStandard.jpg",
+                    "format": "Standard Thumbnail",
+                    "height": 75,
+                    "width": 75,
+                    "type": "image",
+                    "subtype": "photo",
+                    "caption": "The Uber headquarters in San Francisco. The company will start a $4.4 million fund to pay current and former employees who were sexually harassed at work.",
+                    "copyright": "Sarahbeth Maney for The New York Times"
+                },
+                {
+                    "url": "https://static01.nyt.com/images/2019/12/18/business/18uber/18uber-thumbLarge.jpg",
+                    "format": "thumbLarge",
+                    "height": 150,
+                    "width": 150,
+                    "type": "image",
+                    "subtype": "photo",
+                    "caption": "The Uber headquarters in San Francisco. The company will start a $4.4 million fund to pay current and former employees who were sexually harassed at work.",
+                    "copyright": "Sarahbeth Maney for The New York Times"
+                },
+                {
+                    "url": "https://static01.nyt.com/images/2019/12/18/business/18uber/merlin_157173588_7f1ef397-2c42-4eff-bda1-2f7976afaf8a-articleInline.jpg",
+                    "format": "Normal",
+                    "height": 127,
+                    "width": 190,
+                    "type": "image",
+                    "subtype": "photo",
+                    "caption": "The Uber headquarters in San Francisco. The company will start a $4.4 million fund to pay current and former employees who were sexually harassed at work.",
+                    "copyright": "Sarahbeth Maney for The New York Times"
+                },
+                {
+                    "url": "https://static01.nyt.com/images/2019/12/18/business/18uber/18uber-mediumThreeByTwo210.jpg",
+                    "format": "mediumThreeByTwo210",
+                    "height": 140,
+                    "width": 210,
+                    "type": "image",
+                    "subtype": "photo",
+                    "caption": "The Uber headquarters in San Francisco. The company will start a $4.4 million fund to pay current and former employees who were sexually harassed at work.",
+                    "copyright": "Sarahbeth Maney for The New York Times"
+                },
+                {
+                    "url": "https://static01.nyt.com/images/2019/12/18/business/18uber/merlin_157173588_7f1ef397-2c42-4eff-bda1-2f7976afaf8a-superJumbo.jpg",
+                    "format": "superJumbo",
+                    "height": 1366,
+                    "width": 2048,
+                    "type": "image",
+                    "subtype": "photo",
+                    "caption": "The Uber headquarters in San Francisco. The company will start a $4.4 million fund to pay current and former employees who were sexually harassed at work.",
+                    "copyright": "Sarahbeth Maney for The New York Times"
+                }
+            ],
+            "short_url": "https://nyti.ms/2M8Tfuu"
+        },
+        {
+            "section": "World",
+            "subsection": "Asia Pacific",
+            "title": "Indonesia Lets Plastic Burning Continue Despite Warning on Toxins",
+            "abstract": "The Indonesian government pushed back on an international study that found high levels of dioxin in a village where plastic is burned to produce tofu.",
+            "url": "https://www.nytimes.com/2019/12/19/world/asia/indonesia-dioxin-plastic-tofu.html",
+            "byline": "By RICHARD C. PADDOCK",
+            "item_type": "Article",
+            "updated_date": "2019-12-19T04:29:18-05:00",
+            "created_date": "2019-12-19T02:54:39-05:00",
+            "published_date": "2019-12-19T02:54:39-05:00",
+            "material_type_facet": "",
+            "kicker": "",
+            "des_facet": [
+                "Plastics",
+                "Dioxin",
+                "Waste Materials and Disposal",
+                "Tofu",
+                "Environment"
+            ],
+            "org_facet": [],
+            "per_facet": [],
+            "geo_facet": [],
+            "multimedia": [
+                {
+                    "url": "https://static01.nyt.com/images/2019/12/19/world/19indonesia-toxin-1/19indonesia-toxin-1-thumbStandard.jpg",
+                    "format": "Standard Thumbnail",
+                    "height": 75,
+                    "width": 75,
+                    "type": "image",
+                    "subtype": "photo",
+                    "caption": "Black smoke, caused by burning plastic as fuel at a tofu factory, is seen in Tropodo, Indonesia, in November.",
+                    "copyright": "Ulet Ifansasti for The New York Times"
+                },
+                {
+                    "url": "https://static01.nyt.com/images/2019/12/19/world/19indonesia-toxin-1/19indonesia-toxin-1-thumbLarge.jpg",
+                    "format": "thumbLarge",
+                    "height": 150,
+                    "width": 150,
+                    "type": "image",
+                    "subtype": "photo",
+                    "caption": "Black smoke, caused by burning plastic as fuel at a tofu factory, is seen in Tropodo, Indonesia, in November.",
+                    "copyright": "Ulet Ifansasti for The New York Times"
+                },
+                {
+                    "url": "https://static01.nyt.com/images/2019/12/19/world/19indonesia-toxin-1/merlin_163928940_8a6409cc-c6ba-4063-87b2-d695acb1a3f2-articleInline.jpg",
+                    "format": "Normal",
+                    "height": 127,
+                    "width": 190,
+                    "type": "image",
+                    "subtype": "photo",
+                    "caption": "Black smoke, caused by burning plastic as fuel at a tofu factory, is seen in Tropodo, Indonesia, in November.",
+                    "copyright": "Ulet Ifansasti for The New York Times"
+                },
+                {
+                    "url": "https://static01.nyt.com/images/2019/12/19/world/19indonesia-toxin-1/merlin_163928940_8a6409cc-c6ba-4063-87b2-d695acb1a3f2-mediumThreeByTwo210.jpg",
+                    "format": "mediumThreeByTwo210",
+                    "height": 140,
+                    "width": 210,
+                    "type": "image",
+                    "subtype": "photo",
+                    "caption": "Black smoke, caused by burning plastic as fuel at a tofu factory, is seen in Tropodo, Indonesia, in November.",
+                    "copyright": "Ulet Ifansasti for The New York Times"
+                },
+                {
+                    "url": "https://static01.nyt.com/images/2019/12/19/world/19indonesia-toxin-1/merlin_163928940_8a6409cc-c6ba-4063-87b2-d695acb1a3f2-superJumbo.jpg",
+                    "format": "superJumbo",
+                    "height": 1365,
+                    "width": 2048,
+                    "type": "image",
+                    "subtype": "photo",
+                    "caption": "Black smoke, caused by burning plastic as fuel at a tofu factory, is seen in Tropodo, Indonesia, in November.",
+                    "copyright": "Ulet Ifansasti for The New York Times"
+                }
+            ],
+            "short_url": "https://nyti.ms/2rbzJXe"
+        },
+        {
+            "section": "World",
+            "subsection": "Asia Pacific",
+            "title": "‘Why My Baby?’: How Measles Robbed Samoa of Its Young",
+            "abstract": "When the virus arrived on its shores, the Pacific island nation was grievously unprepared. It had left the door to contagion wide open, and thousands of children have suffered.",
+            "url": "https://www.nytimes.com/2019/12/19/world/asia/samoa-measles.html",
+            "byline": "By ISABELLA KWAI and MATTHEW ABBOTT",
+            "item_type": "Article",
+            "updated_date": "2019-12-19T06:03:12-05:00",
+            "created_date": "2019-12-19T05:29:07-05:00",
+            "published_date": "2019-12-19T05:29:07-05:00",
+            "material_type_facet": "",
+            "kicker": "",
+            "des_facet": [
+                "Measles",
+                "Vaccination and Immunization",
+                "Epidemics"
+            ],
+            "org_facet": [],
+            "per_facet": [
+                "Kennedy, Robert F Jr"
+            ],
+            "geo_facet": [
+                "Samoa",
+                "Australia"
+            ],
+            "multimedia": [
+                {
+                    "url": "https://static01.nyt.com/images/2019/12/19/world/19samoa-4/19samoa-4-thumbStandard.jpg",
+                    "format": "Standard Thumbnail",
+                    "height": 75,
+                    "width": 75,
+                    "type": "image",
+                    "subtype": "photo",
+                    "caption": "Child-size coffins at a funeral home.",
+                    "copyright": ""
+                },
+                {
+                    "url": "https://static01.nyt.com/images/2019/12/19/world/19samoa-4/19samoa-4-thumbLarge.jpg",
+                    "format": "thumbLarge",
+                    "height": 150,
+                    "width": 150,
+                    "type": "image",
+                    "subtype": "photo",
+                    "caption": "Child-size coffins at a funeral home.",
+                    "copyright": ""
+                },
+                {
+                    "url": "https://static01.nyt.com/images/2019/12/19/world/19samoa-4/merlin_166064403_da19731d-747a-4e18-b7c3-522386da9a1e-articleInline.jpg",
+                    "format": "Normal",
+                    "height": 127,
+                    "width": 190,
+                    "type": "image",
+                    "subtype": "photo",
+                    "caption": "Child-size coffins at a funeral home.",
+                    "copyright": ""
+                },
+                {
+                    "url": "https://static01.nyt.com/images/2019/12/19/world/19samoa-4/19samoa-4-mediumThreeByTwo210-v2.jpg",
+                    "format": "mediumThreeByTwo210",
+                    "height": 140,
+                    "width": 210,
+                    "type": "image",
+                    "subtype": "photo",
+                    "caption": "Child-size coffins at a funeral home.",
+                    "copyright": ""
+                },
+                {
+                    "url": "https://static01.nyt.com/images/2019/12/19/world/19samoa-4/merlin_166064403_da19731d-747a-4e18-b7c3-522386da9a1e-superJumbo.jpg",
+                    "format": "superJumbo",
+                    "height": 1365,
+                    "width": 2048,
+                    "type": "image",
+                    "subtype": "photo",
+                    "caption": "Child-size coffins at a funeral home.",
+                    "copyright": ""
+                }
+            ],
+            "short_url": "https://nyti.ms/2PBt8i3"
+        },
+        {
+            "section": "World",
+            "subsection": "Asia Pacific",
+            "title": "Intellectuals Arrested as Protests Over Citizenship Law Sweep India",
+            "abstract": "A well-known biographer of Gandhi was among those detained on Thursday as opposition to a new citizenship law continued to roil Indian cities.",
+            "url": "https://www.nytimes.com/2019/12/19/world/asia/india-protests-muslim.html",
+            "byline": "By JEFFREY GETTLEMAN",
+            "item_type": "Article",
+            "updated_date": "2019-12-19T09:22:49-05:00",
+            "created_date": "2019-12-19T05:39:07-05:00",
+            "published_date": "2019-12-19T05:39:07-05:00",
+            "material_type_facet": "",
+            "kicker": "",
+            "des_facet": [
+                "Demonstrations, Protests and Riots",
+                "Muslims and Islam"
+            ],
+            "org_facet": [
+                "Bharatiya Janata Party"
+            ],
+            "per_facet": [
+                "Guha, Ramachandra",
+                "Modi, Narendra"
+            ],
+            "geo_facet": [
+                "India"
+            ],
+            "multimedia": [
+                {
+                    "url": "https://static01.nyt.com/images/2019/12/19/world/19india-protests-1/19india-protests-1-thumbStandard.jpg",
+                    "format": "Standard Thumbnail",
+                    "height": 75,
+                    "width": 75,
+                    "type": "image",
+                    "subtype": "photo",
+                    "caption": "Protesters denouncing a new citizenship law near the historic Red Fort in New Delhi on Thursday.",
+                    "copyright": "Altaf Qadri/Associated Press"
+                },
+                {
+                    "url": "https://static01.nyt.com/images/2019/12/19/world/19india-protests-1/19india-protests-1-thumbLarge.jpg",
+                    "format": "thumbLarge",
+                    "height": 150,
+                    "width": 150,
+                    "type": "image",
+                    "subtype": "photo",
+                    "caption": "Protesters denouncing a new citizenship law near the historic Red Fort in New Delhi on Thursday.",
+                    "copyright": "Altaf Qadri/Associated Press"
+                },
+                {
+                    "url": "https://static01.nyt.com/images/2019/12/19/world/19india-protests-1/merlin_166172076_2aa9a857-eaa9-4317-8d17-29ec0f31600d-articleInline.jpg",
+                    "format": "Normal",
+                    "height": 127,
+                    "width": 190,
+                    "type": "image",
+                    "subtype": "photo",
+                    "caption": "Protesters denouncing a new citizenship law near the historic Red Fort in New Delhi on Thursday.",
+                    "copyright": "Altaf Qadri/Associated Press"
+                },
+                {
+                    "url": "https://static01.nyt.com/images/2019/12/19/world/19india-protests-1/merlin_166172076_2aa9a857-eaa9-4317-8d17-29ec0f31600d-mediumThreeByTwo210.jpg",
+                    "format": "mediumThreeByTwo210",
+                    "height": 140,
+                    "width": 210,
+                    "type": "image",
+                    "subtype": "photo",
+                    "caption": "Protesters denouncing a new citizenship law near the historic Red Fort in New Delhi on Thursday.",
+                    "copyright": "Altaf Qadri/Associated Press"
+                },
+                {
+                    "url": "https://static01.nyt.com/images/2019/12/19/world/19india-protests-1/merlin_166172076_2aa9a857-eaa9-4317-8d17-29ec0f31600d-superJumbo.jpg",
+                    "format": "superJumbo",
+                    "height": 1366,
+                    "width": 2048,
+                    "type": "image",
+                    "subtype": "photo",
+                    "caption": "Protesters denouncing a new citizenship law near the historic Red Fort in New Delhi on Thursday.",
+                    "copyright": "Altaf Qadri/Associated Press"
+                }
+            ],
+            "short_url": "https://nyti.ms/2sGtMSA"
+        },
+        {
+            "section": "Arts",
+            "subsection": "Art & Design",
+            "title": "A ‘Great Wealth Transfer’ Is Coming. What Will It Mean for Art?",
+            "abstract": "More than $15 trillion in assets is expected to be passed to younger generations in the next decade, including a lot of art. But will they want it?",
+            "url": "https://www.nytimes.com/2019/12/18/arts/design/great-wealth-transfer-art.html",
+            "byline": "By SCOTT REYBURN",
+            "item_type": "Article",
+            "updated_date": "2019-12-19T04:39:16-05:00",
+            "created_date": "2019-12-18T11:50:19-05:00",
+            "published_date": "2019-12-18T11:50:19-05:00",
+            "material_type_facet": "",
+            "kicker": "",
+            "des_facet": [
+                "Art",
+                "Wills and Estates",
+                "High Net Worth Individuals",
+                "Collectors and Collections",
+                "Baby Boomers",
+                "Generation X",
+                "Millennial Generation",
+                "Auctions"
+            ],
+            "org_facet": [],
+            "per_facet": [],
+            "geo_facet": [],
+            "multimedia": [
+                {
+                    "url": "https://static01.nyt.com/images/2019/12/17/arts/17wealth-transfer1/17wealth-transfer1-thumbStandard.jpg",
+                    "format": "Standard Thumbnail",
+                    "height": 75,
+                    "width": 75,
+                    "type": "image",
+                    "subtype": "photo",
+                    "caption": "Works by Andy Warhol, whose “Double Elvis,” above, sold for $53 million at Christie’s in May, are prized by baby-boomer collectors.",
+                    "copyright": "John Lamparski/Getty Images"
+                },
+                {
+                    "url": "https://static01.nyt.com/images/2019/12/17/arts/17wealth-transfer1/17wealth-transfer1-thumbLarge.jpg",
+                    "format": "thumbLarge",
+                    "height": 150,
+                    "width": 150,
+                    "type": "image",
+                    "subtype": "photo",
+                    "caption": "Works by Andy Warhol, whose “Double Elvis,” above, sold for $53 million at Christie’s in May, are prized by baby-boomer collectors.",
+                    "copyright": "John Lamparski/Getty Images"
+                },
+                {
+                    "url": "https://static01.nyt.com/images/2019/12/17/arts/17wealth-transfer1/merlin_166084740_eb7234f8-52ac-4db3-9a8c-f8cb9a451887-articleInline.jpg",
+                    "format": "Normal",
+                    "height": 127,
+                    "width": 190,
+                    "type": "image",
+                    "subtype": "photo",
+                    "caption": "Works by Andy Warhol, whose “Double Elvis,” above, sold for $53 million at Christie’s in May, are prized by baby-boomer collectors.",
+                    "copyright": "John Lamparski/Getty Images"
+                },
+                {
+                    "url": "https://static01.nyt.com/images/2019/12/17/arts/17wealth-transfer1/17wealth-transfer1-mediumThreeByTwo210.jpg",
+                    "format": "mediumThreeByTwo210",
+                    "height": 140,
+                    "width": 210,
+                    "type": "image",
+                    "subtype": "photo",
+                    "caption": "Works by Andy Warhol, whose “Double Elvis,” above, sold for $53 million at Christie’s in May, are prized by baby-boomer collectors.",
+                    "copyright": "John Lamparski/Getty Images"
+                },
+                {
+                    "url": "https://static01.nyt.com/images/2019/12/17/arts/17wealth-transfer1/merlin_166084740_eb7234f8-52ac-4db3-9a8c-f8cb9a451887-superJumbo.jpg",
+                    "format": "superJumbo",
+                    "height": 1365,
+                    "width": 2048,
+                    "type": "image",
+                    "subtype": "photo",
+                    "caption": "Works by Andy Warhol, whose “Double Elvis,” above, sold for $53 million at Christie’s in May, are prized by baby-boomer collectors.",
+                    "copyright": "John Lamparski/Getty Images"
+                }
+            ],
+            "short_url": "https://nyti.ms/2Z0bF69"
+        },
+        {
+            "section": "U.S.",
+            "subsection": "",
+            "title": "Puerto Rico Tries to Preserve Cockfighting Days Before Ban",
+            "abstract": "The governor signed legislation intended to sidestep a ban approved by Congress. The law is likely to end up in court.",
+            "url": "https://www.nytimes.com/2019/12/18/us/puerto-rico-cockfighting-ban.html",
+            "byline": "By PATRICIA MAZZEI",
+            "item_type": "Article",
+            "updated_date": "2019-12-18T20:48:01-05:00",
+            "created_date": "2019-12-18T15:17:40-05:00",
+            "published_date": "2019-12-18T15:17:40-05:00",
+            "material_type_facet": "",
+            "kicker": "",
+            "des_facet": [
+                "United States Politics and Government",
+                "Cockfighting",
+                "Animal Abuse, Rights and Welfare",
+                "Farm Bill (US)",
+                "Law and Legislation"
+            ],
+            "org_facet": [],
+            "per_facet": [
+                "Vazquez Garced, Wanda"
+            ],
+            "geo_facet": [
+                "Puerto Rico"
+            ],
+            "multimedia": [
+                {
+                    "url": "https://static01.nyt.com/images/2019/12/18/us/18cockfighting/18cockfighting-thumbStandard.jpg",
+                    "format": "Standard Thumbnail",
+                    "height": 75,
+                    "width": 75,
+                    "type": "image",
+                    "subtype": "photo",
+                    "caption": "A cockfighting ban in Puerto Rico has drawn praise from animal rights activists and anger from some who consider the practice part of the island’s culture.",
+                    "copyright": "Erika P. Rodriguez for The New York Times"
+                },
+                {
+                    "url": "https://static01.nyt.com/images/2019/12/18/us/18cockfighting/18cockfighting-thumbLarge.jpg",
+                    "format": "thumbLarge",
+                    "height": 150,
+                    "width": 150,
+                    "type": "image",
+                    "subtype": "photo",
+                    "caption": "A cockfighting ban in Puerto Rico has drawn praise from animal rights activists and anger from some who consider the practice part of the island’s culture.",
+                    "copyright": "Erika P. Rodriguez for The New York Times"
+                },
+                {
+                    "url": "https://static01.nyt.com/images/2019/12/18/us/18cockfighting/18cockfighting-articleInline.jpg",
+                    "format": "Normal",
+                    "height": 127,
+                    "width": 190,
+                    "type": "image",
+                    "subtype": "photo",
+                    "caption": "A cockfighting ban in Puerto Rico has drawn praise from animal rights activists and anger from some who consider the practice part of the island’s culture.",
+                    "copyright": "Erika P. Rodriguez for The New York Times"
+                },
+                {
+                    "url": "https://static01.nyt.com/images/2019/12/18/us/18cockfighting/18cockfighting-mediumThreeByTwo210.jpg",
+                    "format": "mediumThreeByTwo210",
+                    "height": 140,
+                    "width": 210,
+                    "type": "image",
+                    "subtype": "photo",
+                    "caption": "A cockfighting ban in Puerto Rico has drawn praise from animal rights activists and anger from some who consider the practice part of the island’s culture.",
+                    "copyright": "Erika P. Rodriguez for The New York Times"
+                },
+                {
+                    "url": "https://static01.nyt.com/images/2019/12/18/us/18cockfighting/merlin_165297531_38175177-2930-406f-849e-6dd6bfe0ec4f-superJumbo.jpg",
+                    "format": "superJumbo",
+                    "height": 1366,
+                    "width": 2048,
+                    "type": "image",
+                    "subtype": "photo",
+                    "caption": "A cockfighting ban in Puerto Rico has drawn praise from animal rights activists and anger from some who consider the practice part of the island’s culture.",
+                    "copyright": "Erika P. Rodriguez for The New York Times"
+                }
+            ],
+            "short_url": "https://nyti.ms/35zdtp2"
+        },
+        {
+            "section": "Smarter Living",
+            "subsection": "",
+            "title": "Choose a Last-Minute Gift Anyone Would Love",
+            "abstract": "You’re stuck behind the curve and you don’t know what to get for someone on your list, but you do know you’re running out of time. We can help.",
+            "url": "https://www.nytimes.com/2019/12/18/smarter-living/last-minute-gift-ideas.html",
+            "byline": "By ALAN HENRY",
+            "item_type": "Article",
+            "updated_date": "2019-12-18T18:00:07-05:00",
+            "created_date": "2019-12-18T18:00:07-05:00",
+            "published_date": "2019-12-18T18:00:07-05:00",
+            "material_type_facet": "",
+            "kicker": "",
+            "des_facet": [
+                "Gifts",
+                "Holidays and Special Occasions",
+                "Christmas",
+                "Prices (Fares, Fees and Rates)",
+                "Computer and Video Games",
+                "Travel and Vacations",
+                "your-feed-wirecutter"
+            ],
+            "org_facet": [],
+            "per_facet": [],
+            "geo_facet": [],
+            "multimedia": [
+                {
+                    "url": "https://static01.nyt.com/images/2019/12/18/multimedia/00sl-lastminute/00sl-lastminute-thumbStandard.jpg",
+                    "format": "Standard Thumbnail",
+                    "height": 75,
+                    "width": 75,
+                    "type": "image",
+                    "subtype": "photo",
+                    "caption": "",
+                    "copyright": "Getty Images"
+                },
+                {
+                    "url": "https://static01.nyt.com/images/2019/12/18/multimedia/00sl-lastminute/00sl-lastminute-thumbLarge.jpg",
+                    "format": "thumbLarge",
+                    "height": 150,
+                    "width": 150,
+                    "type": "image",
+                    "subtype": "photo",
+                    "caption": "",
+                    "copyright": "Getty Images"
+                },
+                {
+                    "url": "https://static01.nyt.com/images/2019/12/18/multimedia/00sl-lastminute/00sl-lastminute-articleInline.jpg",
+                    "format": "Normal",
+                    "height": 127,
+                    "width": 190,
+                    "type": "image",
+                    "subtype": "photo",
+                    "caption": "",
+                    "copyright": "Getty Images"
+                },
+                {
+                    "url": "https://static01.nyt.com/images/2019/12/18/multimedia/00sl-lastminute/00sl-lastminute-mediumThreeByTwo210.jpg",
+                    "format": "mediumThreeByTwo210",
+                    "height": 140,
+                    "width": 210,
+                    "type": "image",
+                    "subtype": "photo",
+                    "caption": "",
+                    "copyright": "Getty Images"
+                },
+                {
+                    "url": "https://static01.nyt.com/images/2019/12/18/multimedia/00sl-lastminute/00sl-lastminute-superJumbo.jpg",
+                    "format": "superJumbo",
+                    "height": 1365,
+                    "width": 2048,
+                    "type": "image",
+                    "subtype": "photo",
+                    "caption": "",
+                    "copyright": "Getty Images"
+                }
+            ],
+            "short_url": "https://nyti.ms/38USaQL"
+        },
+        {
+            "section": "Smarter Living",
+            "subsection": "Wirecutter",
+            "title": "Want to Gift Someone a Pet? Here’s What to Do First",
+            "abstract": "Before you put a bow on a puppy or kitten for your family, here’s what to consider when getting a loved one a pet.",
+            "url": "https://www.nytimes.com/2019/12/16/smarter-living/wirecutter/want-to-gift-someone-a-pet-heres-what-to-do-first.html",
+            "byline": "By KAITLYN WELLS",
+            "item_type": "Article",
+            "updated_date": "2019-12-17T09:53:08-05:00",
+            "created_date": "2019-12-16T17:30:04-05:00",
+            "published_date": "2019-12-16T17:30:04-05:00",
+            "material_type_facet": "",
+            "kicker": "",
+            "des_facet": [
+                "Pets",
+                "Animal Behavior",
+                "Dogs",
+                "Cats",
+                "your-feed-wirecutter"
+            ],
+            "org_facet": [],
+            "per_facet": [],
+            "geo_facet": [],
+            "multimedia": [
+                {
+                    "url": "https://static01.nyt.com/images/2019/12/03/smarter-living/00wc_petgift/00wc_petgift-thumbStandard.png",
+                    "format": "Standard Thumbnail",
+                    "height": 75,
+                    "width": 75,
+                    "type": "image",
+                    "subtype": "photo",
+                    "caption": "",
+                    "copyright": "Yann Bastard"
+                },
+                {
+                    "url": "https://static01.nyt.com/images/2019/12/03/smarter-living/00wc_petgift/00wc_petgift-thumbLarge.png",
+                    "format": "thumbLarge",
+                    "height": 150,
+                    "width": 150,
+                    "type": "image",
+                    "subtype": "photo",
+                    "caption": "",
+                    "copyright": "Yann Bastard"
+                },
+                {
+                    "url": "https://static01.nyt.com/images/2019/12/03/smarter-living/00wc_petgift/00wc_petgift-articleInline.png",
+                    "format": "Normal",
+                    "height": 127,
+                    "width": 190,
+                    "type": "image",
+                    "subtype": "photo",
+                    "caption": "",
+                    "copyright": "Yann Bastard"
+                },
+                {
+                    "url": "https://static01.nyt.com/images/2019/12/03/smarter-living/00wc_petgift/00wc_petgift-mediumThreeByTwo210.png",
+                    "format": "mediumThreeByTwo210",
+                    "height": 140,
+                    "width": 210,
+                    "type": "image",
+                    "subtype": "photo",
+                    "caption": "",
+                    "copyright": "Yann Bastard"
+                },
+                {
+                    "url": "https://static01.nyt.com/images/2019/12/03/smarter-living/00wc_petgift/00wc_petgift-superJumbo.png",
+                    "format": "superJumbo",
+                    "height": 1365,
+                    "width": 2048,
+                    "type": "image",
+                    "subtype": "photo",
+                    "caption": "",
+                    "copyright": "Yann Bastard"
+                }
+            ],
+            "short_url": "https://nyti.ms/2M0CUbq"
+        },
+        {
+            "section": "Smarter Living",
+            "subsection": "",
+            "title": "You Could Die Today. Here’s How to Reduce That Risk.",
+            "abstract": "No one lives forever, but you can do things to extend your life for as long  as possible. Let’s walk through a typical day and see where your risks are highest.",
+            "url": "https://www.nytimes.com/2019/12/12/smarter-living/reducing-fatality-risks.html",
+            "byline": "By ALEXANDER WEBB",
+            "item_type": "Article",
+            "updated_date": "2019-12-12T17:30:05-05:00",
+            "created_date": "2019-12-12T17:30:05-05:00",
+            "published_date": "2019-12-12T17:30:05-05:00",
+            "material_type_facet": "",
+            "kicker": "",
+            "des_facet": [
+                "Deaths (Fatalities)",
+                "Traffic Accidents and Safety",
+                "Hygiene and Cleanliness",
+                "Bacteria",
+                "Food",
+                "Alcohol Abuse"
+            ],
+            "org_facet": [],
+            "per_facet": [],
+            "geo_facet": [],
+            "multimedia": [
+                {
+                    "url": "https://static01.nyt.com/images/2019/10/09/smarter-living/00sl_dietoday/00sl_dietoday-thumbStandard.jpg",
+                    "format": "Standard Thumbnail",
+                    "height": 75,
+                    "width": 75,
+                    "type": "image",
+                    "subtype": "photo",
+                    "caption": "",
+                    "copyright": "Minet Kim"
+                },
+                {
+                    "url": "https://static01.nyt.com/images/2019/10/09/smarter-living/00sl_dietoday/00sl_dietoday-thumbLarge.jpg",
+                    "format": "thumbLarge",
+                    "height": 150,
+                    "width": 150,
+                    "type": "image",
+                    "subtype": "photo",
+                    "caption": "",
+                    "copyright": "Minet Kim"
+                },
+                {
+                    "url": "https://static01.nyt.com/images/2019/10/09/smarter-living/00sl_dietoday/00sl_dietoday-articleInline.jpg",
+                    "format": "Normal",
+                    "height": 127,
+                    "width": 190,
+                    "type": "image",
+                    "subtype": "photo",
+                    "caption": "",
+                    "copyright": "Minet Kim"
+                },
+                {
+                    "url": "https://static01.nyt.com/images/2019/10/09/smarter-living/00sl_dietoday/00sl_dietoday-mediumThreeByTwo210.jpg",
+                    "format": "mediumThreeByTwo210",
+                    "height": 140,
+                    "width": 210,
+                    "type": "image",
+                    "subtype": "photo",
+                    "caption": "",
+                    "copyright": "Minet Kim"
+                },
+                {
+                    "url": "https://static01.nyt.com/images/2019/10/09/smarter-living/00sl_dietoday/00sl_dietoday-superJumbo.jpg",
+                    "format": "superJumbo",
+                    "height": 1365,
+                    "width": 2048,
+                    "type": "image",
+                    "subtype": "photo",
+                    "caption": "",
+                    "copyright": "Minet Kim"
+                }
+            ],
+            "short_url": "https://nyti.ms/35oxUoC"
+        },
+        {
+            "section": "Smarter Living",
+            "subsection": "",
+            "title": "The Right Way to Close Out an Email. (Skip That Inspirational Quote.)",
+            "abstract": "Signoffs and signatures: Why hitting send can be so fraught.",
+            "url": "https://www.nytimes.com/2019/12/15/smarter-living/the-right-way-to-close-out-an-email-skip-that-inspirational-quote.html",
+            "byline": "By JEN DOLL",
+            "item_type": "Article",
+            "updated_date": "2019-12-15T22:00:01-05:00",
+            "created_date": "2019-12-15T22:00:01-05:00",
+            "published_date": "2019-12-15T22:00:01-05:00",
+            "material_type_facet": "",
+            "kicker": "",
+            "des_facet": [],
+            "org_facet": [],
+            "per_facet": [],
+            "geo_facet": [],
+            "multimedia": [
+                {
+                    "url": "https://static01.nyt.com/images/2019/12/10/smarter-living/10sl-emailend-promo/10sl-emailend-promo-thumbStandard.jpg",
+                    "format": "Standard Thumbnail",
+                    "height": 75,
+                    "width": 75,
+                    "type": "image",
+                    "subtype": "photo",
+                    "caption": "",
+                    "copyright": "Pablo Rochat"
+                },
+                {
+                    "url": "https://static01.nyt.com/images/2019/12/10/smarter-living/10sl-emailend-promo/10sl-emailend-promo-thumbLarge.jpg",
+                    "format": "thumbLarge",
+                    "height": 150,
+                    "width": 150,
+                    "type": "image",
+                    "subtype": "photo",
+                    "caption": "",
+                    "copyright": "Pablo Rochat"
+                },
+                {
+                    "url": "https://static01.nyt.com/images/2019/12/10/smarter-living/10sl-emailend-promo/10sl-emailend-promo-articleInline.jpg",
+                    "format": "Normal",
+                    "height": 127,
+                    "width": 190,
+                    "type": "image",
+                    "subtype": "photo",
+                    "caption": "",
+                    "copyright": "Pablo Rochat"
+                },
+                {
+                    "url": "https://static01.nyt.com/images/2019/12/10/smarter-living/10sl-emailend-promo/10sl-emailend-promo-mediumThreeByTwo210.jpg",
+                    "format": "mediumThreeByTwo210",
+                    "height": 140,
+                    "width": 210,
+                    "type": "image",
+                    "subtype": "photo",
+                    "caption": "",
+                    "copyright": "Pablo Rochat"
+                },
+                {
+                    "url": "https://static01.nyt.com/images/2019/12/10/smarter-living/10sl-emailend-promo/10sl-emailend-promo-superJumbo.jpg",
+                    "format": "superJumbo",
+                    "height": 1365,
+                    "width": 2048,
+                    "type": "image",
+                    "subtype": "photo",
+                    "caption": "",
+                    "copyright": "Pablo Rochat"
+                }
+            ],
+            "short_url": "https://nyti.ms/36Dez3d"
+        },
+        {
+            "section": "Movies",
+            "subsection": "",
+            "title": "The Oscars Will Soon Face a Best-Actor Bloodbath",
+            "abstract": "Only five men will be nominated, but with at least a dozen solid contenders, including big names like Leonardo DiCaprio and Robert De Niro, who will make the final cut?",
+            "url": "https://www.nytimes.com/2019/12/18/movies/oscars-best-actor-contenders.html",
+            "byline": "By KYLE BUCHANAN",
+            "item_type": "Article",
+            "updated_date": "2019-12-18T13:55:23-05:00",
+            "created_date": "2019-12-18T13:55:23-05:00",
+            "published_date": "2019-12-18T13:55:23-05:00",
+            "material_type_facet": "",
+            "kicker": "",
+            "des_facet": [
+                "Movies",
+                "Academy Awards (Oscars)",
+                "Actors and Actresses",
+                "Joker (Movie)",
+                "The Irishman (Movie)",
+                "Once Upon a Time in Hollywood (Movie)",
+                "Dolemite Is My Name (Movie)",
+                "Uncut Gems (Movie)",
+                "Pain and Glory (Movie)",
+                "Rocketman (Movie)",
+                "Richard Jewell (Movie)",
+                "The Two Popes (Movie)",
+                "1917 (Movie)",
+                "Ford v Ferrari (Movie)",
+                "Marriage Story (Movie)"
+            ],
+            "org_facet": [],
+            "per_facet": [
+                "Bale, Christian",
+                "Banderas, Antonio",
+                "De Niro, Robert",
+                "DiCaprio, Leonardo",
+                "Driver, Adam",
+                "Egerton, Taron (1989- )",
+                "Hauser, Paul Walter",
+                "MacKay, George",
+                "Murphy, Eddie",
+                "Sandler, Adam",
+                "Pryce, Jonathan",
+                "Phoenix, Joaquin"
+            ],
+            "geo_facet": [],
+            "multimedia": [
+                {
+                    "url": "https://static01.nyt.com/images/2019/12/18/arts/18carpetbagger-promo/18carpetbagger-thumbStandard-v4.jpg",
+                    "format": "Standard Thumbnail",
+                    "height": 75,
+                    "width": 75,
+                    "type": "image",
+                    "subtype": "photo",
+                    "caption": "Clockwise from top left: Antonio Banderas in “Pain and Glory,” Eddie Murphy in “Dolemite Is My Name,” Adam Sandler in “Uncut Gems,” Adam Driver in “Marriage Story,” Jonathan Pryce in “The Two Popes” and Joaquin Phoenix in “Joker.”",
+                    "copyright": "Clockwise from top left: El Deseo and Sony Pictures Classics; Netflix; A24; Warner Bros."
+                },
+                {
+                    "url": "https://static01.nyt.com/images/2019/12/18/arts/18carpetbagger-promo/18carpetbagger-thumbLarge-v4.jpg",
+                    "format": "thumbLarge",
+                    "height": 150,
+                    "width": 150,
+                    "type": "image",
+                    "subtype": "photo",
+                    "caption": "Clockwise from top left: Antonio Banderas in “Pain and Glory,” Eddie Murphy in “Dolemite Is My Name,” Adam Sandler in “Uncut Gems,” Adam Driver in “Marriage Story,” Jonathan Pryce in “The Two Popes” and Joaquin Phoenix in “Joker.”",
+                    "copyright": "Clockwise from top left: El Deseo and Sony Pictures Classics; Netflix; A24; Warner Bros."
+                },
+                {
+                    "url": "https://static01.nyt.com/images/2019/12/18/arts/18carpetbagger-promo/18carpetbagger-articleInline-v3.jpg",
+                    "format": "Normal",
+                    "height": 127,
+                    "width": 190,
+                    "type": "image",
+                    "subtype": "photo",
+                    "caption": "Clockwise from top left: Antonio Banderas in “Pain and Glory,” Eddie Murphy in “Dolemite Is My Name,” Adam Sandler in “Uncut Gems,” Adam Driver in “Marriage Story,” Jonathan Pryce in “The Two Popes” and Joaquin Phoenix in “Joker.”",
+                    "copyright": "Clockwise from top left: El Deseo and Sony Pictures Classics; Netflix; A24; Warner Bros."
+                },
+                {
+                    "url": "https://static01.nyt.com/images/2019/12/18/arts/18carpetbagger-promo/18carpetbagger-mediumThreeByTwo210-v3.jpg",
+                    "format": "mediumThreeByTwo210",
+                    "height": 140,
+                    "width": 210,
+                    "type": "image",
+                    "subtype": "photo",
+                    "caption": "Clockwise from top left: Antonio Banderas in “Pain and Glory,” Eddie Murphy in “Dolemite Is My Name,” Adam Sandler in “Uncut Gems,” Adam Driver in “Marriage Story,” Jonathan Pryce in “The Two Popes” and Joaquin Phoenix in “Joker.”",
+                    "copyright": "Clockwise from top left: El Deseo and Sony Pictures Classics; Netflix; A24; Warner Bros."
+                },
+                {
+                    "url": "https://static01.nyt.com/images/2019/12/18/arts/18carpetbagger-promo/18carpetbagger-superJumbo-v3.jpg",
+                    "format": "superJumbo",
+                    "height": 1366,
+                    "width": 2048,
+                    "type": "image",
+                    "subtype": "photo",
+                    "caption": "Clockwise from top left: Antonio Banderas in “Pain and Glory,” Eddie Murphy in “Dolemite Is My Name,” Adam Sandler in “Uncut Gems,” Adam Driver in “Marriage Story,” Jonathan Pryce in “The Two Popes” and Joaquin Phoenix in “Joker.”",
+                    "copyright": "Clockwise from top left: El Deseo and Sony Pictures Classics; Netflix; A24; Warner Bros."
+                }
+            ],
+            "short_url": "https://nyti.ms/2Pz0ZIm"
+        },
+        {
+            "section": "Obituaries",
+            "subsection": "",
+            "title": "Overlooked No More: Earl Tucker, a Dancer Known as ‘Snakehips’",
+            "abstract": "Tucker was a name attraction in Harlem nightclubs in the 1920s, and his moves were echoed by Elvis Presley and Michael Jackson.",
+            "url": "https://www.nytimes.com/2019/12/18/obituaries/earl-tucker-overlooked.html",
+            "byline": "By BRIAN SEIBERT",
+            "item_type": "Article",
+            "updated_date": "2019-12-19T05:57:45-05:00",
+            "created_date": "2019-12-18T16:22:54-05:00",
+            "published_date": "2019-12-18T16:22:54-05:00",
+            "material_type_facet": "",
+            "kicker": "",
+            "des_facet": [
+                "Black People",
+                "Dancing",
+                "Race and Ethnicity",
+                "Biographical Information",
+                "Past Tense"
+            ],
+            "org_facet": [],
+            "per_facet": [
+                "Tucker, Earl (1905-37)",
+                "Presley, Elvis",
+                "Ellington, Duke",
+                "Jackson, Michael"
+            ],
+            "geo_facet": [],
+            "multimedia": [
+                {
+                    "url": "https://static01.nyt.com/images/2019/12/09/multimedia/00overlooked-tucker/00overlooked-tucker-thumbStandard-v7.jpg",
+                    "format": "Standard Thumbnail",
+                    "height": 75,
+                    "width": 75,
+                    "type": "image",
+                    "subtype": "photo",
+                    "caption": "Earl \"Snakehips\" Tucker in about 1930. His dancing was entertainment that played to the illicit appeal of Harlem nightclubs.",
+                    "copyright": "NYPL Schomburg Center for Research in Black Culture"
+                },
+                {
+                    "url": "https://static01.nyt.com/images/2019/12/09/multimedia/00overlooked-tucker/00overlooked-tucker-thumbLarge-v7.jpg",
+                    "format": "thumbLarge",
+                    "height": 150,
+                    "width": 150,
+                    "type": "image",
+                    "subtype": "photo",
+                    "caption": "Earl \"Snakehips\" Tucker in about 1930. His dancing was entertainment that played to the illicit appeal of Harlem nightclubs.",
+                    "copyright": "NYPL Schomburg Center for Research in Black Culture"
+                },
+                {
+                    "url": "https://static01.nyt.com/images/2019/12/09/multimedia/00overlooked-tucker/00overlooked-tucker-articleInline-v5.jpg",
+                    "format": "Normal",
+                    "height": 240,
+                    "width": 190,
+                    "type": "image",
+                    "subtype": "photo",
+                    "caption": "Earl \"Snakehips\" Tucker in about 1930. His dancing was entertainment that played to the illicit appeal of Harlem nightclubs.",
+                    "copyright": "NYPL Schomburg Center for Research in Black Culture"
+                },
+                {
+                    "url": "https://static01.nyt.com/images/2019/12/09/multimedia/00overlooked-tucker/00overlooked-tucker-mediumThreeByTwo210-v7.jpg",
+                    "format": "mediumThreeByTwo210",
+                    "height": 140,
+                    "width": 210,
+                    "type": "image",
+                    "subtype": "photo",
+                    "caption": "Earl \"Snakehips\" Tucker in about 1930. His dancing was entertainment that played to the illicit appeal of Harlem nightclubs.",
+                    "copyright": "NYPL Schomburg Center for Research in Black Culture"
+                },
+                {
+                    "url": "https://static01.nyt.com/images/2019/12/09/multimedia/00overlooked-tucker/00overlooked-tucker-superJumbo-v5.jpg",
+                    "format": "superJumbo",
+                    "height": 2048,
+                    "width": 1619,
+                    "type": "image",
+                    "subtype": "photo",
+                    "caption": "Earl \"Snakehips\" Tucker in about 1930. His dancing was entertainment that played to the illicit appeal of Harlem nightclubs.",
+                    "copyright": "NYPL Schomburg Center for Research in Black Culture"
+                }
+            ],
+            "short_url": "https://nyti.ms/2PxEymZ"
+        },
+        {
+            "section": "Arts",
+            "subsection": "",
+            "title": "A New ‘Christmas Carol’ Explores the Roots of Scrooge’s Scorn",
+            "abstract": "A new TV adaptation by Steven Knight (“Peaky Blinders”) presents a portrait of the miser as a (relatively) young man.",
+            "url": "https://www.nytimes.com/2019/12/13/arts/a-christmas-carol-scrooge-fx.html",
+            "byline": "By ROSLYN SULCAS",
+            "item_type": "Article",
+            "updated_date": "2019-12-13T05:00:13-05:00",
+            "created_date": "2019-12-13T05:00:13-05:00",
+            "published_date": "2019-12-13T05:00:13-05:00",
+            "material_type_facet": "",
+            "kicker": "",
+            "des_facet": [
+                "Television",
+                "A Christmas Carol (TV Program)"
+            ],
+            "org_facet": [
+                "FX (TV Network)",
+                "British Broadcasting Corp"
+            ],
+            "per_facet": [
+                "Murphy, Nick (Film Director)",
+                "Knight, Steven",
+                "Pearce, Guy"
+            ],
+            "geo_facet": [],
+            "multimedia": [
+                {
+                    "url": "https://static01.nyt.com/images/2019/12/15/arts/15christmascarol3/15christmascarol3-thumbStandard.jpg",
+                    "format": "Standard Thumbnail",
+                    "height": 75,
+                    "width": 75,
+                    "type": "image",
+                    "subtype": "photo",
+                    "caption": "Serkis as the Ghost of Christmas Past. &ldquo;Every generation needs its own interpretation&rdquo; of Dickens&rsquo;s story, said the creator Steven Knight.",
+                    "copyright": "Robert Viglasky/FX"
+                },
+                {
+                    "url": "https://static01.nyt.com/images/2019/12/15/arts/15christmascarol3/15christmascarol3-thumbLarge.jpg",
+                    "format": "thumbLarge",
+                    "height": 150,
+                    "width": 150,
+                    "type": "image",
+                    "subtype": "photo",
+                    "caption": "Serkis as the Ghost of Christmas Past. &ldquo;Every generation needs its own interpretation&rdquo; of Dickens&rsquo;s story, said the creator Steven Knight.",
+                    "copyright": "Robert Viglasky/FX"
+                },
+                {
+                    "url": "https://static01.nyt.com/images/2019/12/15/arts/15christmascarol3/15christmascarol3-articleInline.jpg",
+                    "format": "Normal",
+                    "height": 127,
+                    "width": 190,
+                    "type": "image",
+                    "subtype": "photo",
+                    "caption": "Serkis as the Ghost of Christmas Past. &ldquo;Every generation needs its own interpretation&rdquo; of Dickens&rsquo;s story, said the creator Steven Knight.",
+                    "copyright": "Robert Viglasky/FX"
+                },
+                {
+                    "url": "https://static01.nyt.com/images/2019/12/15/arts/15christmascarol3/15christmascarol3-mediumThreeByTwo210.jpg",
+                    "format": "mediumThreeByTwo210",
+                    "height": 140,
+                    "width": 210,
+                    "type": "image",
+                    "subtype": "photo",
+                    "caption": "Serkis as the Ghost of Christmas Past. &ldquo;Every generation needs its own interpretation&rdquo; of Dickens&rsquo;s story, said the creator Steven Knight.",
+                    "copyright": "Robert Viglasky/FX"
+                },
+                {
+                    "url": "https://static01.nyt.com/images/2019/12/15/arts/15christmascarol3/15christmascarol3-superJumbo.jpg",
+                    "format": "superJumbo",
+                    "height": 1365,
+                    "width": 2048,
+                    "type": "image",
+                    "subtype": "photo",
+                    "caption": "Serkis as the Ghost of Christmas Past. &ldquo;Every generation needs its own interpretation&rdquo; of Dickens&rsquo;s story, said the creator Steven Knight.",
+                    "copyright": "Robert Viglasky/FX"
+                }
+            ],
+            "short_url": "https://nyti.ms/2EhCokQ"
+        },
+        {
+            "section": "Arts",
+            "subsection": "Television",
+            "title": "Trump Has Been Moved to America’s Spam Folder, Says Trevor Noah",
+            "abstract": "The impeachment, of course, was the talk of late night on Wednesday. Noah said President Trump had gone through “all the stages of grief in one tweet.”",
+            "url": "https://www.nytimes.com/2019/12/19/arts/television/late-night-impeachment.html",
+            "byline": "By TRISH BENDIX",
+            "item_type": "Article",
+            "updated_date": "2019-12-19T02:18:35-05:00",
+            "created_date": "2019-12-19T02:18:35-05:00",
+            "published_date": "2019-12-19T02:18:35-05:00",
+            "material_type_facet": "",
+            "kicker": "",
+            "des_facet": [
+                "The Tonight Show (TV Program)"
+            ],
+            "org_facet": [],
+            "per_facet": [
+                "Colbert, Stephen",
+                "Fallon, Jimmy",
+                "Noah, Trevor (1984- )",
+                "Trump, Donald J"
+            ],
+            "geo_facet": [],
+            "multimedia": [
+                {
+                    "url": "https://static01.nyt.com/images/2019/12/19/arts/19latenight/19latenight-thumbStandard.png",
+                    "format": "Standard Thumbnail",
+                    "height": 75,
+                    "width": 75,
+                    "type": "image",
+                    "subtype": "photo",
+                    "caption": "As the House made him the third impeached president in American history, President Trump “went through all the stages of grief in one tweet,” Trevor Noah said.",
+                    "copyright": "Comedy Central"
+                },
+                {
+                    "url": "https://static01.nyt.com/images/2019/12/19/arts/19latenight/19latenight-thumbLarge.png",
+                    "format": "thumbLarge",
+                    "height": 150,
+                    "width": 150,
+                    "type": "image",
+                    "subtype": "photo",
+                    "caption": "As the House made him the third impeached president in American history, President Trump “went through all the stages of grief in one tweet,” Trevor Noah said.",
+                    "copyright": "Comedy Central"
+                },
+                {
+                    "url": "https://static01.nyt.com/images/2019/12/19/arts/19latenight/19latenight-articleInline.png",
+                    "format": "Normal",
+                    "height": 106,
+                    "width": 190,
+                    "type": "image",
+                    "subtype": "photo",
+                    "caption": "As the House made him the third impeached president in American history, President Trump “went through all the stages of grief in one tweet,” Trevor Noah said.",
+                    "copyright": "Comedy Central"
+                },
+                {
+                    "url": "https://static01.nyt.com/images/2019/12/19/arts/19latenight/19latenight-mediumThreeByTwo210.png",
+                    "format": "mediumThreeByTwo210",
+                    "height": 140,
+                    "width": 210,
+                    "type": "image",
+                    "subtype": "photo",
+                    "caption": "As the House made him the third impeached president in American history, President Trump “went through all the stages of grief in one tweet,” Trevor Noah said.",
+                    "copyright": "Comedy Central"
+                },
+                {
+                    "url": "https://static01.nyt.com/images/2019/12/19/arts/19latenight/19latenight-superJumbo.png",
+                    "format": "superJumbo",
+                    "height": 436,
+                    "width": 782,
+                    "type": "image",
+                    "subtype": "photo",
+                    "caption": "As the House made him the third impeached president in American history, President Trump “went through all the stages of grief in one tweet,” Trevor Noah said.",
+                    "copyright": "Comedy Central"
+                }
+            ],
+            "short_url": "https://nyti.ms/35EOPnc"
+        },
+        {
+            "section": "Neediest Cases",
+            "subsection": "",
+            "title": "After Sputtering in ‘Dead-End Jobs,’ Pursuing a Tech Career",
+            "abstract": "At 9, Teonia Alston began experimenting with computers. Since having a baby and balancing unfulfilling jobs, she’s motivated to pursue her passion.",
+            "url": "https://www.nytimes.com/2019/12/18/neediest-cases/tech-studies-mother-interview-clothes.html",
+            "byline": "By ELISHA BROWN",
+            "item_type": "Article",
+            "updated_date": "2019-12-18T23:30:16-05:00",
+            "created_date": "2019-12-18T12:48:54-05:00",
+            "published_date": "2019-12-18T12:48:54-05:00",
+            "material_type_facet": "",
+            "kicker": "",
+            "des_facet": [],
+            "org_facet": [
+                "New York Times Neediest Cases Fund",
+                "Community Service Society of New York"
+            ],
+            "per_facet": [],
+            "geo_facet": [],
+            "multimedia": [
+                {
+                    "url": "https://static01.nyt.com/images/2019/12/13/neediest-cases/00ncf-alston/00ncf-alston-thumbStandard.jpg",
+                    "format": "Standard Thumbnail",
+                    "height": 75,
+                    "width": 75,
+                    "type": "image",
+                    "subtype": "photo",
+                    "caption": "Ms. Alston received a grant from The Neediest Cases Fund to purchase work clothes.",
+                    "copyright": "Michelle V. Agins/The New York Times"
+                },
+                {
+                    "url": "https://static01.nyt.com/images/2019/12/13/neediest-cases/00ncf-alston/00ncf-alston-thumbLarge.jpg",
+                    "format": "thumbLarge",
+                    "height": 150,
+                    "width": 150,
+                    "type": "image",
+                    "subtype": "photo",
+                    "caption": "Ms. Alston received a grant from The Neediest Cases Fund to purchase work clothes.",
+                    "copyright": "Michelle V. Agins/The New York Times"
+                },
+                {
+                    "url": "https://static01.nyt.com/images/2019/12/13/neediest-cases/00ncf-alston/00ncf-alston-articleInline.jpg",
+                    "format": "Normal",
+                    "height": 127,
+                    "width": 190,
+                    "type": "image",
+                    "subtype": "photo",
+                    "caption": "Ms. Alston received a grant from The Neediest Cases Fund to purchase work clothes.",
+                    "copyright": "Michelle V. Agins/The New York Times"
+                },
+                {
+                    "url": "https://static01.nyt.com/images/2019/12/13/neediest-cases/00ncf-alston/00ncf-alston-mediumThreeByTwo210-v2.jpg",
+                    "format": "mediumThreeByTwo210",
+                    "height": 140,
+                    "width": 210,
+                    "type": "image",
+                    "subtype": "photo",
+                    "caption": "Ms. Alston received a grant from The Neediest Cases Fund to purchase work clothes.",
+                    "copyright": "Michelle V. Agins/The New York Times"
+                },
+                {
+                    "url": "https://static01.nyt.com/images/2019/12/13/neediest-cases/00ncf-alston/00ncf-alston-superJumbo.jpg",
+                    "format": "superJumbo",
+                    "height": 1365,
+                    "width": 2048,
+                    "type": "image",
+                    "subtype": "photo",
+                    "caption": "Ms. Alston received a grant from The Neediest Cases Fund to purchase work clothes.",
+                    "copyright": "Michelle V. Agins/The New York Times"
+                }
+            ],
+            "short_url": "https://nyti.ms/2Z98Mjy"
+        }
+    ]
+}
