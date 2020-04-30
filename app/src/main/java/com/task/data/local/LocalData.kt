@@ -6,5 +6,5 @@ import javax.inject.Inject
  * Created by AhmedEltaher
  */
 
-class LocalRepository @Inject
+class LocalData @Inject
 constructor()

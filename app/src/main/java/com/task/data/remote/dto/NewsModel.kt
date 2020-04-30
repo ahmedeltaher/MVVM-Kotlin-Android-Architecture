@@ -13,7 +13,7 @@ data class NewsModel(
         @Json(name = "num_results")
     val numResults: Int = 0,
         @Json(name = "results")
-    val newsItems: List<NewsItem> = listOf(),
+    val results: List<NewsItem> = listOf(),
         @Json(name = "section")
     val section: String = "",
         @Json(name = "status")

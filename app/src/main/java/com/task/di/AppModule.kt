@@ -15,7 +15,7 @@
  */
 
 package com.task.di
-import com.task.data.local.LocalRepository
+import com.task.data.local.LocalData
 import dagger.Module
 import dagger.Provides
 import kotlinx.coroutines.Dispatchers
@@ -26,8 +26,8 @@ import kotlin.coroutines.CoroutineContext
 class AppModule {
     @Provides
     @Singleton
-    fun provideLocalRepository(): LocalRepository {
-        return LocalRepository()
+    fun provideLocalRepository(): LocalData {
+        return LocalData()
     }
 
     @Provides

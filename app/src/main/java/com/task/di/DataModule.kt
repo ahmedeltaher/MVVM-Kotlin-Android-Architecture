@@ -2,7 +2,7 @@
 package com.task.di
 
 import com.task.data.DataRepository
-import com.task.data.DataSource
+import com.task.data.DataRepositorySource
 import dagger.Binds
 import dagger.Module
 import javax.inject.Singleton
@@ -12,5 +12,5 @@ import javax.inject.Singleton
 abstract class DataModule {
     @Binds
     @Singleton
-    abstract fun provideDataRepository(dataRepository: DataRepository): DataSource
+    abstract fun provideDataRepository(dataRepository: DataRepository): DataRepositorySource
 }

@@ -23,12 +23,12 @@ import dagger.android.ContributesAndroidInjector
 @Suppress("unused")
 @Module
 abstract class ActivityModuleBuilder {
-    @ContributesAndroidInjector
+    @ContributesAndroidInjector()
     abstract fun contributeSplashActivity(): SplashActivity
 
-    @ContributesAndroidInjector
+    @ContributesAndroidInjector()
     abstract fun contributeHomeActivity(): NewsListActivity
 
-    @ContributesAndroidInjector
+    @ContributesAndroidInjector()
     abstract fun contributeDetailsActivity(): DetailsActivity
 }

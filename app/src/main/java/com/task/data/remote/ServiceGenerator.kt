@@ -20,10 +20,10 @@ class ServiceGenerator @Inject
 constructor() {
 
     //Network constants
-    private val TIMEOUT_CONNECT = 30   //In seconds
-    private val TIMEOUT_READ = 30   //In seconds
-    private val CONTENT_TYPE = "Content-Type"
-    private val CONTENT_TYPE_VALUE = "application/json"
+    private val timeoutConnect = 30   //In seconds
+    private val timeoutRead = 30   //In seconds
+    private val contentType = "Content-Type"
+    private val contentTypeValue = "application/json"
 
     private val okHttpBuilder: OkHttpClient.Builder = OkHttpClient.Builder()
     private val retrofit: Retrofit
@@ -32,7 +32,7 @@ constructor() {
         val original = chain.request()
 
         val request = original.newBuilder()
-                .header(CONTENT_TYPE, CONTENT_TYPE_VALUE)
+                .header(contentType, contentTypeValue)
                 .method(original.method, original.body)
                 .build()
 
@@ -51,8 +51,8 @@ constructor() {
     init {
         okHttpBuilder.addInterceptor(headerInterceptor)
         okHttpBuilder.addInterceptor(logger)
-        okHttpBuilder.connectTimeout(TIMEOUT_CONNECT.toLong(), TimeUnit.SECONDS)
-        okHttpBuilder.readTimeout(TIMEOUT_READ.toLong(), TimeUnit.SECONDS)
+        okHttpBuilder.connectTimeout(timeoutConnect.toLong(), TimeUnit.SECONDS)
+        okHttpBuilder.readTimeout(timeoutRead.toLong(), TimeUnit.SECONDS)
         val client = okHttpBuilder.build()
         retrofit = Retrofit.Builder()
                 .baseUrl(BASE_URL).client(client)

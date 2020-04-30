@@ -34,7 +34,10 @@ class DetailsActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.title = getString(R.string.top_news)
         viewModel.newsItem.value = intent.getParcelableExtra(Constants.NEWS_ITEM_KEY)
+
     }
 
     override fun observeViewModel() {
@@ -49,7 +52,7 @@ class DetailsActivity : BaseActivity() {
         binding.tvTitle.text = newsItem.title
         binding.tvDescription.text = newsItem.abstractInfo
         if (!newsItem.multimedia.isNullOrEmpty()) {
-            Picasso.get().load(newsItem.multimedia.last().url).placeholder(R.drawable.news)
+            Picasso.get().load(newsItem.multimedia[0]?.url).placeholder(R.drawable.news)
                     .into(binding.ivNewsMainImage)
         }
     }

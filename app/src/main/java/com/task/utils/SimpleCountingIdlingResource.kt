@@ -1,13 +1,12 @@
 package com.task.utils
-
 /*
- * Copyright (C) 2015 The Android Open Source Project
+ * Copyright (C) 2019 The Android Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- *   http://www.apache.org/licenses/LICENSE-2.0
+ *      http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -16,13 +15,12 @@ package com.task.utils
  * limitations under the License.
  */
 
-
 import androidx.test.espresso.IdlingResource
+
 import java.util.concurrent.atomic.AtomicInteger
 
-
 /**
- * A simple counter implementation of [IdlingResource] that determines idleness by
+ * An simple counter implementation of [IdlingResource] that determines idleness by
  * maintaining an internal counter. When the counter is 0 - it is considered to be idle, when it is
  * non-zero it is not idle. This is very similar to the way a [java.util.concurrent.Semaphore]
  * behaves.
@@ -31,15 +29,7 @@ import java.util.concurrent.atomic.AtomicInteger
  * This class can then be used to wrap up operations that while in progress should block tests from
  * accessing the UI.
  */
-class SimpleCountingIdlingResource
-/**
- * Creates a SimpleCountingIdlingResource
- *
- * @param resourceName the resource name this resource should report to Espresso.
- */
-(resourceName: String) : IdlingResource {
-
-    private val mResourceName: String = resourceName
+class SimpleCountingIdlingResource(private val resourceName: String) : IdlingResource {
 
     private val counter = AtomicInteger(0)
 
@@ -47,13 +37,9 @@ class SimpleCountingIdlingResource
     @Volatile
     private var resourceCallback: IdlingResource.ResourceCallback? = null
 
-    override fun getName(): String {
-        return mResourceName
-    }
+    override fun getName() = resourceName
 
-    override fun isIdleNow(): Boolean {
-        return counter.get() == 0
-    }
+    override fun isIdleNow() = counter.get() == 0
 
     override fun registerIdleTransitionCallback(resourceCallback: IdlingResource.ResourceCallback) {
         this.resourceCallback = resourceCallback
@@ -68,7 +54,6 @@ class SimpleCountingIdlingResource
 
     /**
      * Decrements the count of in-flight transactions to the resource being monitored.
-     *
      * If this operation results in the counter falling below 0 - an exception is raised.
      *
      * @throws IllegalStateException if the counter is below 0.
@@ -77,13 +62,9 @@ class SimpleCountingIdlingResource
         val counterVal = counter.decrementAndGet()
         if (counterVal == 0) {
             // we've gone from non-zero to zero. That means we're idle now! Tell espresso.
-            if (null != resourceCallback) {
-                resourceCallback!!.onTransitionToIdle()
-            }
-        }
-
-        if (counterVal < 0) {
-            throw IllegalArgumentException("Counter has been corrupted!")
+            resourceCallback?.onTransitionToIdle()
+        } else if (counterVal < 0) {
+            throw IllegalStateException("Counter has been corrupted!")
         }
     }
 }

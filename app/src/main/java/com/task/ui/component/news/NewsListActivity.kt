@@ -1,13 +1,17 @@
 package com.task.ui.component.news
 
+import android.app.SearchManager
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View.GONE
 import android.view.View.VISIBLE
-import androidx.annotation.VisibleForTesting
+import android.widget.SearchView
+import android.widget.SearchView.OnQueryTextListener
 import androidx.lifecycle.LiveData
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.test.espresso.IdlingResource
 import com.google.android.material.snackbar.Snackbar
 import com.task.R
 import com.task.data.Resource
@@ -35,10 +39,6 @@ class NewsListActivity : BaseActivity() {
     @Inject
     lateinit var viewModelFactory: ViewModelFactory
 
-    val countingIdlingResource: IdlingResource
-        @VisibleForTesting
-        get() = EspressoIdlingResource.idlingResource
-
     override fun initViewBinding() {
         binding = HomeActivityBinding.inflate(layoutInflater)
         val view = binding.root
@@ -51,22 +51,53 @@ class NewsListActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding.toolbarLayout.icToolbarRefresh.setOnClickListener { newsListViewModel.getNews() }
-        binding.toolbarLayout.icToolbarSetting.setOnClickListener {
-            if (!(binding.etSearch.text?.toString().isNullOrEmpty())) {
-                binding.pbLoading.visibility = VISIBLE
-                newsListViewModel.onSearchClick(binding.etSearch.text?.toString()!!)
-            }
-        }
+        supportActionBar?.title = getString(R.string.news)
         val layoutManager = LinearLayoutManager(this)
         binding.rvNewsList.layoutManager = layoutManager
         binding.rvNewsList.setHasFixedSize(true)
         newsListViewModel.getNews()
     }
 
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.main_actions, menu)
+        // Associate searchable configuration with the SearchView
+        val searchView = menu?.findItem(R.id.action_search)?.actionView as SearchView
+        searchView.queryHint = getString(R.string.search_by_title)
+        val searchManager = getSystemService(Context.SEARCH_SERVICE) as SearchManager
+        searchView.apply {
+            setSearchableInfo(searchManager.getSearchableInfo(componentName))
+        }
+        searchView.setOnQueryTextListener(object : OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String): Boolean {
+                handleSearch(query)
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String): Boolean {
+                return false
+            }
+        })
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.action_favorite -> newsListViewModel.getNews()
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
+    private fun handleSearch(query: String) {
+        if (query.isNotEmpty()) {
+            binding.pbLoading.visibility = VISIBLE
+            newsListViewModel.onSearchClick(query)
+        }
+    }
+
+
     private fun bindListData(newsModel: NewsModel) {
-        if (!(newsModel.newsItems.isNullOrEmpty())) {
-            val newsAdapter = NewsAdapter(newsListViewModel, newsModel.newsItems)
+        if (!(newsModel.results.isNullOrEmpty())) {
+            val newsAdapter = NewsAdapter(newsListViewModel, newsModel.results)
             binding.rvNewsList.adapter = newsAdapter
             showDataView(true)
         } else {

@@ -4,10 +4,12 @@ import android.content.Context
 import androidx.test.platform.app.InstrumentationRegistry
 import com.squareup.moshi.JsonAdapter
 import com.squareup.moshi.Moshi
-import com.task.TestDataReprository.Instance.initData
-import com.task.data.DataSource
+import com.task.TestDataRepository.Instance.initData
+import com.task.data.DataRepositorySource
 import com.task.data.Resource
 import com.task.data.remote.dto.NewsModel
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flow
 import java.io.InputStream
 import javax.inject.Inject
 
@@ -16,10 +18,10 @@ import javax.inject.Inject
  * Created by AhmedEltaher
  */
 
-class TestDataReprository @Inject constructor() : DataSource {
+class TestDataRepository @Inject constructor() : DataRepositorySource {
 
-    override suspend fun requestNews(): Resource<NewsModel> {
-        return Resource.Success(initData())
+    override suspend fun requestNews(): Flow<Resource<NewsModel>> {
+        return flow { emit(Resource.Success(initData())) }
     }
 
     object Instance {

@@ -5,9 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
-import com.task.R
 import com.task.ui.base.listeners.BaseView
 
 /**
@@ -34,15 +32,5 @@ abstract class BaseFragment : Fragment(), BaseView {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         return inflater.inflate(layoutId, container, false)
-    }
-
-    fun setTitle(title: String) {
-        val actionBar = (activity as BaseActivity).supportActionBar
-        if (actionBar != null) {
-            val titleTextView = activity?.findViewById<TextView>(R.id.txt_toolbar_title)
-            if (title.isNotEmpty()) {
-                titleTextView?.text = title
-            }
-        }
     }
 }

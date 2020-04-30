@@ -31,11 +31,11 @@ class TestModelsGenerator {
     }
 
     fun generateNewsItemModel(): NewsItem {
-        return newsModel.newsItems[0]
+        return newsModel.results[0]
     }
 
     fun getStupSearchTitle(): String {
-        return newsModel.newsItems[0].title
+        return newsModel.results[0].title
     }
 
 

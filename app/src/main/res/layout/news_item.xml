@@ -1,33 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    android:id="@+id/rl_news_item"
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="wrap_content"
+    android:id="@+id/rl_news_item"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical">
+    app:cardElevation="1dp"
+    app:cardUseCompatPadding="true">
 
-    <RelativeLayout
-        android:layout_width="wrap_content"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/default_margin"
-        android:layout_marginTop="@dimen/default_margin">
+        android:padding="@dimen/default_margin">
+
         <ImageView
             android:id="@+id/iv_news_item_image"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:src="@drawable/news"/>
+            android:src="@drawable/news"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="@dimen/default_margin"
+            android:layout_marginStart="@dimen/default_margin"
             android:layout_marginTop="@dimen/default_margin"
-            android:layout_toEndOf="@+id/iv_news_item_image"
-            android:layout_toRightOf="@+id/iv_news_item_image"
             android:orientation="vertical"
-            android:layout_marginStart="@dimen/default_margin">
+            app:layout_constraintBottom_toBottomOf="@+id/iv_news_item_image"
+            app:layout_constraintLeft_toRightOf="@+id/iv_news_item_image"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/iv_news_item_image">
+
             <TextView
                 android:id="@+id/tv_title"
                 android:layout_width="wrap_content"
@@ -35,19 +41,18 @@
                 android:maxLines="1"
                 android:textColor="@android:color/black"
                 android:textStyle="bold"
-                tools:text="news title ........... this is a sample text "/>
+                tools:text="news title ........... this is a sample text " />
+
             <TextView
                 android:id="@+id/tv_caption"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/default_margin"
                 android:maxLines="2"
-                tools:text="Here’s what you need to know to start your day."
-                android:textColor="@android:color/black"/>
+                android:textColor="@android:color/black"
+                app:layout_constraintLeft_toRightOf="@+id/tv_title"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Here’s what you need to know to start your day." />
         </LinearLayout>
-    </RelativeLayout>
-    <View android:layout_width="match_parent"
-          android:layout_height="3dp"
-          android:layout_alignParentTop="true"
-          android:background="@android:color/darker_gray"/>
-</RelativeLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>

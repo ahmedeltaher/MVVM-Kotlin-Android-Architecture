@@ -1,16 +1,22 @@
 package com.task.ui.component.news
 
 import androidx.annotation.StringRes
+import androidx.annotation.VisibleForTesting
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.viewModelScope
+import com.task.data.DataRepositorySource
 import com.task.data.Resource
 import com.task.data.error.mapper.ErrorMapper
 import com.task.data.remote.dto.NewsItem
 import com.task.data.remote.dto.NewsModel
 import com.task.ui.base.BaseViewModel
-import com.task.usecase.NewsUseCase
 import com.task.usecase.errors.ErrorManager
 import com.task.utils.Event
+import com.task.utils.wrapEspressoIdlingResource
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
+import java.util.Locale.ROOT
 import javax.inject.Inject
 
 /**
@@ -18,7 +24,7 @@ import javax.inject.Inject
  */
 
 class NewsListViewModel @Inject
-constructor(private val newsDataUseCase: NewsUseCase) : BaseViewModel() {
+constructor(private val dataRepositoryRepository: DataRepositorySource) : BaseViewModel() {
 
     override val errorManager: ErrorManager
         get() = ErrorManager(ErrorMapper())
@@ -26,7 +32,9 @@ constructor(private val newsDataUseCase: NewsUseCase) : BaseViewModel() {
     /**
      * Data --> LiveData, Exposed as LiveData, Locally in viewModel as MutableLiveData
      */
-    var newsLiveData: MutableLiveData<Resource<NewsModel>> = newsDataUseCase.newsLiveData
+    @VisibleForTesting
+    val _newsLiveData = MutableLiveData<Resource<NewsModel>>()
+    val newsLiveData: LiveData<Resource<NewsModel>> get() = _newsLiveData
 
     private val newsSearchFoundPrivate: MutableLiveData<NewsItem> = MutableLiveData()
     val newsSearchFound: LiveData<NewsItem> get() = newsSearchFoundPrivate
@@ -51,7 +59,14 @@ constructor(private val newsDataUseCase: NewsUseCase) : BaseViewModel() {
 
 
     fun getNews() {
-        newsDataUseCase.getNews()
+        viewModelScope.launch {
+            _newsLiveData.value = Resource.Loading()
+            wrapEspressoIdlingResource {
+                dataRepositoryRepository.requestNews().collect {
+                    _newsLiveData.value = it
+                }
+            }
+        }
     }
 
     fun openNewsDetails(newsItem: NewsItem) {
@@ -68,15 +83,16 @@ constructor(private val newsDataUseCase: NewsUseCase) : BaseViewModel() {
     }
 
     fun onSearchClick(newsTitle: String) {
-        if (newsTitle.isNotEmpty()) {
-            val newsItem = newsDataUseCase.searchByTitle(newsTitle)
-            if (newsItem != null) {
-                newsSearchFoundPrivate.value = newsItem
-            } else {
-                noSearchFoundPrivate.postValue(Unit)
+        _newsLiveData.value?.data?.results?.let {
+            if (it.isNotEmpty()) {
+                for (newsItem in it) {
+                    if (newsItem.title.toLowerCase(ROOT).contains(newsTitle.toLowerCase(ROOT))) {
+                        newsSearchFoundPrivate.value = newsItem
+                        return
+                    }
+                }
             }
-        } else {
-            noSearchFoundPrivate.postValue(Unit)
         }
+        return noSearchFoundPrivate.postValue(Unit)
     }
 }

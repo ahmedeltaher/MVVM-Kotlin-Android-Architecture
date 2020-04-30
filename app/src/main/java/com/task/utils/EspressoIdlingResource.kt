@@ -22,21 +22,30 @@ import androidx.test.espresso.IdlingResource
 /**
  * Contains a static reference to [IdlingResource], only available in the 'mock' build type.
  */
-class EspressoIdlingResource {
-    companion object INSTANCE {
-        private const val RESOURCE = "GLOBAL"
+object EspressoIdlingResource {
+    private const val RESOURCE = "GLOBAL"
 
-        private val mCountingIdlingResource = SimpleCountingIdlingResource(RESOURCE)
+    @JvmField
+    val countingIdlingResource = SimpleCountingIdlingResource(RESOURCE)
 
-        val idlingResource: IdlingResource
-            get() = mCountingIdlingResource
+    fun increment() {
+        countingIdlingResource.increment()
+    }
 
-        fun increment() {
-            mCountingIdlingResource.increment()
+    fun decrement() {
+        if (!countingIdlingResource.isIdleNow) {
+            countingIdlingResource.decrement()
         }
+    }
+}
 
-        fun decrement() {
-            mCountingIdlingResource.decrement()
-        }
+inline fun <T> wrapEspressoIdlingResource(function: () -> T): T {
+    // Espresso does not work well with coroutines yet. See
+    // https://github.com/Kotlin/kotlinx.coroutines/issues/982
+    EspressoIdlingResource.increment() // Set app as busy.
+    return try {
+        function()
+    } finally {
+        EspressoIdlingResource.decrement() // Set app as idle.
     }
 }

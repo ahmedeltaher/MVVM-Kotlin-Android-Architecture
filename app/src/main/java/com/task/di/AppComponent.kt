@@ -37,5 +37,6 @@ interface AppComponent {
     interface Builder {
         fun build(): AppComponent
     }
+
     fun inject(app: App)
 }

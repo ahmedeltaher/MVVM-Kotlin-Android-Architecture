@@ -7,6 +7,6 @@ import com.task.data.remote.dto.NewsModel
  * Created by AhmedEltaher
  */
 
-internal interface RemoteSource {
+internal interface RemoteDataSource {
     suspend fun requestNews(): Resource<NewsModel>
 }
