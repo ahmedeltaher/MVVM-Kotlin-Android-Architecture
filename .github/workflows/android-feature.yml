@@ -20,3 +20,5 @@ jobs:
         java-version: 1.8
     - name: Unit tests
       run: bash ./gradlew test --stacktrace
+    - name: Android Build
+      uses: vgaidarji/android-github-actions-build@v1.0.1  
