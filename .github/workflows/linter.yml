@@ -1,0 +1,2 @@
+- name: GitHub Action for ktlint
+  uses: yutailang0119/action-ktlint@v1.0.0
