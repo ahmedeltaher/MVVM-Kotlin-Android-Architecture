@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -12,42 +12,63 @@
         android:layout_height="match_parent">
 
         <TextView
-            android:id="@+id/tv_title"
+            android:id="@+id/tv_name"
             style="@style/Title_Style"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/default_margin"
-            android:textSize="24sp"
-            android:typeface="monospace"
+            android:layout_margin="@dimen/space_8x"
+            android:textSize="@dimen/font_24x"
             android:textStyle="bold"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            android:typeface="monospace"
             app:layout_constraintEnd_toEndOf="parent"
-            tools:text="@string/news_title_preview"/>
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="@string/recipe_title_preview" />
 
-        <ImageView
-            android:id="@+id/iv_news_main_Image"
+        <TextView
+            android:id="@+id/tv_headline"
+            style="@style/Title_Style"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:contentDescription="@null"
-            android:src="@drawable/news"
-            android:scaleType="centerCrop"
-            app:layout_constraintBottom_toTopOf="@+id/tv_description"
-            app:layout_constraintTop_toBottomOf="@+id/tv_title"
+            android:layout_margin="@dimen/space_8x"
+            android:textSize="@dimen/font_16x"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            />
+            app:layout_constraintTop_toBottomOf="@+id/tv_name"
+            tools:text="@string/recipe_title_preview" />
+
+        <ImageView
+            android:id="@+id/iv_recipe_Image"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/image_details_height"
+            android:layout_marginTop="@dimen/space_24x"
+            android:contentDescription="@null"
+            android:scaleType="fitCenter"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_headline"
+            app:srcCompat="@drawable/ic_healthy_food_small" />
 
         <TextView
             android:id="@+id/tv_description"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/default_margin"
-            android:textSize="16sp"
-            app:layout_constraintTop_toBottomOf="@id/iv_news_main_Image"
-            app:layout_constraintStart_toStartOf="parent"
+            android:layout_margin="@dimen/space_16x"
+            android:textSize="@dimen/font_16x"
             app:layout_constraintEnd_toEndOf="parent"
-            tools:text="@string/news_details_preview"/>
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/iv_recipe_Image"
+            tools:text="@string/recipe_details_preview" />
 
+        <ProgressBar
+            android:id="@+id/pb_loading"
+            style="?android:attr/progressBarStyleLarge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:indeterminate="true"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

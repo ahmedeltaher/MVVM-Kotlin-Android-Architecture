@@ -1,13 +1,12 @@
 package com.task.data.remote
 
-import com.task.App
 import com.task.data.Resource
-import com.task.data.error.Error.Companion.NETWORK_ERROR
-import com.task.data.error.Error.Companion.NO_INTERNET_CONNECTION
-import com.task.data.remote.dto.NewsModel
-import com.task.data.remote.service.NewsService
-import com.task.utils.Network.Utils.isConnected
-import com.task.utils.wrapEspressoIdlingResource
+import com.task.data.dto.recipes.Recipes
+import com.task.data.dto.recipes.RecipesItem
+import com.task.data.error.NETWORK_ERROR
+import com.task.data.error.NO_INTERNET_CONNECTION
+import com.task.data.remote.service.RecipesService
+import com.task.utils.NetworkConnectivity
 import retrofit2.Response
 import java.io.IOException
 import javax.inject.Inject
@@ -18,24 +17,21 @@ import javax.inject.Inject
  */
 
 class RemoteData @Inject
-constructor(private val serviceGenerator: ServiceGenerator) : RemoteDataSource {
-
-    override suspend fun requestNews(): Resource<NewsModel> {
-        wrapEspressoIdlingResource {
-            val newsService = serviceGenerator.createService(NewsService::class.java)
-            return when (val response = processCall(newsService::fetchNews)) {
-                is NewsModel -> {
-                    Resource.Success(data = response)
-                }
-                else -> {
-                    Resource.DataError(errorCode = response as Int)
-                }
+constructor(private val serviceGenerator: ServiceGenerator, private val networkConnectivity: NetworkConnectivity) : RemoteDataSource {
+    override suspend fun requestRecipes(): Resource<Recipes> {
+        val recipesService = serviceGenerator.createService(RecipesService::class.java)
+        return when (val response = processCall(recipesService::fetchRecipes)) {
+            is List<*> -> {
+                Resource.Success(data = Recipes(response as ArrayList<RecipesItem>))
+            }
+            else -> {
+                Resource.DataError(errorCode = response as Int)
             }
         }
     }
 
     private suspend fun processCall(responseCall: suspend () -> Response<*>): Any? {
-        if (!isConnected(App.context)) {
+        if (!networkConnectivity.isConnected()) {
             return NO_INTERNET_CONNECTION
         }
         return try {

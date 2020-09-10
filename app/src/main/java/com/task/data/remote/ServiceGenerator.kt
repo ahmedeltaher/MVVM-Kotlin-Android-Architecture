@@ -1,7 +1,10 @@
 package com.task.data.remote
 
+import com.task.data.remote.moshiFactories.MyKotlinJsonAdapterFactory
+import com.squareup.moshi.Moshi
 import com.task.BuildConfig
-import com.task.utils.Constants.INSTANCE.BASE_URL
+import com.task.data.remote.moshiFactories.MyStandardJsonAdapters
+import com.task.BASE_URL
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -15,16 +18,13 @@ import javax.inject.Singleton
  * Created by AhmedEltaher
  */
 
+private const val timeoutRead = 30   //In seconds
+private const val contentType = "Content-Type"
+private const val contentTypeValue = "application/json"
+private const val timeoutConnect = 30   //In seconds
+
 @Singleton
-class ServiceGenerator @Inject
-constructor() {
-
-    //Network constants
-    private val timeoutConnect = 30   //In seconds
-    private val timeoutRead = 30   //In seconds
-    private val contentType = "Content-Type"
-    private val contentTypeValue = "application/json"
-
+class ServiceGenerator @Inject constructor() {
     private val okHttpBuilder: OkHttpClient.Builder = OkHttpClient.Builder()
     private val retrofit: Retrofit
 
@@ -43,7 +43,7 @@ constructor() {
         get() {
             val loggingInterceptor = HttpLoggingInterceptor()
             if (BuildConfig.DEBUG) {
-                loggingInterceptor.apply { loggingInterceptor.level = HttpLoggingInterceptor.Level.HEADERS }.level = HttpLoggingInterceptor.Level.BODY
+                loggingInterceptor.apply { level = HttpLoggingInterceptor.Level.BODY }
             }
             return loggingInterceptor
         }
@@ -56,11 +56,18 @@ constructor() {
         val client = okHttpBuilder.build()
         retrofit = Retrofit.Builder()
                 .baseUrl(BASE_URL).client(client)
-                .addConverterFactory(MoshiConverterFactory.create())
+                .addConverterFactory(MoshiConverterFactory.create(getMoshi()))
                 .build()
     }
 
     fun <S> createService(serviceClass: Class<S>): S {
         return retrofit.create(serviceClass)
+    }
+
+    private fun getMoshi(): Moshi {
+        return Moshi.Builder()
+                .add(MyKotlinJsonAdapterFactory())
+                .add(MyStandardJsonAdapters.FACTORY)
+                .build()
     }
 }

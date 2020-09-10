@@ -1,8 +1,11 @@
 package com.task.utils
 
 import android.app.Service
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.View
 import android.view.inputmethod.InputMethodManager
+import android.widget.EditText
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.annotation.DrawableRes
@@ -15,15 +18,16 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
 import com.google.android.material.snackbar.Snackbar
 import com.squareup.picasso.Picasso
+import com.task.App
 import com.task.R
 
 fun View.showKeyboard() {
-    (context?.getSystemService(Service.INPUT_METHOD_SERVICE) as? InputMethodManager)
+    (App.context.getSystemService(Service.INPUT_METHOD_SERVICE) as? InputMethodManager)
             ?.showSoftInput(this, 0)
 }
 
 fun View.hideKeyboard() {
-    (context?.getSystemService(Service.INPUT_METHOD_SERVICE) as? InputMethodManager)
+    (App.context.getSystemService(Service.INPUT_METHOD_SERVICE) as? InputMethodManager)
             ?.hideSoftInputFromWindow(this.windowToken, 0)
 }
 
@@ -63,28 +67,38 @@ fun View.showSnackbar(snackbarText: String, timeLength: Int) {
  */
 fun View.setupSnackbar(
         lifecycleOwner: LifecycleOwner,
-        snackbarEvent: LiveData<Event<Int>>,
-        timeLength: Int
-) {
-
+        snackbarEvent: LiveData<SingleEvent<Any>>,
+        timeLength: Int) {
     snackbarEvent.observe(lifecycleOwner, Observer { event ->
         event.getContentIfNotHandled()?.let {
-            showSnackbar(context.getString(it), timeLength)
+            when (it) {
+                is String -> {
+                    hideKeyboard()
+                    showSnackbar(it, timeLength)
+                }
+                is Int -> {
+                    hideKeyboard()
+                    showSnackbar(this.context.getString(it), timeLength)
+                }
+                else -> {
+                }
+            }
+
         }
     })
 }
 
 fun View.showToast(
         lifecycleOwner: LifecycleOwner,
-        snackbarEvent: LiveData<Event<Any>>,
+        ToastEvent: LiveData<SingleEvent<Any>>,
         timeLength: Int
 ) {
 
-    snackbarEvent.observe(lifecycleOwner, Observer { event ->
+    ToastEvent.observe(lifecycleOwner, Observer { event ->
         event.getContentIfNotHandled()?.let {
             when (it) {
-                is String -> Toast.makeText(context, it, timeLength).show()
-                is Int -> Toast.makeText(context, context.getString(it), timeLength).show()
+                is String -> Toast.makeText(this.context, it, timeLength).show()
+                is Int -> Toast.makeText(this.context, this.context.getString(it), timeLength).show()
                 else -> {
                 }
             }
@@ -92,8 +106,23 @@ fun View.showToast(
     })
 }
 
+/**
+ * Extension function to simplify setting an afterTextChanged action to EditText components.
+ */
+fun EditText.afterTextChanged(afterTextChanged: (String) -> Unit) {
+    this.addTextChangedListener(object : TextWatcher {
+        override fun afterTextChanged(editable: Editable?) {
+            afterTextChanged.invoke(editable.toString())
+        }
+
+        override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
+
+        override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {}
+    })
+}
+
 fun ImageView.loadImage(@DrawableRes resId: Int) = Picasso.get().load(resId).into(this)
-fun ImageView.loadImage(url: String) = Picasso.get().load(url).placeholder(R.drawable.news).error(R.drawable.news).into(this)
+fun ImageView.loadImage(url: String) = Picasso.get().load(url).placeholder(R.drawable.ic_healthy_food).error(R.drawable.ic_healthy_food).into(this)
 
 fun AppCompatTextView.setTextFutureExt(text: String) =
         setTextFuture(

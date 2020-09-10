@@ -2,40 +2,50 @@ package com.util
 
 import com.squareup.moshi.JsonAdapter
 import com.squareup.moshi.Moshi
-import com.task.data.remote.dto.NewsItem
-import com.task.data.remote.dto.NewsModel
+import com.squareup.moshi.Types
+import com.task.data.dto.recipes.Recipes
+import com.task.data.dto.recipes.RecipesItem
+import com.task.data.remote.moshiFactories.MyKotlinJsonAdapterFactory
+import com.task.data.remote.moshiFactories.MyStandardJsonAdapters
 import java.io.File
+import java.lang.reflect.Type
+
 
 /**
  * Created by AhmedEltaher
  */
 
 class TestModelsGenerator {
-    private var newsModel: NewsModel = NewsModel()
+    private var recipes: Recipes = Recipes(arrayListOf())
 
     init {
-        val moshi: Moshi = Moshi.Builder().build()
-        val adapter: JsonAdapter<NewsModel> = moshi.adapter(NewsModel::class.java)
-        val jsonString = getJson("NewsApiResponse.json")
+        val moshi = Moshi.Builder()
+                .add(MyKotlinJsonAdapterFactory())
+                .add(MyStandardJsonAdapters.FACTORY)
+                .build()
+        val type: Type = Types.newParameterizedType(List::class.java, RecipesItem::class.java)
+        val adapter: JsonAdapter<List<RecipesItem>> = moshi.adapter(type)
+        val jsonString = getJson("RecipesApiResponse.json")
         adapter.fromJson(jsonString)?.let {
-            newsModel = it
+            recipes = Recipes(ArrayList(it))
         }
+        print("this is $recipes")
     }
 
-    fun generateNewsModel(): NewsModel {
-        return newsModel
+    fun generateRecipes(): Recipes {
+        return recipes
     }
 
-    fun generateNewsModelWithEmptyList(): NewsModel {
-        return NewsModel()
+    fun generateRecipesModelWithEmptyList(): Recipes {
+        return Recipes(arrayListOf())
     }
 
-    fun generateNewsItemModel(): NewsItem {
-        return newsModel.results[0]
+    fun generateRecipesItemModel(): RecipesItem {
+        return recipes.recipesList[0]
     }
 
-    fun getStupSearchTitle(): String {
-        return newsModel.results[0].title
+    fun getStubSearchTitle(): String {
+        return recipes.recipesList[0].name
     }
 
 

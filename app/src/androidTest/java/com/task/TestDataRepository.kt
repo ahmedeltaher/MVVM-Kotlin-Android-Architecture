@@ -1,16 +1,16 @@
 package com.task
 
-import android.content.Context
-import androidx.test.platform.app.InstrumentationRegistry
-import com.squareup.moshi.JsonAdapter
-import com.squareup.moshi.Moshi
-import com.task.TestDataRepository.Instance.initData
+import com.task.TestUtil.dataStatus
+import com.task.TestUtil.initData
 import com.task.data.DataRepositorySource
 import com.task.data.Resource
-import com.task.data.remote.dto.NewsModel
+import com.task.data.dto.login.LoginRequest
+import com.task.data.dto.login.LoginResponse
+import com.task.data.dto.recipes.Recipes
+import com.task.data.error.Error
+import com.task.data.error.NETWORK_ERROR
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
-import java.io.InputStream
 import javax.inject.Inject
 
 
@@ -20,29 +20,37 @@ import javax.inject.Inject
 
 class TestDataRepository @Inject constructor() : DataRepositorySource {
 
-    override suspend fun requestNews(): Flow<Resource<NewsModel>> {
-        return flow { emit(Resource.Success(initData())) }
-    }
-
-    object Instance {
-        var STATUS = DATA_STATUS.FULL_LIST
-        fun initData(): NewsModel {
-            val moshi: Moshi = Moshi.Builder().build()
-            val adapter: JsonAdapter<NewsModel> = moshi.adapter(NewsModel::class.java)
-            val jsonString = getJson("NewsApiResponse.json")
-            adapter.fromJson(jsonString)?.let {
-                return it
+    override suspend fun requestRecipes(): Flow<Resource<Recipes>> {
+        return when (dataStatus) {
+            DataStatus.Success -> {
+                flow { emit(Resource.Success(initData())) }
             }
-            return NewsModel()
-        }
-
-        private fun getJson(path: String): String {
-            val ctx: Context = InstrumentationRegistry.getInstrumentation().targetContext
-            val inputStream: InputStream = ctx.assets.open(path)
-            return inputStream.bufferedReader().use { it.readText() }
+            DataStatus.Fail -> {
+                flow { emit(Resource.DataError<Recipes>(errorCode = NETWORK_ERROR)) }
+            }
+            DataStatus.EmptyResponse -> {
+                flow { emit(Resource.Success(Recipes(arrayListOf()))) }
+            }
         }
     }
 
-}
+    override suspend fun doLogin(loginRequest: LoginRequest): Flow<Resource<LoginResponse>> {
+        return flow {
+            emit(Resource.Success(LoginResponse("123", "Ahmed", "Mahmoud",
+                    "FrunkfurterAlle", "77", "12000", "Berlin",
+                    "Germany", "ahmed@ahmed.ahmed")))
+        }
+    }
 
-enum class DATA_STATUS { EMPTY_LIST, FULL_LIST, NO_DATA, NO_INTERNET }
+    override suspend fun addToFavourite(id: String): Flow<Resource<Boolean>> {
+        return flow { emit(Resource.Success(true)) }
+    }
+
+    override suspend fun removeFromFavourite(id: String): Flow<Resource<Boolean>> {
+        return flow { emit(Resource.Success(true)) }
+    }
+
+    override suspend fun isFavourite(id: String): Flow<Resource<Boolean>> {
+        return flow { emit(Resource.Success(true)) }
+    }
+}

@@ -3,7 +3,6 @@ package com.task.ui.base
 import android.os.Bundle
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
-import com.task.ui.base.listeners.BaseView
 import dagger.android.AndroidInjection
 
 /**
@@ -11,9 +10,7 @@ import dagger.android.AndroidInjection
  */
 
 
-abstract class BaseActivity : AppCompatActivity(), BaseView {
-
-    protected lateinit var baseViewModel: BaseViewModel
+abstract class BaseActivity : AppCompatActivity() {
 
     protected abstract fun initializeViewModel()
     abstract fun observeViewModel()
