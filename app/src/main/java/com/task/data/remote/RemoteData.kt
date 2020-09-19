@@ -6,18 +6,19 @@ import com.task.data.dto.recipes.RecipesItem
 import com.task.data.error.NETWORK_ERROR
 import com.task.data.error.NO_INTERNET_CONNECTION
 import com.task.data.remote.service.RecipesService
+import com.task.di.ServiceGenerator
+import com.task.utils.Network
 import com.task.utils.NetworkConnectivity
 import retrofit2.Response
 import java.io.IOException
-import javax.inject.Inject
 
 
-/**
- * Created by AhmedEltaher
- */
+class RemoteData
+constructor(
+        private val serviceGenerator: ServiceGenerator,
+        private val networkConnectivity: Network
+) : RemoteDataSource {
 
-class RemoteData @Inject
-constructor(private val serviceGenerator: ServiceGenerator, private val networkConnectivity: NetworkConnectivity) : RemoteDataSource {
     override suspend fun requestRecipes(): Resource<Recipes> {
         val recipesService = serviceGenerator.createService(RecipesService::class.java)
         return when (val response = processCall(recipesService::fetchRecipes)) {

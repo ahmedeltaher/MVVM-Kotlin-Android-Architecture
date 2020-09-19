@@ -1,32 +1,33 @@
 package com.task.di
 
-import com.task.App
+
 import com.task.data.local.LocalData
+import com.task.data.remote.RemoteData
 import com.task.utils.Network
-import com.task.utils.NetworkConnectivity
-import dagger.Module
-import dagger.Provides
 import kotlinx.coroutines.Dispatchers
-import javax.inject.Singleton
+import org.koin.dsl.module
 import kotlin.coroutines.CoroutineContext
 
-@Module
-class AppModule {
-    @Provides
-    @Singleton
-    fun provideLocalRepository(): LocalData {
-        return LocalData()
+
+val AppModule = module {
+
+    single { LocalData(context = get()) }
+
+    single { }
+
+    single { getBackgroundThread() }
+
+    single { Network(context = get()) }
+
+    single {
+        RemoteData(
+                serviceGenerator = get(),
+                networkConnectivity = get()
+        )
     }
 
-    @Provides
-    @Singleton
-    fun provideCoroutineContext(): CoroutineContext {
-        return Dispatchers.IO
-    }
+}
 
-    @Provides
-    @Singleton
-    fun provideNetworkConnectivity(): NetworkConnectivity {
-        return Network(App.context)
-    }
+fun getBackgroundThread(): CoroutineContext {
+    return Dispatchers.IO
 }

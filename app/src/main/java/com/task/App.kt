@@ -1,35 +1,37 @@
 package com.task
 
-import android.content.Context
 import androidx.multidex.MultiDexApplication
-import com.task.di.DaggerAppComponent
-import dagger.android.AndroidInjector
-import dagger.android.DispatchingAndroidInjector
-import dagger.android.HasAndroidInjector
-import javax.inject.Inject
+import com.task.di.*
+import org.koin.android.ext.koin.androidContext
+import org.koin.android.ext.koin.androidLogger
+import org.koin.core.context.startKoin
 
 /**
  * Created by AhmedEltaher
  */
 
-open class App : MultiDexApplication(), HasAndroidInjector {
-
-    @Inject
-    lateinit var androidInjector: DispatchingAndroidInjector<Any>
-
-    override fun androidInjector(): AndroidInjector<Any> = androidInjector
+open class App : MultiDexApplication(){
 
     override fun onCreate() {
         super.onCreate()
-        context = applicationContext
-        initDagger()
+        initKoin()
     }
 
-    open fun initDagger() {
-        DaggerAppComponent.builder().build().inject(this)
+    open fun initKoin() {
+        startKoin {
+            androidLogger()
+            // this provides app context anywhere using get()
+            androidContext(this@App.applicationContext)
+            modules(
+                    listOf(
+                            AppModule,
+                            NetworkModule,
+                            RepositoriesModule,
+                            ViewModelModule,
+                            ErrorModule
+                    )
+            )
+        }
     }
 
-    companion object {
-        lateinit var context: Context
-    }
 }

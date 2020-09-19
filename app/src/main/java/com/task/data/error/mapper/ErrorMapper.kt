@@ -1,14 +1,15 @@
 package com.task.data.error.mapper
 
+import android.content.Context
 import com.task.App
 import com.task.R
 import com.task.data.error.*
 import javax.inject.Inject
 
-class ErrorMapper @Inject constructor() : ErrorMapperInterface {
+class ErrorMapper constructor(private val context: Context) : ErrorMapperInterface {
 
     override fun getErrorString(errorId: Int): String {
-        return App.context.getString(errorId)
+        return context.getString(errorId)
     }
 
     override val errorsMap: Map<Int, String>

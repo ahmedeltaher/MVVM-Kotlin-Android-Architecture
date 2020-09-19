@@ -4,10 +4,10 @@ import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import com.task.databinding.SplashLayoutBinding
-import com.task.ui.ViewModelFactory
 import com.task.ui.base.BaseActivity
 import com.task.ui.component.login.LoginActivity
 import com.task.SPLASH_DELAY
+import org.koin.androidx.viewmodel.ext.android.viewModel
 import javax.inject.Inject
 
 /**
@@ -15,11 +15,8 @@ import javax.inject.Inject
  */
 
 class SplashActivity : BaseActivity(){
-    @Inject
-    lateinit var viewModelFactory: ViewModelFactory
 
-    @Inject
-    lateinit var splashViewModel: SplashViewModel
+    val splashViewModel: SplashViewModel by viewModel()
 
     private lateinit var binding: SplashLayoutBinding
 
@@ -30,7 +27,7 @@ class SplashActivity : BaseActivity(){
     }
 
     override fun initializeViewModel() {
-        splashViewModel = viewModelFactory.create(splashViewModel::class.java)
+        /*splashViewModel = viewModelFactory.create(splashViewModel::class.java)*/
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
