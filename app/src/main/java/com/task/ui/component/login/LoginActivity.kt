@@ -7,10 +7,10 @@ import com.google.android.material.snackbar.Snackbar
 import com.task.data.Resource
 import com.task.data.dto.login.LoginResponse
 import com.task.databinding.LoginActivityBinding
-import com.task.ui.ViewModelFactory
 import com.task.ui.base.BaseActivity
 import com.task.ui.component.recipes.RecipesListActivity
 import com.task.utils.*
+import org.koin.androidx.viewmodel.ext.android.viewModel
 import javax.inject.Inject
 
 /**
@@ -18,11 +18,9 @@ import javax.inject.Inject
  */
 
 class LoginActivity : BaseActivity() {
-    @Inject
-    lateinit var viewModelFactory: ViewModelFactory
 
-    @Inject
-    lateinit var loginViewModel: LoginViewModel
+    private val loginViewModel: LoginViewModel by viewModel()
+
     private lateinit var binding: LoginActivityBinding
 
 
@@ -38,7 +36,7 @@ class LoginActivity : BaseActivity() {
     }
 
     override fun initializeViewModel() {
-        loginViewModel = viewModelFactory.create(loginViewModel::class.java)
+        /*loginViewModel = viewModelFactory.create(loginViewModel::class.java)*/
     }
 
     override fun observeViewModel() {

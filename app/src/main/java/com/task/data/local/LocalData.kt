@@ -1,20 +1,16 @@
 package com.task.data.local
 
+import android.content.Context
 import android.content.SharedPreferences
-import com.task.App.Companion.context
 import com.task.data.Resource
 import com.task.data.dto.login.LoginRequest
 import com.task.data.dto.login.LoginResponse
 import com.task.FAVOURITES_KEY
 import com.task.SHARED_PREFERENCES_FILE_NAME
 import com.task.data.error.PASS_WORD_ERROR
-import javax.inject.Inject
 
-/**
- * Created by AhmedEltaher
- */
 
-class LocalData @Inject constructor() {
+class LocalData constructor(private val context: Context) {
 
     fun doLogin(loginRequest: LoginRequest): Resource<LoginResponse> {
         if (loginRequest == LoginRequest("ahmed@ahmed.ahmed", "ahmed")) {

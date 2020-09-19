@@ -10,11 +10,11 @@ import com.task.RECIPE_ITEM_KEY
 import com.task.data.Resource
 import com.task.data.dto.recipes.RecipesItem
 import com.task.databinding.DetailsLayoutBinding
-import com.task.ui.ViewModelFactory
 import com.task.ui.base.BaseActivity
 import com.task.utils.observe
 import com.task.utils.toGone
 import com.task.utils.toVisible
+import org.koin.androidx.viewmodel.ext.android.viewModel
 import javax.inject.Inject
 
 /**
@@ -23,11 +23,8 @@ import javax.inject.Inject
 
 class DetailsActivity : BaseActivity() {
 
-    @Inject
-    lateinit var viewModel: DetailsViewModel
-
-    @Inject
-    lateinit var viewModelFactory: ViewModelFactory
+     // handle injection using koin ktx
+     val viewModel: DetailsViewModel by viewModel()
 
     private lateinit var binding: DetailsLayoutBinding
     private var menu: Menu? = null
@@ -67,7 +64,7 @@ class DetailsActivity : BaseActivity() {
     }
 
     override fun initializeViewModel() {
-        viewModel = viewModelFactory.create(viewModel::class.java)
+        /* we don't need it anymore here */
     }
 
     private fun handleIsFavourite(isFavourite: Resource<Boolean>) {

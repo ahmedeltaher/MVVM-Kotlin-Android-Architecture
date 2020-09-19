@@ -9,7 +9,7 @@ import javax.inject.Inject
  * Created by AhmedEltaher
  */
 
-class Network @Inject constructor(val context: Context) : NetworkConnectivity {
+class Network constructor(private val context: Context /*injected using koin*/) : NetworkConnectivity {
     override fun getNetworkInfo(): NetworkInfo? {
         val cm = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
         return cm.activeNetworkInfo

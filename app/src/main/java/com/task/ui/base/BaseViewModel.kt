@@ -10,9 +10,9 @@ import com.task.usecase.errors.ErrorManager
  */
 
 
-abstract class BaseViewModel : ViewModel() {
+abstract class BaseViewModel(private val errorMapper: ErrorMapper) : ViewModel() {
     /**Inject Singleton ErrorManager
      * Use this errorManager to get the Errors
      */
-    val errorManager: ErrorManager = ErrorManager(ErrorMapper())
+    val errorManager: ErrorManager = ErrorManager(errorMapper)
 }

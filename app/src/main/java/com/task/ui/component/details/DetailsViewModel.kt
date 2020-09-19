@@ -4,20 +4,21 @@ import androidx.annotation.VisibleForTesting
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import com.task.data.DataRepositorySource
+import com.task.data.DataRepository
 import com.task.data.Resource
 import com.task.data.dto.recipes.RecipesItem
+import com.task.data.error.mapper.ErrorMapper
 import com.task.ui.base.BaseViewModel
 import com.task.utils.wrapEspressoIdlingResource
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
-import javax.inject.Inject
 
 /**
  * Created by AhmedEltaher
  */
 
-open class DetailsViewModel @Inject constructor(private val dataRepository: DataRepositorySource) : BaseViewModel() {
+open class
+DetailsViewModel constructor(private val dataRepository: DataRepository, errorMapper: ErrorMapper) : BaseViewModel(errorMapper) {
 
     @VisibleForTesting(otherwise = VisibleForTesting.PRIVATE)
     val recipePrivate = MutableLiveData<RecipesItem>()

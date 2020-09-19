@@ -20,11 +20,11 @@ import com.task.data.dto.recipes.Recipes
 import com.task.data.dto.recipes.RecipesItem
 import com.task.data.error.SEARCH_ERROR
 import com.task.databinding.HomeActivityBinding
-import com.task.ui.ViewModelFactory
 import com.task.ui.base.BaseActivity
 import com.task.ui.component.details.DetailsActivity
 import com.task.ui.component.recipes.adapter.RecipesAdapter
 import com.task.utils.*
+import org.koin.androidx.viewmodel.ext.android.viewModel
 import javax.inject.Inject
 
 /**
@@ -34,11 +34,8 @@ import javax.inject.Inject
 class RecipesListActivity : BaseActivity() {
     private lateinit var binding: HomeActivityBinding
 
-    @Inject
-    lateinit var recipesListViewModel: RecipesListViewModel
+    val recipesListViewModel: RecipesListViewModel by viewModel()
 
-    @Inject
-    lateinit var viewModelFactory: ViewModelFactory
     private lateinit var recipesAdapter: RecipesAdapter
 
     override fun initViewBinding() {
@@ -48,7 +45,7 @@ class RecipesListActivity : BaseActivity() {
     }
 
     override fun initializeViewModel() {
-        recipesListViewModel = viewModelFactory.create(RecipesListViewModel::class.java)
+        /*recipesListViewModel = viewModelFactory.create(RecipesListViewModel::class.java)*/
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

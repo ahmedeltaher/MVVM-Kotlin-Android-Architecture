@@ -11,19 +11,20 @@ import com.task.data.dto.login.LoginResponse
 import com.task.data.error.CHECK_YOUR_FIELDS
 import com.task.data.error.PASS_WORD_ERROR
 import com.task.data.error.USER_NAME_ERROR
+import com.task.data.error.mapper.ErrorMapper
 import com.task.ui.base.BaseViewModel
 import com.task.utils.RegexUtils.isValidEmail
 import com.task.utils.SingleEvent
 import com.task.utils.wrapEspressoIdlingResource
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
-import javax.inject.Inject
 
 /**
  * Created by AhmedEltaher
  */
 
-class LoginViewModel @Inject constructor(private val dataRepository: DataRepository) : BaseViewModel() {
+class LoginViewModel
+constructor(private val dataRepository: DataRepository, errorMapper: ErrorMapper) : BaseViewModel(errorMapper) {
 
     @VisibleForTesting(otherwise = VisibleForTesting.PRIVATE)
     private val loginLiveDataPrivate = MutableLiveData<Resource<LoginResponse>>()
