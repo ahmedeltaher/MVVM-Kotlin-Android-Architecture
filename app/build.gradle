@@ -158,7 +158,8 @@ dependencies {
     implementation "androidx.multidex:multidex:$multiDexVersion"
 
     //Mockk
-    androidTestImplementation "io.mockk:mockk-android:$mockVersion"
+//    androidTestImplementation "io.mockk:mockk-android:$mockVersion"
+    testImplementation "io.mockk:mockk:$mockVersion"
 
     //coroutines
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesCoreVersion"
