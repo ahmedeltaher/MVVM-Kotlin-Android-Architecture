@@ -1,11 +1,11 @@
 package com.task.ui.base.listeners
 
-import com.task.data.remote.dto.NewsItem
+import com.task.data.dto.recipes.RecipesItem
 
 /**
  * Created by AhmedEltaher
  */
 
 interface RecyclerItemListener {
-    fun onItemSelected(newsItem: NewsItem)
+    fun onItemSelected(recipe : RecipesItem)
 }

@@ -1,27 +1,24 @@
 apply plugin: 'com.android.application'
-
 apply plugin: 'kotlin-android'
-
-apply plugin: 'kotlin-kapt'
-
 apply plugin: 'kotlin-android-extensions'
-
+apply plugin: 'kotlin-kapt'
 apply plugin: 'kotlin-platform-android'
 
 android {
-    compileSdkVersion 29
+    compileSdkVersion rootProject.compileSdkVersion
     buildToolsVersion '29.0.3'
     defaultConfig {
         applicationId 'com.eltaher.task'
-        minSdkVersion 16
-        targetSdkVersion 29
+        minSdkVersion rootProject.minSdkVersion
+        targetSdkVersion rootProject.targetSdkVersion
         versionCode 1
         versionName "1.0"
         multiDexEnabled true
+        vectorDrawables.useSupportLibrary = true
         testInstrumentationRunner "com.task.CustomTestRunner"
     }
-    viewBinding {
-        enabled = true
+    buildFeatures{
+        viewBinding = true
     }
     buildTypes {
         debug {
@@ -36,9 +33,9 @@ android {
 
     flavorDimensions "default"
     productFlavors {
-        mock {
+        dev {
             dimension = 'default'
-            applicationIdSuffix = ".mock"
+            applicationIdSuffix = ".dev"
         }
         prod {
             dimension = 'default'
@@ -66,91 +63,93 @@ android {
         unitTests.returnDefaultValues = true
     }
 
-}
-repositories {
-    repositories {
-        mavenCentral()
+    android {
+        sourceSets {
+            String sharedTestDir = 'src/sharedTest/resources'
+            test {
+                resources.srcDirs += sharedTestDir
+            }
+            androidTest {
+                resources.srcDirs += sharedTestDir
+            }
+        }
     }
 }
-configurations.all {
-    resolutionStrategy {
-        force "com.android.support:support-annotations:28.0.0"
-        exclude module: "support-v13"
-    }
-}
+
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-
     //kotlin
-    implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.3.72'
-    implementation 'org.jetbrains.kotlin:kotlin-reflect:1.3.72'
+    //implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlinVersion"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    implementation "org.jetbrains.kotlin:kotlin-reflect:$kotlinVersion"
+    implementation "androidx.annotation:annotation:$annotationVersion"
 
     /**-------------------testing libs------------------------------------------**/
     //UI Testing , AndroidJUnitRunner and JUnit Rules &Espresso dependencies
     //junit 5
-    testImplementation 'org.junit.jupiter:junit-jupiter-engine:5.6.2'
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.6.2'
-    testImplementation 'org.junit.platform:junit-platform-runner:1.6.2'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
-    androidTestImplementation 'org.assertj:assertj-core:3.15.0'
-    androidTestImplementation "androidx.arch.core:core-testing:2.1.0"
-    androidTestImplementation ('androidx.test.espresso:espresso-core:3.2.0',{
+    testImplementation "org.junit.jupiter:junit-jupiter-engine:$junitVersion"
+    testImplementation "org.junit.jupiter:junit-jupiter-api:$junitVersion"
+
+    testImplementation "org.junit.platform:junit-platform-runner:$junitRunnerVersion"
+    androidTestImplementation "androidx.test.ext:junit:$androidXJunitVersion"
+    androidTestImplementation "org.assertj:assertj-core:$assertjVersion"
+    androidTestImplementation "androidx.arch.core:core-testing:$coreTestingVersion"
+    androidTestImplementation "androidx.test.espresso:espresso-intents:$espressoIntentsVersion"
+    androidTestImplementation ("androidx.test.espresso:espresso-core:$espressoCoreVersion",{
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    implementation 'androidx.test:rules:1.2.0'
-    implementation 'androidx.test.espresso:espresso-idling-resource:3.2.0'
-    implementation 'androidx.test.espresso:espresso-contrib:3.2.0'
-    implementation 'androidx.arch.core:core-testing:2.1.0'
-    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-test:1.3.2'
+    implementation "androidx.test:rules:$testRulesVersion"
+    androidTestImplementation "androidx.test:runner:$runnerVersion"
+    implementation "androidx.test.espresso:espresso-idling-resource:$espressoVersion"
+    implementation "androidx.test.espresso:espresso-contrib:$espressoVersion"
+    implementation "androidx.arch.core:core-testing:$coreTestingVersion"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutinesTestVersion"
 
     /**-------------------------------------------------------------**/
 
     //android support & recyclerview
-    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
-    implementation 'androidx.recyclerview:recyclerview:1.1.0'
-    implementation 'androidx.appcompat:appcompat:1.1.0'
-    implementation 'com.google.android.material:material:1.2.0-alpha06'
-    implementation 'androidx.core:core-ktx:1.2.0'
-    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    implementation "androidx.recyclerview:recyclerview:$recyclerviewVersion"
+    implementation "androidx.appcompat:appcompat:$appcompatVersion"
+    implementation "com.google.android.material:material:$materialVersion"
+    implementation "androidx.core:core-ktx:$coreKtxVersion"
+    implementation "androidx.coordinatorlayout:coordinatorlayout:$coordinatorLayoutVersion"
+    implementation "androidx.constraintlayout:constraintlayout:$constraintLayoutVersion"
+    implementation "androidx.cardview:cardview:$cardViewVersion"
+    implementation "androidx.activity:activity:$activityVersion"
+    implementation "androidx.activity:activity-ktx:$activityKtxVersion"
 
     //Dagger
-    implementation 'com.google.dagger:dagger:2.27'
-    kapt 'com.google.dagger:dagger-compiler:2.27'
-    implementation 'com.google.dagger:dagger-android:2.27'
-    implementation 'com.google.dagger:dagger-android-support:2.27'
-    kapt 'com.google.dagger:dagger-android-processor:2.27'
-    kaptAndroidTest 'com.google.dagger:dagger-compiler:2.27'
+    implementation "com.google.dagger:dagger:$daggerVersion"
+    kapt "com.google.dagger:dagger-compiler:$daggerVersion"
+    implementation "com.google.dagger:dagger-android:$daggerVersion"
+    implementation "com.google.dagger:dagger-android-support:$daggerVersion"
+    kapt "com.google.dagger:dagger-android-processor:$daggerVersion"
+    kaptAndroidTest "com.google.dagger:dagger-compiler:$daggerVersion"
 
     //Logging
-    implementation 'com.squareup.okhttp3:logging-interceptor:4.5.0'
+    implementation "com.squareup.okhttp3:logging-interceptor:$okhttpInterceptorVersion"
 
     // retrofit
-    implementation 'com.squareup.retrofit2:retrofit:2.8.1'
-    implementation 'com.squareup.retrofit2:converter-moshi:2.8.1'
-    implementation 'com.squareup.moshi:moshi:1.9.2'
-    kapt 'com.squareup.moshi:moshi-kotlin-codegen:1.9.2'
-    implementation 'com.squareup.okhttp3:okhttp:4.5.0'
+    implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
+    implementation "com.squareup.retrofit2:converter-moshi:$retrofitVersion"
+    implementation "com.squareup.moshi:moshi:$moshiVersion"
+    kapt "com.squareup.moshi:moshi-kotlin-codegen:$moshiVersion"
+    implementation "com.squareup.okhttp3:okhttp:$okhttpVersion"
 
     //picasso
-    implementation 'com.squareup.picasso:picasso:2.71828'
+    implementation "com.squareup.picasso:picasso:$picassoVersion"
 
     //MultiDex
-    implementation 'androidx.multidex:multidex:2.0.1'
+    implementation "androidx.multidex:multidex:$multiDexVersion"
 
     //Mockk
-    implementation 'io.mockk:mockk:1.9.3'
+//    androidTestImplementation "io.mockk:mockk-android:$mockVersion"
+    testImplementation "io.mockk:mockk:$mockVersion"
 
     //coroutines
-    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.2'
-    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.2'
-    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core-common:1.3.2'
-    implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
-    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.0-alpha01'
-    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.3.0-alpha01'
-
-    //navigation component
-    implementation 'androidx.navigation:navigation-fragment:2.2.1'
-    implementation 'androidx.navigation:navigation-ui:2.2.1'
-    implementation 'androidx.navigation:navigation-fragment-ktx:2.2.1'
-    implementation 'androidx.navigation:navigation-ui-ktx:2.2.1'
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesCoreVersion"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core-common:$coroutinesCommonVersion"
+    implementation "androidx.lifecycle:lifecycle-extensions:$lifecycleExtensionsVersion"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleKTXVersion"
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycleKTXVersion"
 }

@@ -31,6 +31,5 @@ open class App : MultiDexApplication(), HasAndroidInjector {
 
     companion object {
         lateinit var context: Context
-
     }
 }
