@@ -34,8 +34,8 @@ abstract class ViewModelModule {
     @Binds
     @IntoMap
     @ViewModelKey(DetailsViewModel::class)
-    internal abstract fun bindSplashViewModel(viewModel: DetailsViewModel): ViewModel
-
+    internal abstract fun bindDetailsViewModel(viewModel: DetailsViewModel): ViewModel
+  
     @Binds
     @IntoMap
     @ViewModelKey(LoginViewModel::class)
