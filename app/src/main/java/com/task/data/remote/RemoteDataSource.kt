@@ -9,4 +9,5 @@ import com.task.data.dto.recipes.Recipes
 
 internal interface RemoteDataSource {
     suspend fun requestRecipes(): Resource<Recipes>
+    suspend fun requestRecipes2(): Recipes
 }

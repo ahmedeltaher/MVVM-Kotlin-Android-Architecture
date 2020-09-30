@@ -30,6 +30,20 @@ constructor(private val serviceGenerator: ServiceGenerator, private val networkC
         }
     }
 
+    override suspend fun requestRecipes2(): Recipes {
+        val recipesService = serviceGenerator.createService(RecipesService::class.java)
+        return when (val response = processCall(recipesService::fetchRecipes)) {
+            is List<*> -> {
+              Recipes(response as ArrayList<RecipesItem>)
+            }
+            else -> {
+               //response as Int
+                Recipes(response as ArrayList<RecipesItem>)
+
+            }
+        }
+    }
+
     private suspend fun processCall(responseCall: suspend () -> Response<*>): Any? {
         if (!networkConnectivity.isConnected()) {
             return NO_INTERNET_CONNECTION

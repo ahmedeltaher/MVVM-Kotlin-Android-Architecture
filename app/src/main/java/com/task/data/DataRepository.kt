@@ -24,6 +24,13 @@ class DataRepository @Inject constructor(private val remoteRepository: RemoteDat
         }.flowOn(ioDispatcher)
     }
 
+    override suspend fun requestRecipes2(): Flow<Recipes> {
+        return flow {
+            emit(remoteRepository.requestRecipes2())
+        }.flowOn(ioDispatcher)
+    }
+
+
     override suspend fun doLogin(loginRequest: LoginRequest): Flow<Resource<LoginResponse>> {
         return flow {
             emit(localRepository.doLogin(loginRequest))

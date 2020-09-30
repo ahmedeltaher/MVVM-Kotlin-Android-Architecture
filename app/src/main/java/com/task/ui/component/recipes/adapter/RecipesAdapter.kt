@@ -3,6 +3,7 @@ package com.task.ui.component.recipes.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.task.data.dto.recipes.Recipes
 import com.task.data.dto.recipes.RecipesItem
 import com.task.databinding.RecipeItemBinding
 import com.task.ui.base.listeners.RecyclerItemListener
@@ -12,7 +13,7 @@ import com.task.ui.component.recipes.RecipesListViewModel
  * Created by AhmedEltaher
  */
 
-class RecipesAdapter(private val recipesListViewModel: RecipesListViewModel, private val recipes: List<RecipesItem>) : RecyclerView.Adapter<RecipeViewHolder>() {
+class RecipesAdapter(private val recipesListViewModel: RecipesListViewModel, var recipes: Recipes?) : RecyclerView.Adapter<RecipeViewHolder>() {
 
     private val onItemClickListener: RecyclerItemListener = object : RecyclerItemListener {
         override fun onItemSelected(recipe: RecipesItem) {
@@ -26,11 +27,13 @@ class RecipesAdapter(private val recipesListViewModel: RecipesListViewModel, pri
     }
 
     override fun onBindViewHolder(holder: RecipeViewHolder, position: Int) {
-        holder.bind(recipes[position], onItemClickListener)
+        holder.bind(recipes!!.recipesList[position], onItemClickListener)
     }
 
     override fun getItemCount(): Int {
-        return recipes.size
+        if (recipes != null)
+            return recipes?.recipesList!!.size
+        else return 0;
     }
 }
 
