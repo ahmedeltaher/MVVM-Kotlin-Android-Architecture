@@ -30,7 +30,14 @@ constructor(private val dataRepositoryRepository: DataRepositorySource) : BaseVi
     val recipesLiveDataPrivate = MutableLiveData<Resource<Recipes>>()
     val recipesLiveData: LiveData<Resource<Recipes>> get() = recipesLiveDataPrivate
 
+//    @VisibleForTesting(otherwise = VisibleForTesting.PRIVATE)
+//    val recipesLiveDataPrivate2 = MutableLiveData<Resource<Recipes>>()
+//    val recipesLiveData2: MutableLiveData<Resource<Recipes>> get() = recipesLiveDataPrivate2
 
+
+    private val _loading: MutableLiveData<Boolean> =
+        MutableLiveData(true).apply { value = true }
+    val loading: MutableLiveData<Boolean> get() = _loading
     //TODO check to make them as one Resource
     @VisibleForTesting(otherwise = VisibleForTesting.PRIVATE)
     val recipeSearchFoundPrivate: MutableLiveData<RecipesItem> = MutableLiveData()
@@ -64,9 +71,30 @@ constructor(private val dataRepositoryRepository: DataRepositorySource) : BaseVi
             recipesLiveDataPrivate.value = Resource.Loading()
             wrapEspressoIdlingResource {
                 dataRepositoryRepository.requestRecipes().collect {
-                    recipesLiveDataPrivate.value = it
+                    when(it!!){
+                        is Resource.Loading -> _loading.value = true
+                        is Resource.Success -> {
+                            _loading.value = false
+                            it?.let {
+                                recipesLiveDataPrivate.value = it
+
+                            }
+                        }
+                        is Resource.DataError ->{
+
+                            _loading.value = false
+                            it.errorCode?.let {
+                                showToastMessage(it)
+                            }
+                        }
+                    }
+
+
+
+
                 }
             }
+
         }
     }
 

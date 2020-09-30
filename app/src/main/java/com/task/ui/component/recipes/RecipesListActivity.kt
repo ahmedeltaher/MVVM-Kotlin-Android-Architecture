@@ -10,6 +10,7 @@ import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.widget.SearchView
 import android.widget.SearchView.OnQueryTextListener
+import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.LiveData
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.snackbar.Snackbar
@@ -39,25 +40,24 @@ class RecipesListActivity : BaseActivity() {
 
     @Inject
     lateinit var viewModelFactory: ViewModelFactory
-    private lateinit var recipesAdapter: RecipesAdapter
 
     override fun initViewBinding() {
-        binding = HomeActivityBinding.inflate(layoutInflater)
-        val view = binding.root
-        setContentView(view)
+
+        binding = DataBindingUtil.setContentView(this,R.layout.home_activity)
+        binding.lifecycleOwner= this
+
     }
 
     override fun initializeViewModel() {
         recipesListViewModel = viewModelFactory.create(RecipesListViewModel::class.java)
+        binding.vm = recipesListViewModel
+        binding.vm?.getRecipes()
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         supportActionBar?.title = getString(R.string.recipe)
-        val layoutManager = LinearLayoutManager(this)
-        binding.rvRecipesList.layoutManager = layoutManager
-        binding.rvRecipesList.setHasFixedSize(true)
-        recipesListViewModel.getRecipes()
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -96,16 +96,6 @@ class RecipesListActivity : BaseActivity() {
         }
     }
 
-
-    private fun bindListData(recipes: Recipes) {
-        if (!(recipes.recipesList.isNullOrEmpty())) {
-            recipesAdapter = RecipesAdapter(recipesListViewModel, recipes.recipesList)
-            binding.rvRecipesList.adapter = recipesAdapter
-            showDataView(true)
-        } else {
-            showDataView(false)
-        }
-    }
 
     private fun navigateToDetailsScreen(navigateEvent: SingleEvent<RecipesItem>) {
         navigateEvent.getContentIfNotHandled()?.let {
@@ -154,7 +144,10 @@ class RecipesListActivity : BaseActivity() {
     private fun handleRecipesList(status: Resource<Recipes>) {
         when (status) {
             is Resource.Loading -> showLoadingView()
-            is Resource.Success -> status.data?.let { bindListData(recipes = it) }
+            is Resource.Success -> status.data?.let {
+//                bindListData(recipes = it)
+//                recipesListViewModel.recipesLiveData.value = it
+                }
             is Resource.DataError -> {
                 showDataView(false)
                 status.errorCode?.let { recipesListViewModel.showToastMessage(it) }
@@ -163,7 +156,6 @@ class RecipesListActivity : BaseActivity() {
     }
 
     override fun observeViewModel() {
-        observe(recipesListViewModel.recipesLiveData, ::handleRecipesList)
         observe(recipesListViewModel.recipeSearchFound, ::showSearchResult)
         observe(recipesListViewModel.noSearchFound, ::noSearchResult)
         observeEvent(recipesListViewModel.openRecipeDetails, ::navigateToDetailsScreen)
