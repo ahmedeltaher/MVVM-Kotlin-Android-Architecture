@@ -9,6 +9,7 @@ import com.task.data.Resource
 import com.task.data.dto.recipes.RecipesItem
 import com.task.ui.base.BaseViewModel
 import com.task.utils.wrapEspressoIdlingResource
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -16,7 +17,7 @@ import javax.inject.Inject
 /**
  * Created by AhmedEltaher
  */
-
+@HiltViewModel
 open class DetailsViewModel @Inject constructor(private val dataRepository: DataRepositorySource) : BaseViewModel() {
 
     @VisibleForTesting(otherwise = VisibleForTesting.PRIVATE)

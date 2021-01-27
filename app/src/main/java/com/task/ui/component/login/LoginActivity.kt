@@ -2,27 +2,24 @@ package com.task.ui.component.login
 
 import android.content.Intent
 import android.os.Bundle
+import androidx.activity.viewModels
 import androidx.lifecycle.LiveData
 import com.google.android.material.snackbar.Snackbar
 import com.task.data.Resource
 import com.task.data.dto.login.LoginResponse
 import com.task.databinding.LoginActivityBinding
-import com.task.ui.ViewModelFactory
 import com.task.ui.base.BaseActivity
 import com.task.ui.component.recipes.RecipesListActivity
 import com.task.utils.*
-import javax.inject.Inject
+import dagger.hilt.android.AndroidEntryPoint
 
 /**
  * Created by AhmedEltaher
  */
-
+@AndroidEntryPoint
 class LoginActivity : BaseActivity() {
-    @Inject
-    lateinit var viewModelFactory: ViewModelFactory
 
-    @Inject
-    lateinit var loginViewModel: LoginViewModel
+    private val loginViewModel: LoginViewModel by viewModels()
     private lateinit var binding: LoginActivityBinding
 
 
@@ -37,10 +34,6 @@ class LoginActivity : BaseActivity() {
         setContentView(view)
     }
 
-    override fun initializeViewModel() {
-        loginViewModel = viewModelFactory.create(loginViewModel::class.java)
-    }
-
     override fun observeViewModel() {
         observe(loginViewModel.loginLiveData, ::handleLoginResult)
         observeSnackBarMessages(loginViewModel.showSnackBar)
@@ -48,8 +41,10 @@ class LoginActivity : BaseActivity() {
     }
 
     private fun doLogin() {
-        loginViewModel.doLogin(binding.username.text.trim().toString(),
-                binding.password.text.toString())
+        loginViewModel.doLogin(
+            binding.username.text.trim().toString(),
+            binding.password.text.toString()
+        )
     }
 
     private fun handleLoginResult(status: Resource<LoginResponse>) {

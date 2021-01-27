@@ -3,6 +3,7 @@ package com.task.ui.component.details
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import androidx.activity.viewModels
 import androidx.core.content.ContextCompat
 import com.squareup.picasso.Picasso
 import com.task.R
@@ -10,24 +11,20 @@ import com.task.RECIPE_ITEM_KEY
 import com.task.data.Resource
 import com.task.data.dto.recipes.RecipesItem
 import com.task.databinding.DetailsLayoutBinding
-import com.task.ui.ViewModelFactory
 import com.task.ui.base.BaseActivity
 import com.task.utils.observe
 import com.task.utils.toGone
 import com.task.utils.toVisible
-import javax.inject.Inject
+import dagger.hilt.android.AndroidEntryPoint
 
 /**
  * Created by AhmedEltaher
  */
 
+@AndroidEntryPoint
 class DetailsActivity : BaseActivity() {
 
-    @Inject
-    lateinit var viewModel: DetailsViewModel
-
-    @Inject
-    lateinit var viewModelFactory: ViewModelFactory
+    private val viewModel: DetailsViewModel by viewModels()
 
     private lateinit var binding: DetailsLayoutBinding
     private var menu: Menu? = null
@@ -64,10 +61,6 @@ class DetailsActivity : BaseActivity() {
     override fun observeViewModel() {
         observe(viewModel.recipeData, ::initializeView)
         observe(viewModel.isFavourite, ::handleIsFavourite)
-    }
-
-    override fun initializeViewModel() {
-        viewModel = viewModelFactory.create(viewModel::class.java)
     }
 
     private fun handleIsFavourite(isFavourite: Resource<Boolean>) {
