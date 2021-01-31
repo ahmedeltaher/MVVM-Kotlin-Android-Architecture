@@ -1,25 +1,26 @@
-apply plugin: 'com.android.application'
-apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
-apply plugin: 'kotlin-kapt'
-apply plugin: 'kotlin-platform-android'
-apply plugin: 'dagger.hilt.android.plugin'
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-android-extensions'
+    id 'kotlin-kapt'
+    id 'kotlin-platform-android'
+    id 'dagger.hilt.android.plugin'
+}
 
 
 android {
-    compileSdkVersion 30
-    buildToolsVersion '30.0.2'
+    compileSdkVersion rootProject.compileSdkVersion
+    buildToolsVersion rootProject.buildToolsVersion
     defaultConfig {
         applicationId 'com.eltaher.task'
         minSdkVersion rootProject.minSdkVersion
         targetSdkVersion rootProject.targetSdkVersion
         versionCode 1
         versionName "1.0"
-        multiDexEnabled true
         vectorDrawables.useSupportLibrary = true
         testInstrumentationRunner "com.task.CustomTestRunner"
     }
-    buildFeatures{
+    buildFeatures {
         viewBinding = true
     }
     buildTypes {
@@ -32,7 +33,6 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-
     flavorDimensions "default"
     productFlavors {
         dev {
@@ -47,32 +47,21 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
         sourceCompatibility JavaVersion.VERSION_1_8
     }
-    productFlavors {
-    }
-    defaultConfig {
-        testInstrumentationRunnerArguments clearPackageData: 'true'
-    }
     kotlinOptions {
         jvmTarget = JavaVersion.VERSION_1_8
     }
-    packagingOptions {
-        pickFirst 'META-INF/kotlinx-io.kotlin_module'
-        pickFirst 'META-INF/atomicfu.kotlin_module'
-        pickFirst 'META-INF/kotlinx-coroutines-core.kotlin_module'
-        pickFirst 'META-INF/kotlinx-coroutines-io.kotlin_module'
-    }
-
     configurations.all {
         resolutionStrategy {
             exclude group: "org.jetbrains.kotlinx", module: "kotlinx-coroutines-debug"
 
         }
     }
-
+    defaultConfig {
+        testInstrumentationRunnerArguments clearPackageData: 'true'
+    }
     testOptions {
         unitTests.returnDefaultValues = true
     }
-
     android {
         sourceSets {
             String sharedTestDir = 'src/sharedTest/resources'
@@ -90,71 +79,40 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     //kotlin
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-    implementation "org.jetbrains.kotlin:kotlin-reflect:$kotlinVersion"
+    implementation "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version"
     implementation "androidx.annotation:annotation:$annotationVersion"
-
+    implementation "com.squareup.picasso:picasso:$picassoVersion"
+    androidTestImplementation "androidx.test.ext:junit-ktx:$androidXJunitVersion"
     /**-------------------testing libs------------------------------------------**/
     //UI Testing , AndroidJUnitRunner and JUnit Rules &Espresso dependencies
     //junit 5
     testImplementation "org.junit.jupiter:junit-jupiter-engine:$junitVersion"
-    testImplementation "org.junit.jupiter:junit-jupiter-api:$junitVersion"
-    testImplementation "org.junit.platform:junit-platform-runner:$junitRunnerVersion"
-    androidTestImplementation "androidx.test.ext:junit:$androidXJunitVersion"
+    testImplementation "io.mockk:mockk:$mockVersion"
     androidTestImplementation "org.assertj:assertj-core:$assertjVersion"
-    androidTestImplementation "androidx.arch.core:core-testing:$coreTestingVersion"
     androidTestImplementation "androidx.test.espresso:espresso-intents:$espressoIntentsVersion"
-    androidTestImplementation ("androidx.test.espresso:espresso-core:$espressoCoreVersion",{
-        exclude group: 'com.android.support', module: 'support-annotations'
-    })
-    implementation "androidx.test:rules:$testRulesVersion"
-    androidTestImplementation "androidx.test:runner:$runnerVersion"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutinesTestVersion"
+    implementation "androidx.arch.core:core-testing:$coreTestingVersion"
     implementation "androidx.test.espresso:espresso-idling-resource:$espressoVersion"
     implementation "androidx.test.espresso:espresso-contrib:$espressoVersion"
-    implementation "androidx.arch.core:core-testing:$coreTestingVersion"
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutinesTestVersion"
-
     /**-------------------------------------------------------------**/
-
-    //android support & recyclerview
-    implementation "androidx.recyclerview:recyclerview:$recyclerviewVersion"
+    //android support
     implementation "androidx.appcompat:appcompat:$appcompatVersion"
     implementation "com.google.android.material:material:$materialVersion"
-
-    implementation "androidx.coordinatorlayout:coordinatorlayout:$coordinatorLayoutVersion"
-    implementation "androidx.constraintlayout:constraintlayout:$constraintLayoutVersion"
-    implementation "androidx.cardview:cardview:$cardViewVersion"
-
-
-
-    //Logging
-    implementation "com.squareup.okhttp3:logging-interceptor:$okhttpInterceptorVersion"
-
     // retrofit
-    implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
     implementation "com.squareup.retrofit2:converter-moshi:$retrofitVersion"
     implementation "com.squareup.moshi:moshi:$moshiVersion"
     kapt "com.squareup.moshi:moshi-kotlin-codegen:$moshiVersion"
-    implementation "com.squareup.okhttp3:okhttp:$okhttpVersion"
-
-    //picasso
-    implementation "com.squareup.picasso:picasso:$picassoVersion"
-
-    //MultiDex
-    implementation "androidx.multidex:multidex:$multiDexVersion"
-
-    testImplementation "io.mockk:mockk:$mockVersion"
-
-    //coroutines
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesCoreVersion"
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core-common:$coroutinesCommonVersion"
-    implementation "androidx.lifecycle:lifecycle-extensions:$lifecycleExtensionsVersion"
-    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleKTXVersion"
-    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycleKTXVersion"
-    implementation "androidx.core:core-ktx:$coreKtxVersion"
+    implementation "com.squareup.okhttp3:logging-interceptor:$okhttpInterceptorVersion"
+    implementation("com.github.bumptech.glide:glide:$glid") {
+        exclude group: "com.android.support"
+    }
     implementation "androidx.activity:activity-ktx:$activityKtxVersion"
-
-    implementation 'com.google.dagger:hilt-android:2.31.2-alpha'
-    kapt 'com.google.dagger:hilt-android-compiler:2.31.2-alpha'
+    // Hilt
+    implementation "com.google.dagger:hilt-android:$hilt_version"
+    implementation "androidx.hilt:hilt-lifecycle-viewmodel:$hilt_viewmodels"
+    kapt "com.google.dagger:hilt-compiler:$hilt_version"
+    androidTestImplementation "com.google.dagger:hilt-android-testing:$hilt_version"
+    kaptAndroidTest "com.google.dagger:hilt-android-compiler:$hilt_version"
 }
 kapt {
     correctErrorTypes true

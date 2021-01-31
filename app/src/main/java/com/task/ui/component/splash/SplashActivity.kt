@@ -16,8 +16,6 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class SplashActivity : BaseActivity(){
 
-    private val splashViewModel: SplashViewModel by viewModels()
-
     private lateinit var binding: SplashLayoutBinding
 
     override fun initViewBinding() {

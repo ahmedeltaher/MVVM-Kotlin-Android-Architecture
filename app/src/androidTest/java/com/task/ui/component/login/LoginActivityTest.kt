@@ -10,24 +10,27 @@ import androidx.test.espresso.intent.matcher.IntentMatchers.hasComponent
 import androidx.test.espresso.intent.rule.IntentsTestRule
 import androidx.test.espresso.matcher.RootMatchers.withDecorView
 import androidx.test.espresso.matcher.ViewMatchers.*
-import androidx.test.ext.junit.runners.AndroidJUnit4
-import androidx.test.filters.LargeTest
 import com.task.R
+import dagger.hilt.android.testing.HiltAndroidRule
+import dagger.hilt.android.testing.HiltAndroidTest
 import org.hamcrest.CoreMatchers.`is`
 import org.hamcrest.CoreMatchers.not
 import org.junit.After
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
-import org.junit.runner.RunWith
 import java.lang.Thread.sleep
 
 
 /**
  * Created by AhmedEltaher
  */
-@RunWith(AndroidJUnit4::class)
+@HiltAndroidTest
 class LoginActivityTest {
+
+    @get:Rule
+    var hiltRule = HiltAndroidRule(this)
+
     @get:Rule
     var mActivityTestRule = IntentsTestRule(LoginActivity::class.java, true, false)
 

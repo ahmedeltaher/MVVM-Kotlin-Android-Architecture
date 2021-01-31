@@ -8,14 +8,4 @@ import dagger.hilt.android.HiltAndroidApp
  * Created by AhmedEltaher
  */
 @HiltAndroidApp
-open class App : Application() {
-
-    override fun onCreate() {
-        super.onCreate()
-        context = applicationContext
-    }
-
-    companion object {
-        lateinit var context: Context
-    }
-}
+open class App : Application()
