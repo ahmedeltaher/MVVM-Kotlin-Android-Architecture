@@ -22,12 +22,12 @@ import com.task.App
 import com.task.R
 
 fun View.showKeyboard() {
-    (App.context.getSystemService(Service.INPUT_METHOD_SERVICE) as? InputMethodManager)
+    (this.context.getSystemService(Service.INPUT_METHOD_SERVICE) as? InputMethodManager)
             ?.showSoftInput(this, 0)
 }
 
 fun View.hideKeyboard() {
-    (App.context.getSystemService(Service.INPUT_METHOD_SERVICE) as? InputMethodManager)
+    (this.context.getSystemService(Service.INPUT_METHOD_SERVICE) as? InputMethodManager)
             ?.hideSoftInputFromWindow(this.windowToken, 0)
 }
 

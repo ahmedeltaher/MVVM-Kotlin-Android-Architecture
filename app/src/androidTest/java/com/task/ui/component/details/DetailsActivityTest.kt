@@ -7,25 +7,29 @@ import androidx.test.espresso.IdlingResource
 import androidx.test.espresso.action.ViewActions.scrollTo
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.ViewMatchers.*
-import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.rule.ActivityTestRule
 import com.task.R
+import com.task.RECIPE_ITEM_KEY
 import com.task.TestUtil.initData
 import com.task.TestUtil.recipes
-import com.task.RECIPE_ITEM_KEY
 import com.task.utils.EspressoIdlingResource
+import dagger.hilt.android.testing.HiltAndroidRule
+import dagger.hilt.android.testing.HiltAndroidTest
 import org.junit.After
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
-import org.junit.runner.RunWith
 
 /**
  * Created by AhmedEltaher
  */
 
-@RunWith(AndroidJUnit4::class)
+@HiltAndroidTest
 class DetailsActivityTest {
+
+    @get:Rule
+    var hiltRule = HiltAndroidRule(this)
+
     @get:Rule
     var mActivityTestRule = ActivityTestRule(DetailsActivity::class.java, true, false)
     private var mIdlingResource: IdlingResource? = null

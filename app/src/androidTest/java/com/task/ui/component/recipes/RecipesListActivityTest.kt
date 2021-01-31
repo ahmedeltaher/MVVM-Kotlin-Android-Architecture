@@ -13,24 +13,27 @@ import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.contrib.RecyclerViewActions
 import androidx.test.espresso.matcher.RootMatchers
 import androidx.test.espresso.matcher.ViewMatchers.*
-import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.rule.ActivityTestRule
 import com.task.DataStatus
 import com.task.R
 import com.task.TestUtil.dataStatus
 import com.task.TestUtil.recipes
 import com.task.utils.EspressoIdlingResource
+import dagger.hilt.android.testing.HiltAndroidRule
+import dagger.hilt.android.testing.HiltAndroidTest
 import org.hamcrest.CoreMatchers
 import org.hamcrest.Matchers.not
 import org.junit.After
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
-import org.junit.runner.RunWith
 import java.lang.Thread.sleep
 
-@RunWith(AndroidJUnit4::class)
+@HiltAndroidTest
 class RecipesListActivityTest {
+
+    @get:Rule
+    var hiltRule = HiltAndroidRule(this)
 
     @get:Rule
     var mActivityTestRule = ActivityTestRule(RecipesListActivity::class.java, false, false)

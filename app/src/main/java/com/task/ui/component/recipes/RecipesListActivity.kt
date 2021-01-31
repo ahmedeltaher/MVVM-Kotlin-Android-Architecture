@@ -10,6 +10,7 @@ import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.widget.SearchView
 import android.widget.SearchView.OnQueryTextListener
+import androidx.activity.viewModels
 import androidx.lifecycle.LiveData
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.snackbar.Snackbar
@@ -20,35 +21,26 @@ import com.task.data.dto.recipes.Recipes
 import com.task.data.dto.recipes.RecipesItem
 import com.task.data.error.SEARCH_ERROR
 import com.task.databinding.HomeActivityBinding
-import com.task.ui.ViewModelFactory
 import com.task.ui.base.BaseActivity
 import com.task.ui.component.details.DetailsActivity
 import com.task.ui.component.recipes.adapter.RecipesAdapter
 import com.task.utils.*
-import javax.inject.Inject
+import dagger.hilt.android.AndroidEntryPoint
 
 /**
  * Created by AhmedEltaher
  */
-
+@AndroidEntryPoint
 class RecipesListActivity : BaseActivity() {
     private lateinit var binding: HomeActivityBinding
 
-    @Inject
-    lateinit var recipesListViewModel: RecipesListViewModel
-
-    @Inject
-    lateinit var viewModelFactory: ViewModelFactory
+    private val recipesListViewModel: RecipesListViewModel by viewModels()
     private lateinit var recipesAdapter: RecipesAdapter
 
     override fun initViewBinding() {
         binding = HomeActivityBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
-    }
-
-    override fun initializeViewModel() {
-        recipesListViewModel = viewModelFactory.create(RecipesListViewModel::class.java)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
