@@ -16,7 +16,11 @@ import kotlin.coroutines.CoroutineContext
  * Created by AhmedEltaher
  */
 
-class DataRepository @Inject constructor(private val remoteRepository: RemoteData, private val localRepository: LocalData, private val ioDispatcher: CoroutineContext) : DataRepositorySource {
+class DataRepository @Inject constructor(
+    private val remoteRepository: RemoteData,
+    private val localRepository: LocalData,
+    private val ioDispatcher: CoroutineContext
+) : DataRepositorySource {
 
     override suspend fun requestRecipes(): Flow<Resource<Recipes>> {
         return flow {
