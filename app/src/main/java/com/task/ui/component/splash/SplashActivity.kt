@@ -3,6 +3,7 @@ package com.task.ui.component.splash
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
+import android.os.Looper
 import androidx.activity.viewModels
 import com.task.databinding.SplashLayoutBinding
 import com.task.ui.base.BaseActivity
@@ -33,7 +34,7 @@ class SplashActivity : BaseActivity(){
     }
 
     private fun navigateToMainScreen() {
-        Handler().postDelayed({
+        Handler(Looper.getMainLooper()).postDelayed({
             val nextScreenIntent = Intent(this, LoginActivity::class.java)
             startActivity(nextScreenIntent)
             finish()
