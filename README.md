@@ -22,11 +22,11 @@ You can also check [**MVP**](https://github.com/ahmedeltaher/Android-MVP-Archite
 - Don’t put logic in the ViewModel that is critical to saving clean state or related to data. Any call you make from a ViewModel can be the last one.
 
 
-**What is Coroutines ?**
+**What are Coroutines ?**
 -------------------
 
  **Coroutines :**
-Is light wight threads for asynchronous programming, Coroutines not only open the doors to
+Coroutine is a light weight thread for asynchronous programming, Coroutines not only open the doors to
 asynchronous programming, but also provide a wealth of other possibilities such as concurrency, actors, etc.
 
 ----------
